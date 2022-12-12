@@ -1,0 +1,107 @@
+import { defineConfig } from 'umi';
+
+export default defineConfig({
+    nodeModulesTransform: {
+        type: 'none',
+    },
+    routes: [
+        {
+            path: '/',
+            component: '@/pages/index',
+            routes: [
+                { path: '/', component: './HomePage/HomePage.jsx' },
+                {
+                    path: '/BlockChain',
+                    component: './BlockChain/BlockChain.jsx',
+                },
+                { path: '/NFT', component: './NFT/NFT.jsx' },
+                { path: '/SNFT', component: './SNFT/SNFT.jsx' },
+                { path: '/Exchange', component: './Exchange/Exchange.jsx' },
+                {
+                    path: '/BlockChain/BlockDetails',
+                    component: './BlockDetails/BlockDetails.jsx',
+                },
+                {
+                    path: '/NFT/NFTDetails',
+                    component: './NFTDetails/NFTDetails.jsx',
+                },
+                {
+                    path: '/SNFT/SNFTDetails',
+                    component: './SNFTDetails/SNFTDetails.jsx',
+                },
+                {
+                    path: '/Exchange/ExchangeDetails',
+                    component: './ExchangeDetails/ExchangeDetails.jsx',
+                },
+                { path: '/Validator', component: './Validator/Validator.jsx' },
+                { path: '/TestPage', component: './TestPage/TestPage.jsx' },
+                { path: '/ranking', component: './Ranking/Ranking.jsx' },
+                {
+                    path: '/exchangeRanking',
+                    component: './ExchangeRanking/ExchangeRanking.jsx',
+                },
+                {
+                    path: '/SNFTRanking',
+                    component: './SNFTRanking/SNFTRanking.jsx',
+                },
+                {
+                    path: '/NFTRanking',
+                    component: './NFTRanking/NFTRanking.jsx',
+                },
+                {
+                    path: '/Trade',
+                    component: './Trade/Trade.jsx',
+                },
+                {
+                    path: '/TradeDetail/:id',
+                    exact: true,
+                    component: './TradeDetail/TradeDetail.jsx',
+                },
+                {
+                    path: `/AccountDetail/:id`,
+                    exact: true,
+                    component: './AccountDetail/AccountDetail.jsx',
+                },
+
+                {
+                    path: '/NoSearchResults',
+                    component: './NoSearchResults/NoSearchResults.jsx',
+                },
+                {
+                    path: '/Account',
+                    component: './Account/Account.jsx',
+                },
+            ],
+        },
+    ],
+    fastRefresh: {},
+    proxy: {
+        '/api': {
+            target: 'https://www.wormholestest.com',
+            changeOrigin: true,
+            secure: false,
+            pathRewrite: {
+                '^/api': '/api',
+            },
+        },
+        '/ipfs': {
+            target: 'https://www.wormholestest.com',
+            changeOrigin: true,
+            secure: false,
+            pathRewrite: {
+                '^/ipfs': '/ipfs',
+            },
+        },
+    },
+    publicPath: './',
+    runtimePublicPath: true,
+    history: {
+        type: 'hash',
+    },
+    hash: true,
+    links: [
+        // href的图片你可以放在public里面，直接./图片名.png 就可以了，也可以是cdn链接
+        { rel: 'ico', href: './src/assets/images/logo.ico' },
+    ],
+    title: false,
+});

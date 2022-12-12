@@ -1,0 +1,390 @@
+ul,
+h2 {
+    padding: 0;
+}
+p {
+    margin-bottom: 0;
+}
+h2,
+h3 {
+    color: white;
+    font-size: 24px;
+}
+h3 {
+    font-size: 20px;
+}
+
+:global {
+    .ant-table-wrapper {
+        // border: 1px solid red;
+        // height: 800px !important;
+        overflow: visible;
+    }
+    .ant-spin-nested-loading {
+        background: rgba(0,0,0,0);
+    }
+     .ant-spin-spinning {
+         width: 100%;
+         height: 100%;
+        //background: rgba(1,2,1,1);
+         max-height: 500px;
+    }
+    .ant-spin {
+        max-height: 500px!important;
+    }
+     .ant-spin-blur {
+         &::after {
+             opacity: 0;
+         }
+    }
+}
+.AccountDetailBox {
+    width: 1240px;
+    margin: auto;
+    color: white;
+    svg {
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 5px;
+        color: rgba(254, 79, 167, 1);
+    }
+    .titleAndSearch {
+        display: flex;
+        justify-content: space-between;
+        h2 {
+            margin-left: 24px;
+        }
+    }
+    .AccountDetailBoxTop {
+        margin: 0 70px 0 24px;
+        width: 620px;
+        .tags {
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-between;
+            .AccountDetailButton {
+                :global {
+                    .ant-btn {
+                        border: none;
+                        color: white;
+                        background-color: rgba(254, 79, 167, 1);
+                        padding: 0 12px;
+                        border-radius: 4px;
+                        &:not(:first-child) {
+                            &::before {
+                                width: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .AccountDetailBoxBottom {
+            display: flex;
+            justify-content: space-between;
+            flex-flow: wrap;
+            margin-top: 10px;
+            //padding-right: 10px;
+            div {
+                width: 310px;
+                display: flex;
+                margin-top: 16px;
+                p {
+                    width: 150px;
+                }
+                span {
+                    display: inline-block;
+                    width: 120px;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+            .common {
+                span {
+                    color: rgba(122, 164, 255, 1);
+                    cursor: pointer;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+    .hash {
+        font-size: 20px;
+        color: rgba(122, 164, 255, 1);
+    }
+}
+.other {
+    display: flex;
+    > div:last-child {
+        padding-left: 128px;
+        padding-top: 5px;
+    }
+    h3 {
+        margin-bottom: 24px;
+    }
+    ul {
+        display: flex;
+        p {
+            width: 120px;
+            margin-right: 11px;
+        }
+        span {
+            display: inline-block;
+            width: 100px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+}
+.changeButton {
+    margin-left: 40px;
+    width:1240px;
+    margin: 0 auto !important;
+    //margin-left:0;
+    padding-left: 20px;
+    :global {
+        .ant-btn {
+            border: 1px solid #fff;
+            color: white;
+            background: transparent;
+            padding: 0 12px;
+            border-radius: 4px;
+            width: 136px;
+            height: 40px;
+            margin-right: 16px;
+
+            &:is(:first-child) {
+                background: #426ceb;
+                border: none;
+                &::before {
+                    width: 0px;
+                }
+            }
+        }
+    }
+}
+.AccountDetailBox1 {
+    width: 1240px;
+    margin: auto;
+    color: white;
+}
+.AccountDetailBox1 {
+    width: 1240px;
+    min-height: 500px;
+    border-radius: 8px;
+    background-color: rgba(69, 59, 69, 0.5);
+    color: white;
+    padding: 0 21px;
+    margin-bottom: 53px;
+    position: relative;
+    padding-bottom: 70px;
+    :global {
+        #AccountDetailTable {
+            min-height: 400px;
+            background-color: transparent;
+            overflow-y: auto;
+        }
+        .ant-table-cell-row-hover {
+            background: none !important;
+        }
+        .ant-table-thead > tr > th,
+        .ant-table-tbody > tr > td,
+        .ant-table tfoot > tr > th,
+        .ant-table tfoot > tr > td {
+            padding: 8px;
+            border: none;
+            color: white;
+            font-size: 14px;
+            background-color: transparent;
+            .ant-table-cell-row-hover {
+                background: #1b1a21;
+            }
+        }
+        .ant-table-thead > tr > th {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13px;
+        }
+        .ant-pagination {
+            position: absolute;
+            //bottom: -1080px;
+            right: 0;
+            color: white;
+            button {
+                color: #ffffff;
+                //border: none;
+                background: rgba(3, 4, 26, 1);
+                &:disabled {
+                    color: #a0a0a0;
+                }
+            }
+            a {
+                color: #ffffff;
+                //border: none;
+                background: rgba(3, 4, 26, 1);
+                &:hover {
+                    background: rgba(247, 45, 134, 1);
+                    border: none;
+                }
+            }
+            .ant-pagination-item {
+                &:hover {
+                    border-color: rgba(247, 45, 134, 1);
+                }
+            }
+            .ant-pagination-item-active {
+                &:hover {
+                    border-color: rgba(247, 45, 134, 1);
+                }
+                border-color: rgba(247, 45, 134, 1);
+                a {
+                    background: rgba(247, 45, 134, 1);
+                }
+            }
+            .ant-pagination-item-ellipsis {
+                color: white;
+            }
+            .ant-select-selector {
+                color: white;
+                background: rgba(3, 4, 26, 1);
+            }
+            .ant-pagination-options-quick-jumper {
+                input {
+                    background: rgba(3, 4, 26, 1);
+                    color: white;
+                }
+            }
+        }
+    }
+}
+.AccountDetailBox1Title {
+    margin-top: 21px;
+    padding-top: 24px;
+    display: flex;
+    ul {
+        padding: 0;
+        font-size: 20px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+    }
+    span {
+        padding-left: 16px;
+        line-height: 32px;
+    }
+}
+.AccountDetailBox1Logs {
+    display: flex;
+    margin-bottom: 24px;
+}
+.AccountDetailBox1LogsContent {
+    width: 1079px;
+    height: 291px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+.AccountDetailBox1LogsContentMsg {
+    padding: 24px 24px 24px 63px;
+    svg {
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 5px;
+        color: rgba(254, 79, 167, 1);
+    }
+    ul {
+        display: flex;
+        font-size: 16px;
+        margin-bottom: 24px;
+        > p {
+            text-align: right;
+            width: 57px;
+            margin-right: 40px;
+            margin-bottom: 0;
+            color: rgba(134, 144, 156, 1);
+        }
+
+        li {
+            margin-bottom: 0;
+            div {
+                display: flex;
+            }
+        }
+    }
+    > ul:first-child {
+        span {
+            color: rgba(133, 174, 255, 1);
+            padding-right: 8px;
+        }
+    }
+    > ul:nth-child(3) {
+        li {
+            > div {
+                align-items: center;
+                p {
+                    width: 24px;
+                    height: 24px;
+                    background: rgba(110, 110, 110, 1);
+                    border-radius: 2px;
+                    color: white;
+                    text-align: center;
+                    margin-right: 16px;
+                    margin-bottom: 0px;
+                }
+            }
+            > div:last-child {
+                margin-top: 16px;
+                color: rgba(133, 174, 255, 1);
+            }
+        }
+    }
+}
+.tableName {
+    //display: inline-block;
+    color: #7aa4ff;
+    cursor: pointer;
+}
+
+.AccountDetailButtonGroup {
+    margin: 40px 0 24px 0 !important;
+    :global {
+        .ant-radio-button-wrapper {
+            width: 136px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            border: 1px solid #fff;
+            margin-right: 16px;
+            color: white;
+            padding: 0 8px;
+            border-radius: 4px;
+            background-color: transparent;
+            &:not(:first-child) {
+                &::before {
+                    width: 0px;
+                }
+            }
+        }
+        .ant-radio-button-wrapper-checked {
+            border: 1px solid rgba(66, 108, 235, 1);
+            background-color: rgba(66, 108, 235, 1);
+            box-shadow: 0px 15px 28px -10px #426ceb;
+            &:not(.ant-radio-button-wrapper-disabled) {
+                &:first-child {
+                    border-color: rgba(66, 108, 235, 1);
+                }
+                &:focus-within {
+                    box-shadow: 0px 15px 28px -10px #426ceb;
+                }
+                &:hover {
+                    color: white;
+                    border-color: rgba(66, 108, 235, 1);
+                }
+                &::before {
+                    width: 0px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,119 @@
+.BlockChainBox {
+    width: 1240px;
+    margin: auto;
+}
+.BlockChainBox_headerTitle {
+    width: 1240px;
+    height: 160px;
+    display: flex;
+    justify-content: space-between;
+}
+.BlockChainBox_headerTitle_d {
+    width: 397px;
+    height: 160px;
+    border-radius: 8px;
+    background-color: #141319;
+    background-image: url('../../assets/images/HomePage/blockcolor.png');
+    background-size: contain;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+}
+.BlockChainBox_headerTitle_d_left_data {
+    font-size: 22px;
+    color: white;
+    margin: 0 0 20px 0;
+}
+.BlockChainBox_headerTitle_d_left_name {
+    font-size: 16px;
+    color: #ffffff90;
+}
+.BlockChainBox_table {
+    width: 1240px;
+    //   height: 967px;
+    border-radius: 8px;
+    background-color: #1b1a21;
+    margin-top: 32px;
+    padding-top: 24px;
+    padding-bottom: 30px;
+}
+.BlockChainBox_table_title {
+    color: white;
+    font-size: 20px;
+    margin: 0 0 0 24px;
+}
+.BlockChainBox_Pagination {
+    //   border: 1px solid red;
+    margin-top: 30px;
+    text-align: right;
+    padding-right: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+.BlockChainBox_Pagination_d {
+    width: 82px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    margin-left: 16px;
+    font-size: 14px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+}
+.BlockChainBox_Pagination_span1 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+    margin: 0 8px;
+}
+.BlockChainBox_Pagination_input {
+    width: 48px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    color: white;
+    font-size: 14px;
+    padding-left: 12px;
+    margin-right: 8px;
+}
+.BlockChainBox_Pagination_span2 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+}
+:global {
+    #BlockChainTable {
+        .ant-table-wrapper {
+            //   border: 1px solid red;
+            //   height: 820px !important;
+            //   overflow: hidden;
+        }
+    }
+    #BlockChainBoxPagination {
+        .ant-pagination-item-link {
+            background-color: #03041a !important;
+            color: white !important;
+        }
+        .ant-pagination-item {
+            background-color: #03041a !important;
+            a {
+                color: white !important;
+            }
+        }
+        .ant-pagination-item:hover {
+            background-color: #f72d86 !important;
+            border: 0 !important;
+        }
+        .ant-pagination-item-ellipsis {
+            color: white !important;
+        }
+        .ant-pagination-item-active {
+            background-color: #f72d86 !important;
+            border: 1px solid #f72d86;
+        }
+    }
+}

@@ -1,0 +1,190 @@
+ul {
+    padding: 0;
+}
+.TradeBox {
+    width: 1240px;
+    margin: auto;
+    display: flex;
+    //justify-content: space-between;
+    color: white;
+}
+.TradeChart {
+    h2 {
+        font-size: 22px;
+        font-family: PingFangSC-Semibold, PingFang SC;
+        font-weight: 600;
+        color: #ffffff;
+    }
+}
+:global {
+    #SNFTTable {
+        .ant-table-wrapper {
+            //   border: 1px solid red;
+            overflow: hidden;
+        }
+    }
+    #SNFTBoxPagination {
+        .ant-pagination-item-link {
+            background-color: #03041a !important;
+            color: white !important;
+        }
+        .ant-pagination-item {
+            background-color: #03041a !important;
+            a {
+                color: white !important;
+            }
+        }
+        .ant-pagination-item:hover {
+            background-color: #f72d86 !important;
+            border: 0 !important;
+        }
+        .ant-pagination-item-ellipsis {
+            color: white !important;
+        }
+        .ant-pagination-item-active {
+            background-color: #f72d86 !important;
+            border: 1px solid #f72d86;
+        }
+    }
+    #Progress {
+        .ant-progress-text {
+            color: white;
+        }
+    }
+}
+
+.SNFTBox_Pagination {
+    margin-top: 30px;
+    text-align: right;
+    padding-right: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+.SNFTBox_Pagination_d {
+    width: 82px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    margin-left: 16px;
+    font-size: 14px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+}
+.SNFTBox_Pagination_span1 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+    margin: 0 8px;
+}
+.SNFTBox_Pagination_input {
+    width: 48px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    color: white;
+    font-size: 14px;
+    padding-left: 12px;
+    margin-right: 8px;
+}
+.SNFTBox_Pagination_span2 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+}
+.TradeTopLeft {
+    div {
+        width: 292px;
+        height: 160px;
+        background: url('./assets/topLeft.png');
+        padding: 42px 24px;
+        display: flex;
+        ul {
+            p {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 16px;
+            }
+            h5 {
+                color: #ffffff;
+                font-size: 22px;
+                width: 180px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+            li {
+                display: flex;
+                h5 {
+                    width: auto;
+                    max-width: 150px;
+                }
+                span {
+                    font-size: 22px;
+                    padding-left: 5px;
+                }
+            }
+        }
+        &:first-child {
+            margin-bottom: 24px;
+        }
+    }
+}
+.TradeTopCenter {
+    width: 292px;
+    height: 344px;
+    background: url('./assets/topCenter.png');
+    margin: 0 48px 0 24px;
+    .TradeTopCenterTitle {
+        padding: 42px 24px;
+        display: flex;
+        ul {
+            p {
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 16px;
+            }
+            h5 {
+                color: #ffffff;
+                font-size: 22px;
+                width: 180px;
+            }
+        }
+        li {
+            margin-top: 10px;
+        }
+        &:last-child {
+            padding: 0;
+        }
+    }
+}
+.TradeBox1 {
+    width: 1240px;
+    min-height: 500px;
+    border-radius: 8px;
+    background-color: #1b1a21;
+    color: white;
+    margin: auto;
+    margin-bottom: 53px;
+    margin-top: 30px;
+    padding-top: 24px;
+    position: relative;
+    padding-bottom: 70px;
+}
+.TradeTitle {
+    padding-left: 24px;
+    font-size: 20px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    span {
+        cursor: pointer;
+    }
+}
+.tableName {
+    //display: inline-block;
+    color: #7aa4ff;
+    cursor: pointer;
+}
+.tooltipAdd {
+    color: #426ceb;
+}
