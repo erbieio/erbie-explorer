@@ -55,7 +55,7 @@ export default function IndexPage(props) {
         <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=b7zlNRGt9jMR0MrCk3tGldiREpd5Wi6Q"></script>
       </Helmet>
       {
-        getDevice().device == 'pc' || window.location.hash != '#/'
+        getDevice().device == 'pc' 
           ?
           <div className={
             window.location.hash == '#/'

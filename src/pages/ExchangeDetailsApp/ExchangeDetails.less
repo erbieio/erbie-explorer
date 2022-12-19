@@ -1,0 +1,226 @@
+.ExchangeDetailsBox {
+    width: 100%;
+}
+.ExchangeDetailsBox_headerData {
+    width: 345px;
+    margin: auto;
+}
+.ExchangeDetailsBox_headerData_title {
+    padding-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: white;
+}
+.ExchangeDetailsBox_headerData_textBox {
+    width: 345px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 15px;
+}
+.ExchangeDetailsBox_headerData_textBox_imgtitle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #7aa4ff;
+    font-size: 20px;
+}
+.ExchangeDetailsBox_headportrait {
+    width: 14px;
+    height: 14px;
+    border: 1px solid red;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.ExchangeDetailsBox_headerData_textBox_Data {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;
+}
+.ExchangeDetailsBox_headerData_textBox_Data_name {
+    font-size: 14px;
+    color: white;
+    line-height: 30px;
+    width: 130px;
+}
+.ExchangeDetailsBox_headerData_textBox_Data_item {
+    font-size: 14px;
+    color: white;
+    line-height: 30px;
+}
+.ExchangeDetailsBox_headerData_textBox_Histogram {
+    width: 220px;
+    height: 180px;
+    background-color: #ffffff20;
+    border-radius: 8px;
+    padding: 10px 10px 0;
+    margin-top: 10px;
+}
+.ExchangeDetailsBox_headerData_textBox_Histogram_title {
+    font-size: 14px;
+    color: white;
+}
+.ExchangeDetailsBox_headerData_textBox_HistogramBox {
+    height: 160px;
+}
+.ExchangeDetailsBox_titleData_buttonBox {
+    width: 345px;
+    margin: 15px auto 0;
+    display: flex;
+    justify-content: flex-start;
+}
+.ExchangeDetailsBox_titleData_buttonBox_Transactionhistory1 {
+    // width: 170px;
+    height: 24px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    line-height: 24px;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+.ExchangeDetailsBox_titleData_buttonBox_Transactionhistory2 {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 24px;
+    border: 1px solid #426ceb;
+    border-radius: 4px;
+    line-height: 24px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    background-color: #426ceb;
+    box-shadow: 0px 5px 15px #426ceb;
+}
+.ExchangeDetailsBox_titleData_buttonBox_metaData1 {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 24px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    line-height: 24px;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 16px;
+}
+.ExchangeDetailsBox_titleData_buttonBox_metaData2 {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 24px;
+    border: 1px solid #426ceb;
+    border-radius: 4px;
+    line-height: 24px;
+    text-align: center;
+    color: white;
+    font-size: 13px;
+    cursor: pointer;
+    background-color: #426ceb;
+    box-shadow: 0px 5px 15px #426ceb;
+    margin-left: 16px;
+}
+.ExchangeDetailsBox_headerData_textBox_HistogramBox_name {
+    font-size: 11px;
+    color: #ffffff80;
+}
+.ExchangeDetailsBox_table {
+    width: 345px;
+    border-radius: 8px;
+    background-color: #453b4550;
+    margin-top: 15px;
+    padding-top:0px;
+    padding-bottom: 10px;
+}
+.ExchangeDetailsBox_Pagination {
+    //   border: 1px solid red;
+    margin-top: 15px;
+    text-align: right;
+    padding-right: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .flexBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 15px;
+    }
+}
+.ExchangeDetailsBox_Pagination_d {
+    width: 82px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    margin-left: 16px;
+    font-size: 12px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+}
+.ExchangeDetailsBox_Pagination_span1 {
+    font-size: 12px;
+    color: white;
+    line-height: 32px;
+    margin: 0 8px;
+}
+.ExchangeDetailsBox_Pagination_input {
+    width: 48px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    color: white;
+    font-size: 12px;
+    padding-left: 12px;
+    margin-right: 8px;
+}
+.ExchangeDetailsBox_Pagination_span2 {
+    font-size: 12px;
+    color: white;
+    line-height: 32px;
+}
+:global {
+    #progressbar {
+        .ant-progress-text {
+            color: #fe4fa7 !important;
+        }
+    }
+    #ExchangeDetailsTable {
+        .ant-table-wrapper {
+            //   border: 1px solid red;
+            overflow: hidden;
+        }
+    }
+    #ExchangeDetailsBoxPagination {
+        .ant-pagination-item-link {
+            background-color: #03041a !important;
+            color: white !important;
+        }
+        .ant-pagination-item {
+            background-color: #03041a !important;
+            a {
+                color: white !important;
+            }
+        }
+        .ant-pagination-item:hover {
+            background-color: #f72d86 !important;
+            border: 0 !important;
+        }
+        .ant-pagination-item-ellipsis {
+            color: white !important;
+        }
+        .ant-pagination-item-active {
+            background-color: #f72d86 !important;
+            border: 1px solid #f72d86;
+        }
+    }
+}

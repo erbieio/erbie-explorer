@@ -1,0 +1,364 @@
+ul,
+h2 {
+    padding: 0;
+}
+p {
+    margin-bottom: 0;
+}
+h2 {
+    color: white;
+    font-size: 24px;
+}
+:global {
+    .ant-table-wrapper {
+        // border: 1px solid red;
+        // height: 800px !important;
+        overflow: visible;
+    }
+}
+.notData {
+    display: flex;
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+.TradeDetailBox {
+    width: 345px;
+    padding-top: 15px;
+    margin: auto;
+    color: white;
+    svg {
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 5px;
+        color: rgba(254, 79, 167, 1);
+    }
+    .titleAndSearch {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-size: 14px;
+    }
+    .TradeDetailBoxTop {
+        .hash {
+            padding-top: 15px;
+            font-size: 14px;
+            color: rgba(122, 164, 255, 1);
+            width: 345px;
+            word-wrap: break-word;
+        }
+        .tags {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            .TradeDetailButton {
+                :global {
+                    .ant-btn {
+                        border: none;
+                        color: white;
+                        background-color: rgba(254, 79, 167, 1);
+                        padding: 0 12px;
+                        border-radius: 4px;
+                        &:not(:first-child) {
+                            &::before {
+                                width: 0px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .TradeDetailBoxBottom {
+            display: flex;
+            justify-content: space-between;
+            flex-flow: wrap;
+            margin-top: 15px;
+            div {
+                width: 345px;
+                display: flex;
+                margin-bottom: 24px;
+                p {
+                    width: 120px;
+                }
+            }
+            .common {
+                span {
+                    color: rgba(122, 164, 255, 1);
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .hash {
+        font-size: 14px;
+        color: rgba(122, 164, 255, 1);
+    }
+}
+.changeButton {
+    width: 345px;
+    margin: auto;
+}
+.topicsMap {
+    > span {
+        display: inline-block;
+        max-width: 740px;
+        overflow: hidden;
+        white-space: break-spaces;
+        text-overflow: ellipsis;
+    }
+}
+.AccountDetailButtonGroup {
+    margin: 20px 0 12px 0;
+    :global {
+        .ant-radio-button-wrapper {
+            width: 90px;
+            height: 24px;
+            text-align: center;
+            line-height: 20px;
+            border: 1px solid #fff;
+            margin-right: 16px;
+            color: white;
+            // padding: 0 8px;
+            border-radius: 4px;
+            background-color: transparent;
+            font-size: 11px;
+            &:not(:first-child) {
+                &::before {
+                    width: 0px;
+                }
+            }
+        }
+        .ant-radio-button-wrapper-checked {
+            border: 1px solid rgba(66, 108, 235, 1);
+            background-color: rgba(66, 108, 235, 1);
+            box-shadow: 0px 15px 28px -10px #426ceb;
+            &:not(.ant-radio-button-wrapper-disabled) {
+                &:first-child {
+                    border-color: rgba(66, 108, 235, 1);
+                }
+                &:focus-within {
+                    box-shadow: 0px 15px 28px -10px #426ceb;
+                }
+                &:hover {
+                    color: white;
+                    border-color: rgba(66, 108, 235, 1);
+                }
+                &::before {
+                    width: 0px;
+                }
+            }
+        }
+    }
+}
+.TradeDetailBox1 {
+    width: 345px;
+    margin: auto;
+    color: white;
+}
+.TradeDetailBox1 {
+    width: 345px;
+    min-height: 300px;
+    border-radius: 8px;
+    background-color: rgba(69, 59, 69, 0.5);
+    color: white;
+    padding: 0 10px;
+    margin-bottom: 53px;
+    position: relative;
+    padding-bottom: 10px;
+}
+.TradeDetailBox2 {
+    margin-top: 16px;
+    padding: 10px;
+    > div {
+        background: rgba(69, 59, 69, 0.5);
+        min-height: 280px;
+        width: 100%;
+    }
+}
+.TradeDetailBox1Title {
+    margin-top: 16px;
+    padding-top: 10px;
+    display: flex;
+    ul {
+        padding: 0;
+        font-size: 14px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        line-height: 20px;
+    }
+    span {
+        font-size: 11px;
+        padding-left: 10px;
+        line-height: 20px;
+    }
+}
+.TradeDetailBox1Logs {
+    display: flex;
+    margin-bottom: 24px;
+}
+.TradeDetailBox1LogsContent {
+    width: 1079px;
+    min-height: 291px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+.TradeDetailBox1LogsContentMsg {
+    padding: 24px 24px 24px 63px;
+    svg {
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 5px;
+        color: rgba(254, 79, 167, 1);
+    }
+    ul {
+        display: flex;
+        font-size: 12px;
+        margin-bottom: 24px;
+        > p {
+            text-align: right;
+            width: 57px;
+            margin-right: 40px;
+            margin-bottom: 0;
+            color: rgba(134, 144, 156, 1);
+        }
+
+        li {
+            margin-bottom: 0;
+            div {
+                display: flex;
+            }
+        }
+    }
+    > ul:first-child {
+        span {
+            color: rgba(133, 174, 255, 1);
+            padding-right: 8px;
+        }
+    }
+    > ul:nth-child(3) {
+        li {
+            > div {
+                align-items: center;
+                p {
+                    width: 24px;
+                    height: 24px;
+                    background: rgba(110, 110, 110, 1);
+                    border-radius: 2px;
+                    color: white;
+                    text-align: center;
+                    margin-right: 16px;
+                    margin-bottom: 0px;
+                }
+            }
+            > div:last-child {
+                margin-top: 16px;
+                color: rgba(133, 174, 255, 1);
+            }
+        }
+    }
+}
+.tableName {
+    //display: inline-block;
+    color: #7aa4ff;
+    cursor: pointer;
+}
+.TradeDetail_select {
+    margin-right: 24px;
+    :global {
+        .ant-select-selector {
+            background-color: #18171f !important;
+            border: 1px solid white !important;
+            height: 32px !important;
+            // line-height: 52px !important;
+            width: 88px !important;
+            font-size: 12px !important;
+            color: white !important;
+            font-weight: 400 !important;
+            padding-left: 16px !important;
+            border-radius: 2px !important;
+        }
+        .ant-select-arrow {
+            top: 40%;
+        }
+    }
+}
+.TradeDetailButton1 {
+    display: flex;
+    width: 893px;
+    height: 56px;
+    border-radius: 4px;
+    background: rgba(27, 26, 33, 1);
+    align-items: center;
+    padding-left: 20px;
+    > p {
+        display: flex;
+        margin-left: 27px;
+        li {
+            color: rgba(255, 255, 255, 0.7);
+            padding-right: 5px;
+        }
+        span {
+            display: inline-block;
+            width: 670px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+.TradeDetailButtonGroup {
+    padding: 0px;
+    :global {
+        //.ant-radio-button-wrapper:first-child {
+        //    border-bottom-left-radius: 4px;
+        //    border-top-left-radius: 4px;
+        //}
+        label:first-child {
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                width: 1px;
+                height: 12px;
+                background: white;
+                right: -7px;
+                top: 30%;
+            }
+        }
+        .ant-radio-button-wrapper {
+            border: none;
+            color: white;
+            padding: 0 4px;
+            margin: 0 7px;
+            background: none;
+            &:not(:first-child) {
+                &::before {
+                    width: 0px;
+                }
+            }
+            .ant-radio-button-checked {
+                background: none;
+                border-radius: 0px;
+                height: 24px;
+                margin-top: 4px;
+            }
+        }
+        .ant-radio-button-wrapper-checked {
+            border: 1px;
+            //background-color: #FFFFFF;
+            color: rgba(155, 191, 255, 1);
+            &:not(.ant-radio-button-wrapper-disabled) {
+                &:focus-within {
+                    box-shadow: none;
+                }
+                &:hover {
+                    color: rgba(155, 191, 255, 1);
+                }
+                &::before {
+                    width: 0px;
+                }
+            }
+        }
+    }
+}

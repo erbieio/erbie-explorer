@@ -1,0 +1,157 @@
+.ExchangeBox {
+    width: 345px;
+    margin: auto;
+}
+.ExchangeBox_headerTitle {
+    width: 345px;
+    // height: 69px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.ExchangeBox_headerTitle_d {
+    width: 168px;
+    height: 69px;
+    border-radius: 8px;
+    background-color: #141319;
+    background-image: url('../../assets/images/Exchange/BackApp.png');
+    background-size: contain;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    img {
+        width: 32px;
+        height: 32px;
+    }
+    p {
+        margin-bottom: 0px;
+    }
+    &:last-child {
+        margin-top: 10px;
+    }
+}
+.ExchangeBox_headerTitle_d_left {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.ExchangeBox_headerTitle_d_left_data {
+    font-size: 12px;
+    line-height: 16px;
+    color: white;
+    margin: 0 0 12px 0;
+}
+.ExchangeBox_headerTitle_d_left_name {
+    font-size: 11px;
+    line-height: 14px;
+    color: #ffffff90;
+}
+.ExchangeBox_table {
+    width: 345px;
+    border-radius: 8px;
+    background-color: #1b1a21;
+    margin-top: 15px;
+    padding-top: 12px;
+    padding-bottom: 15px;
+}
+.ExchangeBox_table_title {
+    color: white;
+    font-size: 14px;
+    padding-left: 12px;
+}
+.ExchangeBox_Pagination {
+    //   border: 1px solid red;
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.ExchangeBox_Pagination_d {
+    width: 82px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    margin-left: 16px;
+    font-size: 14px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+}
+.ExchangeBox_Pagination_span1 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+    margin: 0 8px;
+}
+.ExchangeBox_Pagination_input {
+    width: 48px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    color: white;
+    font-size: 14px;
+    padding-left: 12px;
+    margin-right: 8px;
+}
+.ExchangeBox_Pagination_span2 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+}
+.tablexbox {
+    display: flex;
+    justify-content: flex-start;
+}
+.tablex {
+    width: 20px;
+    height: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    margin-top: -2px;
+    margin-left: 5px;
+}
+.flexBox {
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+:global {
+    #ExchangeTable {
+        .ant-table-wrapper {
+            //   border: 1px solid red;
+            overflow: hidden;
+        }
+    }
+    #ExchangeBoxPagination {
+        .ant-pagination-item-link {
+            background-color: #03041a !important;
+            color: white !important;
+        }
+        .ant-pagination-item {
+            background-color: #03041a !important;
+            a {
+                color: white !important;
+            }
+        }
+        .ant-pagination-item:hover {
+            background-color: #f72d86 !important;
+            border: 0 !important;
+        }
+        .ant-pagination-item-ellipsis {
+            color: white !important;
+        }
+        .ant-pagination-item-active {
+            background-color: #f72d86 !important;
+            border: 1px solid #f72d86;
+        }
+    }
+}

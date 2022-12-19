@@ -18,6 +18,9 @@ export default defineConfig({
                 { path: '/SNFT', component: './SNFT/SNFT.jsx' },
                 { path: '/Exchange', component: './Exchange/Exchange.jsx' },
                 {
+                    path: "/ExchangeApp", component: "./ExchangeApp/Exchange.jsx"
+                },
+                {
                     path: '/BlockChain/BlockDetails',
                     component: './BlockDetails/BlockDetails.jsx',
                 },
@@ -33,9 +36,16 @@ export default defineConfig({
                     path: '/Exchange/ExchangeDetails',
                     component: './ExchangeDetails/ExchangeDetails.jsx',
                 },
+                {
+                    path:"/ExchangeApp/ExchangeDetailsApp",
+                    component: "./ExchangeDetailsApp/ExchangeDetails.jsx"
+                },
                 { path: '/Validator', component: './Validator/Validator.jsx' },
                 { path: '/TestPage', component: './TestPage/TestPage.jsx' },
                 { path: '/ranking', component: './Ranking/Ranking.jsx' },
+                {
+                    path: "/rankingApp", component: "./RankingApp/RankingApp.jsx"
+                },
                 {
                     path: '/exchangeRanking',
                     component: './ExchangeRanking/ExchangeRanking.jsx',
@@ -53,16 +63,29 @@ export default defineConfig({
                     component: './Trade/Trade.jsx',
                 },
                 {
+                    path: '/TradeApp',
+                    component: './TradeApp/Trade.jsx',
+                },
+                {
                     path: '/TradeDetail/:id',
                     exact: true,
                     component: './TradeDetail/TradeDetail.jsx',
+                },
+                {
+                    path: '/TradeDetailApp/:id',
+                    exact: true,
+                    component: './TradeDetailApp/TradeDetail.jsx',
                 },
                 {
                     path: `/AccountDetail/:id`,
                     exact: true,
                     component: './AccountDetail/AccountDetail.jsx',
                 },
-
+                {
+                    path: `/AccountDetailApp/:id`,
+                    exact: true,
+                    component: './AccountDetailApp/AccountDetail.jsx',
+                },
                 {
                     path: '/NoSearchResults',
                     component: './NoSearchResults/NoSearchResults.jsx',
@@ -74,7 +97,7 @@ export default defineConfig({
             ],
         },
     ],
-    fastRefresh: {},
+    // fastRefresh: {},
     proxy: {
         '/api': {
             target: 'https://www.wormholestest.com',
