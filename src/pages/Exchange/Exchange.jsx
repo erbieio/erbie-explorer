@@ -71,7 +71,7 @@ export default function Exchange() {
             ),
         },
         {
-            title: 'Owner',
+            title: 'Creator',
             dataIndex: 'creator',
             key: 'creator',
             ellipsis: true,

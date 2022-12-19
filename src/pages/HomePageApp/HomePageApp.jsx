@@ -1042,14 +1042,14 @@ export default function HomePageApp() {
                                 HomePageApp_ls.MarketplacesBox_databox_rightd1_name
                             }
                         >
-                            Marketplaces Users
+                             Pledge Amount
                         </p>
                         <p
                             className={
                                 HomePageApp_ls.MarketplacesBox_databox_rightd1_data
                             }
                         >
-                            {totaldata.totalAccount}
+                            {totaldata.totalValidatorPledge?Number(utils.formatEther(String(totaldata.totalValidatorPledge))).toFixed(2) : 0}
                         </p>
                     </div>
                 </div>
@@ -1104,12 +1104,12 @@ export default function HomePageApp() {
                         Time of Current Period
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_data}>
-                        {new Date(epochdata.timestamp * 1000).getFullYear() +
+                        {(new Date(epochdata.timestamp * 1000).getFullYear() +
                             '/' +
                             (new Date(epochdata.timestamp * 1000).getMonth() +
                                 1) +
                             '/' +
-                            new Date(epochdata.timestamp * 1000).getDate()}
+                            new Date(epochdata.timestamp * 1000).getDate())||'0/0/0'}
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>
                         S-NFT Weight
@@ -1133,8 +1133,8 @@ export default function HomePageApp() {
                     ) : (
                         <Link
                             to={{
-                                pathname: '/Exchange/ExchangeDetails',
-                                state: { exchangeid: epochdata.creator },
+                                pathname: `/AccountDetail/${epochdata.creator}`,
+                                state: epochdata.creator,
                             }}
                             className={
                                 HomePageApp_ls.BlockINFORMATIONbox_right_dataaddress

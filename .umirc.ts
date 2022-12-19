@@ -16,10 +16,15 @@ export default defineConfig({
                 },
                 { path: '/NFT', component: './NFT/NFT.jsx' },
                 { path: '/SNFT', component: './SNFT/SNFT.jsx' },
+                { path: '/SNFTApp', component: './SNFTApp/SNFTApp.jsx' },
                 { path: '/Exchange', component: './Exchange/Exchange.jsx' },
                 {
                     path: '/BlockChain/BlockDetails',
                     component: './BlockDetails/BlockDetails.jsx',
+                },
+                {
+                    path: '/BlockChainApp/BlockDetailsApp',
+                    component: './BlockDetailsApp/BlockDetailsApp.jsx',
                 },
                 {
                     path: '/NFT/NFTDetails',
@@ -30,10 +35,15 @@ export default defineConfig({
                     component: './SNFTDetails/SNFTDetails.jsx',
                 },
                 {
+                    path: '/SNFTApp/SNFTDetailsApp',
+                    component: './SNFTDetailsApp/SNFTDetailsApp.jsx',
+                },
+                {
                     path: '/Exchange/ExchangeDetails',
                     component: './ExchangeDetails/ExchangeDetails.jsx',
                 },
                 { path: '/Validator', component: './Validator/Validator.jsx' },
+                { path: '/ValidatorApp', component: './ValidatorApp/ValidatorApp.jsx' },
                 { path: '/TestPage', component: './TestPage/TestPage.jsx' },
                 { path: '/ranking', component: './Ranking/Ranking.jsx' },
                 {
@@ -70,6 +80,14 @@ export default defineConfig({
                 {
                     path: '/Account',
                     component: './Account/Account.jsx',
+                },
+                {
+                    path: '/AccountApp',
+                    component: './AccountApp/AccountApp.jsx',
+                },
+                {
+                    path: '/BlockChainApp',
+                    component: './BlockChainApp/BlockChainApp.jsx',
                 },
             ],
         },

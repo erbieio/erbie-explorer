@@ -317,7 +317,7 @@ export default function SNFTDetails(props) {
                                         SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
-                                    Offering Marketplace
+                                    S-NFT Creator
                                 </p>
                                 <p
                                     className={
@@ -466,7 +466,7 @@ export default function SNFTDetails(props) {
                                 {/* {
                                     snftdata.exchanger
                                 } */}
-                                {snftdata.exchanger ==
+                                {snftdata.creator ==
                                 '0x0000000000000000000000000000000000000000' ? (
                                     <p
                                         className={
@@ -474,16 +474,13 @@ export default function SNFTDetails(props) {
                                         }
                                         id="soloimg"
                                     >
-                                        Exchange not Provided
+                                        Official S-NFT
                                     </p>
                                 ) : (
                                     <Link
                                         to={{
-                                            pathname:
-                                                '/Exchange/ExchangeDetails',
-                                            state: {
-                                                exchangeid: snftdata.exchanger,
-                                            },
+                                            pathname: `/AccountDetail/${snftdata.creator}`,
+                                            state: snftdata.creator,
                                         }}
                                         className={
                                             SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
@@ -491,7 +488,7 @@ export default function SNFTDetails(props) {
                                         style={{ color: '#7AA4FF' }}
                                         id="soloimg"
                                     >
-                                        {snftdata.exchanger || '-'}
+                                        {snftdata.exchanger}
                                     </Link>
                                 )}
                                 <Link
