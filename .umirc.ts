@@ -4,6 +4,10 @@ export default defineConfig({
     nodeModulesTransform: {
         type: 'none',
     },
+    devServer: {
+        port: 8080,
+        
+    },
     routes: [
         {
             path: '/',
@@ -115,7 +119,6 @@ export default defineConfig({
             ],
         },
     ],
-    // fastRefresh: {},
     proxy: {
         '/api': {
             target: 'https://www.wormholestest.com',

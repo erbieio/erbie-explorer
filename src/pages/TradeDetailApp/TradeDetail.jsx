@@ -378,8 +378,8 @@ class TradeDetail extends React.Component {
                             ) : (
                                 ''
                             )}
-                            {this.state.transType.type === 6 ? (
-                                <div>
+                            {/* {this.state.transType.type === 6 ? ( */}
+                                {/* <div> */}
                                     {/*<p>S-NFT Address</p>*/}
                                     {/*<Link to={{ pathname: '/SNFT/SNFTDetails', state: { snftid: this.state.newDetailData.address,snftmata:this.state.detailData } }} style={{ color: '#7AA4FF' }}>*/}
                                     {/*<span>{*/}
@@ -391,10 +391,10 @@ class TradeDetail extends React.Component {
                                     {/*    ):""*/}
                                     {/*}</span>*/}
                                     {/*</Link>*/}
-                                </div>
-                            ) : (
+                                {/* </div> */}
+                            {/* ) : (
                                 ''
-                            )}
+                            )} */}
                             <div>
                                 <p>TXN Fee</p>{' '}
                                 <span>
@@ -432,11 +432,11 @@ class TradeDetail extends React.Component {
                                     <span style={{ paddingRight: 5 }}>
                                         {this.state.detailData.hash.slice(
                                             0,
-                                            12,
+                                            10,
                                         ) +
                                             '...' +
                                             this.state.detailData.hash.slice(
-                                                -16,
+                                                -17,
                                                 this.state.detailData.hash
                                                     .length,
                                             )}
@@ -469,7 +469,7 @@ class TradeDetail extends React.Component {
                                         ) +
                                             '...' +
                                             this.state.detailData.from.slice(
-                                                -16,
+                                                -14,
                                                 this.state.detailData.from
                                                     .length,
                                             )}
