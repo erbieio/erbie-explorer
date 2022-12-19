@@ -26,7 +26,7 @@ export default function AccountApp() {
             key: 'address',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
                     style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
                 >
                     {ellipsis(text)}

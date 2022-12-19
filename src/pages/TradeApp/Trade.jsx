@@ -120,7 +120,7 @@ class Trade extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: `/TradeDetail/${text}`,
+                                pathname: `/TradeDetailApp/${text}`,
                                 state: text,
                             }}
                             style={{ color: '#7AA4FF' }}
