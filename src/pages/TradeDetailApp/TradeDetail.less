@@ -100,6 +100,13 @@ h2 {
     margin: auto;
 }
 .topicsMap {
+    .topicsflexBox {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
     > span {
         display: inline-block;
         max-width: 740px;
@@ -194,17 +201,21 @@ h2 {
     }
 }
 .TradeDetailBox1Logs {
+    width: 100%;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     margin-bottom: 24px;
 }
 .TradeDetailBox1LogsContent {
-    width: 1079px;
+    width: 100%;
     min-height: 291px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
 }
 .TradeDetailBox1LogsContentMsg {
-    padding: 24px 24px 24px 63px;
+    padding: 12px;
     svg {
         cursor: pointer;
         font-size: 14px;
@@ -214,9 +225,10 @@ h2 {
     ul {
         display: flex;
         font-size: 12px;
-        margin-bottom: 24px;
+        // margin-bottom: 24px;
+        flex-direction: column;
         > p {
-            text-align: right;
+            text-align: left;
             width: 57px;
             margin-right: 40px;
             margin-bottom: 0;
@@ -227,6 +239,9 @@ h2 {
             margin-bottom: 0;
             div {
                 display: flex;
+                flex-direction:column;
+                align-items: flex-start;
+                justify-content: flex-start;
             }
         }
     }
@@ -239,10 +254,11 @@ h2 {
     > ul:nth-child(3) {
         li {
             > div {
-                align-items: center;
+                // align-items: center;
                 p {
                     width: 24px;
                     height: 24px;
+                    line-height: 24px;
                     background: rgba(110, 110, 110, 1);
                     border-radius: 2px;
                     color: white;
@@ -285,22 +301,22 @@ h2 {
 }
 .TradeDetailButton1 {
     display: flex;
-    width: 893px;
+    flex-direction: column;
+    width: 100%;
     height: 56px;
     border-radius: 4px;
     background: rgba(27, 26, 33, 1);
-    align-items: center;
-    padding-left: 20px;
+    align-items: flex-start;
     > p {
         display: flex;
-        margin-left: 27px;
+        margin-left: 10px;
         li {
             color: rgba(255, 255, 255, 0.7);
             padding-right: 5px;
         }
         span {
             display: inline-block;
-            width: 670px;
+            // width: 670px;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;

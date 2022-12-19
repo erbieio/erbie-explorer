@@ -524,9 +524,7 @@ class TradeDetail extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div
-                    className={TradeDetail_ls.changeButton}
-                >
+                <div className={TradeDetail_ls.changeButton}>
                     <Radio.Group
                         value={this.state.typeGroup}
                         onChange={this.onChangeinput}
@@ -565,11 +563,12 @@ class TradeDetail extends React.Component {
                                             <ul>
                                                 <Avatar
                                                     shape={'circle'}
-                                                    size={56}
+                                                    size={32}
                                                     style={{
                                                         background:
                                                             'rgba(89, 73, 19, 1)',
-                                                        margin: '16px 40px 0 10px',
+                                                        marginTop: '10px',
+                                                        fontSize: '11px',
                                                     }}
                                                 >
                                                     {
@@ -592,13 +591,14 @@ class TradeDetail extends React.Component {
                                                         <p>Address</p>
                                                         <span>
                                                             {item.address}
+                                                            &nbsp;&nbsp;
+                                                            <AiOutlineCopy
+                                                                onClick={handleCopy.bind(
+                                                                    this,
+                                                                    item.address,
+                                                                )}
+                                                            />
                                                         </span>
-                                                        <AiOutlineCopy
-                                                            onClick={handleCopy.bind(
-                                                                this,
-                                                                item.address,
-                                                            )}
-                                                        />
                                                     </ul>
                                                     <ul style={{ margin: '0' }}>
                                                         {/*<p>Name</p>*/}
@@ -666,44 +666,51 @@ class TradeDetail extends React.Component {
                                                                                   TradeDetail_ls.topicsMap
                                                                               }
                                                                           >
-                                                                              <p>
-                                                                                  {index +
-                                                                                      1}
-                                                                              </p>
-                                                                              <Select
-                                                                                  defaultValue={`Hex`}
-                                                                                  onChange={this.handleChange.bind(
-                                                                                      this,
-                                                                                      index,
-                                                                                      index,
-                                                                                      index1,
-                                                                                  )}
-                                                                                  suffixIcon={
-                                                                                      <>
-                                                                                          <GoTriangleDown
-                                                                                              style={{
-                                                                                                  color: '#ffffff',
-                                                                                                  fontSize:
-                                                                                                      '16px',
-                                                                                              }}
-                                                                                          />
-                                                                                      </>
-                                                                                  }
+                                                                              <div
                                                                                   className={
-                                                                                      TradeDetail_ls.TradeDetail_select
+                                                                                      TradeDetail_ls.topicsflexBox
                                                                                   }
                                                                               >
-                                                                                  <Option
-                                                                                      value={`Hex`}
+                                                                                  <p>
+                                                                                      {index +
+                                                                                          1}
+                                                                                  </p>
+                                                                                  <Select
+                                                                                      defaultValue={`Hex`}
+                                                                                      onChange={this.handleChange.bind(
+                                                                                          this,
+                                                                                          index,
+                                                                                          index,
+                                                                                          index1,
+                                                                                      )}
+                                                                                      suffixIcon={
+                                                                                          <>
+                                                                                              <GoTriangleDown
+                                                                                                  style={{
+                                                                                                      color: '#ffffff',
+                                                                                                      fontSize:
+                                                                                                          '16px',
+                                                                                                  }}
+                                                                                              />
+                                                                                          </>
+                                                                                      }
+                                                                                      className={
+                                                                                          TradeDetail_ls.TradeDetail_select
+                                                                                      }
                                                                                   >
-                                                                                      Hex
-                                                                                  </Option>
-                                                                                  <Option
-                                                                                      value={`Dec`}
-                                                                                  >
-                                                                                      Dec
-                                                                                  </Option>
-                                                                              </Select>
+                                                                                      <Option
+                                                                                          value={`Hex`}
+                                                                                      >
+                                                                                          Hex
+                                                                                      </Option>
+                                                                                      <Option
+                                                                                          value={`Dec`}
+                                                                                      >
+                                                                                          Dec
+                                                                                      </Option>
+                                                                                  </Select>
+                                                                              </div>
+
                                                                               <span
                                                                                   title={
                                                                                       JSON.parse(
