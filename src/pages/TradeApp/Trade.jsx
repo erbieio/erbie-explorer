@@ -120,10 +120,10 @@ class Trade extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: `/TradeDetail/${text}`,
+                                pathname: `/TradeDetailApp/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                         >
                             {ellipsis(text)}
                         </Link>
@@ -153,10 +153,10 @@ class Trade extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: '/BlockChain/BlockDetails',
+                                pathname: '/BlockChainApp/BlockDetailsApp',
                                 state: { blockid: text },
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                         >
                             {text}
                         </Link>
@@ -169,10 +169,10 @@ class Trade extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${text}`,
+                                pathname: `/AccountDetailApp/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF' , fontFamily: 'CustomFontMedium'}}
                         >
                             {ellipsis(text)}
                         </Link>
@@ -186,10 +186,10 @@ class Trade extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${text}`,
+                                pathname: `/AccountDetailApp/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF' , fontFamily: 'CustomFontMedium'}}
                         >
                             {ellipsis(text)}
                         </Link>

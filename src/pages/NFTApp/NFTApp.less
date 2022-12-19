@@ -1,0 +1,138 @@
+.NFTBox {
+    width: 345px;
+    margin: auto;
+    padding-top: 16px;
+}
+.NFTBox_headerTitle {
+    width: 345px;
+    height: 155px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.NFTBox_headerTitle_d {
+    width: 168px;
+    height: 69px;
+    background-color: #141319;
+    background-image: url('../../assets/images/HomePage/blockcolor.png');
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    img{
+        width: 32px;
+        height: 32px;
+    }
+}
+.NFTBox_headerTitle_d_left_data {
+    font-size: 12px;
+    color: white;
+    font-family: CustomFontBold;
+    margin-bottom: 10px;
+}
+.NFTBox_headerTitle_d_left_name {
+    font-size: 11px;
+    color: #ffffff90;
+    font-family: CustomFontThin;
+    line-height: 12px;
+}
+.tableBox{
+    width: 345px;
+    margin: auto;
+    margin-top: 15px;
+    overflow: auto;
+}
+.NFTBox_table {
+    width: 1000px;
+    border-radius: 8px;
+    background-color: #1b1a21;
+    padding-top: 12px;
+    padding-bottom: 30px;
+}
+.NFTBox_table_title {
+    color: white;
+    font-size: 14px;
+    margin: 0 0 0 12px;
+}
+.NFTBox_Pagination {
+    //   border: 1px solid red;
+    margin-top: 30px;
+    text-align: right;
+    padding-right: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+.NFTBox_Pagination_d {
+    width: 82px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    margin-left: 16px;
+    font-size: 14px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+}
+.NFTBox_Pagination_span1 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+    margin: 0 8px;
+}
+.NFTBox_Pagination_input {
+    width: 48px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    color: white;
+    font-size: 14px;
+    padding-left: 12px;
+    margin-right: 8px;
+}
+.NFTBox_Pagination_span2 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+}
+.NFTBox_headerTitle_d_right {
+    width: 159px;
+    height: 84px;
+}
+:global {
+    #NFTTableApp {
+        .ant-table-wrapper {
+            //   border: 1px solid red;
+            overflow: hidden;
+        }
+        .ant-table-cell{
+            font-size: 11px;
+            font-family: CustomFontThin;
+        }
+    }
+    #NFTBoxPagination {
+        .ant-pagination-item-link {
+            background-color: #03041a !important;
+            color: white !important;
+        }
+        .ant-pagination-item {
+            background-color: #03041a !important;
+            a {
+                color: white !important;
+            }
+        }
+        .ant-pagination-item:hover {
+            background-color: #f72d86 !important;
+            border: 0 !important;
+        }
+        .ant-pagination-item-ellipsis {
+            color: white !important;
+        }
+        .ant-pagination-item-active {
+            background-color: #f72d86 !important;
+            border: 1px solid #f72d86;
+        }
+    }
+}

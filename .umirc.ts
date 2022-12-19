@@ -15,6 +15,7 @@ export default defineConfig({
                     component: './BlockChain/BlockChain.jsx',
                 },
                 { path: '/NFT', component: './NFT/NFT.jsx' },
+                { path: '/NFTApp', component: './NFTApp/NFTApp.jsx' },
                 { path: '/SNFT', component: './SNFT/SNFT.jsx' },
                 { path: '/SNFTApp', component: './SNFTApp/SNFTApp.jsx' },
                 { path: '/Exchange', component: './Exchange/Exchange.jsx' },
@@ -32,6 +33,10 @@ export default defineConfig({
                 {
                     path: '/NFT/NFTDetails',
                     component: './NFTDetails/NFTDetails.jsx',
+                },
+                {
+                    path: '/NFTApp/NFTDetailsApp',
+                    component: './NFTDetailsApp/NFTDetailsApp.jsx',
                 },
                 {
                     path: '/SNFT/SNFTDetails',

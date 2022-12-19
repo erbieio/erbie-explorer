@@ -43,8 +43,8 @@ export default function SNFTDetailsApp(props) {
             key: 'tx_hash',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/TradeDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' }}
+                    to={{ pathname: `/TradeDetailApp/${text}`, state: text }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -72,10 +72,10 @@ export default function SNFTDetailsApp(props) {
             render: (text, data) => (
                 <Link
                     to={{
-                        pathname: '/Exchange/ExchangeDetails',
+                        pathname: '/ExchangeApp/ExchangeDetailsApp',
                         state: { exchangeid: text },
                     }}
-                    style={{ color: '#7AA4FF' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -87,8 +87,8 @@ export default function SNFTDetailsApp(props) {
             dataIndex: 'from',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' }}
+                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -100,8 +100,8 @@ export default function SNFTDetailsApp(props) {
             dataIndex: 'to',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' }}
+                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -226,7 +226,6 @@ export default function SNFTDetailsApp(props) {
             <div className={SNFTDetailsApp_ls.SNFTDetailsBox}>
                 <div className={SNFTDetailsApp_ls.SNFTDetailsBox_title}>
                     S-NFT Details
-                    <SearchBox />
                 </div>
                 <div className={SNFTDetailsApp_ls.SNFTDetailsBox_titleData}>
                     <div
@@ -243,23 +242,10 @@ export default function SNFTDetailsApp(props) {
                         {/* 图片 */}
                     </div>
                     <div
-                        className={SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text}
+                        className={
+                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text
+                        }
                     >
-                        <p
-                            className={
-                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname
-                            }
-                        >
-                            <span
-                                className={
-                                    SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_time
-                                }
-                            >
-                                {moment(
-                                    parseInt(snftdata.reward_at) * 1000,
-                                ).format('YYYY-MM-DD')}
-                            </span>
-                        </p>
                         <div
                             className={
                                 SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute
@@ -383,13 +369,22 @@ export default function SNFTDetailsApp(props) {
                                     >
                                         #{snftdata.reward_number}
                                     </span>
+                                    <span
+                                        className={
+                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_blocktime
+                                        }
+                                    >
+                                        {moment(
+                                            parseInt(snftdata.reward_at) * 1000,
+                                        ).format('YYYY-MM-DD')}
+                                    </span>
                                 </p>
                                 <p
                                     className={
                                         SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                 >
-                                    {snftdata.address}
+                                    {snftdata.address?ellipsis(snftdata.address):'-'}
                                 </p>
                                 {snftdata.last_price ? (
                                     <p
@@ -413,7 +408,7 @@ export default function SNFTDetailsApp(props) {
                                 )}
                                 <Link
                                     to={{
-                                        pathname: `/AccountDetail/${snftdata.owner}`,
+                                        pathname: `/AccountDetailApp/${snftdata.owner}`,
                                         state: snftdata.owner,
                                     }}
                                     className={
@@ -421,7 +416,9 @@ export default function SNFTDetailsApp(props) {
                                     }
                                     style={{ color: '#7AA4FF' }}
                                 >
-                                    {snftdata.owner ? snftdata.owner : '-'}
+                                    {snftdata.owner
+                                        ? ellipsis(snftdata.owner)
+                                        : '-'}
                                 </Link>
                                 {snftdata.exchanger ==
                                 '0x0000000000000000000000000000000000000000' ? (
@@ -435,7 +432,7 @@ export default function SNFTDetailsApp(props) {
                                 ) : (
                                     <Link
                                         to={{
-                                            pathname: `/AccountDetail/${snftdata.creator}`,
+                                            pathname: `/AccountDetailApp/${snftdata.creator}`,
                                             state: snftdata.creator,
                                         }}
                                         className={
@@ -444,7 +441,7 @@ export default function SNFTDetailsApp(props) {
                                         style={{ color: '#7AA4FF' }}
                                     >
                                         {snftdata.creator
-                                            ? snftdata.creator
+                                            ? ellipsis(snftdata.creator)
                                             : '-'}
                                     </Link>
                                 )}
@@ -479,7 +476,7 @@ export default function SNFTDetailsApp(props) {
                                 ) : (
                                     <Link
                                         to={{
-                                            pathname: `/AccountDetail/${snftdata.creator}`,
+                                            pathname: `/AccountDetailApp/${snftdata.creator}`,
                                             state: snftdata.creator,
                                         }}
                                         className={
@@ -488,12 +485,13 @@ export default function SNFTDetailsApp(props) {
                                         style={{ color: '#7AA4FF' }}
                                         id="soloimg"
                                     >
-                                        {snftdata.exchanger}
+                                        {snftdata.exchanger?ellipsis(snftdata.exchanger):'-'}
                                     </Link>
                                 )}
                                 <Link
                                     to={{
-                                        pathname: '/Exchange/ExchangeDetails',
+                                        pathname:
+                                            '/ExchangeApp/ExchangeDetailsApp',
                                         state: {
                                             exchangeid: snftdata.exchanger,
                                         },
@@ -561,92 +559,103 @@ export default function SNFTDetailsApp(props) {
                     )}
                 </div>
                 {transactionmetadata == 1 ? (
-                    <div
-                        className={SNFTDetailsApp_ls.SNFTDetailsBox_table}
-                        id="SNFTDetailsTable"
-                    >
-                        <Table
-                            columns={columns}
-                            dataSource={snfttxdata.nft_txs}
-                            pagination={false}
-                        />
+                    <div className={SNFTDetailsApp_ls.tableBox}>
                         <div
-                            className={SNFTDetailsApp_ls.SNFTDetailsBox_Pagination}
-                            id="SNFTDetailsBoxPagination"
+                            className={SNFTDetailsApp_ls.SNFTDetailsBox_table}
+                            id="SNFTDetailsTableApp"
                         >
-                            <Pagination
-                                defaultCurrent={1}
-                                total={snfttxdata.total}
-                                onChange={onChange}
-                                showSizeChanger={false}
-                                current={pagenumber}
+                            <Table
+                                columns={columns}
+                                dataSource={snfttxdata.nft_txs}
+                                pagination={false}
                             />
                             <div
                                 className={
-                                    SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_d
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_Pagination
                                 }
+                                id="SNFTDetailsBoxPagination"
                             >
-                                10/Page
+                                <Pagination
+                                    defaultCurrent={1}
+                                    total={snfttxdata.total}
+                                    onChange={onChange}
+                                    showSizeChanger={false}
+                                    current={pagenumber}
+                                />
+                                <div
+                                    className={
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_d
+                                    }
+                                >
+                                    10/Page
+                                </div>
+                                <span
+                                    className={
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_span1
+                                    }
+                                >
+                                    To
+                                </span>
+                                <input
+                                    id="SNFTDetailsinputnumber"
+                                    className={
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_input
+                                    }
+                                    onKeyDown={SNFTDetailsinputnumberonclick}
+                                />
+                                <span
+                                    className={
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_span2
+                                    }
+                                >
+                                    Page
+                                </span>
                             </div>
-                            <span
-                                className={
-                                    SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_span1
-                                }
-                            >
-                                To
-                            </span>
-                            <input
-                                id="SNFTDetailsinputnumber"
-                                className={
-                                    SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_input
-                                }
-                                onKeyDown={SNFTDetailsinputnumberonclick}
-                            />
-                            <span
-                                className={
-                                    SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_span2
-                                }
-                            >
-                                Page
-                            </span>
                         </div>
                     </div>
                 ) : (
                     <div className={SNFTDetailsApp_ls.SNFTDetailsBox_meta}>
                         <p
-                            className={SNFTDetailsApp_ls.SNFTDetailsBox_meta_title}
-                            id="SNFTDetailsBoxmetatitle"
+                            className={
+                                SNFTDetailsApp_ls.SNFTDetailsBox_meta_title
+                            }
+                            id="SNFTDetailsBoxmetatitleApp"
                         >
-                            <span
+                            <p
                                 className={
                                     SNFTDetailsApp_ls.SNFTDetailsBox_meta_title_whaturl
                                 }
                             >
                                 Metadata retrieved from token URL: <br />
-                                <a
-                                    href={
+                            </p>
+                            <p
+                                onClick={() => {
+                                    window.open(
                                         'https://hub.wormholes.com' +
-                                        snftdata.meta_url
-                                    }
-                                    className={
-                                        SNFTDetailsApp_ls.SNFTDetailsBox_meta_title_url
-                                    }
-                                >
+                                            snftdata.meta_url,
+                                    );
+                                }}
+                                className={
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_meta_title_url
+                                }
+                            >
+                                <span>
                                     https://hub.wormholes.com{snftdata.meta_url}
-                                </a>
-                            </span>
+                                </span>
+                            </p>
                             <Select
                                 defaultValue="ViewMetaplexMetadata"
                                 style={{
-                                    width: 256,
+                                    width: 174,
+                                    marginLeft: '140px',
                                 }}
                                 suffixIcon={
                                     <>
                                         <DownOutlined
                                             style={{
                                                 color: '#ffffff',
-                                                fontSize: '12px',
-                                                lineHeight: '25px',
+                                                fontSize: '11px',
+                                                lineHeight: '11px',
                                             }}
                                         />
                                     </>
@@ -658,16 +667,18 @@ export default function SNFTDetailsApp(props) {
                                 </Option>
                             </Select>
                         </p>
-                        <div
-                            className={
-                                SNFTDetailsApp_ls.SNFTDetailsBox_meta_codeBox
-                            }
-                        >
-                            <pre>
-                                <code style={{ color: '#ffffff' }}>
-                                    {JSON.stringify(metadata, null, ' ')}
-                                </code>
-                            </pre>
+                        <div className={SNFTDetailsApp_ls.tableBox2}>
+                            <div
+                                className={
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_meta_codeBox
+                                }
+                            >
+                                <pre>
+                                    <code style={{ color: '#ffffff' }}>
+                                        {JSON.stringify(metadata, null, ' ')}
+                                    </code>
+                                </pre>
+                            </div>
                         </div>
                     </div>
                 )}

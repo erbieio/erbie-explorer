@@ -345,7 +345,7 @@ export default function HomePageApp() {
                         />
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${item.address}`,
+                                pathname: `/AccountDetailApp/${item.address}`,
                                 state: item.address,
                             }}
                             className={
@@ -380,7 +380,7 @@ export default function HomePageApp() {
                         />
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${item.address}`,
+                                pathname: `/AccountDetailApp/${item.address}`,
                                 state: item.address,
                             }}
                             className={
@@ -479,7 +479,7 @@ export default function HomePageApp() {
                                         fontWeight: '400',
                                     }}
                                     to={{
-                                        pathname: '/BlockChain/BlockDetails',
+                                        pathname: '/BlockChainApp/BlockDetailsApp',
                                         state: { blockid: item.number },
                                     }}
                                 >
@@ -495,7 +495,7 @@ export default function HomePageApp() {
                                         fontWeight: '400',
                                     }}
                                     to={{
-                                        pathname: `/AccountDetail/${item.miner}`,
+                                        pathname: `/AccountDetailApp/${item.miner}`,
                                         state: item.miner,
                                     }}
                                 >
@@ -562,7 +562,7 @@ export default function HomePageApp() {
                                             HomePageApp_ls.tableblocklistselectbox_BlockProducer_p
                                         }
                                         to={{
-                                            pathname: `/AccountDetail/${
+                                            pathname: `/AccountDetailApp/${
                                                 BlockProducer()
                                                     ? BlockProducer().address
                                                     : '0'
@@ -753,7 +753,7 @@ export default function HomePageApp() {
             ) {
                 // 区块
                 history.push({
-                    pathname: '/BlockChain/BlockDetails',
+                    pathname: '/BlockChainApp/BlockDetailsApp',
                     state: {
                         blockid: data,
                     },
@@ -764,7 +764,7 @@ export default function HomePageApp() {
             ) {
                 //账户详情
                 history.push({
-                    pathname: `/AccountDetail/${data}`,
+                    pathname: `/AccountDetailApp/${data}`,
                     state: data,
                 });
             } else if (
@@ -773,7 +773,7 @@ export default function HomePageApp() {
             ) {
                 //交易hash
                 history.push({
-                    pathname: `/TradeDetail/${data}`,
+                    pathname: `/TradeDetailApp/${data}`,
                     state: data,
                 });
             }
@@ -1133,7 +1133,7 @@ export default function HomePageApp() {
                     ) : (
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${epochdata.creator}`,
+                                pathname: `/AccountDetailApp/${epochdata.creator}`,
                                 state: epochdata.creator,
                             }}
                             className={
@@ -1229,7 +1229,7 @@ export default function HomePageApp() {
                     </div>
                 </div>
                 <Link
-                    to={{ pathname: '/BlockChain', state: '' }}
+                    to={{ pathname: '/BlockChainApp', state: '' }}
                     className={HomePageApp_ls.Blockrewardbox_button}
                 >
                     View More

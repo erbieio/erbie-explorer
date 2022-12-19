@@ -73,3 +73,69 @@
         line-height: 49px;
     }
 }
+.HeaderBox_SearchBox {
+    width: 345px;
+    height: 42px;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 9999;
+    img{
+        width: 40px;
+        height: 42px;
+    }
+    :global {
+        .ant-select-selector {
+            background-color: #18171f !important;
+            border: 0 !important;
+            height: 51px !important;
+            // line-height: 52px !important;
+            padding-top: 10px !important;
+            width: 150px !important;
+            font-size: 16px !important;
+            color: white !important;
+            font-weight: 400 !important;
+            padding-left: 24px !important;
+            border-radius: 8px 0 0 8px !important;
+        }
+    }
+}
+.HeaderBox_SearchBox_inputBox {
+    width: 249px;
+    height: 40px;
+    border: 1px solid #515157;
+    border-radius: 4px;
+}
+.HeaderBox_Search {
+    width: 40px;
+    height: 40px;
+    background-color: #fe4fa7;
+    border-radius: 4px;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+.HeaderBox_SearchBox_inputBox_input {
+    width: 247px;
+    height: 38px;
+    background-color: #18171f;
+    font-size: 11px;
+    border: 0;
+    padding-left: 12px;
+    color: white;
+    border-radius: 4px;
+    outline-color: invert;
+    outline-style: none;
+    outline-width: 0px;
+    border: none;
+    border-style: none;
+    text-shadow: none;
+    -webkit-appearance: none;
+    -webkit-user-select: text;
+    outline-color: transparent;
+    box-shadow: none;
+}

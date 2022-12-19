@@ -119,8 +119,13 @@ export default function IndexPage(props) {
                   || window.location.hash == '#/TradeApp'
                   || window.location.hash == '#/rankingApp'
                   || window.location.hash == '#/ValidatorApp'
+                  &&  window.location.hash != '#/'
                   ?
-                  <img className={styles.IndexPageBox_img} src={require('../assets/images/HomePage/4.png')} />
+                  <img className={styles.IndexPageBox_imgApp} src={require('../assets/images/HomePage/4.png')} />
+                  :
+                  window.location.hash != '#/'
+                  ?
+                  <img className={styles.IndexPageBox_imgApp} src={require('../assets/images/HomePage/background2.png')} />
                   :
                   ''
                 }
