@@ -1,4 +1,4 @@
-import BlockChain_ls from './BlockChain.less';
+import BlockChainApp_ls from './BlockChainApp.less';
 import { Space, Table, Tag, Pagination } from 'antd';
 import { Link } from 'umi';
 import {
@@ -9,9 +9,9 @@ import {
     rewardperson,
 } from '../../api/request_data/block_request';
 import { timestamp, ellipsis } from '../../utils/methods/Methods';
-import moment from 'moment';
 import React, { useState, useEffect } from 'react';
-export default function BlockChain() {
+import moment from 'moment';
+export default function BlockChainApp() {
     const [pagenumber, setPagenumber] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(10);
     //区块
@@ -31,7 +31,7 @@ export default function BlockChain() {
                 data.number != 0 ? (
                     <Link
                         to={{
-                            pathname: '/BlockChain/BlockDetails',
+                            pathname: '/BlockChainApp/BlockDetailsApp',
                             state: { blockid: text },
                         }}
                         style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
@@ -50,13 +50,14 @@ export default function BlockChain() {
                 data.number != 0 ? (
                     <Link
                         to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                        style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                        style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
                     >
                         {ellipsis(text)}
                     </Link>
                 ) : (
                     '-'
                 ),
+                width:'150px'
         },
         {
             title: 'TXN',
@@ -157,137 +158,110 @@ export default function BlockChain() {
     }
     return (
         <>
-            <div className={BlockChain_ls.BlockChainBox}>
-                {/* 头部三块数据 */}
-                <div className={BlockChain_ls.BlockChainBox_headerTitle}>
-                    <div className={BlockChain_ls.BlockChainBox_headerTitle_d}>
-                        <div
-                            className={
-                                BlockChain_ls.BlockChainBox_headerTitle_d_left
-                            }
-                        >
-                            <p
-                                className={
-                                    BlockChain_ls.BlockChainBox_headerTitle_d_left_data
-                                }
-                            >
+            <div className={BlockChainApp_ls.BlockChainAppBox}>
+                <div className={BlockChainApp_ls.titlebox}>
+                    <div className={BlockChainApp_ls.titlebox_blockb}>
+                        <div>
+                            <p className={BlockChainApp_ls.titlebox_data}>
                                 {totaldata.totalBlock - 1 || 0}
                             </p>
-                            <p
-                                className={
-                                    BlockChain_ls.BlockChainBox_headerTitle_d_left_name
-                                }
-                            >
+                            <p className={BlockChainApp_ls.titlebox_name}>
                                 Block Height
                             </p>
                         </div>
                         <img
-                            src={require('../../assets/images/BlockChain/blockchain1.png')}
+                            src={require('../../assets/images/BlockChainApp/1.png')}
                         />
                     </div>
-                    <div className={BlockChain_ls.BlockChainBox_headerTitle_d}>
-                        <div
-                            className={
-                                BlockChain_ls.BlockChainBox_headerTitle_d_left
-                            }
-                        >
-                            <p
-                                className={
-                                    BlockChain_ls.BlockChainBox_headerTitle_d_left_data
-                                }
-                            >
+                    <div className={BlockChainApp_ls.titlebox_blockb}>
+                        <div>
+                            <p className={BlockChainApp_ls.titlebox_data}>
                                 {parseInt(totaldata.rewardSNFTCount) || 0}
                             </p>
-                            <p
-                                className={
-                                    BlockChain_ls.BlockChainBox_headerTitle_d_left_name
-                                }
-                            >
+                            <p className={BlockChainApp_ls.titlebox_name}>
                                 Total S-NFT Rewards
                             </p>
                         </div>
                         <img
-                            src={require('../../assets/images/BlockChain/blockchain2.png')}
+                            src={require('../../assets/images/BlockChainApp/2.png')}
                         />
                     </div>
-                    <div className={BlockChain_ls.BlockChainBox_headerTitle_d}>
-                        <div
-                            className={
-                                BlockChain_ls.BlockChainBox_headerTitle_d_left
-                            }
-                        >
-                            <p
-                                className={
-                                    BlockChain_ls.BlockChainBox_headerTitle_d_left_data
-                                }
-                            >
+                    <div className={BlockChainApp_ls.titlebox_blockb}>
+                        <div>
+                            <p className={BlockChainApp_ls.titlebox_data}>
                                 {Math.floor(
                                     totaldata.rewardCoinCount * multiple * 100,
                                 ) / 100 || 0}
                             </p>
-                            <p
-                                className={
-                                    BlockChain_ls.BlockChainBox_headerTitle_d_left_name
-                                }
-                            >
+                            <p className={BlockChainApp_ls.titlebox_name}>
                                 Total ERB Rewards
                             </p>
                         </div>
                         <img
-                            src={require('../../assets/images/BlockChain/blockchain3.png')}
+                            src={require('../../assets/images/BlockChainApp/3.png')}
                         />
                     </div>
                 </div>
                 {/* 表格 */}
-                <div
-                    className={BlockChain_ls.BlockChainBox_table}
-                    id="BlockChainTable"
-                >
-                    <p className={BlockChain_ls.BlockChainBox_table_title}>
-                        BLOCK INFORMATION
-                    </p>
-                    <Table
-                        columns={columns}
-                        dataSource={blockdata.blocks}
-                        pagination={false}
-                    />
+                <div className={BlockChainApp_ls.tablebox}>
                     <div
-                        className={BlockChain_ls.BlockChainBox_Pagination}
-                        id="BlockChainBoxPagination"
+                        className={BlockChainApp_ls.BlockChainBox_table}
+                        id="BlockChainTable"
                     >
-                        <Pagination
-                            defaultCurrent={1}
-                            total={blockdata.total}
-                            onChange={onChange}
-                            showSizeChanger={false}
-                            current={pagenumber}
+                        <p
+                            className={
+                                BlockChainApp_ls.BlockChainBox_table_title
+                            }
+                        >
+                            BLOCK INFORMATION
+                        </p>
+                        <Table
+                            columns={columns}
+                            dataSource={blockdata.blocks}
+                            pagination={false}
                         />
                         <div
-                            className={BlockChain_ls.BlockChainBox_Pagination_d}
+                            className={
+                                BlockChainApp_ls.BlockChainBox_Pagination
+                            }
+                            id="BlockChainBoxPagination"
                         >
-                            10/Page
+                            <Pagination
+                                defaultCurrent={1}
+                                total={blockdata.total}
+                                onChange={onChange}
+                                showSizeChanger={false}
+                                current={pagenumber}
+                            />
+                            <div
+                                className={
+                                    BlockChainApp_ls.BlockChainBox_Pagination_d
+                                }
+                            >
+                                10/Page
+                            </div>
+                            <span
+                                className={
+                                    BlockChainApp_ls.BlockChainBox_Pagination_span1
+                                }
+                            >
+                                To
+                            </span>
+                            <input
+                                id="BlockChaininputnumber"
+                                className={
+                                    BlockChainApp_ls.BlockChainBox_Pagination_input
+                                }
+                                onKeyDown={BlockChaininputnumberonclick}
+                            />
+                            <span
+                                className={
+                                    BlockChainApp_ls.BlockChainBox_Pagination_span2
+                                }
+                            >
+                                Page
+                            </span>
                         </div>
-                        <span
-                            className={
-                                BlockChain_ls.BlockChainBox_Pagination_span1
-                            }
-                        >
-                            To
-                        </span>
-                        <input
-                            id="BlockChaininputnumber"
-                            className={
-                                BlockChain_ls.BlockChainBox_Pagination_input
-                            }
-                            onKeyDown={BlockChaininputnumberonclick}
-                        />
-                        <span
-                            className={
-                                BlockChain_ls.BlockChainBox_Pagination_span2
-                            }
-                        >
-                            Page
-                        </span>
                     </div>
                 </div>
             </div>

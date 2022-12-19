@@ -9,7 +9,7 @@ import {Helmet} from 'umi'
 const params = window.location.search;
 export default function IndexPage(props) {
   useEffect(() => {
-    console.log(window.location.pathname);
+    console.log(props.location.pathname);
     document.body.scrollTop = document.documentElement.scrollTop = 0;
     if (props.location.pathname != '/') {
       var i = 0
@@ -55,7 +55,7 @@ export default function IndexPage(props) {
         <script type="text/javascript" src="//api.map.baidu.com/api?type=webgl&v=1.0&ak=b7zlNRGt9jMR0MrCk3tGldiREpd5Wi6Q"></script>
       </Helmet>
       {
-        getDevice().device == 'pc' 
+        getDevice().device == 'pc'
           ?
           <div className={
             window.location.hash == '#/'
@@ -109,8 +109,21 @@ export default function IndexPage(props) {
           </div>
           :
           <div className={styles.IndexPageBoxApp}>
-            <HeaderApp />
+            <HeaderApp props={props} />
             <div className={styles.IndexPageBox_d}>
+              {
+                  window.location.hash == '#/BlockChainApp'
+                  || window.location.hash == '#/NFTApp'
+                  || window.location.hash == '#/SNFTApp'
+                  || window.location.hash == '#/ExchangeApp'
+                  || window.location.hash == '#/TradeApp'
+                  || window.location.hash == '#/rankingApp'
+                  || window.location.hash == '#/ValidatorApp'
+                  ?
+                  <img className={styles.IndexPageBox_img} src={require('../assets/images/HomePage/4.png')} />
+                  :
+                  ''
+                }
               {
                 window.location.hash == '#/'
                   ?

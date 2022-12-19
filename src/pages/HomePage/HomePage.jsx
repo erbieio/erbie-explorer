@@ -974,14 +974,14 @@ export default function HomePage() {
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_name
                                                 }
                                             >
-                                                Marketplaces Users
+                                                Pledge Amount
                                             </p>
                                             <p
                                                 className={
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_data
                                                 }
                                             >
-                                                {totaldata.totalAccount || 0}
+                                                {totaldata.totalValidatorPledge?Number(utils.formatEther(String(totaldata.totalValidatorPledge))).toFixed(2) : 0}
                                             </p>
                                         </div>
                                     </div>
@@ -1104,7 +1104,7 @@ export default function HomePage() {
                                     HomePage_ls.BlockINFORMATIONbox_right_data
                                 }
                             >
-                                {new Date(
+                                {(new Date(
                                     epochdata.timestamp || 0 * 1000,
                                 ).getFullYear() +
                                     '/' +
@@ -1115,7 +1115,7 @@ export default function HomePage() {
                                     '/' +
                                     new Date(
                                         epochdata.timestamp || 0 * 1000,
-                                    ).getDate()}
+                                    ).getDate())||'0/0/0'}
                             </p>
                         </div>
                         <div
@@ -1162,10 +1162,8 @@ export default function HomePage() {
                             ) : (
                                 <Link
                                     to={{
-                                        pathname: '/Exchange/ExchangeDetails',
-                                        state: {
-                                            exchangeid: epochdata.creator,
-                                        },
+                                        pathname: `/AccountDetail/${epochdata.creator}`,
+                                        state: epochdata.creator,
                                     }}
                                     className={
                                         HomePage_ls.BlockINFORMATIONbox_right_dataaddress

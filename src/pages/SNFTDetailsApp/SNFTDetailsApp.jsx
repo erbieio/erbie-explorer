@@ -1,4 +1,4 @@
-import SNFTDetails_ls from './SNFTDetails.less';
+import SNFTDetailsApp_ls from './SNFTDetailsApp.less';
 import SearchBox from '@/components/SearchBox/SearchBox';
 import Icon, { DownOutlined } from '@ant-design/icons';
 import React, { useState, useEffect } from 'react';
@@ -25,7 +25,7 @@ import moment from 'moment';
 import { stagenumber, timestamp, ellipsis } from '../../utils/methods/Methods';
 import { utils } from 'ethers';
 const { Option } = Select;
-export default function SNFTDetails(props) {
+export default function SNFTDetailsApp(props) {
     // console.log(props.location.state.snftid);
     const [transactionmetadata, setTransactionmeta] = useState(1);
     const [pagenumber, setPagenumber] = useState(1);
@@ -203,7 +203,7 @@ export default function SNFTDetails(props) {
             return (
                 <div
                     className={
-                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_d
+                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_d
                     }
                 >
                     {item}
@@ -223,36 +223,36 @@ export default function SNFTDetails(props) {
     }
     return (
         <>
-            <div className={SNFTDetails_ls.SNFTDetailsBox}>
-                <div className={SNFTDetails_ls.SNFTDetailsBox_title}>
+            <div className={SNFTDetailsApp_ls.SNFTDetailsBox}>
+                <div className={SNFTDetailsApp_ls.SNFTDetailsBox_title}>
                     S-NFT Details
                     <SearchBox />
                 </div>
-                <div className={SNFTDetails_ls.SNFTDetailsBox_titleData}>
+                <div className={SNFTDetailsApp_ls.SNFTDetailsBox_titleData}>
                     <div
                         className={
-                            SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox
+                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_imgBox
                         }
                     >
                         <img
                             className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox_img
+                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_imgBox_img
                             }
                             src={snftdata.source_url}
                         />
                         {/* 图片 */}
                     </div>
                     <div
-                        className={SNFTDetails_ls.SNFTDetailsBox_titleData_text}
+                        className={SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text}
                     >
                         <p
                             className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname
+                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname
                             }
                         >
                             <span
                                 className={
-                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_time
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_time
                                 }
                             >
                                 {moment(
@@ -262,66 +262,66 @@ export default function SNFTDetails(props) {
                         </p>
                         <div
                             className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute
+                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute
                             }
                         >
                             <div
                                 className={
-                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left
                                 }
                             >
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_namebig
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_namebig
                                     }
                                 >
                                     {snftdata.name}
                                 </p>
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     Address
                                 </p>
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     Price
                                 </p>
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     Owner
                                 </p>
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     Author
                                 </p>
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     Belong To
                                 </p>
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     S-NFT Creator
                                 </p>
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     Royalties
@@ -329,19 +329,19 @@ export default function SNFTDetails(props) {
                             </div>
                             <div
                                 className={
-                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right
                                 }
                             >
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_namebig
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_namebig
                                     }
                                 >
                                     {Object.keys(snftdata) != 0 ? (
                                         snftdata.address.length == 42 ? (
                                             <span
                                                 className={
-                                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_lx1
+                                                    SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_lx1
                                                 }
                                             >
                                                 S-NFT
@@ -349,7 +349,7 @@ export default function SNFTDetails(props) {
                                         ) : snftdata.address.length == 41 ? (
                                             <span
                                                 className={
-                                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_lx2
+                                                    SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_lx2
                                                 }
                                             >
                                                 NFT
@@ -357,7 +357,7 @@ export default function SNFTDetails(props) {
                                         ) : snftdata.address.length == 40 ? (
                                             <span
                                                 className={
-                                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_lx3
+                                                    SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_lx3
                                                 }
                                             >
                                                 Collection
@@ -365,7 +365,7 @@ export default function SNFTDetails(props) {
                                         ) : snftdata.address.length == 39 ? (
                                             <span
                                                 className={
-                                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_lx4
+                                                    SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_lx4
                                                 }
                                             >
                                                 Period
@@ -378,7 +378,7 @@ export default function SNFTDetails(props) {
                                     )}
                                     <span
                                         className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_block
+                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_block
                                         }
                                     >
                                         #{snftdata.reward_number}
@@ -386,7 +386,7 @@ export default function SNFTDetails(props) {
                                 </p>
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                 >
                                     {snftdata.address}
@@ -394,7 +394,7 @@ export default function SNFTDetails(props) {
                                 {snftdata.last_price ? (
                                     <p
                                         className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
                                     >
                                         {utils.formatEther(snftdata.last_price)}{' '}
@@ -405,7 +405,7 @@ export default function SNFTDetails(props) {
                                 ) : (
                                     <p
                                         className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
                                     >
                                         No Bid
@@ -417,7 +417,7 @@ export default function SNFTDetails(props) {
                                         state: snftdata.owner,
                                     }}
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                     style={{ color: '#7AA4FF' }}
                                 >
@@ -427,7 +427,7 @@ export default function SNFTDetails(props) {
                                 '0x0000000000000000000000000000000000000000' ? (
                                     <p
                                         className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
                                     >
                                         Official Account
@@ -439,7 +439,7 @@ export default function SNFTDetails(props) {
                                             state: snftdata.creator,
                                         }}
                                         className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
                                         style={{ color: '#7AA4FF' }}
                                     >
@@ -450,7 +450,7 @@ export default function SNFTDetails(props) {
                                 )}
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                     // style={{ color: '#7AA4FF' }}
                                 >
@@ -470,7 +470,7 @@ export default function SNFTDetails(props) {
                                 '0x0000000000000000000000000000000000000000' ? (
                                     <p
                                         className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
                                         id="soloimg"
                                     >
@@ -483,7 +483,7 @@ export default function SNFTDetails(props) {
                                             state: snftdata.creator,
                                         }}
                                         className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
                                         style={{ color: '#7AA4FF' }}
                                         id="soloimg"
@@ -499,7 +499,7 @@ export default function SNFTDetails(props) {
                                         },
                                     }}
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                     style={{ color: '#7AA4FF' }}
                                     id="soloimg"
@@ -508,7 +508,7 @@ export default function SNFTDetails(props) {
                                 </Link>
                                 <p
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                 >
                                     {snftdata.royaltyRatio / 100}%
@@ -520,13 +520,13 @@ export default function SNFTDetails(props) {
                 {/* 交易历史-Meta信息   按钮 */}
                 <div
                     className={
-                        SNFTDetails_ls.SNFTDetailsBox_titleData_buttonBox
+                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_buttonBox
                     }
                 >
                     {transactionmetadata == 0 ? (
                         <div
                             className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_buttonBox_Transactionhistory1
+                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_buttonBox_Transactionhistory1
                             }
                             onClick={transactionmeta.bind(this, 0)}
                         >
@@ -535,7 +535,7 @@ export default function SNFTDetails(props) {
                     ) : (
                         <div
                             className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_buttonBox_Transactionhistory2
+                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_buttonBox_Transactionhistory2
                             }
                         >
                             TXN History
@@ -544,7 +544,7 @@ export default function SNFTDetails(props) {
                     {transactionmetadata == 1 ? (
                         <div
                             className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_buttonBox_metaData1
+                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_buttonBox_metaData1
                             }
                             onClick={transactionmeta.bind(this, 1)}
                         >
@@ -553,7 +553,7 @@ export default function SNFTDetails(props) {
                     ) : (
                         <div
                             className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_buttonBox_metaData2
+                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_buttonBox_metaData2
                             }
                         >
                             Metadata
@@ -562,7 +562,7 @@ export default function SNFTDetails(props) {
                 </div>
                 {transactionmetadata == 1 ? (
                     <div
-                        className={SNFTDetails_ls.SNFTDetailsBox_table}
+                        className={SNFTDetailsApp_ls.SNFTDetailsBox_table}
                         id="SNFTDetailsTable"
                     >
                         <Table
@@ -571,7 +571,7 @@ export default function SNFTDetails(props) {
                             pagination={false}
                         />
                         <div
-                            className={SNFTDetails_ls.SNFTDetailsBox_Pagination}
+                            className={SNFTDetailsApp_ls.SNFTDetailsBox_Pagination}
                             id="SNFTDetailsBoxPagination"
                         >
                             <Pagination
@@ -583,14 +583,14 @@ export default function SNFTDetails(props) {
                             />
                             <div
                                 className={
-                                    SNFTDetails_ls.SNFTDetailsBox_Pagination_d
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_d
                                 }
                             >
                                 10/Page
                             </div>
                             <span
                                 className={
-                                    SNFTDetails_ls.SNFTDetailsBox_Pagination_span1
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_span1
                                 }
                             >
                                 To
@@ -598,13 +598,13 @@ export default function SNFTDetails(props) {
                             <input
                                 id="SNFTDetailsinputnumber"
                                 className={
-                                    SNFTDetails_ls.SNFTDetailsBox_Pagination_input
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_input
                                 }
                                 onKeyDown={SNFTDetailsinputnumberonclick}
                             />
                             <span
                                 className={
-                                    SNFTDetails_ls.SNFTDetailsBox_Pagination_span2
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_Pagination_span2
                                 }
                             >
                                 Page
@@ -612,14 +612,14 @@ export default function SNFTDetails(props) {
                         </div>
                     </div>
                 ) : (
-                    <div className={SNFTDetails_ls.SNFTDetailsBox_meta}>
+                    <div className={SNFTDetailsApp_ls.SNFTDetailsBox_meta}>
                         <p
-                            className={SNFTDetails_ls.SNFTDetailsBox_meta_title}
+                            className={SNFTDetailsApp_ls.SNFTDetailsBox_meta_title}
                             id="SNFTDetailsBoxmetatitle"
                         >
                             <span
                                 className={
-                                    SNFTDetails_ls.SNFTDetailsBox_meta_title_whaturl
+                                    SNFTDetailsApp_ls.SNFTDetailsBox_meta_title_whaturl
                                 }
                             >
                                 Metadata retrieved from token URL: <br />
@@ -629,7 +629,7 @@ export default function SNFTDetails(props) {
                                         snftdata.meta_url
                                     }
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_meta_title_url
+                                        SNFTDetailsApp_ls.SNFTDetailsBox_meta_title_url
                                     }
                                 >
                                     https://hub.wormholes.com{snftdata.meta_url}
@@ -660,7 +660,7 @@ export default function SNFTDetails(props) {
                         </p>
                         <div
                             className={
-                                SNFTDetails_ls.SNFTDetailsBox_meta_codeBox
+                                SNFTDetailsApp_ls.SNFTDetailsBox_meta_codeBox
                             }
                         >
                             <pre>

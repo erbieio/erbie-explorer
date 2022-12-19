@@ -4,13 +4,16 @@ import { Link } from 'umi';
 import { UnorderedListOutlined, CloseOutlined } from '@ant-design/icons';
 import React, { useState, useEffect } from 'react';
 import PubSub from 'pubsub-js';
-export default function HeaderApp() {
+export default function HeaderApp(props) {
     const [navigationicon, setNavigationicon] = useState(0);
     const [navigationheight, setNavigationheight] = useState('0px');
     PubSub.subscribe('pubsubNavigationdata', (msg, index) => {
         setNavigationicon(index.Navigationicon);
         setNavigationheight(index.Navigationheight);
     });
+    useEffect(()=>{
+        setNavigationheight('0px')
+    },[props.props.location.pathname])
     return (
         <>
             <div className={HeaderApp_ls.HeaderAppbox}>
@@ -54,7 +57,7 @@ export default function HeaderApp() {
                 style={{ height: `${navigationheight}` }}
             >
                 <Link
-                    to={{ pathname: '/BlockChain', state: '' }}
+                    to={{ pathname: '/BlockChainApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
@@ -62,7 +65,7 @@ export default function HeaderApp() {
                     </div>
                 </Link>
                 <Link
-                    to={{ pathname: '/Validator', state: '' }}
+                    to={{ pathname: '/ValidatorApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
@@ -70,7 +73,7 @@ export default function HeaderApp() {
                     </div>
                 </Link>
                 <Link
-                    to={{ pathname: '/Account', state: '' }}
+                    to={{ pathname: '/AccountApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
@@ -78,7 +81,7 @@ export default function HeaderApp() {
                     </div>
                 </Link>
                 <Link
-                    to={{ pathname: '/SNFT', state: '' }}
+                    to={{ pathname: '/SNFTApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
@@ -86,7 +89,7 @@ export default function HeaderApp() {
                     </div>
                 </Link>
                 <Link
-                    to={{ pathname: '/NFT', state: '' }}
+                    to={{ pathname: '/NFTApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
@@ -94,7 +97,7 @@ export default function HeaderApp() {
                     </div>
                 </Link>
                 <Link
-                    to={{ pathname: '/Exchange', state: '' }}
+                    to={{ pathname: '/ExchangeApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
@@ -102,7 +105,7 @@ export default function HeaderApp() {
                     </div>
                 </Link>
                 <Link
-                    to={{ pathname: '/Trade', state: '' }}
+                    to={{ pathname: '/TradeApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
@@ -110,7 +113,7 @@ export default function HeaderApp() {
                     </div>
                 </Link>
                 <Link
-                    to={{ pathname: '/ranking', state: '' }}
+                    to={{ pathname: '/rankingApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>

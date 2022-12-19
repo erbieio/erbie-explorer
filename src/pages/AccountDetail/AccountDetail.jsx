@@ -7,7 +7,7 @@ import { AiOutlineCopy } from 'react-icons/ai';
 import AccountDetail_ls from '../AccountDetail/AccountDetail.less';
 import Search from '../../components/SearchBox/SearchBox';
 import other from './../../assets/images/AccountDetail/other.png';
-import {accountDetail, nftPage, transactionPage, snftPage,} from '../../api/request_data/AccountDetail_request';
+import {accountDetail, nftPage, transactionPage, snftPage,totals} from '../../api/request_data/AccountDetail_request';
 import Trade_ls from '../Trade/Trade.less';
 import copy from 'copy-to-clipboard';
 import { history } from '../../.umi/core/history';
@@ -389,6 +389,7 @@ class AccountDetail extends React.Component {
                         accountData: res,
                         loading: false,
                     });
+                    console.log(res);
                 }
             })();
             this.nftPage = async () => {
@@ -555,7 +556,7 @@ class AccountDetail extends React.Component {
                                         ).toLocaleString() || 0}
                                     </span>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <p>S-NFT Staking</p>{' '}
                                     <span>
                                         {(
@@ -565,12 +566,22 @@ class AccountDetail extends React.Component {
                                             || 0
                                         ).toLocaleString() }
                                     </span>
-                                </div>
+                                </div> */}
                                 <div>
-                                    <p>ERB Staking Income</p>{' '}
+                                    <p>ERB Income</p>{' '}
                                     <span>
                                         {(this.state.accountData.rewardCoinCount * 0.11).toLocaleString()}
                                         ERB
+                                    </span>
+                                </div>
+                                <div>
+                                    <p>S-NFT Income</p>{' '}
+                                    <span>
+                                        {(
+                                            (this.state.accountData
+                                                .rewardSNFTCount)
+                                        ).toLocaleString()}
+
                                     </span>
                                 </div>
                                 <div>
@@ -582,16 +593,7 @@ class AccountDetail extends React.Component {
                                         }
                                     </span>
                                 </div>
-                                <div>
-                                    <p>S-NFT Staking Income</p>{' '}
-                                    <span>
-                                        {(
-                                            (this.state.accountData
-                                                .rewardSNFTCount)
-                                        ).toLocaleString()}
-
-                                    </span>
-                                </div>
+                                
                             </div>
                         </div>
                         <div className={AccountDetail_ls.other}>
@@ -600,13 +602,13 @@ class AccountDetail extends React.Component {
                                 <ul>
                                     <p>Owned NFTs</p>
                                     <span title={this.state.accountData.totalNFT}>
-                                        {this.state.accountData.totalNFT}
+                                        {this.state.accountData.nftCount || 0}
                                     </span>
                                 </ul>
                                 <ul>
                                     <p>Owned S-NFTs</p>
                                     <span title={this.state.accountData.totalSNFT}>
-                                        {this.state.accountData.totalSNFT}
+                                        {this.state.accountData.snftCount || 0}
                                     </span>
                                 </ul>
                             </div>

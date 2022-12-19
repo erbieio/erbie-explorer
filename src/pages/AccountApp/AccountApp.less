@@ -1,57 +1,69 @@
-.BlockChainBox {
-    width: 1240px;
+.AccountBox {
+    width: 345px;
     margin: auto;
+    padding-top: 16px;
 }
-.BlockChainBox_headerTitle {
-    width: 1240px;
-    height: 160px;
+.AccountBox_headerTitle {
+    width: 345px;
+    height: 69px;
     display: flex;
     justify-content: space-between;
 }
-.BlockChainBox_headerTitle_d {
-    width: 397px;
-    height: 160px;
-    border-radius: 8px;
-    background-color: #141319;
+.AccountBox_headerTitle_d {
+    width: 168px;
+    height: 69px;
+    // background-color: #141319;
     background-image: url('../../assets/images/HomePage/blockcolor.png');
-    background-size: contain;
+    background-size: 100% 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 24px;
+    padding:10px;
+    img{
+        width: 32px;
+        height: 32px;
+    }
 }
-.BlockChainBox_headerTitle_d_left_data {
-    font-size: 22px;
+.AccountBox_headerTitle_d_left_data {
+    font-size: 12px;
+    font-family: CustomFontBold;
     color: white;
-    margin: 0 0 20px 0;
+    margin: 0;
 }
-.BlockChainBox_headerTitle_d_left_name {
-    font-size: 16px;
-    color: #ffffff90;
+.AccountBox_headerTitle_d_left_name {
+    font-size: 11px;
+    font-family: CustomFontThin;
+    color: white;
+    margin: 0;
 }
-.BlockChainBox_table {
-    width: 1240px;
+.tableApp{
+    width: 345px;
+    margin: 15px auto 0;
+    overflow: auto;
+}
+.AccountBox_table {
+    width: 1000px;
     //   height: 967px;
     border-radius: 8px;
     background-color: #1b1a21;
     margin-top: 32px;
-    padding-top: 24px;
+    padding-top: 12px;
     padding-bottom: 30px;
 }
-.BlockChainBox_table_title {
+.AccountBox_table_title {
     color: white;
     font-size: 20px;
-    margin: 0 0 0 24px;
+    margin: 0 0 0 12px;
 }
-.BlockChainBox_Pagination {
+.AccountBox_Pagination {
     //   border: 1px solid red;
     margin-top: 30px;
     text-align: right;
-    padding-right: 24px;
+    padding-right: 12px;
     display: flex;
     justify-content: flex-end;
 }
-.BlockChainBox_Pagination_d {
+.AccountBox_Pagination_d {
     width: 82px;
     height: 32px;
     border: 1px solid #ffffff;
@@ -63,13 +75,13 @@
     line-height: 30px;
     text-align: center;
 }
-.BlockChainBox_Pagination_span1 {
+.AccountBox_Pagination_span1 {
     font-size: 14px;
     color: white;
     line-height: 32px;
     margin: 0 8px;
 }
-.BlockChainBox_Pagination_input {
+.AccountBox_Pagination_input {
     width: 48px;
     height: 32px;
     border: 1px solid #ffffff;
@@ -80,24 +92,24 @@
     padding-left: 12px;
     margin-right: 8px;
 }
-.BlockChainBox_Pagination_span2 {
+.AccountBox_Pagination_span2 {
     font-size: 14px;
     color: white;
     line-height: 32px;
 }
 :global {
-    #BlockChainTable {
+    #AccountTableApp {
         .ant-table-wrapper {
             //   border: 1px solid red;
             //   height: 820px !important;
             //   overflow: hidden;
         }
         .ant-table-cell{
-            font-size: 14px !important;
-            font-family: CustomFontThin !important;
+            font-size: 11px;
+            font-family: CustomFontThin;
         }
     }
-    #BlockChainBoxPagination {
+    #AccountBoxPagination {
         .ant-pagination-item-link {
             background-color: #03041a !important;
             color: white !important;
