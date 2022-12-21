@@ -123,7 +123,7 @@ class Trade extends React.Component {
                                 pathname: `/TradeDetail/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
                             {ellipsis(text)}
                         </Link>
@@ -154,7 +154,7 @@ class Trade extends React.Component {
                                 pathname: '/BlockChain/BlockDetails',
                                 state: { blockid: text },
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
                             {text}
                         </Link>
@@ -170,7 +170,7 @@ class Trade extends React.Component {
                                 pathname: `/AccountDetail/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
                         >
                             {ellipsis(text)}
                         </Link>
@@ -187,7 +187,7 @@ class Trade extends React.Component {
                                 pathname: `/AccountDetail/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
                             {ellipsis(text)}
                         </Link>

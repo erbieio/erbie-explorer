@@ -47,7 +47,7 @@ export default function Exchange() {
                         pathname: '/Exchange/ExchangeDetails',
                         state: { exchangeid: data.address },
                     }}
-                    style={{ color: '#7AA4FF' }}
+                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -64,7 +64,7 @@ export default function Exchange() {
                         pathname: '/BlockChain/BlockDetails',
                         state: { blockid: text },
                     }}
-                    style={{ color: '#7AA4FF' }}
+                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -78,7 +78,7 @@ export default function Exchange() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' }}
+                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
