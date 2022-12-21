@@ -357,7 +357,7 @@ export default function NFTApp() {
                         <div className={NFTApp_ls.NFTBox_headerTitle_d_right}>
                             <Chart
                                 autoFit
-                                height="69px"
+                                height="50px"
                                 data={nftchartdata}
                                 width="159px"
                                 pure

@@ -70,7 +70,7 @@ class AccountDetail extends React.Component {
                         <Link
                             title={tags}
                             to={{
-                                pathname: `/TradeDetail/${tags}`,
+                                pathname: `/TradeDetailApp/${tags}`,
                                 state: tags ,
                             }}
                             replace={true}
@@ -111,7 +111,7 @@ class AccountDetail extends React.Component {
 
                             title={tags}
                             to={{
-                                pathname: `/AccountDetail/${tags}`,
+                                pathname: `/AccountDetailApp/${tags}`,
                                 state: tags ,
                             }}
                             replace={true}
@@ -136,7 +136,7 @@ class AccountDetail extends React.Component {
 
                             title={tags}
                             to={{
-                                pathname: `/AccountDetail/${tags}`,
+                                pathname: `/AccountDetailApp/${tags}`,
                                 state: tags ,
                             }}
                             replace={true}
@@ -190,7 +190,7 @@ class AccountDetail extends React.Component {
                         <Link
                             title={text}
                             to={{
-                                pathname: '/NFT/NFTDetails',
+                                pathname: '/NFTApp/NFTDetailsApp',
                                 state: { nftid: data },
                             }}
                             style={{ color: '#7AA4FF' }}
@@ -226,7 +226,7 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                            to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
                             style={{ color: '#7AA4FF' }}
                             title={text}
                             replace={true}
@@ -242,7 +242,7 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                            to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
                             style={{ color: '#7AA4FF' }}
                             title={text}
                             replace={true}
@@ -279,7 +279,7 @@ class AccountDetail extends React.Component {
                         <Link
                             title={text}
                             to={{
-                                pathname: '/SNFT/SNFTDetails',
+                                pathname: '/SNFTApp/SNFTDetailsApp',
                                 state: { snftid: data.address },
                             }}
                             style={{ color: '#7AA4FF' }}
@@ -308,7 +308,7 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                            to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
                             style={{ color: '#7AA4FF' }}
                             title={text}
                             replace={true}
@@ -324,7 +324,7 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                            to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
                             style={{ color: '#7AA4FF' }}
                             title={text}
                             replace={true}
