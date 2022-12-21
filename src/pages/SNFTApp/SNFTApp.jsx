@@ -363,10 +363,10 @@ export default function SNFTApp() {
                     </p>
                     <div style={{ width: '330px' }} id="Progress">
                         <Progress
-                            percent={(
+                            percent={totaldata.totalSNFT?(
                                 ((totaldata.totalSNFT % 4096) / 4096) *
                                 100
-                            ).toFixed(2)||0}
+                            ).toFixed(2):0}
                             status="active"
                             strokeWidth={12}
                             trailColor="#424253"

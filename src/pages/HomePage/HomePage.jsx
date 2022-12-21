@@ -808,11 +808,11 @@ export default function HomePage() {
                                     id="homepageProgress"
                                 >
                                     <Progress
-                                        percent={(
+                                        percent={totaldata.totalValidatorOnline&&totaldata.totalValidator?(
                                             (totaldata.totalValidatorOnline /
                                                 totaldata.totalValidator) *
-                                                100 || 0 / 1
-                                        ).toFixed(2)}
+                                                100
+                                        ).toFixed(2):0}
                                         status="active"
                                         strokeColor="#75FBFF"
                                         strokeWidth={5.8}
