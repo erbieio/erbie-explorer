@@ -590,6 +590,7 @@ export default function Ranking() {
                                             height: '24px',
                                             width: '24px',
                                             marginTop: '6px',
+                                            lineHeight: '24px',
                                         }}
                                     >
                                         {person.category == 'Music'

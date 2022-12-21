@@ -524,22 +524,22 @@ class Trade extends React.Component {
                                     lineWidth: 0,
                                     stroke: '#eee',
                                 }}
-                                // label={[
-                                //     'population',
-                                //     (xValue) => {
-                                //         return {
-                                //             content:
-                                //                 xValue === 0
-                                //                     ? '0%'
-                                //                     : (
-                                //                           (xValue /
-                                //                               this.total()) *
-                                //                           100
-                                //                       ).toFixed(1) + '%',
-                                //             offset: -5,
-                                //         };
-                                //     },
-                                // ]}
+                                label={[
+                                    'population',
+                                    (xValue) => {
+                                        return {
+                                            content:
+                                                xValue === 0
+                                                    ? '0%'
+                                                    : (
+                                                          (xValue /
+                                                              this.total()) *
+                                                          100
+                                                      ).toFixed(1) + '%',
+                                            offset: -0.5,
+                                        };
+                                    },
+                                ]}
                             />
                             <Legend
                                 position={'left'}
