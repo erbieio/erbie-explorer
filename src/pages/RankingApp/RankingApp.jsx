@@ -225,8 +225,9 @@ export default function Ranking() {
                             <ul>
                                 Marketplace
                                 <br />
-                                Rankings
+                                Rankings <img src={require("../../assets/images/Ranking/down.png")}></img>
                             </ul>
+                           
                         </div>
                         <div className={Ranking_ls.RankingNFTButton}>
                             {menuList.map((item, index) => {
