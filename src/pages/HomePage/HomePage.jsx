@@ -1104,7 +1104,7 @@ export default function HomePage() {
                                     HomePage_ls.BlockINFORMATIONbox_right_data
                                 }
                             >
-                                {(new Date(
+                                {epochdata.timestamp?(new Date(
                                     epochdata.timestamp || 0 * 1000,
                                 ).getFullYear() +
                                     '/' +
@@ -1115,7 +1115,7 @@ export default function HomePage() {
                                     '/' +
                                     new Date(
                                         epochdata.timestamp || 0 * 1000,
-                                    ).getDate())||'0/0/0'}
+                                    ).getDate()):'0/0/0'}
                             </p>
                         </div>
                         <div

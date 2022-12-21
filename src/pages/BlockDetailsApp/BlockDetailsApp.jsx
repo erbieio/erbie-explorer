@@ -487,9 +487,9 @@ export default function BlockDetailsApp(props) {
                                 >
                                     <Progress
                                         percent={(
-                                            soloblockdata.gasUsed /
-                                            soloblockdata.gasLimit
-                                        ).toFixed(2)||0}
+                                            soloblockdata.gasUsed||0 /
+                                            soloblockdata.gasLimit|| 1
+                                        ).toFixed(2)}
                                         status="active"
                                         strokeColor="#FE4FA7"
                                         strokeWidth={5.8}

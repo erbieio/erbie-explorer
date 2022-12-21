@@ -951,10 +951,10 @@ export default function HomePageApp() {
                                 >
                                     <Progress
                                         percent={(
-                                            (totaldata.totalValidatorOnline /
+                                            ((totaldata.totalValidatorOnline /
                                                 totaldata.totalValidator) *
-                                            100
-                                        ).toFixed(2)||0}
+                                            100)|| 0
+                                        ).toFixed(2)}
                                         status="active"
                                         strokeColor="#75FBFF"
                                         strokeWidth={2}
@@ -1081,7 +1081,7 @@ export default function HomePageApp() {
                         />
                         <p>Total Rewards</p>
                         <span>
-                            {((totaldata.totalBlock - 1) * 1.15).toFixed(2)||0} ERB
+                            {totaldata.totalBlock?((totaldata.totalBlock - 1) * 1.15).toFixed(2):0} ERB
                         </span>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_BLOCKbox_d}>
@@ -1104,12 +1104,12 @@ export default function HomePageApp() {
                         Time of Current Period
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_data}>
-                        {(new Date(epochdata.timestamp * 1000).getFullYear()||0 +
+                        {epochdata.timestamp?(new Date(epochdata.timestamp * 1000).getFullYear() +
                             '/' +
                             (new Date(epochdata.timestamp * 1000).getMonth() +
-                                1)||0 +
+                                1) +
                             '/' +
-                            new Date(epochdata.timestamp * 1000).getDate())||0}
+                            new Date(epochdata.timestamp * 1000).getDate()):'0/0/0'}
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>
                         S-NFT Weight
