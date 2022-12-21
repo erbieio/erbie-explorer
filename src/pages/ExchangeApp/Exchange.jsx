@@ -52,7 +52,7 @@ export default function Exchange() {
                     {text}
                 </Link>
             ),
-            ellipsis: true,
+            // ellipsis: true,
         },
         {
             title: 'Block Height',
@@ -74,7 +74,7 @@ export default function Exchange() {
             title: 'Owner',
             dataIndex: 'creator',
             key: 'creator',
-            ellipsis: true,
+            // ellipsis: true,
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
@@ -122,7 +122,7 @@ export default function Exchange() {
             ),
             key: 'amount',
             dataIndex: 'amount',
-            ellipsis: true,
+            // ellipsis: true,
             render: (text) => <span>{utils.formatEther(String(text))}</span>,
             width: '140px',
         },
@@ -165,7 +165,7 @@ export default function Exchange() {
             key: 'collectionCount',
             dataIndex: 'collectionCount',
             width: '140px',
-            ellipsis: true,
+            // ellipsis: true,
         },
         {
             title: () => (
@@ -284,7 +284,7 @@ export default function Exchange() {
             dataIndex: 'tx_amount',
             render: (text) => <span>{utils.formatEther(text || 0)}</span>,
             width: '185px',
-            ellipsis: true,
+            // ellipsis: true,
         },
     ];
     const onChange = (data) => {
@@ -319,7 +319,7 @@ export default function Exchange() {
         console.log('交易所查询');
         console.log(data);
         if (data) {
-            setExchangerdata(data);
+            // setExchangerdata(data);
         }
     };
     useEffect(() => {

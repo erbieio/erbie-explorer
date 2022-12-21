@@ -33,6 +33,7 @@ export default function Ranking() {
     const [exchangeData, updata] = useState([]);
     const [SNFTData, SNFTupdata] = useState([]);
     const [NFTData, NFTupdata] = useState([]);
+    const [showMenu, setShowMenu] = useState(false);
     const [menuList, setMenuList] = useState([
         {
             name: 'Marketplace Rankings',
@@ -53,6 +54,7 @@ export default function Ranking() {
     let [exchangeDatanum, updataexchangeDatanum] = useState(1);
     let [SNFTDatanum, SNFTupdataSNFTDatanum] = useState(1);
     let [NFTDatanum, NFTupdataNFTDatanum] = useState(1);
+
     let RankingExchangeBoxUl;
     let RankingSNFTBoxUl;
     let RankingNFTBoxUl;
@@ -225,33 +227,52 @@ export default function Ranking() {
                             <ul>
                                 Marketplace
                                 <br />
-                                Rankings
+                                Rankings{' '}
+                                <img
+                                    src={require('../../assets/images/Ranking/down.png')}
+                                    onClick={() => {
+                                        setShowMenu(!showMenu);
+                                    }}
+                                ></img>
                             </ul>
                         </div>
-                        <div className={Ranking_ls.RankingNFTButton}>
-                            {menuList.map((item, index) => {
-                                return (
-                                    <div
-                                        key={index}
-                                        className={
-                                            item.select == true
-                                                ? Ranking_ls.listButtonSel
-                                                : Ranking_ls.listButton
-                                        }
-                                        onClick={() => {
-                                            let newList = [...menuList];
-                                            newList.forEach((item) => {
-                                                item.select = false;
-                                            });
-                                            newList[index].select = true;
-                                            setMenuList(newList);
-                                        }}
-                                    >
-                                        {item.name}
-                                    </div>
-                                );
-                            })}
-                        </div>
+                        {showMenu ? (
+                            <>
+                                {' '}
+                                <div className={Ranking_ls.RankingNFTButton}>
+                                    {menuList.map((item, index) => {
+                                        return (
+                                            <div
+                                                key={index}
+                                                className={
+                                                    item.select == true
+                                                        ? Ranking_ls.listButtonSel
+                                                        : Ranking_ls.listButton
+                                                }
+                                                onClick={() => {
+                                                    let newList = [...menuList];
+                                                    newList.forEach((item) => {
+                                                        item.select = false;
+                                                    });
+                                                    newList[
+                                                        index
+                                                    ].select = true;
+                                                    setMenuList(newList);
+                                                }}
+                                            >
+                                                {item.name}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className={Ranking_ls.totalVol}>
+                                    Total Volume
+                                </div>
+                            </>
+                        )}
                     </div>
                     <div
                         className={Ranking_ls.RankingExchangeBoxUl}
@@ -327,33 +348,52 @@ export default function Ranking() {
                                 S-NFT
                                 <br />
                                 Rankings
+                                <img
+                                    src={require('../../assets/images/Ranking/down.png')}
+                                    onClick={() => {
+                                        setShowMenu(!showMenu);
+                                    }}
+                                ></img>
                             </ul>
                         </div>
-                        <div className={Ranking_ls.RankingNFTButton}>
-                            {menuList.map((item, index) => {
-                                return (
-                                    <div
-                                        key={index}
-                                        className={
-                                            item.select == true
-                                                ? Ranking_ls.listButtonSel
-                                                : Ranking_ls.listButton
-                                        }
-                                        onClick={() => {
-                                            let newList = [...menuList];
-                                            newList.forEach((item) => {
-                                                item.select = false;
-                                            });
-                                            newList[index].select = true;
-                                            console.log(newList);
-                                            setMenuList(newList);
-                                        }}
-                                    >
-                                        {item.name}
-                                    </div>
-                                );
-                            })}
-                        </div>
+                        {showMenu ? (
+                            <>
+                                {' '}
+                                <div className={Ranking_ls.RankingNFTButton}>
+                                    {menuList.map((item, index) => {
+                                        return (
+                                            <div
+                                                key={index}
+                                                className={
+                                                    item.select == true
+                                                        ? Ranking_ls.listButtonSel
+                                                        : Ranking_ls.listButton
+                                                }
+                                                onClick={() => {
+                                                    let newList = [...menuList];
+                                                    newList.forEach((item) => {
+                                                        item.select = false;
+                                                    });
+                                                    newList[
+                                                        index
+                                                    ].select = true;
+                                                    console.log(newList);
+                                                    setMenuList(newList);
+                                                }}
+                                            >
+                                                {item.name}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className={Ranking_ls.totalVol}>
+                                    Total Volume
+                                </div>
+                            </>
+                        )}
                     </div>
                     <div
                         className={Ranking_ls.RankingSNFTBoxUl}
@@ -436,33 +476,52 @@ export default function Ranking() {
                                 NFT
                                 <br />
                                 Rankings
+                                <img
+                                    src={require('../../assets/images/Ranking/down.png')}
+                                    onClick={() => {
+                                        setShowMenu(!showMenu);
+                                    }}
+                                ></img>
                             </ul>
                         </div>
-                        <div className={Ranking_ls.RankingNFTButton}>
-                            {menuList.map((item, index) => {
-                                return (
-                                    <div
-                                        key={index}
-                                        className={
-                                            item.select == true
-                                                ? Ranking_ls.listButtonSel
-                                                : Ranking_ls.listButton
-                                        }
-                                        onClick={() => {
-                                            let newList = [...menuList];
-                                            newList.forEach((item) => {
-                                                item.select = false;
-                                            });
-                                            newList[index].select = true;
-                                            console.log(newList);
-                                            setMenuList(newList);
-                                        }}
-                                    >
-                                        {item.name}
-                                    </div>
-                                );
-                            })}
-                        </div>
+                        {showMenu ? (
+                            <>
+                                {' '}
+                                <div className={Ranking_ls.RankingNFTButton}>
+                                    {menuList.map((item, index) => {
+                                        return (
+                                            <div
+                                                key={index}
+                                                className={
+                                                    item.select == true
+                                                        ? Ranking_ls.listButtonSel
+                                                        : Ranking_ls.listButton
+                                                }
+                                                onClick={() => {
+                                                    let newList = [...menuList];
+                                                    newList.forEach((item) => {
+                                                        item.select = false;
+                                                    });
+                                                    newList[
+                                                        index
+                                                    ].select = true;
+                                                    console.log(newList);
+                                                    setMenuList(newList);
+                                                }}
+                                            >
+                                                {item.name}
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <div className={Ranking_ls.totalVol}>
+                                    Total Volume
+                                </div>
+                            </>
+                        )}
                     </div>
                     <div
                         className={Ranking_ls.RankingNFTBoxUl}
