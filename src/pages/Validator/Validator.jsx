@@ -27,7 +27,7 @@ export default function Validator() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' }}
+                    style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -82,7 +82,7 @@ export default function Validator() {
                         pathname: '/BlockChain/BlockDetails',
                         state: { blockid: text },
                     }}
-                    style={{ color: '#7AA4FF' }}
+                    style={{ color: '#7AA4FF'  ,fontFamily:'CustomFontMedium'}}
                 >
                     {text}
                 </Link>

@@ -23,45 +23,40 @@ export default function HeaderApp(props) {
         setNavigationheight('0px')
         setNavigationicon(0);
     },[props.props.location.pathname])
-    //搜索按钮
-    function homepageinputclick() {
-        let data = document.getElementById('homepageinput').value;
-        if (data) {
-            if (
-                Number(data) == data &&
-                data.slice(0, 2) != '0x' &&
-                data.slice(0, 2) != '0X'
-            ) {
-                // 区块
-                history.push({
-                    pathname: '/BlockChainApp/BlockDetailsApp',
-                    state: {
-                        blockid: data,
-                    },
-                });
-            } else if (
-                (data.slice(0, 2) == '0x' || data.slice(0, 2) == '0X') &&
-                data.length == 42
-            ) {
-                //账户详情
-                history.push({
-                    pathname: `/AccountDetailApp/${data}`,
-                    state: data,
-                });
-            } else if (
-                (data.slice(0, 2) == '0x' || data.slice(0, 2) == '0X') &&
-                data.length == 66
-            ) {
-                //交易hash
-                history.push({
-                    pathname: `/TradeDetailApp/${data}`,
-                    state: data,
-                });
-            }
-        } else {
-            message.error('Cannot be empty！');
+   //搜索按钮
+   function homepageinputclick() {
+    // location.reload()
+    let data = document.getElementById('homepageinput').value
+    console.log(data);
+    if (data) {
+        if (Number(data) == data && data.slice(0, 2) != '0x' && data.slice(0, 2) != '0X') {
+            localStorage.setItem('blocktext', JSON.stringify(data))
+            //  location.reload()
+            // 区块
+            history.push({
+                pathname: '/BlockChainApp/BlockDetailsApp',
+                state: {
+                    blockid: data,
+                },
+            })
+        } else if ((data.slice(0,2) == '0x' || data.slice(0,2) == '0X') && data.length == 42) {
+            //账户详情
+            history.push({
+                pathname: `/AccountDetailApp/${data}`,
+                state: data,
+            })
+        } else if ((data.slice(0,2) == '0x' || data.slice(0,2) == '0X') && data.length == 66) {
+            //交易hash
+            history.push({
+                pathname: `/TradeDetailApp/${data}`,
+                state: data,
+            })
         }
+    } else {
+        message.error('Cannot be empty！');
     }
+
+}
     return (
         <>
             <div className={HeaderApp_ls.HeaderAppbox}>

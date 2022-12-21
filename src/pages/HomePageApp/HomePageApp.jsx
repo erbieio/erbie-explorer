@@ -869,7 +869,7 @@ export default function HomePageApp() {
                                             HomePageApp_ls.titlebox_databox_d_data
                                         }
                                     >
-                                        {totaldata.totalTransaction}
+                                        {totaldata.totalTransaction||0}
                                     </p>
                                     <p
                                         className={
@@ -889,7 +889,7 @@ export default function HomePageApp() {
                                             HomePageApp_ls.titlebox_databox_d_data
                                         }
                                     >
-                                        {parseInt(totaldata.rewardSNFTCount)}
+                                        {parseInt(totaldata.rewardSNFTCount)||0}
                                     </p>
                                     <p
                                         className={
@@ -909,11 +909,11 @@ export default function HomePageApp() {
                                             HomePageApp_ls.titlebox_databox_d_data
                                         }
                                     >
-                                        {Math.floor(
+                                        {(Math.floor(
                                             totaldata.rewardCoinCount *
                                                 multiple *
                                                 100,
-                                        ) / 100}
+                                        ) / 100)||0}
                                     </p>
                                     <p
                                         className={
@@ -940,8 +940,8 @@ export default function HomePageApp() {
                                     Online Rate
                                 </p>
                                 <p className={HomePageApp_ls.mapboxz_d_data}>
-                                    {totaldata.totalValidatorOnline}/
-                                    {totaldata.totalValidator}
+                                    {totaldata.totalValidatorOnline||0}/
+                                    {totaldata.totalValidator||0}
                                 </p>
                                 <div
                                     className={
@@ -954,7 +954,7 @@ export default function HomePageApp() {
                                             (totaldata.totalValidatorOnline /
                                                 totaldata.totalValidator) *
                                             100
-                                        ).toFixed(2)}
+                                        ).toFixed(2)||0}
                                         status="active"
                                         strokeColor="#75FBFF"
                                         strokeWidth={2}
@@ -985,7 +985,7 @@ export default function HomePageApp() {
                                 HomePageApp_ls.MarketplacesBox_databox_left_data
                             }
                         >
-                            {totaldata.totalExchanger}
+                            {totaldata.totalExchanger||0}
                         </p>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d2}>
@@ -1001,7 +1001,7 @@ export default function HomePageApp() {
                                 HomePageApp_ls.MarketplacesBox_databox_rightd1_data
                             }
                         >
-                            {totaldata.totalExchangerTx}
+                            {totaldata.totalExchangerTx||0}
                         </p>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d3}>
@@ -1017,7 +1017,7 @@ export default function HomePageApp() {
                                 HomePageApp_ls.MarketplacesBox_databox_rightd1_data
                             }
                         >
-                            {totaldata.totalNFTCollection}
+                            {totaldata.totalNFTCollection||0}
                         </p>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d4}>
@@ -1033,7 +1033,7 @@ export default function HomePageApp() {
                                 HomePageApp_ls.MarketplacesBox_databox_rightd1_data
                             }
                         >
-                            {totaldata.totalNFT}
+                            {totaldata.totalNFT||0}
                         </p>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d5}>
@@ -1066,14 +1066,14 @@ export default function HomePageApp() {
                             src={require('../../assets/images/HomePageApp/ICON／CPU／Normal.png')}
                         />
                         <p>Block Height</p>
-                        <span>{totaldata.totalBlock - 1}</span>
+                        <span>{(totaldata.totalBlock - 1)||0}</span>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_BLOCKbox_d}>
                         <img
                             src={require('../../assets/images/HomePageApp/ICON／Network／Normal.png')}
                         />
                         <p>Block Time</p>
-                        <span>{totaldata.avgBlockTime} ms</span>
+                        <span>{totaldata.avgBlockTime||0} ms</span>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_BLOCKbox_d}>
                         <img
@@ -1081,7 +1081,7 @@ export default function HomePageApp() {
                         />
                         <p>Total Rewards</p>
                         <span>
-                            {((totaldata.totalBlock - 1) * 1.15).toFixed(2)} ERB
+                            {((totaldata.totalBlock - 1) * 1.15).toFixed(2)||0} ERB
                         </span>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_BLOCKbox_d}>
@@ -1089,7 +1089,7 @@ export default function HomePageApp() {
                             src={require('../../assets/images/HomePageApp/ICON／Free Memory／Normal.png')}
                         />
                         <p>Number of Blackhole Block</p>
-                        <span>{totaldata.totalBlackHole}</span>
+                        <span>{totaldata.totalBlackHole||0}</span>
                     </div>
                 </div>
                 <p
@@ -1104,18 +1104,18 @@ export default function HomePageApp() {
                         Time of Current Period
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_data}>
-                        {(new Date(epochdata.timestamp * 1000).getFullYear() +
+                        {(new Date(epochdata.timestamp * 1000).getFullYear()||0 +
                             '/' +
                             (new Date(epochdata.timestamp * 1000).getMonth() +
-                                1) +
+                                1)||0 +
                             '/' +
-                            new Date(epochdata.timestamp * 1000).getDate())||'0/0/0'}
+                            new Date(epochdata.timestamp * 1000).getDate())||0}
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>
                         S-NFT Weight
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_data}>
-                        {epochdata.voteWeight}
+                        {epochdata.voteWeight||0}
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>
                         S-NFT Creator

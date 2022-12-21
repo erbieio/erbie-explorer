@@ -475,9 +475,9 @@ export default function BlockDetailsApp(props) {
                                 }}
                             >
                                 <p>
-                                    {soloblockdata.gasUsed}(
-                                    {soloblockdata.gasUsed /
-                                        soloblockdata.gasLimit}
+                                    {soloblockdata.gasUsed||0}(
+                                    {(soloblockdata.gasUsed /
+                                        soloblockdata.gasLimit)||0}
                                     %)
                                 </p>
 
@@ -489,7 +489,7 @@ export default function BlockDetailsApp(props) {
                                         percent={(
                                             soloblockdata.gasUsed /
                                             soloblockdata.gasLimit
-                                        ).toFixed(2)}
+                                        ).toFixed(2)||0}
                                         status="active"
                                         strokeColor="#FE4FA7"
                                         strokeWidth={5.8}
