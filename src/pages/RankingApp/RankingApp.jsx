@@ -258,6 +258,7 @@ export default function Ranking() {
                                                         index
                                                     ].select = true;
                                                     setMenuList(newList);
+                                                    setShowMenu(false);
                                                 }}
                                             >
                                                 {item.name}
@@ -377,8 +378,8 @@ export default function Ranking() {
                                                     newList[
                                                         index
                                                     ].select = true;
-                                                    console.log(newList);
                                                     setMenuList(newList);
+                                                    setShowMenu(false);
                                                 }}
                                             >
                                                 {item.name}
@@ -505,8 +506,8 @@ export default function Ranking() {
                                                     newList[
                                                         index
                                                     ].select = true;
-                                                    console.log(newList);
                                                     setMenuList(newList);
+                                                    setShowMenu(false);
                                                 }}
                                             >
                                                 {item.name}
