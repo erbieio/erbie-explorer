@@ -1063,21 +1063,21 @@ export default function HomePageApp() {
                 <div className={HomePageApp_ls.HomePageAppbox_BLOCKbox}>
                     <div className={HomePageApp_ls.HomePageAppbox_BLOCKbox_d}>
                         <img
-                            src={require('../../assets/images/HomePageApp/ICON／CPU／Normal.png')}
+                            src={require('../../assets/images/HomePageApp/1.png')}
                         />
                         <p>Block Height</p>
                         <span>{(totaldata.totalBlock - 1)||0}</span>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_BLOCKbox_d}>
                         <img
-                            src={require('../../assets/images/HomePageApp/ICON／Network／Normal.png')}
+                            src={require('../../assets/images/HomePageApp/2.png')}
                         />
                         <p>Block Time</p>
                         <span>{totaldata.avgBlockTime||0} ms</span>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_BLOCKbox_d}>
                         <img
-                            src={require('../../assets/images/HomePageApp/ICON／Hard Disk／Normal.png')}
+                            src={require('../../assets/images/HomePageApp/3.png')}
                         />
                         <p>Total Rewards</p>
                         <span>
@@ -1086,7 +1086,7 @@ export default function HomePageApp() {
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_BLOCKbox_d}>
                         <img
-                            src={require('../../assets/images/HomePageApp/ICON／Free Memory／Normal.png')}
+                            src={require('../../assets/images/HomePageApp/4.png')}
                         />
                         <p>Number of Blackhole Block</p>
                         <span>{totaldata.totalBlackHole||0}</span>

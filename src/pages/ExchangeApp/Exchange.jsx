@@ -570,7 +570,7 @@ export default function Exchange() {
                 {/* 表格 */}
                 <div
                     className={Exchange_ls.ExchangeBox_table}
-                    id="ExchangeTable"
+                    id="ExchangeTableApp"
                 >
                     <p className={Exchange_ls.ExchangeBox_table_title}>
                         MARKETPLACE
