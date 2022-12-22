@@ -49,7 +49,7 @@ export default function ExchangeDetails(props) {
                         pathname: '/SNFTApp/SNFTDetailsApp',
                         state: { snftid: data.address, snftmata: data },
                     }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -74,12 +74,11 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
             ),
-            ellipsis: true,
         },
         {
             title: 'Author',
@@ -88,12 +87,11 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
             ),
-            ellipsis: true,
         },
     ];
     const exchangetradingcolumns = [
@@ -104,12 +102,11 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/TradeDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
             ),
-            ellipsis: true,
         },
         {
             title: 'TXN Type',
@@ -122,7 +119,6 @@ export default function ExchangeDetails(props) {
                         : 'SNFT Transaction'}
                 </span>
             ),
-            ellipsis: true,
         },
         {
             title: 'TXN Time',
@@ -135,7 +131,6 @@ export default function ExchangeDetails(props) {
                     )}
                 </span>
             ),
-            ellipsis: true,
         },
         {
             title: 'Sender',
@@ -144,12 +139,11 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
             ),
-            ellipsis: true,
         },
         {
             title: 'Receiver',
@@ -158,12 +152,11 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
             ),
-            ellipsis: true,
         },
         {
             title: 'Transaction Value',

@@ -156,14 +156,12 @@
 }
 .ExchangeDetailsBox_Pagination_d {
     width: 82px;
-    height: 32px;
     border: 1px solid #ffffff;
     background-color: #03041a;
     border-radius: 2px;
     margin-left: 16px;
     font-size: 12px;
     color: white;
-    line-height: 30px;
     text-align: center;
 }
 .ExchangeDetailsBox_Pagination_span1 {
@@ -174,7 +172,6 @@
 }
 .ExchangeDetailsBox_Pagination_input {
     width: 48px;
-    height: 32px;
     border: 1px solid #ffffff;
     background-color: #03041a;
     border-radius: 2px;
@@ -205,6 +202,17 @@
         }
     }
     #ExchangeDetailsBoxPagination {
+        .ant-pagination-item {
+            margin-right: 5px;
+            a {
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+        }
+        .ant-pagination-item-ellipsis {
+            color: white;
+            transform: scale(0.5);
+        }
         .ant-pagination-item-link {
             background-color: #03041a !important;
             color: white !important;

@@ -536,8 +536,14 @@ class Trade extends React.Component {
                                                               this.total()) *
                                                           100
                                                       ).toFixed(1) + '%',
-                                            offset: -0.5,
+                                            offset: -1,
                                         };
+                                    },
+                                    {
+                                        style: {
+                                            fill: '#ffffff',
+                                            fontSize: 10,
+                                        },
                                     },
                                 ]}
                             />

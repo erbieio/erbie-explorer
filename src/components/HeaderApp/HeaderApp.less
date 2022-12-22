@@ -139,3 +139,20 @@
     outline-color: transparent;
     box-shadow: none;
 }
+:global {
+    .ant-pagination-item {
+        margin-right: 5px;
+        a {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+    }
+    .ant-pagination-item-ellipsis {
+        color: white;
+        transform: scale(0.5);
+    }
+    .ant-pagination-prev, .ant-pagination-next, .ant-pagination-jump-prev, .ant-pagination-jump-next {
+        min-width: 30px !important;
+        margin-right: 5px !important;
+    }
+}
