@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import {Avatar, ConfigProvider, Radio, Select, Tooltip, Table, Tag, Button, message,} from 'antd';
+import {
+    Avatar,
+    ConfigProvider,
+    Radio,
+    Select,
+    Tooltip,
+    Table,
+    Tag,
+    Button,
+    message,
+} from 'antd';
 const { Option } = Select;
 const { Column, ColumnGroup } = Table;
 import zhCN from 'antd/es/locale/zh_CN';
@@ -7,7 +17,12 @@ import { AiOutlineCopy } from 'react-icons/ai';
 import AccountDetail_ls from './AccountDetail.less';
 import Search from '../../components/SearchBox/SearchBox';
 import other from './../../assets/images/AccountDetail/other.png';
-import {accountDetail, nftPage, transactionPage, snftPage,} from '../../api/request_data/AccountDetail_request';
+import {
+    accountDetail,
+    nftPage,
+    transactionPage,
+    snftPage,
+} from '../../api/request_data/AccountDetail_request';
 import Trade_ls from '../Trade/Trade.less';
 import copy from 'copy-to-clipboard';
 import { history } from '../../.umi/core/history';
@@ -71,7 +86,7 @@ class AccountDetail extends React.Component {
                             title={tags}
                             to={{
                                 pathname: `/TradeDetailApp/${tags}`,
-                                state: tags ,
+                                state: tags,
                             }}
                             replace={true}
                             className={Trade_ls.tableName}
@@ -79,8 +94,8 @@ class AccountDetail extends React.Component {
                         >
                             {!!tags
                                 ? tags.slice(0, 2) +
-                                '...' +
-                                tags.slice(tags.length - 4, tags.length)
+                                  '...' +
+                                  tags.slice(tags.length - 4, tags.length)
                                 : '— —'}
                         </Link>
                     ),
@@ -100,19 +115,17 @@ class AccountDetail extends React.Component {
                             {moment(parseInt(text) * 1000).format('YYYY-MM-DD')}
                         </span>
                     ),
-                    ellipsis: true,
                 },
                 {
                     title: 'Sender',
                     key: 'from',
                     dataIndex: 'from',
-                    render: (tags,data) => (
+                    render: (tags, data) => (
                         <Link
-
                             title={tags}
                             to={{
                                 pathname: `/AccountDetailApp/${tags}`,
-                                state: tags ,
+                                state: tags,
                             }}
                             replace={true}
                             className={Trade_ls.tableName}
@@ -120,12 +133,11 @@ class AccountDetail extends React.Component {
                         >
                             {!!tags
                                 ? tags.slice(0, 2) +
-                                '...' +
-                                tags.slice(tags.length - 4, tags.length)
+                                  '...' +
+                                  tags.slice(tags.length - 4, tags.length)
                                 : '— —'}
                         </Link>
                     ),
-                    ellipsis: true,
                 },
                 {
                     title: 'Receiver',
@@ -133,11 +145,10 @@ class AccountDetail extends React.Component {
                     dataIndex: 'to',
                     render: (tags) => (
                         <Link
-
                             title={tags}
                             to={{
                                 pathname: `/AccountDetailApp/${tags}`,
-                                state: tags ,
+                                state: tags,
                             }}
                             replace={true}
                             className={Trade_ls.tableName}
@@ -145,12 +156,11 @@ class AccountDetail extends React.Component {
                         >
                             {!!tags
                                 ? tags.slice(0, 2) +
-                                '...' +
-                                tags.slice(tags.length - 4, tags.length)
+                                  '...' +
+                                  tags.slice(tags.length - 4, tags.length)
                                 : '— —'}
                         </Link>
                     ),
-                    ellipsis: true,
                 },
                 {
                     title: 'Volume (ERB)',
@@ -165,7 +175,6 @@ class AccountDetail extends React.Component {
                             {(tags / 1000000000000000000).toLocaleString()}
                         </span>
                     ),
-                    ellipsis: true,
                 },
             ],
             nftcolumns: [
@@ -204,7 +213,6 @@ class AccountDetail extends React.Component {
                     dataIndex: 'last_price',
                     key: 'last_price',
                     render: (text) => <span>{text / 1000000000000000000}</span>,
-                    ellipsis: true,
                 },
                 {
                     title: 'Creation Time',
@@ -217,16 +225,18 @@ class AccountDetail extends React.Component {
                             )}
                         </span>
                     ),
-                    ellipsis: true,
                 },
                 {
                     title: 'Author',
                     key: 'creator',
                     dataIndex: 'creator',
-                    ellipsis: true,
+
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                            to={{
+                                pathname: `/AccountDetailApp/${text}`,
+                                state: text,
+                            }}
                             style={{ color: '#7AA4FF' }}
                             title={text}
                             replace={true}
@@ -239,10 +249,13 @@ class AccountDetail extends React.Component {
                     title: 'Owner',
                     key: 'owner',
                     dataIndex: 'owner',
-                    ellipsis: true,
+
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                            to={{
+                                pathname: `/AccountDetailApp/${text}`,
+                                state: text,
+                            }}
                             style={{ color: '#7AA4FF' }}
                             title={text}
                             replace={true}
@@ -255,7 +268,6 @@ class AccountDetail extends React.Component {
                     title: 'Collection',
                     key: 'collectionName',
                     dataIndex: 'collectionName',
-                    ellipsis: true,
                 },
             ],
             snftcolumns: [
@@ -299,16 +311,18 @@ class AccountDetail extends React.Component {
                             )}
                         </span>
                     ),
-                    ellipsis: true,
                 },
                 {
                     title: 'Author',
                     key: 'creator',
                     dataIndex: 'creator',
-                    ellipsis: true,
+
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                            to={{
+                                pathname: `/AccountDetailApp/${text}`,
+                                state: text,
+                            }}
                             style={{ color: '#7AA4FF' }}
                             title={text}
                             replace={true}
@@ -321,10 +335,13 @@ class AccountDetail extends React.Component {
                     title: 'Owner',
                     dataIndex: 'owner',
                     key: 'owner',
-                    ellipsis: true,
+
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                            to={{
+                                pathname: `/AccountDetailApp/${text}`,
+                                state: text,
+                            }}
                             style={{ color: '#7AA4FF' }}
                             title={text}
                             replace={true}
@@ -337,7 +354,7 @@ class AccountDetail extends React.Component {
         };
     }
     componentWillReceiveProps(nextProps) {
-        const id = nextProps.location.state
+        const id = nextProps.location.state;
         console.log(nextProps);
         if (id) {
             window.sessionStorage.setItem('hash', id);
@@ -348,9 +365,9 @@ class AccountDetail extends React.Component {
             detailFrom: this.state.stateHash,
         });
         this.setState({
-            type: "trade",
+            type: 'trade',
         });
-        this.commonFunc()
+        this.commonFunc();
         // history.replace({ pathname: nextProps.location.pathname, state: id })
     }
     //插入DOM前的回调函数
@@ -358,9 +375,14 @@ class AccountDetail extends React.Component {
         console.log(this.props.location);
         if (this.props.location.state) {
             window.sessionStorage.setItem('hash', this.props.location.state);
-        }else {
-            let pathhash = this.props.location.pathname.split("/")
-            pathhash ? window.sessionStorage.setItem('hash', pathhash[pathhash.length-1]): ""
+        } else {
+            let pathhash = this.props.location.pathname.split('/');
+            pathhash
+                ? window.sessionStorage.setItem(
+                      'hash',
+                      pathhash[pathhash.length - 1],
+                  )
+                : '';
         }
         this.state.stateHash = window.sessionStorage.getItem('hash');
         this.setState({
@@ -379,10 +401,13 @@ class AccountDetail extends React.Component {
                     loading: true,
                 });
                 const res = await accountDetail(this.state.stateHash);
-                let state = JSON.stringify(res)
+                let state = JSON.stringify(res);
                 console.log(state);
-                if (JSON.parse(state).useCache != undefined && JSON.parse(state).useCache == false) {
-                    this.comingsoon404()
+                if (
+                    JSON.parse(state).useCache != undefined &&
+                    JSON.parse(state).useCache == false
+                ) {
+                    this.comingsoon404();
                 }
                 if (res) {
                     this.setState({
@@ -454,19 +479,19 @@ class AccountDetail extends React.Component {
                 this.state.type == 'trade'
                     ? this.transPage()
                     : this.state.type == 'NFT'
-                        ? this.nftPage()
-                        : this.state.type == 'SNFT'
-                            ? this.snftPage()
-                            : '';
+                    ? this.nftPage()
+                    : this.state.type == 'SNFT'
+                    ? this.snftPage()
+                    : '';
             };
-        }
-        this.commonFunc()
+        };
+        this.commonFunc();
     }
     handleRouter = (e, query) => {
-        history.replace({ pathname: e+"/"+query, state: query });
+        history.replace({ pathname: e + '/' + query, state: query });
     };
     comingsoon404() {
-        history.push('/NoSearchResults')
+        history.push('/NoSearchResults');
     }
     componentDidUpdate() {}
     //组件销毁前的回调
@@ -490,7 +515,14 @@ class AccountDetail extends React.Component {
                     <div className={AccountDetail_ls.flexColBox}>
                         <div className={AccountDetail_ls.AccountDetailBoxTop}>
                             <div className={AccountDetail_ls.hash}>
-                                <span>{this.state.detailFrom.slice(0,16)+"..."+this.state.detailFrom.slice(-12,this.state.detailFrom.length)}</span>{' '}
+                                <span>
+                                    {this.state.detailFrom.slice(0, 16) +
+                                        '...' +
+                                        this.state.detailFrom.slice(
+                                            -12,
+                                            this.state.detailFrom.length,
+                                        )}
+                                </span>{' '}
                                 <AiOutlineCopy
                                     onClick={handleCopy.bind(
                                         this,
@@ -520,15 +552,22 @@ class AccountDetail extends React.Component {
                             >
                                 <div>
                                     <p>ERB Balance</p>{' '}
-                                    <span title={(this.state.accountData.balance / 1000000000000000000).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 9 })}>
+                                    <span
+                                        title={(
+                                            this.state.accountData.balance /
+                                            1000000000000000000
+                                        ).toLocaleString(undefined, {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 9,
+                                        })}
+                                    >
                                         {(
                                             this.state.accountData.balance /
                                             1000000000000000000
                                         ).toLocaleString(undefined, {
                                             minimumFractionDigits: 2,
-                                            maximumFractionDigits: 9
+                                            maximumFractionDigits: 9,
                                         })}
-
                                     </span>
                                     ERB
                                 </div>
@@ -538,9 +577,8 @@ class AccountDetail extends React.Component {
                                         {(
                                             this.state.accountData
                                                 .validatorAmount /
-                                            1000000000000000000
-                                            || 0
-                                        ).toLocaleString() }
+                                                1000000000000000000 || 0
+                                        ).toLocaleString()}
                                     </span>
                                 </div>
                                 <div>
@@ -549,8 +587,7 @@ class AccountDetail extends React.Component {
                                         {(
                                             this.state.accountData
                                                 .exchangerAmount /
-                                            1000000000000000000
-                                            || 0
+                                                1000000000000000000 || 0
                                         ).toLocaleString() || 0}
                                     </span>
                                 </div>
@@ -558,37 +595,29 @@ class AccountDetail extends React.Component {
                                     <p>S-NFT Staking</p>{' '}
                                     <span>
                                         {(
-                                            this.state.accountData
-                                                .snftAmount /
-                                            1000000000000000000
-                                            || 0
-                                        ).toLocaleString() }
+                                            this.state.accountData.snftAmount /
+                                                1000000000000000000 || 0
+                                        ).toLocaleString()}
                                     </span>
                                 </div>
                                 <div>
                                     <p>ERB Staking Income</p>{' '}
                                     <span>
-                                        {(this.state.accountData.rewardCoinCount * 0.11).toLocaleString()}
+                                        {(
+                                            this.state.accountData
+                                                .rewardCoinCount * 0.11
+                                        ).toLocaleString()}
                                         ERB
                                     </span>
                                 </div>
                                 <div>
                                     <p>TXN</p>{' '}
-                                    <span>
-                                        {
-                                            this.state.accountData
-                                                .nonce
-                                        }
-                                    </span>
+                                    <span>{this.state.accountData.nonce}</span>
                                 </div>
                                 <div>
                                     <p>S-NFT Staking Income</p>{' '}
                                     <span>
-                                        {(
-                                            (this.state.accountData
-                                                .rewardSNFTCount)
-                                        ).toLocaleString()}
-
+                                        {this.state.accountData.rewardSNFTCount.toLocaleString()}
                                     </span>
                                 </div>
                             </div>
@@ -598,13 +627,17 @@ class AccountDetail extends React.Component {
                                 <h3>Other Information</h3>
                                 <ul>
                                     <p>Owned NFTs</p>
-                                    <span title={this.state.accountData.totalNFT}>
+                                    <span
+                                        title={this.state.accountData.totalNFT}
+                                    >
                                         {this.state.accountData.totalNFT}
                                     </span>
                                 </ul>
                                 <ul>
                                     <p>Owned S-NFTs</p>
-                                    <span title={this.state.accountData.totalSNFT}>
+                                    <span
+                                        title={this.state.accountData.totalSNFT}
+                                    >
                                         {this.state.accountData.totalSNFT}
                                     </span>
                                 </ul>
@@ -656,7 +689,7 @@ class AccountDetail extends React.Component {
                                 position: ['bottomCenter'],
                                 current: this.state.pageOption.page,
                                 pageSize: this.state.pageOption.pageSize,
-                                showQuickJumper: true,
+                                showQuickJumper: false,
                                 defaultCurrent: 1,
                                 total: this.state.tableTotal,
                                 onChange: (current, size) =>
