@@ -379,19 +379,19 @@ class TradeDetail extends React.Component {
                                 ''
                             )}
                             {/* {this.state.transType.type === 6 ? ( */}
-                                {/* <div> */}
-                                    {/*<p>S-NFT Address</p>*/}
-                                    {/*<Link to={{ pathname: '/SNFT/SNFTDetails', state: { snftid: this.state.newDetailData.address,snftmata:this.state.detailData } }} style={{ color: '#7AA4FF' }}>*/}
-                                    {/*<span>{*/}
-                                    {/*    this.state.newDetailData.address ?*/}
-                                    {/*        this.state.newDetailData.address.slice(0, 12) +*/}
-                                    {/*    '...' +*/}
-                                    {/*        this.state.newDetailData.address.slice(*/}
-                                    {/*    -16, this.state.newDetailData.address.length,*/}
-                                    {/*    ):""*/}
-                                    {/*}</span>*/}
-                                    {/*</Link>*/}
-                                {/* </div> */}
+                            {/* <div> */}
+                            {/*<p>S-NFT Address</p>*/}
+                            {/*<Link to={{ pathname: '/SNFT/SNFTDetails', state: { snftid: this.state.newDetailData.address,snftmata:this.state.detailData } }} style={{ color: '#7AA4FF' }}>*/}
+                            {/*<span>{*/}
+                            {/*    this.state.newDetailData.address ?*/}
+                            {/*        this.state.newDetailData.address.slice(0, 12) +*/}
+                            {/*    '...' +*/}
+                            {/*        this.state.newDetailData.address.slice(*/}
+                            {/*    -16, this.state.newDetailData.address.length,*/}
+                            {/*    ):""*/}
+                            {/*}</span>*/}
+                            {/*</Link>*/}
+                            {/* </div> */}
                             {/* ) : (
                                 ''
                             )} */}
@@ -840,6 +840,167 @@ class TradeDetail extends React.Component {
                                         No Data
                                     </div>
                                 )}
+                                {/* <div
+                                    className={
+                                        TradeDetail_ls.TradeDetailBox1Logs
+                                    }
+                                >
+                                    <ul>
+                                        <Avatar
+                                            shape={'circle'}
+                                            size={32}
+                                            style={{
+                                                background:
+                                                    'rgba(89, 73, 19, 1)',
+                                                marginTop: '10px',
+                                                fontSize: '11px',
+                                            }}
+                                        >
+                                            {123}
+                                        </Avatar>
+                                    </ul>
+                                    <div
+                                        className={
+                                            TradeDetail_ls.TradeDetailBox1LogsContent
+                                        }
+                                    >
+                                        <div
+                                            className={
+                                                TradeDetail_ls.TradeDetailBox1LogsContentMsg
+                                            }
+                                        >
+                                            <ul>
+                                                <p>Address</p>
+                                                <span>
+                                                    {
+                                                        '0x74b4b2e3d856ba4e9719946374cb0f4308b'
+                                                    }
+                                                    &nbsp;&nbsp;
+                                                    <AiOutlineCopy />
+                                                </span>
+                                            </ul>
+                                            <ul>
+                                                <p>Topics</p>
+                                                <li>
+                                                    <div>
+                                                        <p>0</p>
+                                                        <span className={TradeDetail_ls.longwrap}>
+                                                            {
+                                                                '0x74b4b2e3d856ba4e9719946374cb0f4308b9fa6d5bbd58a3c3af249c744c5b8c'
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                    <div
+                                                        style={{
+                                                            marginTop: '10px;',
+                                                        }}
+                                                        className={
+                                                            TradeDetail_ls.topicsMap
+                                                        }
+                                                    >
+                                                        <div
+                                                            className={
+                                                                TradeDetail_ls.topicsflexBox
+                                                            }
+                                                        >
+                                                            <p>1</p>
+                                                            <Select
+                                                                defaultValue={`Hex`}
+                                                                suffixIcon={
+                                                                    <>
+                                                                        <GoTriangleDown
+                                                                            style={{
+                                                                                color: '#ffffff',
+                                                                                fontSize:
+                                                                                    '16px',
+                                                                            }}
+                                                                        />
+                                                                    </>
+                                                                }
+                                                                className={
+                                                                    TradeDetail_ls.TradeDetail_select
+                                                                }
+                                                            >
+                                                                <Option
+                                                                    value={`Hex`}
+                                                                >
+                                                                    Hex
+                                                                </Option>
+                                                                <Option
+                                                                    value={`Dec`}
+                                                                >
+                                                                    Dec
+                                                                </Option>
+                                                            </Select>
+                                                        </div>
+
+                                                        <span
+                                                             className={TradeDetail_ls.longwrap}
+                                                        >
+                                                            {"0x74b4b2e3d856ba4e9719946374cb0f4308b9fa6d5bbd58a3c3af249c744c5b8c"}
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <ul>
+                                                <p>Data</p>
+                                                <div
+                                                    className={
+                                                        TradeDetail_ls.TradeDetailButton1
+                                                    }
+                                                >
+                                                    <Radio.Group
+                                                        value={this.state.type}
+                                                        onChange={
+                                                            this
+                                                                .onChangeExchange
+                                                        }
+                                                        className={
+                                                            TradeDetail_ls.TradeDetailButtonGroup
+                                                        }
+                                                        style={{
+                                                            marginBottom: 0,
+                                                        }}
+                                                    >
+                                                        <Radio.Button
+                                                            defaultChecked={
+                                                                true
+                                                            }
+                                                            value="Dec"
+                                                        >
+                                                            Dec
+                                                        </Radio.Button>
+                                                        <Radio.Button value="Hex">
+                                                            Hex
+                                                        </Radio.Button>
+                                                    </Radio.Group>
+                                                    <p>
+                                                        {this.state.type ==
+                                                        'Hex' ? (
+                                                            <li>wad:</li>
+                                                        ) : (
+                                                            <li>wad1:</li>
+                                                        )}
+                                                        {this.state.type ==
+                                                        'Hex' ? (
+                                                            <span>
+                                                                {
+                                                                    '1233,1231232,123213,1231231,12323,123123,13213,1233,12321,123123'
+                                                                }
+                                                            </span>
+                                                        ) : (
+                                                            <span>
+                                                            {
+                                                                    '1233,1231232,123213,1231231,12323,123123,13213,1233,12321,123123'
+                                                                }
+                                                            </span>
+                                                        )}
+                                                    </p>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div> */}
                             </div>
                         </div>
                     ) : (
