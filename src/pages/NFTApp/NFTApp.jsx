@@ -150,6 +150,7 @@ export default function NFTApp() {
     const nftchart_q = async () => {
         const data = await nftchart();
         console.log('NFT折线图');
+        console.log(data);
         let text = [
             {
                 hour: 0,
@@ -262,6 +263,7 @@ export default function NFTApp() {
         } else {
             setNftchartdata(text);
         }
+        console.log(text);
     };
     //nft查询
     const nft_q = async (item) => {
