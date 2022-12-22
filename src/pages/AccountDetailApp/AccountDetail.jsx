@@ -90,7 +90,7 @@ class AccountDetail extends React.Component {
                             }}
                             replace={true}
                             className={Trade_ls.tableName}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
                             {!!tags
                                 ? tags.slice(0, 2) +
@@ -129,7 +129,7 @@ class AccountDetail extends React.Component {
                             }}
                             replace={true}
                             className={Trade_ls.tableName}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
                             {!!tags
                                 ? tags.slice(0, 2) +
@@ -152,7 +152,7 @@ class AccountDetail extends React.Component {
                             }}
                             replace={true}
                             className={Trade_ls.tableName}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
                             {!!tags
                                 ? tags.slice(0, 2) +
@@ -202,7 +202,7 @@ class AccountDetail extends React.Component {
                                 pathname: '/NFTApp/NFTDetailsApp',
                                 state: { nftid: data },
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
                             {text}
                         </Link>
@@ -237,7 +237,7 @@ class AccountDetail extends React.Component {
                                 pathname: `/AccountDetailApp/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                             title={text}
                             replace={true}
                         >
@@ -256,7 +256,7 @@ class AccountDetail extends React.Component {
                                 pathname: `/AccountDetailApp/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                             title={text}
                             replace={true}
                         >
@@ -294,7 +294,7 @@ class AccountDetail extends React.Component {
                                 pathname: '/SNFTApp/SNFTDetailsApp',
                                 state: { snftid: data.address },
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
                             {text}
                         </Link>
@@ -323,7 +323,7 @@ class AccountDetail extends React.Component {
                                 pathname: `/AccountDetailApp/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                             title={text}
                             replace={true}
                         >
@@ -342,7 +342,7 @@ class AccountDetail extends React.Component {
                                 pathname: `/AccountDetailApp/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' }}
+                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                             title={text}
                             replace={true}
                         >

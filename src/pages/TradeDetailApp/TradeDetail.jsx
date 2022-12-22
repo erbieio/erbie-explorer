@@ -330,14 +330,14 @@ class TradeDetail extends React.Component {
                                     <Link
                                         to={{
                                             pathname:
-                                                '/BlockChain/BlockDetails',
+                                                '/BlockChainApp/BlockDetailsApp',
                                             state: {
                                                 blockid:
                                                     this.state.detailData
                                                         .blockNumber,
                                             },
                                         }}
-                                        style={{ color: '#7AA4FF' }}
+                                        style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
                                     >
                                         {this.state.detailData.blockNumber}
                                     </Link>
