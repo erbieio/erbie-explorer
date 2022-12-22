@@ -49,7 +49,7 @@ export default function BlockChainApp() {
             render: (text, data) =>
                 data.number != 0 ? (
                     <Link
-                        to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                        to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
                         style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
                     >
                         {ellipsis(text)}

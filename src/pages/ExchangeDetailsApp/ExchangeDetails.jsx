@@ -514,7 +514,7 @@ export default function ExchangeDetails(props) {
                             className={
                                 ExchangeDetails_ls.ExchangeDetailsBox_table
                             }
-                            id="ExchangeDetailsTable"
+                            id="ExchangeDetailsTableApp"
                         >
                             <Table
                                 columns={providesnftcolumns}
@@ -574,7 +574,7 @@ export default function ExchangeDetails(props) {
                             className={
                                 ExchangeDetails_ls.ExchangeDetailsBox_table
                             }
-                            id="ExchangeDetailsTable"
+                            id="ExchangeDetailsTableApp"
                         >
                             <Table
                                 columns={exchangetradingcolumns}
