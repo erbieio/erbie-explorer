@@ -234,7 +234,10 @@ h2 {
             margin-bottom: 0;
             color: rgba(134, 144, 156, 1);
         }
-
+        span {
+            max-width: 310px;
+            word-wrap: break-word;
+        }
         li {
             margin-bottom: 0;
             div {
@@ -303,7 +306,7 @@ h2 {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 56px;
+    // height: 56px;
     border-radius: 4px;
     background: rgba(27, 26, 33, 1);
     align-items: flex-start;
@@ -316,10 +319,11 @@ h2 {
         }
         span {
             display: inline-block;
-            // width: 670px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
+            // overflow: hidden;
+            // text-overflow: ellipsis;
+            // white-space: nowrap;
+            max-width: 250px;
+            word-wrap: break-word;
         }
     }
 }
