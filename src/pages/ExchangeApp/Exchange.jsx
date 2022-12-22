@@ -319,7 +319,7 @@ export default function Exchange() {
         console.log('交易所查询');
         console.log(data);
         if (data) {
-            // setExchangerdata(data);
+            setExchangerdata(data);
         }
     };
     useEffect(() => {
