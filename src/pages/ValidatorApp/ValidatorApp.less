@@ -19,7 +19,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    img{
+    img {
         width: 32px;
         height: 32px;
     }
@@ -35,9 +35,9 @@
     color: #ffffff90;
     font-family: CustomFontThin;
 }
-.tableBox{
+.tableBox {
     width: 345px;
-    margin:15px auto 0;
+    margin: 15px auto 0;
     overflow: auto;
 }
 .ValidatorBox_table {
@@ -95,6 +95,20 @@
     color: white;
     line-height: 32px;
 }
+.tablexbox {
+    display: flex;
+    justify-content: flex-start;
+    // border: 1px solid red;
+}
+.tablex {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    margin-top: -2px;
+    margin-left: 5px;
+}
 :global {
     #ValidatorTableApp {
         .ant-table-wrapper {
@@ -102,9 +116,9 @@
             //   height: 820px !important;
             //   overflow: hidden;
         }
-        .ant-table-cell{
-            font-size: 11px;
-            font-family: CustomFontThin;
+        .ant-table-cell {
+            font-size: 11px !important;
+            font-family: CustomFontThin !important;
         }
     }
     #ValidatorBoxPagination {
