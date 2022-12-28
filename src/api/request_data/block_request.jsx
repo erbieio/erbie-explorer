@@ -136,8 +136,9 @@ export const nftchart = () => {
 };
 //validators查询
 export const validators = (data) => {
-    return request.get(`${host}/validators`, {
+    return request.get(`${host}/validator/page`, {
         params: {
+            order: data.order,
             page: data.page,
             page_size: data.page_size,
         },
@@ -145,11 +146,11 @@ export const validators = (data) => {
 };
 //地图数据
 export const locations = () => {
-    return request.get(`${host}/locations`);
+    return request.get(`${host}/validator/locations`);
 };
 //地图fromto数据
 export const lastmsg = () => {
-    return request.get(`${host}/last_msg`);
+    return request.get(`${host}/validator/last_msg`);
 };
 //account查询
 export const accounts = (data) => {
@@ -159,4 +160,8 @@ export const accounts = (data) => {
             page_size: data.page_size,
         },
     });
+};
+// 在线验证者查询
+export const onlineAddr = () => {
+    return request.get(`https://www.wormholes.com/upload/onlineAddr.json`);
 };

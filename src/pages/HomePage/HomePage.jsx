@@ -32,6 +32,7 @@ import {
     rewardperson,
     homepagechart,
     blockrewardperson,
+    onlineAddr,
 } from '../../api/request_data/block_request';
 import { utils } from 'ethers';
 const { Option } = Select;
@@ -57,6 +58,8 @@ export default function HomePage() {
     const [bigheightblock, setBigheightblock] = useState(0);
     //倍数
     const [multiple, setMultiple] = useState(0.11);
+    //在线验证者
+    const [validatoronline, setValidatoronline] = useState(0);
     //区块分页
     let pagedata = {
         page: 1,
@@ -68,6 +71,7 @@ export default function HomePage() {
         epoch_q();
         block_q(pagedata);
         homepagechart_q();
+        onlineAddr_q();
         // rewardperson_q()
     }, []);
     useEffect(() => {
@@ -89,6 +93,15 @@ export default function HomePage() {
             setBigheightblock(data.blocks[0].number);
         }
         console.log('区块查询');
+        console.log(data);
+    };
+    //验证者在线查询
+    const onlineAddr_q = async (item) => {
+        const data = await onlineAddr(item);
+        if (data) {
+            setValidatoronline(data.count);
+        }
+        console.log('验证者在线查询');
         console.log(data);
     };
     // useEffect(() => {
@@ -749,15 +762,21 @@ export default function HomePage() {
                     <div className={HomePage_ls.titlebox_databox}>
                         <div className={HomePage_ls.titlebox_databox_d}>
                             <p className={HomePage_ls.titlebox_databox_d_data}>
-                                {totaldata.totalValidatorPledge&&totaldata.totalExchangerPledge?(Number(
-                                    utils.formatEther(
-                                        totaldata.totalValidatorPledge
-                                    )
-                                )+Number(
-                                    utils.formatEther(
-                                        totaldata.totalExchangerPledge
-                                    )
-                                )).toFixed(2):0}
+                                {totaldata.totalValidatorPledge &&
+                                totaldata.totalExchangerPledge
+                                    ? (
+                                          Number(
+                                              utils.formatEther(
+                                                  totaldata.totalValidatorPledge,
+                                              ),
+                                          ) +
+                                          Number(
+                                              utils.formatEther(
+                                                  totaldata.totalExchangerPledge,
+                                              ),
+                                          )
+                                      ).toFixed(2)
+                                    : 0}
                             </p>
                             <p className={HomePage_ls.titlebox_databox_d_name}>
                                 Total staking
@@ -812,11 +831,16 @@ export default function HomePage() {
                                     id="homepageProgress"
                                 >
                                     <Progress
-                                        percent={totaldata.totalValidatorOnline&&totaldata.totalValidator?(
-                                            (totaldata.totalValidatorOnline /
-                                                totaldata.totalValidator) *
-                                                100
-                                        ).toFixed(2):0}
+                                        percent={
+                                            totaldata.validatoronline &&
+                                            totaldata.totalValidator
+                                                ? (
+                                                      (totaldata.validatoronline /
+                                                          totaldata.totalValidator) *
+                                                      100
+                                                  ).toFixed(2)
+                                                : 0
+                                        }
                                         status="active"
                                         strokeColor="#75FBFF"
                                         strokeWidth={5.8}
@@ -985,7 +1009,15 @@ export default function HomePage() {
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_data
                                                 }
                                             >
-                                                {totaldata.totalExchangerPledge?Number(utils.formatEther(String(totaldata.totalExchangerPledge))).toFixed(2) : 0}
+                                                {totaldata.totalExchangerPledge
+                                                    ? Number(
+                                                          utils.formatEther(
+                                                              String(
+                                                                  totaldata.totalExchangerPledge,
+                                                              ),
+                                                          ),
+                                                      ).toFixed(2)
+                                                    : 0}
                                             </p>
                                         </div>
                                     </div>

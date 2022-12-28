@@ -8,6 +8,7 @@ import {
     validators,
     rewardperson,
 } from '../../api/request_data/block_request';
+import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import { timestamp, ellipsis } from '../../utils/methods/Methods';
 import moment from 'moment';
 import { utils } from 'ethers';
@@ -16,9 +17,21 @@ export default function ValidatorApp() {
     const [pagenumber, setPagenumber] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(10);
     //Validator
-    const [validatordata, setValidatordata] = useState([]);
+    const [validatordata, setValidatordata] = useState({});
     //总数
     const [totaldata, setTotaldata] = useState({});
+    //Stake Value
+    const [stakevaluecolor, setStakevaluecolor] = useState(0);
+    //Total Collections
+    const [totalcollectionscolor, setTotalcollectionscolor] = useState(0);
+    //Total NFTs
+    const [totalnftscolor, setTotalnftscolor] = useState(0);
+    //Fee Rate
+    const [feeratecolor, setFeeratecolor] = useState(0);
+    //Transaction Value
+    const [transactionvaluecolor, setTransactionvaluecolor] = useState(0);
+    //分页排序order参数
+    const [orderdata, setOrderdata] = useState('');
     const columns = [
         {
             title: 'Validator',
@@ -26,8 +39,8 @@ export default function ValidatorApp() {
             key: 'address',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -35,7 +48,41 @@ export default function ValidatorApp() {
             ellipsis: true,
         },
         {
-            title: 'Staking Numbers(ERB)',
+            title: () => (
+                <div className={ValidatorApp_ls.tablexbox}>
+                    Staking Numbers(ERB)
+                    {stakevaluecolor == 0 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={StakeValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={StakeValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : stakevaluecolor == 1 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={StakeValue.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={StakeValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={StakeValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={StakeValue.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
+                </div>
+            ),
             dataIndex: 'amount',
             key: 'amount',
             render: (text, data) => (
@@ -46,9 +93,44 @@ export default function ValidatorApp() {
                 </span>
             ),
             ellipsis: true,
+            width: '160px',
         },
         {
-            title: 'Total Rewards(ERB)',
+            title: () => (
+                <div className={ValidatorApp_ls.tablexbox}>
+                    Total Rewards(ERB)
+                    {totalcollectionscolor == 0 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TotalCollections.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TotalCollections.bind(this, 2)}
+                            />
+                        </div>
+                    ) : totalcollectionscolor == 1 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TotalCollections.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={TotalCollections.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TotalCollections.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TotalCollections.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
+                </div>
+            ),
             dataIndex: 'reward',
             key: 'reward',
             render: (text, data) => (
@@ -58,9 +140,44 @@ export default function ValidatorApp() {
                         : 0}
                 </>
             ),
+            width: '170px',
         },
         {
-            title: 'Time',
+            title: () => (
+                <div className={ValidatorApp_ls.tablexbox}>
+                    Time
+                    {totalnftscolor == 0 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TotalNFTs.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TotalNFTs.bind(this, 2)}
+                            />
+                        </div>
+                    ) : totalnftscolor == 1 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TotalNFTs.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={TotalNFTs.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TotalNFTs.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TotalNFTs.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
+                </div>
+            ),
             key: 'timestamp',
             dataIndex: 'timestamp',
             render: (text, data) => (
@@ -73,24 +190,88 @@ export default function ValidatorApp() {
             ellipsis: true,
         },
         {
-            title: 'Last Attestation Block Height',
+            title: () => (
+                <div className={ValidatorApp_ls.tablexbox}>
+                    Last Attestation Block Height
+                    {feeratecolor == 0 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
+                            <CaretDownOutlined
+                                onClick={FeeRate.bind(this, 2)}
+                            />
+                        </div>
+                    ) : feeratecolor == 1 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={FeeRate.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={FeeRate.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
+                            <CaretDownOutlined
+                                onClick={FeeRate.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
+                </div>
+            ),
             key: 'last_number',
             dataIndex: 'last_number',
             render: (text, data) => (
                 <Link
                     to={{
-                        pathname: '/BlockChainApp/BlockDetailsApp',
+                        pathname: '/BlockChain/BlockDetails',
                         state: { blockid: text },
                     }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
             ),
-            width: '200px',
+            width: '250px',
         },
         {
-            title: 'Online Weight',
+            title: () => (
+                <div className={ValidatorApp_ls.tablexbox}>
+                    Online Weight
+                    {transactionvaluecolor == 0 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TransactionValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TransactionValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : transactionvaluecolor == 1 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TransactionValue.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={TransactionValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TransactionValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TransactionValue.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
+                </div>
+            ),
             key: 'weight',
             dataIndex: 'weight',
             render: (text, data) => <>{text}</>,
@@ -102,6 +283,7 @@ export default function ValidatorApp() {
     };
     //Validator分页
     let pagedata = {
+        order: orderdata,
         page: pagenumber,
         page_size: pagenumbersize,
     };
@@ -112,6 +294,11 @@ export default function ValidatorApp() {
     useEffect(() => {
         validators_q(pagedata);
     }, [pagenumber]);
+    useEffect(() => {
+        if (orderdata) {
+            validators_q(pagedata);
+        }
+    }, [orderdata]);
     //Validator查询
     const validators_q = async (item) => {
         const data = await validators(item);
@@ -135,6 +322,126 @@ export default function ValidatorApp() {
         if (e.keyCode == 13) {
             if (Number(data) != NaN) {
                 setPagenumber(Number(data));
+            }
+        }
+    }
+    //Stake Value 排序
+    function StakeValue(text) {
+        setTotalcollectionscolor(0);
+        setTotalnftscolor(0);
+        setFeeratecolor(0);
+        setTransactionvaluecolor(0);
+        if (text == 1) {
+            if (stakevaluecolor == 1) {
+                setStakevaluecolor(0);
+                setOrderdata('');
+            } else {
+                setStakevaluecolor(1);
+                setOrderdata('LENGTH(amount) ASC, amount ASC');
+            }
+        } else {
+            if (stakevaluecolor == 2) {
+                setStakevaluecolor(0);
+                setOrderdata('');
+            } else {
+                setStakevaluecolor(2);
+                setOrderdata('LENGTH(amount) DESC, amount DESC');
+            }
+        }
+    }
+    //Total Collections 排序
+    function TotalCollections(text) {
+        setStakevaluecolor(0);
+        setTotalnftscolor(0);
+        setFeeratecolor(0);
+        setTransactionvaluecolor(0);
+        if (text == 1) {
+            if (totalcollectionscolor == 1) {
+                setTotalcollectionscolor(0);
+                setOrderdata('');
+            } else {
+                setTotalcollectionscolor(1);
+                setOrderdata('LENGTH(reward) ASC, reward ASC');
+            }
+        } else {
+            if (totalcollectionscolor == 2) {
+                setTotalcollectionscolor(0);
+                setOrderdata('');
+            } else {
+                setTotalcollectionscolor(2);
+                setOrderdata('LENGTH(reward) DESC, reward DESC');
+            }
+        }
+    }
+    //Total NFTs 排序
+    function TotalNFTs(text) {
+        setStakevaluecolor(0);
+        setTotalcollectionscolor(0);
+        setFeeratecolor(0);
+        setTransactionvaluecolor(0);
+        if (text == 1) {
+            if (totalnftscolor == 1) {
+                setTotalnftscolor(0);
+                setOrderdata('');
+            } else {
+                setTotalnftscolor(1);
+                setOrderdata('timestamp ASC');
+            }
+        } else {
+            if (totalnftscolor == 2) {
+                setTotalnftscolor(0);
+                setOrderdata('');
+            } else {
+                setTotalnftscolor(2);
+                setOrderdata('timestamp DESC');
+            }
+        }
+    }
+    //Fee Rate 排序
+    function FeeRate(text) {
+        setStakevaluecolor(0);
+        setTotalcollectionscolor(0);
+        setTotalnftscolor(0);
+        setTransactionvaluecolor(0);
+        if (text == 1) {
+            if (feeratecolor == 1) {
+                setFeeratecolor(0);
+                setOrderdata('');
+            } else {
+                setFeeratecolor(1);
+                setOrderdata('last_number ASC');
+            }
+        } else {
+            if (feeratecolor == 2) {
+                setFeeratecolor(0);
+                setOrderdata('');
+            } else {
+                setFeeratecolor(2);
+                setOrderdata('last_number DESC');
+            }
+        }
+    }
+    //Transaction Value 排序
+    function TransactionValue(text) {
+        setStakevaluecolor(0);
+        setTotalcollectionscolor(0);
+        setTotalnftscolor(0);
+        setFeeratecolor(0);
+        if (text == 1) {
+            if (transactionvaluecolor == 1) {
+                setTransactionvaluecolor(0);
+                setOrderdata('');
+            } else {
+                setTransactionvaluecolor(1);
+                setOrderdata('weight ASC');
+            }
+        } else {
+            if (transactionvaluecolor == 2) {
+                setTransactionvaluecolor(0);
+                setOrderdata('');
+            } else {
+                setTransactionvaluecolor(2);
+                setOrderdata('weight DESC');
             }
         }
     }
@@ -213,7 +520,7 @@ export default function ValidatorApp() {
                         </p>
                         <Table
                             columns={columns}
-                            dataSource={validatordata}
+                            dataSource={validatordata.data}
                             pagination={false}
                         />
                         <div
@@ -222,7 +529,7 @@ export default function ValidatorApp() {
                         >
                             <Pagination
                                 defaultCurrent={1}
-                                total={totaldata.totalValidator}
+                                total={validatordata.total}
                                 onChange={onChange}
                                 showSizeChanger={false}
                                 current={pagenumber}

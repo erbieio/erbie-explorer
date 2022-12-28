@@ -15,7 +15,7 @@
     height: 69px;
     background-color: #141319;
     background-image: url('../../assets/images/HomePage/blockcolor.png');
-    background-size: contain;
+    background-size: 100% 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +42,7 @@
 }
 .SNFTBox_table_title {
     color: white;
-    font-size: 20px;
+    font-size: 14px;
     margin: 0 0 0 12px;
 }
 .SNFTBox_Pagination {
@@ -98,14 +98,14 @@
     color: white;
     font-family: CustomFontMedium;
 }
-.SNFTBox_magnification{
+.SNFTBox_magnification {
     font-size: 11px;
-    color: #85AEFF;
+    color: #85aeff;
     margin-top: 8px;
     font-family: CustomFontMedium;
     position: relative;
 }
-.SNFTBox_center_titlebox{
+.SNFTBox_center_titlebox {
     position: absolute;
     left: 0;
     top: 20px;
@@ -114,7 +114,12 @@
     padding: 1px;
     border-radius: 4px;
     overflow: hidden;
-    background-image: -webkit-linear-gradient(right top, #ffffff, #141319, #ffffff);
+    background-image: -webkit-linear-gradient(
+        right top,
+        #ffffff,
+        #141319,
+        #ffffff
+    );
     z-index: 500;
 }
 .SNFTBox_center_title {
@@ -178,10 +183,10 @@
     transition: all 0.2s;
     z-index: 1;
 }
-.SNFTBox_center_boximg{
+.SNFTBox_center_boximg {
     width: 333px;
     height: 100px;
-    margin:18px auto 0;
+    margin: 18px auto 0;
 }
 .SNFTBox_center_title_right_optionborder_box {
     width: 78px;
@@ -259,7 +264,7 @@
         color: #ffc654;
         font-size: 10px;
     }
-    img{
+    img {
         width: 12px;
         height: 8px;
     }
@@ -271,46 +276,46 @@
     margin-top: 50px;
 }
 .SNFTBox_center_boxtitle_d1 {
-    width: 109px;
-    height: 70px;
-    background-image: url('../../assets/images/SNFT/jx1.png');
+    width: 112px;
+    height: 60px;
+    background-image: url('../../assets/images/SNFTApp/111.png');
     background-size: 100% 100%;
     font-family: CustomFontBold;
     font-size: 10px;
-    color: #CCCCCC;
+    color: #cccccc;
     line-height: 14px;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 .SNFTBox_center_boxtitle_d2 {
-    width: 109px;
-    height: 70px;
-    background-image: url('../../assets/images/SNFT/jx2.png');
+    width: 112px;
+    height: 60px;
+    background-image: url('../../assets/images/SNFTApp/222.png');
     background-size: 100% 100%;
     font-family: CustomFontBold;
     font-size: 10px;
-    color: #CCCCCC;
+    color: #cccccc;
     line-height: 14px;
     text-align: center;
-    padding-top: 20px;
+    padding-top: 15px;
 }
 .SNFTBox_center_boxtitle_d3 {
-    width: 109px;
-    height: 70px;
-    background-image: url('../../assets/images/SNFT/jx3.png');
+    width: 112px;
+    height: 60px;
+    background-image: url('../../assets/images/SNFTApp/333.png');
     background-size: 100% 100%;
     font-size: 10px;
     font-family: CustomFontBold;
-    color: #CCCCCC;
+    color: #cccccc;
     line-height: 14px;
-    padding-top: 20px;
+    padding-top: 15px;
     text-align: center;
 }
 .spacebox {
     border: 1px solid red;
     margin: auto;
 }
-.tableApp{
+.tableApp {
     width: 345px;
     overflow: auto;
     margin-top: 14px;
@@ -365,11 +370,11 @@
             //   border: 1px solid red;
             overflow: hidden;
         }
-        .ant-table-cell{
-            font-size: 11px;
-            font-family: CustomFontThin;
+        .ant-table-cell {
+            font-size: 11px !important;
+            font-family: CustomFontThin !important;
         }
-        .ant-table-row{
+        .ant-table-row {
             height: 32px !important;
         }
     }
