@@ -31,6 +31,7 @@ import {
     rewardperson,
     homepagechart,
     blockrewardperson,
+    onlineAddr
 } from '../../api/request_data/block_request';
 import { BsSearch } from 'react-icons/bs';
 import React, { useState, useEffect } from 'react';
@@ -59,6 +60,8 @@ export default function HomePageApp() {
     const [bigheightblock, setBigheightblock] = useState(0);
     //倍数
     const [multiple, setMultiple] = useState(0.11);
+    //在线验证者
+    const [validatoronline, setValidatoronline] = useState(0);
     //区块分页
     let pagedata = {
         page: 1,
@@ -70,6 +73,7 @@ export default function HomePageApp() {
         epoch_q();
         block_q(pagedata);
         homepagechart_q();
+        onlineAddr_q();
         // rewardperson_q()
     }, []);
     useEffect(() => {
@@ -115,6 +119,15 @@ export default function HomePageApp() {
         if (data) {
             setTotaldata(data);
         }
+    };
+     //验证者在线查询
+     const onlineAddr_q = async (item) => {
+        const data = await onlineAddr(item);
+        if (data) {
+            setValidatoronline(data.count);
+        }
+        console.log('验证者在线查询');
+        console.log(data);
     };
     //系统NFT周期查询
     const epoch_q = async () => {
@@ -952,7 +965,7 @@ export default function HomePageApp() {
                                     Online Rate
                                 </p>
                                 <p className={HomePageApp_ls.mapboxz_d_data}>
-                                    {totaldata.totalValidatorOnline || 0}/
+                                    {validatoronline || 0}/
                                     {totaldata.totalValidator || 0}
                                 </p>
                                 <div
@@ -963,10 +976,10 @@ export default function HomePageApp() {
                                 >
                                     <Progress
                                         percent={
-                                            totaldata.totalValidatorOnline &&
+                                            validatoronline &&
                                             totaldata.totalValidator
                                                 ? (
-                                                      (totaldata.totalValidatorOnline /
+                                                      (validatoronline /
                                                           totaldata.totalValidator) *
                                                       100
                                                   ).toFixed(2)

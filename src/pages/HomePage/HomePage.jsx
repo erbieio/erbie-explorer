@@ -821,7 +821,7 @@ export default function HomePage() {
                                     Online Rate
                                 </p>
                                 <p className={HomePage_ls.mapboxz_d_data}>
-                                    {totaldata.totalValidatorOnline || 0}/
+                                    {validatoronline || 0}/
                                     {totaldata.totalValidator || 0}
                                 </p>
                                 <div
@@ -832,10 +832,10 @@ export default function HomePage() {
                                 >
                                     <Progress
                                         percent={
-                                            totaldata.validatoronline &&
+                                            validatoronline &&
                                             totaldata.totalValidator
                                                 ? (
-                                                      (totaldata.validatoronline /
+                                                      (validatoronline /
                                                           totaldata.totalValidator) *
                                                       100
                                                   ).toFixed(2)

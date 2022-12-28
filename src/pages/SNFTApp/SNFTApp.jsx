@@ -36,6 +36,10 @@ export default function SNFTApp() {
     // 全部下拉框显示隐藏
     const [optionborderdis, setOptionborderdis] = useState('none');
     const [magnificationdata, setMagnificationdata] = useState(0);
+    let L0 = 0.03
+    let L1 = 0.143 
+    let L2 = 0.271 
+    let L3 = 0.65
     const columns = [
         {
             title: 'Name',
@@ -335,7 +339,7 @@ export default function SNFTApp() {
                                         }
                                         style={{ marginLeft: '15px' }}
                                     >
-                                        <span>{((0.143/0.03)*100).toFixed(2)}%</span> from Level 0 to 1
+                                        <span>{(((0.143-0.03)/0.03)*100).toFixed(2)}%</span> from Level 0 to 1
                                     </p>
                                     <p
                                         className={
@@ -385,7 +389,7 @@ export default function SNFTApp() {
                             <span>
                                 S-NFT L0
                                 <br />
-                                0.03ERB
+                                {L0}ERB
                             </span>
                             <img
                                 src={require('../../assets/images/SNFT/jt.png')}
@@ -397,7 +401,7 @@ export default function SNFTApp() {
                             >
                                 Bonus
                                 <br />
-                                0.76ERB
+                                {((L1*16)-(L0*16)).toFixed(2)}ERB
                             </span>
                             <img
                                 src={require('../../assets/images/SNFT/jt.png')}
@@ -409,7 +413,7 @@ export default function SNFTApp() {
                             >
                                 Bonus
                                 <br />
-                                40.0ERB
+                                {((L2*16*16) - (L1*16*16)).toFixed(2)}ERB
                             </span>
                             <img
                                 src={require('../../assets/images/SNFT/jt.png')}
@@ -421,7 +425,7 @@ export default function SNFTApp() {
                             >
                                 Bonus
                                 <br />
-                                2272ERB
+                                {((L3*16*16*16) - (L2*16*16*16)).toFixed(2)}ERB
                             </span>
                         </p>
                     </div>

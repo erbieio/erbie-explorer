@@ -35,6 +35,10 @@ export default function SNFT() {
     const [snftdata, setSnftdata] = useState({});
     // 全部下拉框显示隐藏
     const [optionborderdis, setOptionborderdis] = useState('none');
+    let L0 = 0.03
+    let L1 = 0.143 
+    let L2 = 0.271 
+    let L3 = 0.65
     const columns = [
         {
             title: 'Name',
@@ -308,7 +312,7 @@ export default function SNFT() {
                                     SNFT_ls.SNFTBox_center_title_left_span
                                 }
                             >
-                                ERB Exchange Rate Increases <span>{((0.143/0.03)*100).toFixed(2)}%</span>{' '}
+                                ERB Exchange Rate Increases <span>{(((0.143-0.03)/0.03)*100).toFixed(2)}%</span>{' '}
                                 from Level 0 to 1
                             </span>
                             <span
@@ -350,14 +354,14 @@ export default function SNFT() {
                             src={require('../../assets/images/SNFT/synthesis.png')}
                         />
                         <p className={SNFT_ls.SNFTBox_center_box_text}>
-                            <span>S-NFT L0：0.03ERB</span>
+                            <span>S-NFT L0：{L0}ERB</span>
                             <img
                                 src={require('../../assets/images/SNFT/jt.png')}
                             />
                             <span
                                 className={SNFT_ls.SNFTBox_center_box_textspan}
                             >
-                                Bonus：0.76ERB
+                                Bonus：{((L1*16)-(L0*16)).toFixed(2)}ERB
                             </span>
                             <img
                                 src={require('../../assets/images/SNFT/jt.png')}
@@ -365,7 +369,7 @@ export default function SNFT() {
                             <span
                                 className={SNFT_ls.SNFTBox_center_box_textspan}
                             >
-                                Bonus：40.0ERB
+                                Bonus：{((L2*16*16) - (L1*16*16)).toFixed(2)}ERB
                             </span>
                             <img
                                 src={require('../../assets/images/SNFT/jt.png')}
@@ -373,7 +377,7 @@ export default function SNFT() {
                             <span
                                 className={SNFT_ls.SNFTBox_center_box_textspan}
                             >
-                                Bonus：2272ERB
+                                Bonus：{((L3*16*16*16) - (L2*16*16*16)).toFixed(2)}ERB
                             </span>
                         </p>
                     </div>

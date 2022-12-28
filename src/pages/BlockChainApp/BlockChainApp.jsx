@@ -206,7 +206,7 @@ export default function BlockChainApp() {
                 <div className={BlockChainApp_ls.tablebox}>
                     <div
                         className={BlockChainApp_ls.BlockChainBox_table}
-                        id="BlockChainTable"
+                        id="BlockChainTableApp"
                     >
                         <p
                             className={
