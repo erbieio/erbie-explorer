@@ -1109,16 +1109,16 @@ export default function HomePage() {
                                 }
                             >
                                 {epochdata.timestamp?(new Date(
-                                    epochdata.timestamp || 0 * 1000,
+                                    epochdata.timestamp * 1000,
                                 ).getFullYear() +
                                     '/' +
                                     (new Date(
-                                        epochdata.timestamp || 0 * 1000,
+                                        epochdata.timestamp * 1000,
                                     ).getMonth() +
                                         1) +
                                     '/' +
                                     new Date(
-                                        epochdata.timestamp || 0 * 1000,
+                                        epochdata.timestamp  * 1000,
                                     ).getDate()):'0/0/0'}
                             </p>
                         </div>

@@ -479,17 +479,12 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_data
                                 }
                             >
-                                {totaldata.totalNFTAmount
+                                {totaldata.totalExchangerPledge
                                     ? Number(
                                           utils.formatEther(
-                                              totaldata.totalNFTAmount,
+                                              totaldata.totalExchangerPledge,
                                           ),
-                                      ) +
-                                      Number(
-                                          utils.formatEther(
-                                              totaldata.totalSNFTAmount,
-                                          ),
-                                      )
+                                      ) 
                                     : 0}{' '}
                                 ERB
                             </p>
@@ -498,7 +493,7 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_name
                                 }
                             >
-                                Total Exchange Transaction Volume
+                               Total Exchange Pledge Amount
                             </p>
                         </div>
                         <img
