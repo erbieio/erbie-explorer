@@ -459,7 +459,7 @@ class TradeDetail extends React.Component {
                                         style={{ paddingRight: 5 }}
                                         onClick={this.handleRouter.bind(
                                             this,
-                                            '/AccountDetail',
+                                            '/AccountDetailApp',
                                             this.state.detailData.from,
                                         )}
                                     >
@@ -492,7 +492,7 @@ class TradeDetail extends React.Component {
                                         style={{ paddingRight: 5 }}
                                         onClick={this.handleRouter.bind(
                                             this,
-                                            '/AccountDetail',
+                                            '/AccountDetailApp',
                                             this.state.detailData.to,
                                         )}
                                     >

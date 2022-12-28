@@ -749,11 +749,15 @@ export default function HomePage() {
                     <div className={HomePage_ls.titlebox_databox}>
                         <div className={HomePage_ls.titlebox_databox_d}>
                             <p className={HomePage_ls.titlebox_databox_d_data}>
-                                {Number(
+                                {totaldata.totalValidatorPledge&&totaldata.totalExchangerPledge?(Number(
                                     utils.formatEther(
-                                        totaldata.totalValidatorPledge || '0',
-                                    ),
-                                ).toFixed(2)}
+                                        totaldata.totalValidatorPledge
+                                    )
+                                )+Number(
+                                    utils.formatEther(
+                                        totaldata.totalExchangerPledge
+                                    )
+                                )).toFixed(2):0}
                             </p>
                             <p className={HomePage_ls.titlebox_databox_d_name}>
                                 Total staking
@@ -981,7 +985,7 @@ export default function HomePage() {
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_data
                                                 }
                                             >
-                                                {totaldata.totalValidatorPledge?Number(utils.formatEther(String(totaldata.totalValidatorPledge))).toFixed(2) : 0}
+                                                {totaldata.totalExchangerPledge?Number(utils.formatEther(String(totaldata.totalExchangerPledge))).toFixed(2) : 0}
                                             </p>
                                         </div>
                                     </div>

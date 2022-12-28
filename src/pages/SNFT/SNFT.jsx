@@ -299,7 +299,7 @@ export default function SNFT() {
                 </div>
                 <div className={SNFT_ls.SNFTBox_center}>
                     <p className={SNFT_ls.SNFTBox_center_exchange}>
-                        Base Exchange Rate：1 S-NFT L0 = 0.095 ERB
+                        Base Exchange Rate：1 S-NFT L0 = 0.03 ERB
                     </p>
                     <div className={SNFT_ls.SNFTBox_center_title}>
                         <div className={SNFT_ls.SNFTBox_center_title_left}>
@@ -308,7 +308,7 @@ export default function SNFT() {
                                     SNFT_ls.SNFTBox_center_title_left_span
                                 }
                             >
-                                ERB Exchange Rate Increases <span>50%</span>{' '}
+                                ERB Exchange Rate Increases <span>{((0.143/0.03)*100).toFixed(2)}%</span>{' '}
                                 from Level 0 to 1
                             </span>
                             <span
@@ -350,7 +350,7 @@ export default function SNFT() {
                             src={require('../../assets/images/SNFT/synthesis.png')}
                         />
                         <p className={SNFT_ls.SNFTBox_center_box_text}>
-                            <span>S-NFT L0：0.095ERB</span>
+                            <span>S-NFT L0：0.03ERB</span>
                             <img
                                 src={require('../../assets/images/SNFT/jt.png')}
                             />

@@ -305,7 +305,7 @@ export default function SNFTApp() {
                 </div>
                 <div className={SNFTApp_ls.SNFTBox_center}>
                     <p className={SNFTApp_ls.SNFTBox_center_exchange}>
-                        Base Exchange Rate：1 S-NFT L0 = 0.095 ERB
+                        Base Exchange Rate：1 S-NFT L0 = 0.03 ERB
                     </p>
                     <div
                         className={SNFTApp_ls.SNFTBox_magnification}
@@ -335,7 +335,7 @@ export default function SNFTApp() {
                                         }
                                         style={{ marginLeft: '15px' }}
                                     >
-                                        <span>50%</span> from Level 0 to 1
+                                        <span>{((0.143/0.03)*100).toFixed(2)}%</span> from Level 0 to 1
                                     </p>
                                     <p
                                         className={
@@ -385,7 +385,7 @@ export default function SNFTApp() {
                             <span>
                                 S-NFT L0
                                 <br />
-                                0.095ERB
+                                0.03ERB
                             </span>
                             <img
                                 src={require('../../assets/images/SNFT/jt.png')}
