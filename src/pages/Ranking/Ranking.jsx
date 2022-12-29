@@ -58,6 +58,7 @@ export default function Ranking() {
         (async () => {
             const res = await rankingExchanger(params);
             // updata(res);
+            console.log(res);
             if (!didCancel && res && res.exchangers) {
                 let exchangers = [...res.exchangers];
                 // exchangers = exchangers.map((item) => {
@@ -97,6 +98,7 @@ export default function Ranking() {
         let didCancel = false;
         (async () => {
             const res = await rankingSnft(SNFTparams);
+            console.log(res);
             if (!didCancel && res && res.nfts) {
                 SNFTMoney.push(...res.nfts);
                 let rankExchange = Array.from(new Set(SNFTMoney));
@@ -132,6 +134,7 @@ export default function Ranking() {
         let didCancel = false;
         (async () => {
             const res = await rankingNft(NFTparams);
+            console.log(res);
             if (!didCancel && res && res.nfts) {
                 NFTMoney.push(...res.nfts);
                 let rankExchange = Array.from(new Set(NFTMoney));

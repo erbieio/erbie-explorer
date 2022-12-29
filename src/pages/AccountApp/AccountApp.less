@@ -97,6 +97,20 @@
     color: white;
     line-height: 32px;
 }
+.tablexbox {
+    display: flex;
+    justify-content: flex-start;
+    // border: 1px solid red;
+}
+.tablex {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    margin-top: -2px;
+    margin-left: 5px;
+}
 :global {
     #AccountTableApp {
         .ant-table-wrapper {
@@ -106,7 +120,8 @@
         }
         .ant-table-cell {
             font-size: 11px !important;
-            font-family: CustomFontThin !important;
+            font-family: CustomFontRegular!important;
+            color: #ffffff !important;
         }
     }
     #AccountBoxPagination {

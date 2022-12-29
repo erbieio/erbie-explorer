@@ -156,6 +156,7 @@ export const lastmsg = () => {
 export const accounts = (data) => {
     return request.get(`${host}/account/page`, {
         params: {
+            order: data.order,
             page: data.page,
             page_size: data.page_size,
         },

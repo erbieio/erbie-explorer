@@ -82,14 +82,17 @@ function hexCharCodeToStr(hexCharCodeStr) {
     }
     return StrTran.substring(0, StrTran.indexOf(':')) + ' transaction';
 }
-function SNFTinputnumberonclick(e) {
-    let data = document.getElementById('SNFTinputnumber').value;
-    if (e.keyCode == 13) {
-        if (Number(data) != NaN) {
-            setPagenumber(Number(data));
-        }
-    }
-}
+// function SNFTinputnumberonclick(e) {
+//     let data = document.getElementById('SNFTinputnumber').value;
+//     if (e.keyCode == 13) {
+//         if (Number(data) != NaN) {
+//             // this.state.pagenumber = Number(data);
+//             console.log(Number(data));
+//             // this.state.pageOption.page = Number(data);
+//             //     this.paginationChange(this.state.pageOption.page, 16)
+//         }
+//     }
+// }
 class Trade extends React.Component {
     //Clock构造函数
     constructor(props) {
@@ -98,6 +101,7 @@ class Trade extends React.Component {
             date: new Date(),
             chartData: [],
             lineData: [],
+            pagenumber :1,
             colors: [
                 '#FCCF38',
                 '#B968FF',
@@ -111,6 +115,17 @@ class Trade extends React.Component {
                 this.state.pageOption.page = data;
                 this.paginationChange(this.state.pageOption.page, 16),
                     console.log(this.state.pageOption.page);
+            },
+            SNFTinputnumberonclick:(e) => {
+                let data = document.getElementById('SNFTinputnumber').value;
+                if (e.keyCode == 13) {
+                    if (Number(data) != NaN) {
+                        // this.state.pagenumber = Number(data);
+                        console.log(Number(data));
+                        this.state.pageOption.page = Number(data);
+                            this.paginationChange(this.state.pageOption.page, 16)
+                    }
+                }
             },
             columns: [
                 {
@@ -553,7 +568,7 @@ class Trade extends React.Component {
                         </Chart>
                     </div>
                 </div>
-                <div className={Trade_ls.TradeBox1}>
+                <div className={Trade_ls.TradeBox1} id = 'TradeTable'>
                     <p className={Trade_ls.TradeTitle}>TRANSACT</p>
                     <Table
                         columns={this.state.columns}
@@ -581,7 +596,7 @@ class Trade extends React.Component {
                         <input
                             id="SNFTinputnumber"
                             className={Trade_ls.SNFTBox_Pagination_input}
-                            onKeyDown={SNFTinputnumberonclick}
+                            onKeyDown={this.state.SNFTinputnumberonclick}
                         />
                         <span className={Trade_ls.SNFTBox_Pagination_span2}>
                             Page

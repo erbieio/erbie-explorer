@@ -92,8 +92,7 @@ export default function ValidatorApp() {
                         : 0}
                 </span>
             ),
-            ellipsis: true,
-            width: '160px',
+            width: '200px',
         },
         {
             title: () => (
@@ -140,7 +139,7 @@ export default function ValidatorApp() {
                         : 0}
                 </>
             ),
-            width: '170px',
+            width: '180px',
         },
         {
             title: () => (
@@ -275,6 +274,7 @@ export default function ValidatorApp() {
             key: 'weight',
             dataIndex: 'weight',
             render: (text, data) => <>{text}</>,
+            width: '150px',
         },
     ];
 

@@ -232,7 +232,7 @@ export default function Validator() {
                     {text}
                 </Link>
             ),
-            width: '250px',
+            width: '270px',
         },
         {
             title: () => (

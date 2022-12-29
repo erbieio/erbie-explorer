@@ -26,6 +26,7 @@ import {
 import Trade_ls from '../Trade/Trade.less';
 import copy from 'copy-to-clipboard';
 import { history } from '../../.umi/core/history';
+import { timestamp, ellipsis } from '../../utils/methods/Methods';
 import { Link } from 'umi';
 import moment from 'moment';
 const handleCopy = (value) => {
@@ -92,11 +93,7 @@ class AccountDetail extends React.Component {
                             className={Trade_ls.tableName}
                             style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
-                            {!!tags
-                                ? tags.slice(0, 2) +
-                                  '...' +
-                                  tags.slice(tags.length - 4, tags.length)
-                                : '— —'}
+                            {tags?ellipsis(tags):'-'}
                         </Link>
                     ),
                 },
@@ -131,11 +128,7 @@ class AccountDetail extends React.Component {
                             className={Trade_ls.tableName}
                             style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
-                            {!!tags
-                                ? tags.slice(0, 2) +
-                                  '...' +
-                                  tags.slice(tags.length - 4, tags.length)
-                                : '— —'}
+                            {tags?ellipsis(tags):'-'}
                         </Link>
                     ),
                 },
@@ -154,11 +147,7 @@ class AccountDetail extends React.Component {
                             className={Trade_ls.tableName}
                             style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
                         >
-                            {!!tags
-                                ? tags.slice(0, 2) +
-                                  '...' +
-                                  tags.slice(tags.length - 4, tags.length)
-                                : '— —'}
+                            {tags?ellipsis(tags):'-'}
                         </Link>
                     ),
                 },
@@ -241,7 +230,7 @@ class AccountDetail extends React.Component {
                             title={text}
                             replace={true}
                         >
-                            {text}
+                            {text?ellipsis(text):'-'}
                         </Link>
                     ),
                 },
@@ -260,7 +249,7 @@ class AccountDetail extends React.Component {
                             title={text}
                             replace={true}
                         >
-                            {text}
+                            {text?ellipsis(text):'-'}
                         </Link>
                     ),
                 },
@@ -327,7 +316,7 @@ class AccountDetail extends React.Component {
                             title={text}
                             replace={true}
                         >
-                            {text}
+                            {text?ellipsis(text):'-'}
                         </Link>
                     ),
                 },
@@ -346,7 +335,7 @@ class AccountDetail extends React.Component {
                             title={text}
                             replace={true}
                         >
-                            {text}
+                            {text?ellipsis(text):'-'}
                         </Link>
                     ),
                 },
@@ -668,7 +657,7 @@ class AccountDetail extends React.Component {
                         <Radio.Button value="NFT">NFT</Radio.Button>
                     </Radio.Group>
                 </div>
-                <div className={AccountDetail_ls.AccountDetailBox1}>
+                <div className={AccountDetail_ls.AccountDetailBox1} id='AccountDetailTableApp'>
                     <ConfigProvider
                     // locale={zhCN}
                     >

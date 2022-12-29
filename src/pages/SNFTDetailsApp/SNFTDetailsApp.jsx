@@ -284,13 +284,13 @@ export default function SNFTDetailsApp(props) {
                                 >
                                     Owner
                                 </p>
-                                <p
+                                {/* <p
                                     className={
                                         SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     Author
-                                </p>
+                                </p> */}
                                 <p
                                     className={
                                         SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
@@ -420,7 +420,7 @@ export default function SNFTDetailsApp(props) {
                                         ? ellipsis(snftdata.owner)
                                         : '-'}
                                 </Link>
-                                {snftdata.exchanger ==
+                                {/* {snftdata.exchanger ==
                                 '0x0000000000000000000000000000000000000000' ? (
                                     <p
                                         className={
@@ -444,7 +444,7 @@ export default function SNFTDetailsApp(props) {
                                             ? ellipsis(snftdata.creator)
                                             : '-'}
                                     </Link>
-                                )}
+                                )} */}
                                 <p
                                     className={
                                         SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
@@ -488,22 +488,6 @@ export default function SNFTDetailsApp(props) {
                                         {snftdata.exchanger?ellipsis(snftdata.exchanger):'-'}
                                     </Link>
                                 )}
-                                <Link
-                                    to={{
-                                        pathname:
-                                            '/ExchangeApp/ExchangeDetailsApp',
-                                        state: {
-                                            exchangeid: snftdata.exchanger,
-                                        },
-                                    }}
-                                    className={
-                                        SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                    style={{ color: '#7AA4FF' }}
-                                    id="soloimg"
-                                >
-                                    {}
-                                </Link>
                                 <p
                                     className={
                                         SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name

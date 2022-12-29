@@ -298,13 +298,13 @@ export default function SNFTDetails(props) {
                                 >
                                     Owner
                                 </p>
-                                <p
+                                {/* <p
                                     className={
                                         SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     Author
-                                </p>
+                                </p> */}
                                 <p
                                     className={
                                         SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
@@ -423,31 +423,7 @@ export default function SNFTDetails(props) {
                                 >
                                     {snftdata.owner ? snftdata.owner : '-'}
                                 </Link>
-                                {snftdata.exchanger ==
-                                '0x0000000000000000000000000000000000000000' ? (
-                                    <p
-                                        className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                        }
-                                    >
-                                        Official Account
-                                    </p>
-                                ) : (
-                                    <Link
-                                        to={{
-                                            pathname: `/AccountDetail/${snftdata.creator}`,
-                                            state: snftdata.creator,
-                                        }}
-                                        className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                        }
-                                        style={{ color: '#7AA4FF' }}
-                                    >
-                                        {snftdata.creator
-                                            ? snftdata.creator
-                                            : '-'}
-                                    </Link>
-                                )}
+                                
                                 <p
                                     className={
                                         SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
@@ -491,21 +467,6 @@ export default function SNFTDetails(props) {
                                         {snftdata.exchanger}
                                     </Link>
                                 )}
-                                <Link
-                                    to={{
-                                        pathname: '/Exchange/ExchangeDetails',
-                                        state: {
-                                            exchangeid: snftdata.exchanger,
-                                        },
-                                    }}
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                    style={{ color: '#7AA4FF' }}
-                                    id="soloimg"
-                                >
-                                    {}
-                                </Link>
                                 <p
                                     className={
                                         SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name

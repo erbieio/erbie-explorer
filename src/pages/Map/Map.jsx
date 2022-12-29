@@ -7,7 +7,11 @@ import {
     Line,
 } from 'react-simple-maps';
 import { Tooltip } from 'antd';
-import { locations, lastmsg } from '../../api/request_data/block_request';
+import {
+    locations,
+    lastmsg,
+    onlineAddr,
+} from '../../api/request_data/block_request';
 export default function MapChart() {
     const geoUrl = require('./features.json');
     //地图数据
@@ -21,6 +25,12 @@ export default function MapChart() {
     //线
     const [linecolor, setLinecolor] = useState(0);
     const [linedata, setLinedata] = useState([]);
+    //在线验证者
+    const [validatoronline, setValidatoronline] = useState([]);
+    //在线验证者下标
+    const [subscript, setSubscript] = useState([]);
+    //不在线验证者下标
+    const [nosubscript, setNosubscript] = useState([]);
     //地图数据查询
     const locations_q = async () => {
         const data = await locations();
@@ -29,38 +39,19 @@ export default function MapChart() {
         if (data) {
             setMapdatadetailed(data);
         }
+    };
+    const onlineAddr_q = async (item) => {
+        const data = await onlineAddr(item);
         if (data) {
-            let text = [];
-            for (let i = 0; i < data.length; i++) {
-                let arry1 = [];
-                let judge = true;
-                if (i != 0) {
-                    for (let j = 0; j < text.length; j++) {
-                        if (
-                            text[j][0] == data[i].longitude &&
-                            text[j][1] == data[i].latitude
-                        ) {
-                            judge = false;
-                        }
-                    }
-                    if (judge == true) {
-                        arry1.push(data[i].longitude);
-                        arry1.push(data[i].latitude);
-                        text.push(arry1);
-                    }
-                } else {
-                    arry1.push(data[i].longitude);
-                    arry1.push(data[i].latitude);
-                    text.push(arry1);
-                }
-            }
-            console.log(text);
-            setMapdata(text);
+            setValidatoronline(data.addrs);
         }
+        console.log('验证者在线查询');
+        console.log(data);
     };
     //地图fromto数据查询
     const lastmsg_q = async () => {
         const data = await lastmsg();
+        console.log('地图fromto数据查询');
         console.log(data);
 
         // let text = []
@@ -116,7 +107,85 @@ export default function MapChart() {
     };
     useEffect(() => {
         locations_q();
+        onlineAddr_q();
     }, []);
+    useEffect(() => {
+        if (validatoronline.length != 0 && mapdatadetailed.length != 0) {
+            console.log(validatoronline);
+            console.log(mapdatadetailed);
+            let text1 = [];
+            for (let i = 0; i < validatoronline.length; i++) {
+                for (let k = 0; k < mapdatadetailed.length; k++) {
+                    if (validatoronline[i] == mapdatadetailed[k].proxy) {
+                        text1.push(mapdatadetailed[k]);
+                    }
+                }
+            }
+            console.log(text1);
+            let text = [];
+            let mapdzx = [];
+            let mapdbzx = [];
+            for (let i = 0; i < mapdatadetailed.length; i++) {
+                let arry1 = [];
+                let judge = true;
+                if (i != 0) {
+                    for (let j = 0; j < text.length; j++) {
+                        if (
+                            text[j][0] == mapdatadetailed[i].longitude &&
+                            text[j][1] == mapdatadetailed[i].latitude
+                        ) {
+                            judge = false;
+                        }
+                    }
+                    if (judge == true) {
+                        arry1.push(mapdatadetailed[i].longitude);
+                        arry1.push(mapdatadetailed[i].latitude);
+                        text.push(arry1);
+                        for (let k = 0; k < text1.length; k++) {
+                            if (
+                                text1[k].address == mapdatadetailed[i].address
+                            ) {
+                                mapdzx.push(text.length - 1);
+                            }
+                        }
+                    }
+                } else {
+                    arry1.push(mapdatadetailed[i].longitude);
+                    arry1.push(mapdatadetailed[i].latitude);
+                    text.push(arry1);
+                    for (let k = 0; k < text1.length; k++) {
+                        if (text1[k].address == mapdatadetailed[i].address) {
+                            mapdzx.push(text.length - 1);
+                        }
+                    }
+                }
+            }
+            for (let i = 0; i < text.length; i++) {
+                mapdbzx.push(i);
+            }
+            let mathjs = 0;
+            let mapdbzxBS = [];
+            for (let i = 0; i < mapdbzx.length; i++) {
+                for (let k = 0; k < mapdzx.length; k++) {
+                    if (mapdbzx[i] != mapdzx[k]) {
+                        mathjs++;
+                    }
+                }
+                if (mathjs == mapdzx.length) {
+                    mapdbzxBS.push(mapdbzx[i]);
+                }
+                mathjs = 0;
+            }
+
+            console.log(mapdzx);
+            console.log(mapdbzx);
+            console.log(mapdbzxBS);
+            console.log(text);
+            setMapdata(text);
+            setSubscript(mapdzx);
+            setNosubscript(mapdbzxBS);
+        }
+    }, [validatoronline, mapdatadetailed]);
     useEffect(() => {
         if (window.location.hash == '#/') {
             if (linedata.length != 0) {
@@ -260,53 +329,130 @@ export default function MapChart() {
     function markerz(data) {
         if (data) {
             return data.map((item, index) => {
-                return (
-                    <Marker coordinates={item}>
-                        <>
-                            <g
-                                fill="none"
-                                stroke="#3BCFFF"
-                                strokeWidth="0.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                transform="translate(0, 0)"
-                            >
-                                <circle r={colordata} fill="#3BCFFF00" />
-                            </g>
-                            <g
-                                fill="none"
-                                stroke="#3BCFFF"
-                                strokeWidth="0.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                transform="translate(0, 0)"
-                            >
-                                <circle r={colordata2} fill="#3BCFFF00" />
-                            </g>
-                            <g
-                                fill="none"
-                                stroke="#3BCFFF"
-                                strokeWidth="0.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                transform="translate(0, 0)"
-                            >
-                                <circle r={colordata3} fill="#3BCFFF00" />
-                            </g>
-                            <g
-                                fill="none"
-                                stroke="#3BCFFF"
-                                strokeWidth="0.5"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                transform="translate(0, 0)"
-                            >
-                                <circle r={colordata4} fill="#3BCFFF00" />
-                            </g>
-                        </>
-                        <circle r={4} fill="#3BCFFF" />
-                    </Marker>
-                );
+                for (let i = 0; i < subscript.length; i++) {
+                    if (subscript[i] == index) {
+                        return (
+                            <Marker coordinates={item}>
+                                <>
+                                    <g
+                                        fill="none"
+                                        stroke="#3BCFFF"
+                                        strokeWidth="0.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        transform="translate(0, 0)"
+                                    >
+                                        <circle
+                                            r={colordata}
+                                            fill="#3BCFFF00"
+                                        />
+                                    </g>
+                                    <g
+                                        fill="none"
+                                        stroke="#3BCFFF"
+                                        strokeWidth="0.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        transform="translate(0, 0)"
+                                    >
+                                        <circle
+                                            r={colordata2}
+                                            fill="#3BCFFF00"
+                                        />
+                                    </g>
+                                    <g
+                                        fill="none"
+                                        stroke="#3BCFFF"
+                                        strokeWidth="0.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        transform="translate(0, 0)"
+                                    >
+                                        <circle
+                                            r={colordata3}
+                                            fill="#3BCFFF00"
+                                        />
+                                    </g>
+                                    <g
+                                        fill="none"
+                                        stroke="#3BCFFF"
+                                        strokeWidth="0.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        transform="translate(0, 0)"
+                                    >
+                                        <circle
+                                            r={colordata4}
+                                            fill="#3BCFFF00"
+                                        />
+                                    </g>
+                                </>
+                                <circle r={4} fill="#3BCFFF" />
+                            </Marker>
+                        );
+                    }
+                    if (nosubscript[i] == index) {
+                        return (
+                            <Marker coordinates={item}>
+                                <>
+                                    <g
+                                        fill="none"
+                                        stroke="#FF980F"
+                                        strokeWidth="0.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        transform="translate(0, 0)"
+                                    >
+                                        <circle
+                                            r={colordata}
+                                            fill="#FF980F00"
+                                        />
+                                    </g>
+                                    <g
+                                        fill="none"
+                                        stroke="#FF980F"
+                                        strokeWidth="0.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        transform="translate(0, 0)"
+                                    >
+                                        <circle
+                                            r={colordata2}
+                                            fill="#FF980F00"
+                                        />
+                                    </g>
+                                    <g
+                                        fill="none"
+                                        stroke="#FF980F"
+                                        strokeWidth="0.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        transform="translate(0, 0)"
+                                    >
+                                        <circle
+                                            r={colordata3}
+                                            fill="#FF980F00"
+                                        />
+                                    </g>
+                                    <g
+                                        fill="none"
+                                        stroke="#FF980F"
+                                        strokeWidth="0.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        transform="translate(0, 0)"
+                                    >
+                                        <circle
+                                            r={colordata4}
+                                            fill="#FF980F00"
+                                        />
+                                    </g>
+                                </>
+                                <circle r={4} fill="#FF980F" />
+                            </Marker>
+                        );
+                    }
+                }
             });
         }
     }
