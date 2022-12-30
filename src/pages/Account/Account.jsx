@@ -31,7 +31,7 @@ export default function Account() {
     //Transaction Value
     const [transactionvaluecolor, setTransactionvaluecolor] = useState(0);
     //分页排序order参数
-    const [orderdata, setOrderdata] = useState('');
+    const [orderdata, setOrderdata] = useState('LENGTH(balance) DESC, balance DESC');
     const columns = [
         {
             title: 'Address',

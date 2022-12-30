@@ -1,5 +1,15 @@
 import React, { Component } from 'react';
-import {Avatar, ConfigProvider, Radio, Select, Tooltip, Table, Tag, Button, message,} from 'antd';
+import {
+    Avatar,
+    ConfigProvider,
+    Radio,
+    Select,
+    Tooltip,
+    Table,
+    Tag,
+    Button,
+    message,
+} from 'antd';
 const { Option } = Select;
 const { Column, ColumnGroup } = Table;
 import zhCN from 'antd/es/locale/zh_CN';
@@ -7,7 +17,13 @@ import { AiOutlineCopy } from 'react-icons/ai';
 import AccountDetail_ls from '../AccountDetail/AccountDetail.less';
 import Search from '../../components/SearchBox/SearchBox';
 import other from './../../assets/images/AccountDetail/other.png';
-import {accountDetail, nftPage, transactionPage, snftPage,totals} from '../../api/request_data/AccountDetail_request';
+import {
+    accountDetail,
+    nftPage,
+    transactionPage,
+    snftPage,
+    totals,
+} from '../../api/request_data/AccountDetail_request';
 import Trade_ls from '../Trade/Trade.less';
 import copy from 'copy-to-clipboard';
 import { history } from '../../.umi/core/history';
@@ -72,13 +88,16 @@ class AccountDetail extends React.Component {
                             title={tags}
                             to={{
                                 pathname: `/TradeDetail/${tags}`,
-                                state: tags ,
+                                state: tags,
                             }}
                             replace={true}
                             className={Trade_ls.tableName}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                         >
-                            {tags?ellipsis(tags):'-'}
+                            {tags ? ellipsis(tags) : '-'}
                         </Link>
                     ),
                 },
@@ -103,19 +122,21 @@ class AccountDetail extends React.Component {
                     title: 'Sender',
                     key: 'from',
                     dataIndex: 'from',
-                    render: (tags,data) => (
+                    render: (tags, data) => (
                         <Link
-
                             title={tags}
                             to={{
                                 pathname: `/AccountDetail/${tags}`,
-                                state: tags ,
+                                state: tags,
                             }}
                             replace={true}
                             className={Trade_ls.tableName}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                         >
-                            {tags?ellipsis(tags):'-'}
+                            {tags ? ellipsis(tags) : '-'}
                         </Link>
                     ),
                     ellipsis: true,
@@ -126,17 +147,19 @@ class AccountDetail extends React.Component {
                     dataIndex: 'to',
                     render: (tags) => (
                         <Link
-
                             title={tags}
                             to={{
                                 pathname: `/AccountDetail/${tags}`,
-                                state: tags ,
+                                state: tags,
                             }}
                             replace={true}
                             className={Trade_ls.tableName}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                         >
-                            {tags?ellipsis(tags):'-'}
+                            {tags ? ellipsis(tags) : '-'}
                         </Link>
                     ),
                     ellipsis: true,
@@ -171,8 +194,7 @@ class AccountDetail extends React.Component {
                                 whiteSpace: 'nowrap',
                                 textOverflow: 'ellipsis',
                                 cursor: 'pointer',
-                                color: '#7AA4FF'
-                                
+                                color: '#7AA4FF',
                             },
                         };
                     },
@@ -183,7 +205,10 @@ class AccountDetail extends React.Component {
                                 pathname: '/NFT/NFTDetails',
                                 state: { nftid: data },
                             }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                         >
                             {text}
                         </Link>
@@ -210,20 +235,30 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                 },
                 {
-                    title: 'Author',
+                    title: 'Creator',
                     key: 'creator',
                     dataIndex: 'creator',
                     ellipsis: true,
-                    render: (text, data) => (
-                        <Link
-                            to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                            style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
-                            title={text}
-                            replace={true}
-                        >
-                            {text?ellipsis(text):'-'}
-                        </Link>
-                    ),
+                    render: (text) => 
+                        text == '0x0000000000000000000000000000000000000000' ? (
+                            <span>Official S-NFT</span>
+                        ) : (
+                            <Link
+                                to={{
+                                    pathname: `/AccountDetail/${text}`,
+                                    state: text,
+                                }}
+                                style={{
+                                    color: '#7AA4FF',
+                                    fontFamily: 'CustomFontMedium',
+                                }}
+                                title={text}
+                                replace={true}
+                            >
+                                {text ? ellipsis(text) : '-'}
+                            </Link>
+                        )
+                    
                 },
                 {
                     title: 'Owner',
@@ -232,12 +267,18 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                            to={{
+                                pathname: `/AccountDetail/${text}`,
+                                state: text,
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                             title={text}
                             replace={true}
                         >
-                            {text?ellipsis(text):'-'}
+                            {text ? ellipsis(text) : '-'}
                         </Link>
                     ),
                 },
@@ -272,7 +313,10 @@ class AccountDetail extends React.Component {
                                 pathname: '/SNFT/SNFTDetails',
                                 state: { snftid: data.address },
                             }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                         >
                             {text}
                         </Link>
@@ -292,20 +336,30 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                 },
                 {
-                    title: 'Author',
+                    title: 'Creator',
                     key: 'creator',
                     dataIndex: 'creator',
                     ellipsis: true,
-                    render: (text, data) => (
-                        <Link
-                            to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
-                            title={text}
-                            replace={true}
-                        >
-                            {text?ellipsis(text):'-'}
-                        </Link>
-                    ),
+                    render: (text, data) => 
+                        text == '0x0000000000000000000000000000000000000000' ? (
+                            <span>Official S-NFT</span>
+                        ) : (
+                            <Link
+                                to={{
+                                    pathname: `/AccountDetail/${text}`,
+                                    state: text,
+                                }}
+                                style={{
+                                    color: '#7AA4FF',
+                                    fontFamily: 'CustomFontMedium',
+                                }}
+                                title={text}
+                                replace={true}
+                            >
+                                {text ? ellipsis(text) : '-'}
+                            </Link>
+                        )
+                    
                 },
                 {
                     title: 'Owner',
@@ -314,12 +368,18 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                     render: (text, data) => (
                         <Link
-                            to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                            to={{
+                                pathname: `/AccountDetail/${text}`,
+                                state: text,
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                             title={text}
                             replace={true}
                         >
-                            {text?ellipsis(text):'-'}
+                            {text ? ellipsis(text) : '-'}
                         </Link>
                     ),
                 },
@@ -327,7 +387,7 @@ class AccountDetail extends React.Component {
         };
     }
     componentWillReceiveProps(nextProps) {
-        const id = nextProps.location.state
+        const id = nextProps.location.state;
         console.log(nextProps);
         if (id) {
             window.sessionStorage.setItem('hash', id);
@@ -338,9 +398,9 @@ class AccountDetail extends React.Component {
             detailFrom: this.state.stateHash,
         });
         this.setState({
-            type: "trade",
+            type: 'trade',
         });
-        this.commonFunc()
+        this.commonFunc();
         // history.replace({ pathname: nextProps.location.pathname, state: id })
     }
     //插入DOM前的回调函数
@@ -348,9 +408,14 @@ class AccountDetail extends React.Component {
         console.log(this.props.location);
         if (this.props.location.state) {
             window.sessionStorage.setItem('hash', this.props.location.state);
-        }else {
-            let pathhash = this.props.location.pathname.split("/")
-            pathhash ? window.sessionStorage.setItem('hash', pathhash[pathhash.length-1]): ""
+        } else {
+            let pathhash = this.props.location.pathname.split('/');
+            pathhash
+                ? window.sessionStorage.setItem(
+                      'hash',
+                      pathhash[pathhash.length - 1],
+                  )
+                : '';
         }
         this.state.stateHash = window.sessionStorage.getItem('hash');
         this.setState({
@@ -369,10 +434,13 @@ class AccountDetail extends React.Component {
                     loading: true,
                 });
                 const res = await accountDetail(this.state.stateHash);
-                let state = JSON.stringify(res)
+                let state = JSON.stringify(res);
                 console.log(JSON.parse(state).useCache);
-                if (JSON.parse(state).useCache != undefined && JSON.parse(state).useCache == false) {
-                    this.comingsoon404()
+                if (
+                    JSON.parse(state).useCache != undefined &&
+                    JSON.parse(state).useCache == false
+                ) {
+                    this.comingsoon404();
                 }
                 if (res) {
                     this.setState({
@@ -392,6 +460,8 @@ class AccountDetail extends React.Component {
                     owner: this.state.stateHash,
                     ...this.state.pageOption,
                 });
+                console.log('nft查询');
+                console.log(res);
                 if (res) {
                     this.setState({
                         tableData: res.nfts,
@@ -412,6 +482,8 @@ class AccountDetail extends React.Component {
                     addr: this.state.stateHash,
                     ...this.state.pageOption,
                 });
+                console.log('交易查询');
+                console.log(res);
                 if (res) {
                     this.setState({
                         tableData: res.transactions,
@@ -431,6 +503,8 @@ class AccountDetail extends React.Component {
                     owner: this.state.stateHash,
                     ...this.state.pageOption,
                 });
+                console.log('snft查询');
+                console.log(res);
                 if (res) {
                     this.setState({
                         tableData: res.nfts,
@@ -445,19 +519,19 @@ class AccountDetail extends React.Component {
                 this.state.type == 'trade'
                     ? this.transPage()
                     : this.state.type == 'NFT'
-                        ? this.nftPage()
-                        : this.state.type == 'SNFT'
-                            ? this.snftPage()
-                            : '';
+                    ? this.nftPage()
+                    : this.state.type == 'SNFT'
+                    ? this.snftPage()
+                    : '';
             };
-        }
-        this.commonFunc()
+        };
+        this.commonFunc();
     }
     handleRouter = (e, query) => {
-        history.replace({ pathname: e+"/"+query, state: query });
+        history.replace({ pathname: e + '/' + query, state: query });
     };
     comingsoon404() {
-        history.push('/NoSearchResults')
+        history.push('/NoSearchResults');
     }
     componentDidUpdate() {}
     //组件销毁前的回调
@@ -512,16 +586,24 @@ class AccountDetail extends React.Component {
                             >
                                 <div>
                                     <p>ERB Balance</p>{' '}
-                                    <span title={(this.state.accountData.balance / 1000000000000000000).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 9 })}>
+                                    <span
+                                        title={(
+                                            this.state.accountData.balance /
+                                            1000000000000000000
+                                        ).toLocaleString(undefined, {
+                                            minimumFractionDigits: 2,
+                                            maximumFractionDigits: 9,
+                                        })}
+                                    >
                                         {(
                                             this.state.accountData.balance /
                                             1000000000000000000
                                         ).toLocaleString(undefined, {
                                             minimumFractionDigits: 2,
-                                            maximumFractionDigits: 9
+                                            maximumFractionDigits: 9,
                                         })}
-
                                     </span>
+                                    &nbsp;
                                     ERB
                                 </div>
                                 <div>
@@ -530,9 +612,8 @@ class AccountDetail extends React.Component {
                                         {(
                                             this.state.accountData
                                                 .validatorAmount /
-                                            1000000000000000000
-                                            || 0
-                                        ).toLocaleString() }
+                                                1000000000000000000 || 0
+                                        ).toLocaleString()}
                                     </span>
                                 </div>
                                 <div>
@@ -541,8 +622,7 @@ class AccountDetail extends React.Component {
                                         {(
                                             this.state.accountData
                                                 .exchangerAmount /
-                                            1000000000000000000
-                                            || 0
+                                                1000000000000000000 || 0
                                         ).toLocaleString() || 0}
                                     </span>
                                 </div>
@@ -560,30 +640,22 @@ class AccountDetail extends React.Component {
                                 <div>
                                     <p>ERB Income</p>{' '}
                                     <span>
-                                        {(this.state.accountData.rewardCoinCount * 0.11).toLocaleString()}
-                                        ERB
+                                        {(
+                                            this.state.accountData
+                                                .rewardCoinCount * 0.11
+                                        ).toLocaleString()}
                                     </span>
                                 </div>
                                 <div>
                                     <p>S-NFT Income</p>{' '}
                                     <span>
-                                        {(
-                                            (this.state.accountData
-                                                .rewardSNFTCount)
-                                        ).toLocaleString()}
-
+                                        {this.state.accountData.rewardSNFTCount.toLocaleString()}
                                     </span>
                                 </div>
                                 <div>
                                     <p>TXN</p>{' '}
-                                    <span>
-                                        {
-                                            this.state.accountData
-                                                .nonce
-                                        }
-                                    </span>
+                                    <span>{this.state.accountData.nonce}</span>
                                 </div>
-                                
                             </div>
                         </div>
                         <div className={AccountDetail_ls.other}>
@@ -591,13 +663,17 @@ class AccountDetail extends React.Component {
                                 <h3>Other Information</h3>
                                 <ul>
                                     <p>Owned NFTs</p>
-                                    <span title={this.state.accountData.totalNFT}>
+                                    <span
+                                        title={this.state.accountData.totalNFT}
+                                    >
                                         {this.state.accountData.nftCount || 0}
                                     </span>
                                 </ul>
                                 <ul>
                                     <p>Owned S-NFTs</p>
-                                    <span title={this.state.accountData.totalSNFT}>
+                                    <span
+                                        title={this.state.accountData.totalSNFT}
+                                    >
                                         {this.state.accountData.snftCount || 0}
                                     </span>
                                 </ul>
@@ -627,7 +703,10 @@ class AccountDetail extends React.Component {
                         <Radio.Button value="NFT">NFT</Radio.Button>
                     </Radio.Group>
                 </div>
-                <div className={AccountDetail_ls.AccountDetailBox1} id='AccountDetailTable'>
+                <div
+                    className={AccountDetail_ls.AccountDetailBox1}
+                    id="AccountDetailTable"
+                >
                     <ConfigProvider
                     // locale={zhCN}
                     >

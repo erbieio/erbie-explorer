@@ -397,7 +397,7 @@ export default function MapChart() {
                                 <>
                                     <g
                                         fill="none"
-                                        stroke="#FF980F"
+                                        stroke="#ffffff"
                                         strokeWidth="0.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -405,12 +405,12 @@ export default function MapChart() {
                                     >
                                         <circle
                                             r={colordata}
-                                            fill="#FF980F00"
+                                            fill="#ffffff00"
                                         />
                                     </g>
                                     <g
                                         fill="none"
-                                        stroke="#FF980F"
+                                        stroke="#ffffff"
                                         strokeWidth="0.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -418,12 +418,12 @@ export default function MapChart() {
                                     >
                                         <circle
                                             r={colordata2}
-                                            fill="#FF980F00"
+                                            fill="#ffffff00"
                                         />
                                     </g>
                                     <g
                                         fill="none"
-                                        stroke="#FF980F"
+                                        stroke="#ffffff"
                                         strokeWidth="0.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -431,12 +431,12 @@ export default function MapChart() {
                                     >
                                         <circle
                                             r={colordata3}
-                                            fill="#FF980F00"
+                                            fill="#ffffff00"
                                         />
                                     </g>
                                     <g
                                         fill="none"
-                                        stroke="#FF980F"
+                                        stroke="#ffffff"
                                         strokeWidth="0.5"
                                         strokeLinecap="round"
                                         strokeLinejoin="round"
@@ -444,11 +444,11 @@ export default function MapChart() {
                                     >
                                         <circle
                                             r={colordata4}
-                                            fill="#FF980F00"
+                                            fill="#ffffff00"
                                         />
                                     </g>
                                 </>
-                                <circle r={4} fill="#FF980F" />
+                                <circle r={4} fill="#ffffff" />
                             </Marker>
                         );
                     }

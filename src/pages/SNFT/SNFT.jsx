@@ -35,10 +35,10 @@ export default function SNFT() {
     const [snftdata, setSnftdata] = useState({});
     // 全部下拉框显示隐藏
     const [optionborderdis, setOptionborderdis] = useState('none');
-    let L0 = 0.03
-    let L1 = 0.143 
-    let L2 = 0.271 
-    let L3 = 0.65
+    let L0 = 0.03;
+    let L1 = 0.143;
+    let L2 = 0.271;
+    let L3 = 0.65;
     const columns = [
         {
             title: 'Name',
@@ -50,7 +50,7 @@ export default function SNFT() {
                         pathname: '/SNFT/SNFTDetails',
                         state: { snftid: data.address, snftmata: data },
                     }}
-                    style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -111,7 +111,7 @@ export default function SNFT() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -129,10 +129,13 @@ export default function SNFT() {
                 ) : (
                     <Link
                         to={{
-                            pathname: `/Exchange/ExchangeDetails`,
-                            state: { exchangeid: text },
+                            pathname: `/AccountDetail/${text}`,
+                            state: text,
                         }}
-                        style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                        style={{
+                            color: '#7AA4FF',
+                            fontFamily: 'CustomFontMedium',
+                        }}
                     >
                         {text}
                     </Link>
@@ -312,7 +315,11 @@ export default function SNFT() {
                                     SNFT_ls.SNFTBox_center_title_left_span
                                 }
                             >
-                                ERB Exchange Rate Increases <span>{(((0.143-0.03)/0.03)*100).toFixed(2)}%</span>{' '}
+                                ERB Exchange Rate Increases{' '}
+                                <span>
+                                    {(((0.143 - 0.03) / 0.03) * 100).toFixed(2)}
+                                    %
+                                </span>{' '}
                                 from Level 0 to 1
                             </span>
                             <span
@@ -336,10 +343,15 @@ export default function SNFT() {
                     </p>
                     <div style={{ width: '800px' }} id="Progress">
                         <Progress
-                            percent={totaldata.totalSNFT?(
-                                ((totaldata.totalSNFT % 4096) / 4096) *
-                                100
-                            ).toFixed(2):0}
+                            percent={
+                                totaldata.totalSNFT
+                                    ? (
+                                          ((totaldata.totalSNFT % 4096) /
+                                              4096) *
+                                          100
+                                      ).toFixed(2)
+                                    : 0
+                            }
                             status="active"
                             strokeWidth={12}
                             trailColor="#424253"
@@ -355,29 +367,828 @@ export default function SNFT() {
                         />
                         <p className={SNFT_ls.SNFTBox_center_box_text}>
                             <span>S-NFT L0：{L0}ERB</span>
-                            <img
-                                src={require('../../assets/images/SNFT/jt.png')}
-                            />
+                            <svg
+                                width="69px"
+                                height="62px"
+                                viewBox="0 0 69 62"
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xlink="http://www.w3.org/1999/xlink"
+                            >
+                                <title>箭头3</title>
+                                <defs>
+                                    <radialGradient
+                                        cx="93.2197335%"
+                                        cy="0%"
+                                        fx="93.2197335%"
+                                        fy="0%"
+                                        r="142.986012%"
+                                        gradientTransform="translate(0.932197,0.000000),scale(1.000000,0.622711),rotate(103.383208),translate(-0.932197,-0.000000)"
+                                        id="radialGradient-1"
+                                    >
+                                        <stop
+                                            stop-color="#FDF132"
+                                            offset="0%"
+                                        ></stop>
+                                        <stop
+                                            stop-color="#F62380"
+                                            offset="100%"
+                                        ></stop>
+                                    </radialGradient>
+                                    <polygon
+                                        id="path-2"
+                                        points="8.82738146e-18 2.46558931e-18 9.09698997 14.1866667 8.82738146e-18 28 17.4358974 14.1866667"
+                                    ></polygon>
+                                    <filter
+                                        x="-132.0%"
+                                        y="-85.5%"
+                                        width="333.5%"
+                                        height="270.5%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-3"
+                                    >
+                                        <feMorphology
+                                            radius="1"
+                                            operator="dilate"
+                                            in="SourceAlpha"
+                                            result="shadowSpreadOuter1"
+                                        ></feMorphology>
+                                        <feOffset
+                                            dx="0"
+                                            dy="0"
+                                            in="shadowSpreadOuter1"
+                                            result="shadowOffsetOuter1"
+                                        ></feOffset>
+                                        <feGaussianBlur
+                                            stdDeviation="4.5"
+                                            in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"
+                                        ></feGaussianBlur>
+                                        <feColorMatrix
+                                            values="0 0 0 0 0.996078431   0 0 0 0 0.309803922   0 0 0 0 0.654901961  0 0 0 1 0"
+                                            type="matrix"
+                                            in="shadowBlurOuter1"
+                                        ></feColorMatrix>
+                                    </filter>
+                                    <radialGradient
+                                        cx="93.2197335%"
+                                        cy="0%"
+                                        fx="93.2197335%"
+                                        fy="0%"
+                                        r="152.525749%"
+                                        gradientTransform="translate(0.932197,0.000000),scale(1.000000,0.581771),rotate(102.532064),translate(-0.932197,-0.000000)"
+                                        id="radialGradient-4"
+                                    >
+                                        <stop
+                                            stop-color="#FDF132"
+                                            offset="0%"
+                                        ></stop>
+                                        <stop
+                                            stop-color="#F62380"
+                                            offset="100%"
+                                        ></stop>
+                                    </radialGradient>
+                                    <polygon
+                                        id="path-5"
+                                        points="19.4871795 5.18518519 24.8383501 14.1175309 19.4871795 22.8148148 29.7435897 14.1175309"
+                                    ></polygon>
+                                    <filter
+                                        x="-198.5%"
+                                        y="-124.0%"
+                                        width="446.2%"
+                                        height="347.3%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-6"
+                                    >
+                                        <feGaussianBlur
+                                            stdDeviation="1.02564103 0"
+                                            in="SourceGraphic"
+                                        ></feGaussianBlur>
+                                    </filter>
+                                    <filter
+                                        x="-252.1%"
+                                        y="-155.2%"
+                                        width="553.4%"
+                                        height="409.7%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-7"
+                                    >
+                                        <feMorphology
+                                            radius="1"
+                                            operator="dilate"
+                                            in="SourceAlpha"
+                                            result="shadowSpreadOuter1"
+                                        ></feMorphology>
+                                        <feOffset
+                                            dx="0"
+                                            dy="0"
+                                            in="shadowSpreadOuter1"
+                                            result="shadowOffsetOuter1"
+                                        ></feOffset>
+                                        <feGaussianBlur
+                                            stdDeviation="4.5"
+                                            in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"
+                                        ></feGaussianBlur>
+                                        <feColorMatrix
+                                            values="0 0 0 0 0.996078431   0 0 0 0 0.309803922   0 0 0 0 0.654901961  0 0 0 1 0"
+                                            type="matrix"
+                                            in="shadowBlurOuter1"
+                                        ></feColorMatrix>
+                                    </filter>
+                                    <radialGradient
+                                        cx="93.2197335%"
+                                        cy="0%"
+                                        fx="93.2197335%"
+                                        fy="0%"
+                                        r="143.988621%"
+                                        gradientTransform="translate(0.932197,0.000000),scale(1.000000,0.618132),rotate(103.288305),translate(-0.932197,-0.000000)"
+                                        id="radialGradient-8"
+                                    >
+                                        <stop
+                                            stop-color="#FDF132"
+                                            offset="0%"
+                                        ></stop>
+                                        <stop
+                                            stop-color="#F62380"
+                                            offset="100%"
+                                        ></stop>
+                                    </radialGradient>
+                                    <polygon
+                                        id="path-9"
+                                        points="34.8717949 10.3703704 37.5473802 14.5738272 34.8717949 18.6666667 40 14.5738272"
+                                    ></polygon>
+                                    <filter
+                                        x="-461.1%"
+                                        y="-296.8%"
+                                        width="918.6%"
+                                        height="692.0%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-10"
+                                    >
+                                        <feGaussianBlur
+                                            stdDeviation="2.05128205 0"
+                                            in="SourceGraphic"
+                                        ></feGaussianBlur>
+                                    </filter>
+                                    <filter
+                                        x="-568.4%"
+                                        y="-363.1%"
+                                        width="1133.1%"
+                                        height="824.6%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-11"
+                                    >
+                                        <feMorphology
+                                            radius="1"
+                                            operator="dilate"
+                                            in="SourceAlpha"
+                                            result="shadowSpreadOuter1"
+                                        ></feMorphology>
+                                        <feOffset
+                                            dx="0"
+                                            dy="0"
+                                            in="shadowSpreadOuter1"
+                                            result="shadowOffsetOuter1"
+                                        ></feOffset>
+                                        <feGaussianBlur
+                                            stdDeviation="4.5"
+                                            in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"
+                                        ></feGaussianBlur>
+                                        <feColorMatrix
+                                            values="0 0 0 0 0.996078431   0 0 0 0 0.309803922   0 0 0 0 0.654901961  0 0 0 1 0"
+                                            type="matrix"
+                                            in="shadowBlurOuter1"
+                                        ></feColorMatrix>
+                                    </filter>
+                                </defs>
+                                <g
+                                    id="英文版"
+                                    stroke="none"
+                                    stroke-width="1"
+                                    fill="none"
+                                    fill-rule="evenodd"
+                                >
+                                    <g
+                                        id="SNFT"
+                                        transform="translate(-1041.000000, -800.000000)"
+                                    >
+                                        <g
+                                            id="编组-3"
+                                            transform="translate(100.000000, 573.000000)"
+                                        >
+                                            <g
+                                                id="编组"
+                                                transform="translate(19.500000, 241.000000)"
+                                            >
+                                                <g transform="translate(937.500000, 3.000000)">
+                                                    <g id="路径-11">
+                                                        <use
+                                                            fill="black"
+                                                            fill-opacity="1"
+                                                            filter="url(#filter-3)"
+                                                            href="#path-2"
+                                                        ></use>
+                                                        <use
+                                                            fill="url(#radialGradient-1)"
+                                                            fill-rule="evenodd"
+                                                            href="#path-2"
+                                                        ></use>
+                                                    </g>
+                                                    <g
+                                                        id="路径-11备份"
+                                                        filter="url(#filter-6)"
+                                                    >
+                                                        <use
+                                                            fill="black"
+                                                            fill-opacity="1"
+                                                            filter="url(#filter-7)"
+                                                            href="#path-5"
+                                                        ></use>
+                                                        <use
+                                                            fill="url(#radialGradient-4)"
+                                                            fill-rule="evenodd"
+                                                            href="#path-5"
+                                                        ></use>
+                                                    </g>
+                                                    <g
+                                                        id="路径-11备份-2"
+                                                        filter="url(#filter-10)"
+                                                    >
+                                                        <use
+                                                            fill="black"
+                                                            fill-opacity="1"
+                                                            filter="url(#filter-11)"
+                                                            href="#path-9"
+                                                        ></use>
+                                                        <use
+                                                            fill="url(#radialGradient-8)"
+                                                            fill-rule="evenodd"
+                                                            href="#path-9"
+                                                        ></use>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+
                             <span
                                 className={SNFT_ls.SNFTBox_center_box_textspan}
                             >
-                                Bonus：{((L1*16)-(L0*16)).toFixed(2)}ERB
+                                Bonus：{(L1 * 16 - L0 * 16).toFixed(2)}ERB
                             </span>
-                            <img
-                                src={require('../../assets/images/SNFT/jt.png')}
-                            />
+                            <svg
+                                width="69px"
+                                height="62px"
+                                viewBox="0 0 69 62"
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xlink="http://www.w3.org/1999/xlink"
+                            >
+                                <title>箭头3</title>
+                                <defs>
+                                    <radialGradient
+                                        cx="93.2197335%"
+                                        cy="0%"
+                                        fx="93.2197335%"
+                                        fy="0%"
+                                        r="142.986012%"
+                                        gradientTransform="translate(0.932197,0.000000),scale(1.000000,0.622711),rotate(103.383208),translate(-0.932197,-0.000000)"
+                                        id="radialGradient-1"
+                                    >
+                                        <stop
+                                            stop-color="#FDF132"
+                                            offset="0%"
+                                        ></stop>
+                                        <stop
+                                            stop-color="#F62380"
+                                            offset="100%"
+                                        ></stop>
+                                    </radialGradient>
+                                    <polygon
+                                        id="path-2"
+                                        points="8.82738146e-18 2.46558931e-18 9.09698997 14.1866667 8.82738146e-18 28 17.4358974 14.1866667"
+                                    ></polygon>
+                                    <filter
+                                        x="-132.0%"
+                                        y="-85.5%"
+                                        width="333.5%"
+                                        height="270.5%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-3"
+                                    >
+                                        <feMorphology
+                                            radius="1"
+                                            operator="dilate"
+                                            in="SourceAlpha"
+                                            result="shadowSpreadOuter1"
+                                        ></feMorphology>
+                                        <feOffset
+                                            dx="0"
+                                            dy="0"
+                                            in="shadowSpreadOuter1"
+                                            result="shadowOffsetOuter1"
+                                        ></feOffset>
+                                        <feGaussianBlur
+                                            stdDeviation="4.5"
+                                            in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"
+                                        ></feGaussianBlur>
+                                        <feColorMatrix
+                                            values="0 0 0 0 0.996078431   0 0 0 0 0.309803922   0 0 0 0 0.654901961  0 0 0 1 0"
+                                            type="matrix"
+                                            in="shadowBlurOuter1"
+                                        ></feColorMatrix>
+                                    </filter>
+                                    <radialGradient
+                                        cx="93.2197335%"
+                                        cy="0%"
+                                        fx="93.2197335%"
+                                        fy="0%"
+                                        r="152.525749%"
+                                        gradientTransform="translate(0.932197,0.000000),scale(1.000000,0.581771),rotate(102.532064),translate(-0.932197,-0.000000)"
+                                        id="radialGradient-4"
+                                    >
+                                        <stop
+                                            stop-color="#FDF132"
+                                            offset="0%"
+                                        ></stop>
+                                        <stop
+                                            stop-color="#F62380"
+                                            offset="100%"
+                                        ></stop>
+                                    </radialGradient>
+                                    <polygon
+                                        id="path-5"
+                                        points="19.4871795 5.18518519 24.8383501 14.1175309 19.4871795 22.8148148 29.7435897 14.1175309"
+                                    ></polygon>
+                                    <filter
+                                        x="-198.5%"
+                                        y="-124.0%"
+                                        width="446.2%"
+                                        height="347.3%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-6"
+                                    >
+                                        <feGaussianBlur
+                                            stdDeviation="1.02564103 0"
+                                            in="SourceGraphic"
+                                        ></feGaussianBlur>
+                                    </filter>
+                                    <filter
+                                        x="-252.1%"
+                                        y="-155.2%"
+                                        width="553.4%"
+                                        height="409.7%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-7"
+                                    >
+                                        <feMorphology
+                                            radius="1"
+                                            operator="dilate"
+                                            in="SourceAlpha"
+                                            result="shadowSpreadOuter1"
+                                        ></feMorphology>
+                                        <feOffset
+                                            dx="0"
+                                            dy="0"
+                                            in="shadowSpreadOuter1"
+                                            result="shadowOffsetOuter1"
+                                        ></feOffset>
+                                        <feGaussianBlur
+                                            stdDeviation="4.5"
+                                            in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"
+                                        ></feGaussianBlur>
+                                        <feColorMatrix
+                                            values="0 0 0 0 0.996078431   0 0 0 0 0.309803922   0 0 0 0 0.654901961  0 0 0 1 0"
+                                            type="matrix"
+                                            in="shadowBlurOuter1"
+                                        ></feColorMatrix>
+                                    </filter>
+                                    <radialGradient
+                                        cx="93.2197335%"
+                                        cy="0%"
+                                        fx="93.2197335%"
+                                        fy="0%"
+                                        r="143.988621%"
+                                        gradientTransform="translate(0.932197,0.000000),scale(1.000000,0.618132),rotate(103.288305),translate(-0.932197,-0.000000)"
+                                        id="radialGradient-8"
+                                    >
+                                        <stop
+                                            stop-color="#FDF132"
+                                            offset="0%"
+                                        ></stop>
+                                        <stop
+                                            stop-color="#F62380"
+                                            offset="100%"
+                                        ></stop>
+                                    </radialGradient>
+                                    <polygon
+                                        id="path-9"
+                                        points="34.8717949 10.3703704 37.5473802 14.5738272 34.8717949 18.6666667 40 14.5738272"
+                                    ></polygon>
+                                    <filter
+                                        x="-461.1%"
+                                        y="-296.8%"
+                                        width="918.6%"
+                                        height="692.0%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-10"
+                                    >
+                                        <feGaussianBlur
+                                            stdDeviation="2.05128205 0"
+                                            in="SourceGraphic"
+                                        ></feGaussianBlur>
+                                    </filter>
+                                    <filter
+                                        x="-568.4%"
+                                        y="-363.1%"
+                                        width="1133.1%"
+                                        height="824.6%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-11"
+                                    >
+                                        <feMorphology
+                                            radius="1"
+                                            operator="dilate"
+                                            in="SourceAlpha"
+                                            result="shadowSpreadOuter1"
+                                        ></feMorphology>
+                                        <feOffset
+                                            dx="0"
+                                            dy="0"
+                                            in="shadowSpreadOuter1"
+                                            result="shadowOffsetOuter1"
+                                        ></feOffset>
+                                        <feGaussianBlur
+                                            stdDeviation="4.5"
+                                            in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"
+                                        ></feGaussianBlur>
+                                        <feColorMatrix
+                                            values="0 0 0 0 0.996078431   0 0 0 0 0.309803922   0 0 0 0 0.654901961  0 0 0 1 0"
+                                            type="matrix"
+                                            in="shadowBlurOuter1"
+                                        ></feColorMatrix>
+                                    </filter>
+                                </defs>
+                                <g
+                                    id="英文版"
+                                    stroke="none"
+                                    stroke-width="1"
+                                    fill="none"
+                                    fill-rule="evenodd"
+                                >
+                                    <g
+                                        id="SNFT"
+                                        transform="translate(-1041.000000, -800.000000)"
+                                    >
+                                        <g
+                                            id="编组-3"
+                                            transform="translate(100.000000, 573.000000)"
+                                        >
+                                            <g
+                                                id="编组"
+                                                transform="translate(19.500000, 241.000000)"
+                                            >
+                                                <g transform="translate(937.500000, 3.000000)">
+                                                    <g id="路径-11">
+                                                        <use
+                                                            fill="black"
+                                                            fill-opacity="1"
+                                                            filter="url(#filter-3)"
+                                                            href="#path-2"
+                                                        ></use>
+                                                        <use
+                                                            fill="url(#radialGradient-1)"
+                                                            fill-rule="evenodd"
+                                                            href="#path-2"
+                                                        ></use>
+                                                    </g>
+                                                    <g
+                                                        id="路径-11备份"
+                                                        filter="url(#filter-6)"
+                                                    >
+                                                        <use
+                                                            fill="black"
+                                                            fill-opacity="1"
+                                                            filter="url(#filter-7)"
+                                                            href="#path-5"
+                                                        ></use>
+                                                        <use
+                                                            fill="url(#radialGradient-4)"
+                                                            fill-rule="evenodd"
+                                                            href="#path-5"
+                                                        ></use>
+                                                    </g>
+                                                    <g
+                                                        id="路径-11备份-2"
+                                                        filter="url(#filter-10)"
+                                                    >
+                                                        <use
+                                                            fill="black"
+                                                            fill-opacity="1"
+                                                            filter="url(#filter-11)"
+                                                            href="#path-9"
+                                                        ></use>
+                                                        <use
+                                                            fill="url(#radialGradient-8)"
+                                                            fill-rule="evenodd"
+                                                            href="#path-9"
+                                                        ></use>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
                             <span
                                 className={SNFT_ls.SNFTBox_center_box_textspan}
                             >
-                                Bonus：{((L2*16*16) - (L1*16*16)).toFixed(2)}ERB
+                                Bonus：
+                                {(L2 * 16 * 16 - L1 * 16 * 16).toFixed(2)}ERB
                             </span>
-                            <img
-                                src={require('../../assets/images/SNFT/jt.png')}
-                            />
+                            <svg
+                                width="69px"
+                                height="62px"
+                                viewBox="0 0 69 62"
+                                version="1.1"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xlink="http://www.w3.org/1999/xlink"
+                            >
+                                <title>箭头3</title>
+                                <defs>
+                                    <radialGradient
+                                        cx="93.2197335%"
+                                        cy="0%"
+                                        fx="93.2197335%"
+                                        fy="0%"
+                                        r="142.986012%"
+                                        gradientTransform="translate(0.932197,0.000000),scale(1.000000,0.622711),rotate(103.383208),translate(-0.932197,-0.000000)"
+                                        id="radialGradient-1"
+                                    >
+                                        <stop
+                                            stop-color="#FDF132"
+                                            offset="0%"
+                                        ></stop>
+                                        <stop
+                                            stop-color="#F62380"
+                                            offset="100%"
+                                        ></stop>
+                                    </radialGradient>
+                                    <polygon
+                                        id="path-2"
+                                        points="8.82738146e-18 2.46558931e-18 9.09698997 14.1866667 8.82738146e-18 28 17.4358974 14.1866667"
+                                    ></polygon>
+                                    <filter
+                                        x="-132.0%"
+                                        y="-85.5%"
+                                        width="333.5%"
+                                        height="270.5%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-3"
+                                    >
+                                        <feMorphology
+                                            radius="1"
+                                            operator="dilate"
+                                            in="SourceAlpha"
+                                            result="shadowSpreadOuter1"
+                                        ></feMorphology>
+                                        <feOffset
+                                            dx="0"
+                                            dy="0"
+                                            in="shadowSpreadOuter1"
+                                            result="shadowOffsetOuter1"
+                                        ></feOffset>
+                                        <feGaussianBlur
+                                            stdDeviation="4.5"
+                                            in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"
+                                        ></feGaussianBlur>
+                                        <feColorMatrix
+                                            values="0 0 0 0 0.996078431   0 0 0 0 0.309803922   0 0 0 0 0.654901961  0 0 0 1 0"
+                                            type="matrix"
+                                            in="shadowBlurOuter1"
+                                        ></feColorMatrix>
+                                    </filter>
+                                    <radialGradient
+                                        cx="93.2197335%"
+                                        cy="0%"
+                                        fx="93.2197335%"
+                                        fy="0%"
+                                        r="152.525749%"
+                                        gradientTransform="translate(0.932197,0.000000),scale(1.000000,0.581771),rotate(102.532064),translate(-0.932197,-0.000000)"
+                                        id="radialGradient-4"
+                                    >
+                                        <stop
+                                            stop-color="#FDF132"
+                                            offset="0%"
+                                        ></stop>
+                                        <stop
+                                            stop-color="#F62380"
+                                            offset="100%"
+                                        ></stop>
+                                    </radialGradient>
+                                    <polygon
+                                        id="path-5"
+                                        points="19.4871795 5.18518519 24.8383501 14.1175309 19.4871795 22.8148148 29.7435897 14.1175309"
+                                    ></polygon>
+                                    <filter
+                                        x="-198.5%"
+                                        y="-124.0%"
+                                        width="446.2%"
+                                        height="347.3%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-6"
+                                    >
+                                        <feGaussianBlur
+                                            stdDeviation="1.02564103 0"
+                                            in="SourceGraphic"
+                                        ></feGaussianBlur>
+                                    </filter>
+                                    <filter
+                                        x="-252.1%"
+                                        y="-155.2%"
+                                        width="553.4%"
+                                        height="409.7%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-7"
+                                    >
+                                        <feMorphology
+                                            radius="1"
+                                            operator="dilate"
+                                            in="SourceAlpha"
+                                            result="shadowSpreadOuter1"
+                                        ></feMorphology>
+                                        <feOffset
+                                            dx="0"
+                                            dy="0"
+                                            in="shadowSpreadOuter1"
+                                            result="shadowOffsetOuter1"
+                                        ></feOffset>
+                                        <feGaussianBlur
+                                            stdDeviation="4.5"
+                                            in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"
+                                        ></feGaussianBlur>
+                                        <feColorMatrix
+                                            values="0 0 0 0 0.996078431   0 0 0 0 0.309803922   0 0 0 0 0.654901961  0 0 0 1 0"
+                                            type="matrix"
+                                            in="shadowBlurOuter1"
+                                        ></feColorMatrix>
+                                    </filter>
+                                    <radialGradient
+                                        cx="93.2197335%"
+                                        cy="0%"
+                                        fx="93.2197335%"
+                                        fy="0%"
+                                        r="143.988621%"
+                                        gradientTransform="translate(0.932197,0.000000),scale(1.000000,0.618132),rotate(103.288305),translate(-0.932197,-0.000000)"
+                                        id="radialGradient-8"
+                                    >
+                                        <stop
+                                            stop-color="#FDF132"
+                                            offset="0%"
+                                        ></stop>
+                                        <stop
+                                            stop-color="#F62380"
+                                            offset="100%"
+                                        ></stop>
+                                    </radialGradient>
+                                    <polygon
+                                        id="path-9"
+                                        points="34.8717949 10.3703704 37.5473802 14.5738272 34.8717949 18.6666667 40 14.5738272"
+                                    ></polygon>
+                                    <filter
+                                        x="-461.1%"
+                                        y="-296.8%"
+                                        width="918.6%"
+                                        height="692.0%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-10"
+                                    >
+                                        <feGaussianBlur
+                                            stdDeviation="2.05128205 0"
+                                            in="SourceGraphic"
+                                        ></feGaussianBlur>
+                                    </filter>
+                                    <filter
+                                        x="-568.4%"
+                                        y="-363.1%"
+                                        width="1133.1%"
+                                        height="824.6%"
+                                        filterUnits="objectBoundingBox"
+                                        id="filter-11"
+                                    >
+                                        <feMorphology
+                                            radius="1"
+                                            operator="dilate"
+                                            in="SourceAlpha"
+                                            result="shadowSpreadOuter1"
+                                        ></feMorphology>
+                                        <feOffset
+                                            dx="0"
+                                            dy="0"
+                                            in="shadowSpreadOuter1"
+                                            result="shadowOffsetOuter1"
+                                        ></feOffset>
+                                        <feGaussianBlur
+                                            stdDeviation="4.5"
+                                            in="shadowOffsetOuter1"
+                                            result="shadowBlurOuter1"
+                                        ></feGaussianBlur>
+                                        <feColorMatrix
+                                            values="0 0 0 0 0.996078431   0 0 0 0 0.309803922   0 0 0 0 0.654901961  0 0 0 1 0"
+                                            type="matrix"
+                                            in="shadowBlurOuter1"
+                                        ></feColorMatrix>
+                                    </filter>
+                                </defs>
+                                <g
+                                    id="英文版"
+                                    stroke="none"
+                                    stroke-width="1"
+                                    fill="none"
+                                    fill-rule="evenodd"
+                                >
+                                    <g
+                                        id="SNFT"
+                                        transform="translate(-1041.000000, -800.000000)"
+                                    >
+                                        <g
+                                            id="编组-3"
+                                            transform="translate(100.000000, 573.000000)"
+                                        >
+                                            <g
+                                                id="编组"
+                                                transform="translate(19.500000, 241.000000)"
+                                            >
+                                                <g transform="translate(937.500000, 3.000000)">
+                                                    <g id="路径-11">
+                                                        <use
+                                                            fill="black"
+                                                            fill-opacity="1"
+                                                            filter="url(#filter-3)"
+                                                            href="#path-2"
+                                                        ></use>
+                                                        <use
+                                                            fill="url(#radialGradient-1)"
+                                                            fill-rule="evenodd"
+                                                            href="#path-2"
+                                                        ></use>
+                                                    </g>
+                                                    <g
+                                                        id="路径-11备份"
+                                                        filter="url(#filter-6)"
+                                                    >
+                                                        <use
+                                                            fill="black"
+                                                            fill-opacity="1"
+                                                            filter="url(#filter-7)"
+                                                            href="#path-5"
+                                                        ></use>
+                                                        <use
+                                                            fill="url(#radialGradient-4)"
+                                                            fill-rule="evenodd"
+                                                            href="#path-5"
+                                                        ></use>
+                                                    </g>
+                                                    <g
+                                                        id="路径-11备份-2"
+                                                        filter="url(#filter-10)"
+                                                    >
+                                                        <use
+                                                            fill="black"
+                                                            fill-opacity="1"
+                                                            filter="url(#filter-11)"
+                                                            href="#path-9"
+                                                        ></use>
+                                                        <use
+                                                            fill="url(#radialGradient-8)"
+                                                            fill-rule="evenodd"
+                                                            href="#path-9"
+                                                        ></use>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
                             <span
                                 className={SNFT_ls.SNFTBox_center_box_textspan}
                             >
-                                Bonus：{((L3*16*16*16) - (L2*16*16*16)).toFixed(2)}ERB
+                                Bonus：
+                                {(
+                                    L3 * 16 * 16 * 16 -
+                                    L2 * 16 * 16 * 16
+                                ).toFixed(2)}
+                                ERB
                             </span>
                         </p>
                     </div>

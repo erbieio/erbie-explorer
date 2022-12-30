@@ -20,22 +20,7 @@ export function timestamp(data) {
   let difference = 0
   if (data) {
     if (t < data) {
-      difference = data - t
-      if (difference<60) {
-        return difference +' Seconds Ago'
-      } else if (difference >= 60 && difference < 3600) {
-        return Math.ceil(difference/60) +' Minutes Ago'
-      } else if (difference >= 3600 && difference < 86400) {
-        return Math.ceil(difference/3600) +' Hours Ago'
-      } else if (difference >= 86400 && difference < 604800) {
-        return Math.ceil(difference/86400) +' Day Ago'
-      } else if (difference >= 604800 && difference < 2592000) {
-        return Math.ceil(difference/604800) +' Week Ago'
-      } else if (difference >= 2592000 && difference < 31536000) {
-        return Math.ceil(difference/2592000) +' Month Ago'
-      } else if (difference >= 31536000) {
-        return Math.ceil(difference/31536000) +' Year Ago'
-      } 
+      return moment(parseInt(data) * 1000).format('YYYY-MM-DD HH:mm:ss')
     } else {
       difference = t - data
       if (difference<60) {

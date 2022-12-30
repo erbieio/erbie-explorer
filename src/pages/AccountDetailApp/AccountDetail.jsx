@@ -216,23 +216,28 @@ class AccountDetail extends React.Component {
                     ),
                 },
                 {
-                    title: 'Author',
+                    title: 'Creator',
                     key: 'creator',
                     dataIndex: 'creator',
 
-                    render: (text, data) => (
+                    render: (text, data) => text == '0x0000000000000000000000000000000000000000' ? (
+                        <span>Official S-NFT</span>
+                    ) : (
                         <Link
                             to={{
                                 pathname: `/AccountDetailApp/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                             title={text}
                             replace={true}
                         >
-                            {text?ellipsis(text):'-'}
+                            {text ? ellipsis(text) : '-'}
                         </Link>
-                    ),
+                    )
                 },
                 {
                     title: 'Owner',
@@ -306,19 +311,24 @@ class AccountDetail extends React.Component {
                     key: 'creator',
                     dataIndex: 'creator',
 
-                    render: (text, data) => (
+                    render: (text, data) => text == '0x0000000000000000000000000000000000000000' ? (
+                        <span>Official S-NFT</span>
+                    ) : (
                         <Link
                             to={{
                                 pathname: `/AccountDetailApp/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                             title={text}
                             replace={true}
                         >
-                            {text?ellipsis(text):'-'}
+                            {text ? ellipsis(text) : '-'}
                         </Link>
-                    ),
+                    )
                 },
                 {
                     title: 'Owner',
@@ -558,6 +568,7 @@ class AccountDetail extends React.Component {
                                             maximumFractionDigits: 9,
                                         })}
                                     </span>
+                                    &nbsp;
                                     ERB
                                 </div>
                                 <div>
@@ -580,7 +591,7 @@ class AccountDetail extends React.Component {
                                         ).toLocaleString() || 0}
                                     </span>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <p>S-NFT Staking</p>{' '}
                                     <span>
                                         {(
@@ -588,27 +599,27 @@ class AccountDetail extends React.Component {
                                                 1000000000000000000 || 0
                                         ).toLocaleString()}
                                     </span>
-                                </div>
+                                </div> */}
                                 <div>
-                                    <p>ERB Staking Income</p>{' '}
+                                    <p>ERB Income</p>{' '}
                                     <span>
                                         {(
                                             this.state.accountData
                                                 .rewardCoinCount * 0.11
                                         ).toLocaleString()}
-                                        ERB
+                                    </span>
+                                </div>
+                                <div>
+                                    <p>S-NFT Income</p>{' '}
+                                    <span>
+                                        {this.state.accountData.rewardSNFTCount.toLocaleString()}
                                     </span>
                                 </div>
                                 <div>
                                     <p>TXN</p>{' '}
                                     <span>{this.state.accountData.nonce}</span>
                                 </div>
-                                <div>
-                                    <p>S-NFT Staking Income</p>{' '}
-                                    <span>
-                                        {this.state.accountData.rewardSNFTCount.toLocaleString()}
-                                    </span>
-                                </div>
+                                
                             </div>
                         </div>
                         <div className={AccountDetail_ls.other}>
@@ -619,7 +630,7 @@ class AccountDetail extends React.Component {
                                     <span
                                         title={this.state.accountData.totalNFT}
                                     >
-                                        {this.state.accountData.totalNFT}
+                                        {this.state.accountData.nftCount || 0}
                                     </span>
                                 </ul>
                                 <ul>
@@ -627,7 +638,7 @@ class AccountDetail extends React.Component {
                                     <span
                                         title={this.state.accountData.totalSNFT}
                                     >
-                                        {this.state.accountData.totalSNFT}
+                                        {this.state.accountData.snftCount || 0}
                                     </span>
                                 </ul>
                             </div>

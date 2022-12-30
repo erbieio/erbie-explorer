@@ -18,8 +18,8 @@ h3 {
     #AccountDetailTableApp{
         .ant-table-cell {
             font-size: 11px !important;
-            font-family: CustomFontThin !important;
-            color: #ffffff;
+            font-family: CustomFontRegular !important;
+            color: #ffffff !important;
         }
     }
     .ant-table-wrapper {
@@ -100,13 +100,13 @@ h3 {
                 width: 310px;
                 display: flex;
                 margin-top: 8px;
+                align-items: center;
                 p {
                     width: 150px;
                     font-size: 11px;
                 }
                 span {
                     display: inline-block;
-                    width: 120px;
                     font-size: 11px;
                     overflow: hidden;
                     white-space: nowrap;
@@ -136,12 +136,16 @@ h3 {
 }
 .other {
     display: flex;
+    position: relative;
     > div:last-child {
         padding-left: 10px;
         padding-top: 20px;
         img {
             width: 86px;
             height: 78px;
+            position: absolute;
+            right: -100px;
+            bottom: 0;
         }
     }
     h3 {
@@ -152,13 +156,13 @@ h3 {
         display: flex;
         margin-bottom: 10px;
         p {
-            width: 100px;
+            width: 150px;
             margin-right: 5px;
             font-size: 11px;
         }
         span {
             display: inline-block;
-            width: 100px;
+            width: 50px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
