@@ -34,7 +34,10 @@ export default function BlockChain() {
                             pathname: '/BlockChain/BlockDetails',
                             state: { blockid: text },
                         }}
-                        style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                        style={{
+                            color: '#7AA4FF',
+                            fontFamily: 'CustomFontMedium',
+                        }}
                     >
                         {text}
                     </Link>
@@ -43,14 +46,17 @@ export default function BlockChain() {
                 ),
         },
         {
-            title: 'Miner',
+            title: 'Proposer',
             dataIndex: 'miner',
             key: 'miner',
             render: (text, data) =>
                 data.number != 0 ? (
                     <Link
                         to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                        style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                        style={{
+                            color: '#7AA4FF',
+                            fontFamily: 'CustomFontMedium',
+                        }}
                     >
                         {ellipsis(text)}
                     </Link>

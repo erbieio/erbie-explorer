@@ -36,10 +36,10 @@ export default function SNFTApp() {
     // 全部下拉框显示隐藏
     const [optionborderdis, setOptionborderdis] = useState('none');
     const [magnificationdata, setMagnificationdata] = useState(0);
-    let L0 = 0.03
-    let L1 = 0.143 
-    let L2 = 0.271 
-    let L3 = 0.65
+    let L0 = 0.03;
+    let L1 = 0.143;
+    let L2 = 0.271;
+    let L3 = 0.65;
     const columns = [
         {
             title: 'Name',
@@ -51,7 +51,7 @@ export default function SNFTApp() {
                         pathname: '/SNFTApp/SNFTDetailsApp',
                         state: { snftid: data.address, snftmata: data },
                     }}
-                    style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -110,12 +110,12 @@ export default function SNFTApp() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
             ),
-            width:'150px'
+            width: '150px',
         },
         {
             title: 'S-NFT Creator',
@@ -129,14 +129,17 @@ export default function SNFTApp() {
                     <Link
                         to={{
                             pathname: `/AccountDetailApp/${text}`,
-                            state:text ,
+                            state: text,
                         }}
-                        style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                        style={{
+                            color: '#7AA4FF',
+                            fontFamily: 'CustomFontMedium',
+                        }}
                     >
                         {ellipsis(text)}
                     </Link>
                 ),
-                width:'150px'
+            width: '150px',
         },
         {
             title: 'L1',
@@ -339,7 +342,14 @@ export default function SNFTApp() {
                                         }
                                         style={{ marginLeft: '15px' }}
                                     >
-                                        <span>{(((0.143-0.03)/0.03)*100).toFixed(2)}%</span> from Level 0 to 1
+                                        <span>
+                                            {(
+                                                ((0.143 - 0.03) / 0.03) *
+                                                100
+                                            ).toFixed(2)}
+                                            %
+                                        </span>{' '}
+                                        from Level 0 to 1
                                     </p>
                                     <p
                                         className={
@@ -347,7 +357,7 @@ export default function SNFTApp() {
                                         }
                                         style={{ marginLeft: '15px' }}
                                     >
-                                        <span>90%</span> from Level 1 to 2
+                                        <span>903%</span> from Level 0 to 2
                                     </p>
                                     <p
                                         className={
@@ -355,7 +365,7 @@ export default function SNFTApp() {
                                         }
                                         style={{ marginLeft: '15px' }}
                                     >
-                                        <span>140%</span> from Level 2 to 3
+                                        <span>2166%</span> from Level 0 to 3
                                     </p>
                                 </div>
                             </div>
@@ -367,10 +377,15 @@ export default function SNFTApp() {
                     </p>
                     <div style={{ width: '330px' }} id="Progress">
                         <Progress
-                            percent={totaldata.totalSNFT?(
-                                ((totaldata.totalSNFT % 4096) / 4096) *
-                                100
-                            ).toFixed(2):0}
+                            percent={
+                                totaldata.totalSNFT
+                                    ? (
+                                          ((totaldata.totalSNFT % 4096) /
+                                              4096) *
+                                          100
+                                      ).toFixed(2)
+                                    : 0
+                            }
                             status="active"
                             strokeWidth={12}
                             trailColor="#424253"
@@ -665,7 +680,7 @@ export default function SNFTApp() {
                             >
                                 Bonus
                                 <br />
-                                {((L1*16)-(L0*16)).toFixed(2)}ERB
+                                {(L1 * 16 - L0 * 16).toFixed(2)}ERB
                             </span>
                             <svg
                                 width="30px"
@@ -941,7 +956,7 @@ export default function SNFTApp() {
                             >
                                 Bonus
                                 <br />
-                                {((L2*16*16) - (L1*16*16)).toFixed(2)}ERB
+                                {(L2 * 16 * 16 - L1 * 16 * 16).toFixed(2)}ERB
                             </span>
                             <svg
                                 width="30px"
@@ -1217,7 +1232,11 @@ export default function SNFTApp() {
                             >
                                 Bonus
                                 <br />
-                                {((L3*16*16*16) - (L2*16*16*16)).toFixed(2)}ERB
+                                {(
+                                    L3 * 16 * 16 * 16 -
+                                    L2 * 16 * 16 * 16
+                                ).toFixed(2)}
+                                ERB
                             </span>
                         </p>
                     </div>

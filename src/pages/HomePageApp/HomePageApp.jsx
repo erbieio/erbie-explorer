@@ -31,7 +31,7 @@ import {
     rewardperson,
     homepagechart,
     blockrewardperson,
-    onlineAddr
+    onlineAddr,
 } from '../../api/request_data/block_request';
 import { BsSearch } from 'react-icons/bs';
 import React, { useState, useEffect } from 'react';
@@ -63,6 +63,7 @@ export default function HomePageApp() {
     //在线验证者
     const [validatoronline, setValidatoronline] = useState(0);
     //区块分页
+    let L0 = 0.03;
     let pagedata = {
         page: 1,
         page_size: 14,
@@ -120,11 +121,11 @@ export default function HomePageApp() {
             setTotaldata(data);
         }
     };
-     //验证者在线查询
-     const onlineAddr_q = async (item) => {
+    //验证者在线查询
+    const onlineAddr_q = async (item) => {
         const data = await onlineAddr(item);
         if (data) {
-            setValidatoronline(data.count);
+            setValidatoronline(data);
         }
         console.log('验证者在线查询');
         console.log(data);
@@ -960,12 +961,20 @@ export default function HomePageApp() {
                     <MapChart />
                     <div className={HomePageApp_ls.mapboxz}>
                         <div className={HomePageApp_ls.mapboxz_center}>
+                            <div className={HomePageApp_ls.mapboxz_onlinenodes}>
+                                <p className={HomePageApp_ls.mapboxz_d_name}>
+                                    Online Rate
+                                </p>
+                                <p className={HomePageApp_ls.mapboxz_d_data}>
+                                    {validatoronline.onlineNode4h || 0}
+                                </p>
+                            </div>
                             <div className={HomePageApp_ls.mapboxz_d}>
                                 <p className={HomePageApp_ls.mapboxz_d_name}>
                                     Online Rate
                                 </p>
                                 <p className={HomePageApp_ls.mapboxz_d_data}>
-                                    {validatoronline || 0}/
+                                    {validatoronline.count || 0}/
                                     {totaldata.totalValidator || 0}
                                 </p>
                                 <div
@@ -976,10 +985,10 @@ export default function HomePageApp() {
                                 >
                                     <Progress
                                         percent={
-                                            validatoronline &&
+                                            validatoronline.count &&
                                             totaldata.totalValidator
                                                 ? (
-                                                      (validatoronline /
+                                                      (validatoronline.count /
                                                           totaldata.totalValidator) *
                                                       100
                                                   ).toFixed(2)
@@ -1119,9 +1128,13 @@ export default function HomePageApp() {
                         />
                         <p>Total Rewards</p>
                         <span>
-                            {totaldata.totalBlock
-                                ? ((totaldata.totalBlock - 1) * 1.15).toFixed(2)
-                                : 0}{' '}
+                            {(
+                                Math.floor(
+                                    totaldata.rewardCoinCount * multiple * 100,
+                                ) /
+                                    100 +
+                                parseInt(totaldata.rewardSNFTCount) * L0
+                            ).toFixed(2)}{' '}
                             ERB
                         </span>
                     </div>
@@ -1238,7 +1251,7 @@ export default function HomePageApp() {
                                         }
                                         style={{ width: '90px' }}
                                     >
-                                        Miner
+                                        Proposer
                                     </p>
                                     <p
                                         className={

@@ -327,14 +327,14 @@ export default function SNFT() {
                                     SNFT_ls.SNFTBox_center_title_left_span
                                 }
                             >
-                                <span>90%</span> from Level 1 to 2
+                                <span>903%</span> from Level 0 to 2
                             </span>
                             <span
                                 className={
                                     SNFT_ls.SNFTBox_center_title_left_span
                                 }
                             >
-                                <span>140%</span> from Level 2 to 3
+                                <span>2166%</span> from Level 0 to 3
                             </span>
                         </div>
                     </div>
