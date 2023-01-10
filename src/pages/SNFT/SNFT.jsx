@@ -172,11 +172,7 @@ export default function SNFT() {
             key: 'address',
             dataIndex: 'address',
             render: (text, data) => (
-                <span>
-                    {parseInt(
-                        '0x' + text.slice(text.length - 4, text.length - 3),
-                    )}
-                </span>
+                <span>{parseInt('0x' + text.slice(4, text.length - 3))}</span>
             ),
             ellipsis: true,
         },

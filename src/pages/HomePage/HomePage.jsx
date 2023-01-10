@@ -827,7 +827,7 @@ export default function HomePage() {
                             </div>
                             <div className={HomePage_ls.mapboxz_d}>
                                 <p className={HomePage_ls.mapboxz_d_name}>
-                                    Online Rate
+                                    Online Validators
                                 </p>
                                 <p className={HomePage_ls.mapboxz_d_data}>
                                     {validatoronline.count || 0}/

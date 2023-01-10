@@ -963,7 +963,7 @@ export default function HomePageApp() {
                         <div className={HomePageApp_ls.mapboxz_center}>
                             <div className={HomePageApp_ls.mapboxz_onlinenodes}>
                                 <p className={HomePageApp_ls.mapboxz_d_name}>
-                                    Online Rate
+                                    Online Nodes
                                 </p>
                                 <p className={HomePageApp_ls.mapboxz_d_data}>
                                     {validatoronline.onlineNode4h || 0}
@@ -971,7 +971,7 @@ export default function HomePageApp() {
                             </div>
                             <div className={HomePageApp_ls.mapboxz_d}>
                                 <p className={HomePageApp_ls.mapboxz_d_name}>
-                                    Online Rate
+                                    Online Validators
                                 </p>
                                 <p className={HomePageApp_ls.mapboxz_d_data}>
                                     {validatoronline.count || 0}/

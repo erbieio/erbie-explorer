@@ -69,6 +69,7 @@ export default function BlockChain() {
             dataIndex: 'totalTransaction',
             key: 'totalTransaction',
             render: (text, data) => (data.number != 0 ? <>{text}</> : '-'),
+            width: '70px',
         },
         {
             title: 'Creation Time',
@@ -85,6 +86,7 @@ export default function BlockChain() {
                     '-'
                 ),
             ellipsis: true,
+            width: '200px',
         },
         {
             title: 'Gas Used',
