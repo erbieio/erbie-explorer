@@ -66,9 +66,10 @@ function hexCharCodeToStr(hexCharCodeStr) {
         return { name:'contract based transaction',type:999 }
     }else {
         let obj = JSON.parse(StrTran.substring(10))
+        console.log(StrTran);
+        console.log(obj);
         dealType.forEach(item => {
             obj.type === item.type ? obj.name = item.name : ""
-            console.log(item.name);
         })
 
         // obj.name = `Deal No. ${obj.type}`
@@ -198,6 +199,7 @@ class TradeDetail extends React.Component {
                     });
                 }
                 const transactionres = await transaction(this.state.Trastate);
+                console.log(transactionres);
                 let state = JSON.stringify(transactionres)
                 console.log(state === "null");
                 if(state === "null" ) {
