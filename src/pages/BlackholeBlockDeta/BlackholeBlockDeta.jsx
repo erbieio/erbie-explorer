@@ -12,62 +12,7 @@ import { map } from '@antv/util';
 export default function BlackholeBlockDeta(props) {
     const [pagenumber, setPagenumber] = useState(1);
     //单个区块
-    const [soloblockdata, setSoloblockdata] = useState({});
-    let rewarderdata = {
-        proposers: [
-            '0x00000000000000000000000000000000000000',
-            '0x00000000000000000000000000000000000000',
-            '0x00000000000000000000000000000000000000',
-            '0x00000000000000000000000000000000000000',
-            '0x00000000000000000000000000000000000000',
-        ],
-        validators: [
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-            {
-                address: '0x00000000000000000000000000000000000000',
-                weight: 29,
-            },
-        ],
-    };
+    const [rewarderdata, setRewarderdata] = useState({});
     const onChange = (data) => {
         console.log(data);
     };
@@ -75,17 +20,17 @@ export default function BlackholeBlockDeta(props) {
     const soloblock_q = async (item) => {
         const data = await soloblock(item);
         if (data) {
-            setSoloblockdata(data);
+            setRewarderdata(data);
         }
         console.log('单个区块查询');
         console.log(data);
         let state = JSON.stringify(data);
-        // if (
-        //     JSON.parse(state).useCache != undefined &&
-        //     JSON.parse(state).useCache == false
-        // ) {
-        //     comingsoon404();
-        // }
+        if (
+            JSON.parse(state).useCache != undefined &&
+            JSON.parse(state).useCache == false
+        ) {
+            comingsoon404();
+        }
     };
     useEffect(() => {
         if (props.location.state != undefined) {
@@ -106,49 +51,74 @@ export default function BlackholeBlockDeta(props) {
         props.history.push('/NoSearchResults');
     }
     function rewarderblock(data) {
-        return data.map((item) => {
-            return (
-                <div className={BlackholeBlockDeta_ls.Rewarderdatabox_block}>
-                    <p
-                        className={
-                            BlackholeBlockDeta_ls.Rewarderdatabox_block_title
-                        }
-                    >
-                        Penalty Address
-                    </p>
-                    <p
-                        className={
-                            BlackholeBlockDeta_ls.Rewarderdatabox_block_address
-                        }
-                    >
-                        {ellipsis(item.address)}
-                    </p>
+        if (data) {
+            return data.map((item) => {
+                return (
                     <div
-                        className={
-                            BlackholeBlockDeta_ls.Rewarderdatabox_block_bottom
-                        }
+                        className={BlackholeBlockDeta_ls.Rewarderdatabox_block}
                     >
-                        <div>
-                            <p>Penalty Points</p>
-                            <span>10</span>
-                        </div>
-                        <div>
-                            <p>Current Credibility</p>
-                            <span>{item.weight}</span>
+                        <p
+                            className={
+                                BlackholeBlockDeta_ls.Rewarderdatabox_block_title
+                            }
+                        >
+                            Penalty Address
+                        </p>
+                        <Link
+                            to={{
+                                pathname: `/AccountDetail/${item.address}`,
+                                state: item.address,
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                            className={
+                                BlackholeBlockDeta_ls.Rewarderdatabox_block_address
+                            }
+                        >
+                            {ellipsis(item.address)}
+                        </Link>
+                        <div
+                            className={
+                                BlackholeBlockDeta_ls.Rewarderdatabox_block_bottom
+                            }
+                        >
+                            <div>
+                                <p>Penalty Weight</p>
+                                <span>10</span>
+                            </div>
+                            <div>
+                                <p>Current Weight</p>
+                                <span>{item.weight}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            );
-        });
+                );
+            });
+        }
     }
     function nodeaddressdata(data) {
-        return data.map((item) => {
-            return (
-                <div className={BlackholeBlockDeta_ls.nodeaddressblock}>
-                    {item}
-                </div>
-            );
-        });
+        if (data) {
+            return data.map((item) => {
+                return (
+                    <div className={BlackholeBlockDeta_ls.nodeaddressblock}>
+                        <Link
+                            to={{
+                                pathname: `/AccountDetail/${item}`,
+                                state: item,
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {item}
+                        </Link>
+                    </div>
+                );
+            });
+        }
     }
     function BlockChaininputnumberonclick(e) {
         let data = document.getElementById('BlockChaininputnumber').value;
@@ -162,7 +132,7 @@ export default function BlackholeBlockDeta(props) {
         <>
             <div className={BlackholeBlockDeta_ls.BlackholeBlockDetaBox}>
                 <div className={BlackholeBlockDeta_ls.title}>
-                    Blackhole Block Deta
+                    Blackhole Block Details
                     <SearchBox />
                 </div>
                 <div className={BlackholeBlockDeta_ls.Rewarderdatabox}>
@@ -173,14 +143,15 @@ export default function BlackholeBlockDeta(props) {
                         }
                     ></div>
                 </div>
-                <div className={BlackholeBlockDeta_ls.table}>
-                    <p className={BlackholeBlockDeta_ls.table_title}>
-                        Node Address
-                    </p>
-                    <div className={BlackholeBlockDeta_ls.table_data}>
-                        {nodeaddressdata(rewarderdata.proposers)}
-                    </div>
-                    <div
+                <div className={BlackholeBlockDeta_ls.tablebox}>
+                    <div className={BlackholeBlockDeta_ls.table}>
+                        <p className={BlackholeBlockDeta_ls.table_title}>
+                            Node Address
+                        </p>
+                        <div className={BlackholeBlockDeta_ls.table_data}>
+                            {nodeaddressdata(rewarderdata.proposers)}
+                        </div>
+                        {/* <div
                         className={
                             BlackholeBlockDeta_ls.BlockDetailsBox_Pagination
                         }
@@ -188,7 +159,7 @@ export default function BlackholeBlockDeta(props) {
                     >
                         <Pagination
                             defaultCurrent={1}
-                            total={rewarderdata.proposers.length}
+                            total={rewarderdata.proposers?rewarderdata.proposers.length:0}
                             onChange={onChange}
                             showSizeChanger={false}
                             current={pagenumber}
@@ -221,6 +192,7 @@ export default function BlackholeBlockDeta(props) {
                         >
                             Page
                         </span>
+                    </div> */}
                     </div>
                 </div>
             </div>

@@ -456,6 +456,26 @@ export default function HomePage() {
                             }}
                         >
                             <div className={HomePage_ls.tableblocklistdatabox}>
+                            {
+                                item.miner == '0x0000000000000000000000000000000000000000'
+                                ?
+                                <Link
+                                    className={
+                                        HomePage_ls.tableblocklistdatanumber
+                                    }
+                                    style={{
+                                        color: '#16ADFF',
+                                        cursor: 'pointer',
+                                        fontWeight: '400',
+                                    }}
+                                    to={{
+                                        pathname: '/BlockChain/BlackholeBlockDeta',
+                                        state: { blockid: item.number },
+                                    }}
+                                >
+                                    {item.number}
+                                </Link>
+                                :
                                 <Link
                                     className={
                                         HomePage_ls.tableblocklistdatanumber
@@ -472,6 +492,8 @@ export default function HomePage() {
                                 >
                                     {item.number}
                                 </Link>
+                            }
+                                
                                 <Link
                                     className={
                                         HomePage_ls.tableblocklistdataminer
@@ -688,7 +710,7 @@ export default function HomePage() {
             ) {
                 // 区块
                 history.push({
-                    pathname: '/BlockChain/BlockDetails',
+                    pathname: '/NullPage',
                     state: {
                         blockid: data,
                     },

@@ -29,6 +29,21 @@ export default function BlockChainApp() {
             key: 'number',
             render: (text, data) =>
                 data.number != 0 ? (
+                    data.miner == '0x0000000000000000000000000000000000000000'
+                    ?
+                    <Link
+                        to={{
+                            pathname: '/BlockChainApp/BlackholeBlockDetaApp',
+                            state: { blockid: text },
+                        }}
+                        style={{
+                            color: '#7AA4FF',
+                            fontFamily: 'CustomFontMedium',
+                        }}
+                    >
+                        {text}
+                    </Link>
+                    :
                     <Link
                         to={{
                             pathname: '/BlockChainApp/BlockDetailsApp',

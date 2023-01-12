@@ -380,7 +380,7 @@ export default function BlockDetailsApp(props) {
             JSON.stringify(JSON.parse(localStorage.getItem('blocktext')) - 1),
         );
         history.push({
-            pathname: '/BlockChainApp/BlockDetailsApp',
+            pathname: '/NullPageApp',
             state: {
                 blockid: JSON.parse(localStorage.getItem('blocktext')),
             },

@@ -224,7 +224,7 @@ export default function Validator() {
             render: (text, data) => (
                 <Link
                     to={{
-                        pathname: '/BlockChain/BlockDetails',
+                        pathname: '/NullPage',
                         state: { blockid: text },
                     }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}

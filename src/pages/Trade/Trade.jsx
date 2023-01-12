@@ -89,7 +89,6 @@ function hexCharCodeToStr(hexCharCodeStr) {
         });
         return obj.name;
     }
-    // return StrTran.substring(0, StrTran.indexOf(':')) + ' transaction';
 }
 // function SNFTinputnumberonclick(e) {
 //     let data = document.getElementById('SNFTinputnumber').value;
@@ -179,7 +178,7 @@ class Trade extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: '/BlockChain/BlockDetails',
+                                pathname: '/NullPage',
                                 state: { blockid: text },
                             }}
                             style={{

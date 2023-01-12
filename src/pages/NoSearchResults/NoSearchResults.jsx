@@ -17,7 +17,7 @@ export default function NoSearchResults() {
             if (Number(data) == data && data.slice(0,2) != '0x' && data.slice(0,2) != '0X') {
                 // 区块
                 history.push({
-                    pathname: '/BlockChain/BlockDetails',
+                    pathname: '/NullPage',
                     state: {
                         blockid: data,
                     },

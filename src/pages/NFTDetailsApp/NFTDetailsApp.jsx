@@ -101,7 +101,7 @@ export default function NFTDetailsApp(props) {
             render: (text, data) => (
                 <Link
                     to={{
-                        pathname: '/BlockChainApp/BlockDetailsApp',
+                        pathname: '/NullPageApp',
                         state: { blockid: text },
                     }}
                     style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}

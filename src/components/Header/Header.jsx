@@ -39,7 +39,7 @@ export default function Header() {
             ) {
                 // 区块
                 history.push({
-                    pathname: '/BlockChain/BlockDetails',
+                    pathname: '/NullPage',
                     state: {
                         blockid: data,
                     },

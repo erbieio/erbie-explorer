@@ -22,11 +22,11 @@ export default function SearchBox() {
                 //  location.reload()
                 // 区块
                 history.push({
-                    pathname: '/BlockChain/BlockDetails',
+                    pathname: '/NullPage',
                     state: {
                         blockid: data,
                     },
-                })
+                });
             } else if ((data.slice(0,2) == '0x' || data.slice(0,2) == '0X') && data.length == 42) {
                 //账户详情
                 history.push({

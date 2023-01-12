@@ -29,18 +29,34 @@ export default function BlockChain() {
             key: 'number',
             render: (text, data) =>
                 data.number != 0 ? (
-                    <Link
-                        to={{
-                            pathname: '/BlockChain/BlockDetails',
-                            state: { blockid: text },
-                        }}
-                        style={{
-                            color: '#7AA4FF',
-                            fontFamily: 'CustomFontMedium',
-                        }}
-                    >
-                        {text}
-                    </Link>
+                    data.miner ==
+                    '0x0000000000000000000000000000000000000000' ? (
+                        <Link
+                            to={{
+                                pathname: '/BlockChain/BlackholeBlockDeta',
+                                state: { blockid: text },
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {text}
+                        </Link>
+                    ) : (
+                        <Link
+                            to={{
+                                pathname: '/BlockChain/BlockDetails',
+                                state: { blockid: text },
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {text}
+                        </Link>
+                    )
                 ) : (
                     '-'
                 ),
@@ -163,6 +179,7 @@ export default function BlockChain() {
             }
         }
     }
+    
     return (
         <>
             <div className={BlockChain_ls.BlockChainBox}>

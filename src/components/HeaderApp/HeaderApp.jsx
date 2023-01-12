@@ -34,7 +34,7 @@ export default function HeaderApp(props) {
             //  location.reload()
             // 区块
             history.push({
-                pathname: '/BlockChainApp/BlockDetailsApp',
+                pathname: '/NullPageApp',
                 state: {
                     blockid: data,
                 },

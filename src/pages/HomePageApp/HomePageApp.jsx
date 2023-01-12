@@ -483,6 +483,27 @@ export default function HomePageApp() {
                             <div
                                 className={HomePageApp_ls.tableblocklistdatabox}
                             >
+                            {
+                                item.miner == '0x0000000000000000000000000000000000000000'
+                                ?
+                                <Link
+                                    className={
+                                        HomePageApp_ls.tableblocklistdatanumber
+                                    }
+                                    style={{
+                                        color: '#16ADFF',
+                                        cursor: 'pointer',
+                                        fontWeight: '400',
+                                    }}
+                                    to={{
+                                        pathname:
+                                            '/BlockChainApp/BlackholeBlockDetaApp',
+                                        state: { blockid: item.number },
+                                    }}
+                                >
+                                    {item.number}
+                                </Link>
+                                :
                                 <Link
                                     className={
                                         HomePageApp_ls.tableblocklistdatanumber
@@ -500,6 +521,8 @@ export default function HomePageApp() {
                                 >
                                     {item.number}
                                 </Link>
+                            }
+                                
                                 <Link
                                     className={
                                         HomePageApp_ls.tableblocklistdataminer
@@ -768,7 +791,7 @@ export default function HomePageApp() {
             ) {
                 // 区块
                 history.push({
-                    pathname: '/BlockChainApp/BlockDetailsApp',
+                    pathname: '/NullPageApp',
                     state: {
                         blockid: data,
                     },

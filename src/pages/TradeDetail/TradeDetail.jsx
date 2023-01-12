@@ -333,7 +333,7 @@ class TradeDetail extends React.Component {
                                     <Link
                                         to={{
                                             pathname:
-                                                '/BlockChain/BlockDetails',
+                                                '/NullPage',
                                             state: {
                                                 blockid:
                                                     this.state.detailData

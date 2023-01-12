@@ -17,6 +17,8 @@ import { history } from 'umi';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import { timestamp, ellipsis } from '../../utils/methods/Methods';
 import React, { useState, useEffect } from 'react';
+const deal = require('../../assets/json/dealType.json');
+const { dealType } = deal;
 export default function BlockDetails(props) {
     const [pagenumber, setPagenumber] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(10);
@@ -89,6 +91,57 @@ export default function BlockDetails(props) {
             key: 'value',
             dataIndex: 'value',
             render: (text) => <span>{utils.formatEther(text)}</span>,
+        },
+        {
+            title: 'TXN Type',
+            key: 'aaaa',
+            dataIndex: 'aaaa',
+            render: (text, data) => (
+                <span>{hexCharCodeToStr(data.input)}</span>
+            ),
+            ellipsis: true,
+            width: '200px',
+        },
+        {
+            title: 'Status',
+            key: 'status',
+            dataIndex: 'status',
+            render: (text, data) => (
+                <span>
+                    {
+                        <Tag
+                            color={
+                                text == 1
+                                    ? 'rgba(168, 255, 210, .2)'
+                                    : 'rgba(254, 79, 167, .2)'
+                            }
+                            style={{
+                                color:
+                                    text == 1
+                                        ? 'rgba(158, 255, 204, 1)'
+                                        : '#FE4FA7',
+                            }}
+                        >
+                            {text == 1 ? 'Success' : 'Defeat'}
+                        </Tag>
+                    }
+                </span>
+            ),
+        },
+        {
+            title: 'TXN Fee',
+            key: 'aaaa',
+            dataIndex: 'aaaa',
+            render: (text, data) => (
+                <span>
+                    {data
+                        ? utils.formatEther(
+                              String(data.gasPrice * data.gasUsed),
+                          )
+                        : 0}
+                </span>
+            ),
+            ellipsis: true,
         },
     ];
 
@@ -173,6 +226,38 @@ export default function BlockDetails(props) {
             if (Number(data) != NaN) {
                 setPagenumber(Number(data));
             }
+        }
+    }
+    function hexCharCodeToStr(hexCharCodeStr) {
+        // console.log(hexCharCodeStr)
+        var trimedStr = hexCharCodeStr.trim();
+        if (trimedStr === '0x') {
+            return 'Transfer';
+        }
+        var rawStr =
+            trimedStr.substr(0, 2).toLowerCase() === '0x'
+                ? trimedStr.substr(2)
+                : trimedStr;
+        var len = rawStr.length;
+        if (len % 2 !== 0) {
+            // alert("Illegal Format ASCII Code!");
+            return '';
+        }
+        var curCharCode;
+        var resultStr = [];
+        for (var i = 0; i < len; i = i + 2) {
+            curCharCode = parseInt(rawStr.substr(i, 2), 16); // ASCII Code Value
+            resultStr.push(String.fromCharCode(curCharCode));
+        }
+        let StrTran = resultStr.join('');
+        if (StrTran.substring(0, StrTran.indexOf(':')) !== 'wormholes') {
+            return 'Contract Based Transaction';
+        } else {
+            let obj = JSON.parse(StrTran.substring(10));
+            dealType.forEach((item) => {
+                obj.type === item.type ? (obj.name = item.name) : '';
+            });
+            return obj.name;
         }
     }
     //出块者
@@ -387,7 +472,7 @@ export default function BlockDetails(props) {
             JSON.stringify(JSON.parse(localStorage.getItem('blocktext')) - 1),
         );
         history.push({
-            pathname: '/BlockChain/BlockDetails',
+            pathname: '/NullPage',
             state: {
                 blockid: JSON.parse(localStorage.getItem('blocktext')),
             },

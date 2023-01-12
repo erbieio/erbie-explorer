@@ -173,7 +173,7 @@ class Trade extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: '/BlockChainApp/BlockDetailsApp',
+                                pathname: '/NullPageApp',
                                 state: { blockid: text },
                             }}
                             style={{
