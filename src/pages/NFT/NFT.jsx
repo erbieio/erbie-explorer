@@ -33,9 +33,9 @@ export default function NFT() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: '/NFT/NFTDetails', state: { nftid: data } }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
-                    {Number(text) != 0 ? text : '非法昵称'}
+                    {Number(text) != 0 ? text : ''}
                 </Link>
             ),
             ellipsis: true,
@@ -80,7 +80,7 @@ export default function NFT() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -94,7 +94,7 @@ export default function NFT() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -111,7 +111,7 @@ export default function NFT() {
                         pathname: '/Exchange/ExchangeDetails',
                         state: { exchangeid: text },
                     }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -338,7 +338,7 @@ export default function NFT() {
                                 +
                                 {Math.floor(
                                     (totaldata.total24HNFT /
-                                        totaldata.totalNFTTx) *
+                                        totaldata.totalNFT) *
                                         100,
                                 ) / 100 || 0}
                                 %

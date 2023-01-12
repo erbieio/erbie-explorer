@@ -23,11 +23,16 @@ export default defineConfig({
                 { path: '/SNFTApp', component: './SNFTApp/SNFTApp.jsx' },
                 { path: '/Exchange', component: './Exchange/Exchange.jsx' },
                 {
-                    path: "/ExchangeApp", component: "./ExchangeApp/Exchange.jsx"
+                    path: '/ExchangeApp',
+                    component: './ExchangeApp/Exchange.jsx',
                 },
                 {
                     path: '/BlockChain/BlockDetails',
                     component: './BlockDetails/BlockDetails.jsx',
+                },
+                {
+                    path: '/BlockChain/BlackholeBlockDeta',
+                    component: './BlackholeBlockDeta/BlackholeBlockDeta.jsx',
                 },
                 {
                     path: '/BlockChainApp/BlockDetailsApp',
@@ -54,15 +59,19 @@ export default defineConfig({
                     component: './ExchangeDetails/ExchangeDetails.jsx',
                 },
                 {
-                    path:"/ExchangeApp/ExchangeDetailsApp",
-                    component: "./ExchangeDetailsApp/ExchangeDetails.jsx"
+                    path: '/ExchangeApp/ExchangeDetailsApp',
+                    component: './ExchangeDetailsApp/ExchangeDetails.jsx',
                 },
                 { path: '/Validator', component: './Validator/Validator.jsx' },
-                { path: '/ValidatorApp', component: './ValidatorApp/ValidatorApp.jsx' },
+                {
+                    path: '/ValidatorApp',
+                    component: './ValidatorApp/ValidatorApp.jsx',
+                },
                 { path: '/TestPage', component: './TestPage/TestPage.jsx' },
                 { path: '/ranking', component: './Ranking/Ranking.jsx' },
                 {
-                    path: "/rankingApp", component: "./RankingApp/RankingApp.jsx"
+                    path: '/rankingApp',
+                    component: './RankingApp/RankingApp.jsx',
                 },
                 {
                     path: '/exchangeRanking',

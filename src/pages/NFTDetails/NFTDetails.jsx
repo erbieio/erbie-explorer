@@ -46,7 +46,7 @@ export default function NFTDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/TradeDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -73,7 +73,7 @@ export default function NFTDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -87,7 +87,7 @@ export default function NFTDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -104,7 +104,7 @@ export default function NFTDetails(props) {
                         pathname: '/BlockChain/BlockDetails',
                         state: { blockid: text },
                     }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -137,7 +137,7 @@ export default function NFTDetails(props) {
         console.log(`selected ${value}`);
     };
     useEffect(() => {
-        console.log();
+        console.log(props.location.state.nftid);
         if (props.location.state != undefined) {
             localStorage.setItem(
                 'nfttext',
@@ -180,11 +180,13 @@ export default function NFTDetails(props) {
     };
     //meta查询
     const metainformation_q = async (item) => {
-        const data = await metainformation(item);
-        console.log('meta查询');
-        console.log(data);
-        if (data) {
-            setMetadata(data);
+        if (item != '') {
+            const data = await metainformation(item);
+            console.log('meta查询');
+            console.log(data);
+            if (data) {
+                setMetadata(data);
+            }
         }
     };
     function NFTDetailsinputnumberonclick(e) {

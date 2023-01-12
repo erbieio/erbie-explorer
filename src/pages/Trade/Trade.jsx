@@ -26,6 +26,8 @@ import {
     Pagination,
 } from 'antd';
 const { Column, ColumnGroup } = Table;
+const deal = require('../../assets/json/dealType.json');
+const { dealType } = deal;
 import zhCN from 'antd/es/locale/zh_CN';
 import { history, Link } from 'umi';
 import {
@@ -38,6 +40,7 @@ import {
     timestamp,
     ellipsis,
     digitalreduction,
+    ellipsisfour,
 } from '../../utils/methods/Methods';
 import { utils } from 'ethers';
 const scale = {
@@ -59,7 +62,7 @@ function hexCharCodeToStr(hexCharCodeStr) {
     // console.log(hexCharCodeStr)
     var trimedStr = hexCharCodeStr.trim();
     if (trimedStr === '0x') {
-        return 'regular way';
+        return 'Transfer';
     }
     var rawStr =
         trimedStr.substr(0, 2).toLowerCase() === '0x'
@@ -78,9 +81,15 @@ function hexCharCodeToStr(hexCharCodeStr) {
     }
     let StrTran = resultStr.join('');
     if (StrTran.substring(0, StrTran.indexOf(':')) !== 'wormholes') {
-        return 'contract based transaction';
+        return 'Contract Based Transaction';
+    } else {
+        let obj = JSON.parse(StrTran.substring(10));
+        dealType.forEach((item) => {
+            obj.type === item.type ? (obj.name = item.name) : '';
+        });
+        return obj.name;
     }
-    return StrTran.substring(0, StrTran.indexOf(':')) + ' transaction';
+    // return StrTran.substring(0, StrTran.indexOf(':')) + ' transaction';
 }
 // function SNFTinputnumberonclick(e) {
 //     let data = document.getElementById('SNFTinputnumber').value;
@@ -101,7 +110,7 @@ class Trade extends React.Component {
             date: new Date(),
             chartData: [],
             lineData: [],
-            pagenumber :1,
+            pagenumber: 1,
             colors: [
                 '#FCCF38',
                 '#B968FF',
@@ -116,14 +125,14 @@ class Trade extends React.Component {
                 this.paginationChange(this.state.pageOption.page, 16),
                     console.log(this.state.pageOption.page);
             },
-            SNFTinputnumberonclick:(e) => {
+            SNFTinputnumberonclick: (e) => {
                 let data = document.getElementById('SNFTinputnumber').value;
                 if (e.keyCode == 13) {
                     if (Number(data) != NaN) {
                         // this.state.pagenumber = Number(data);
                         console.log(Number(data));
                         this.state.pageOption.page = Number(data);
-                            this.paginationChange(this.state.pageOption.page, 16)
+                        this.paginationChange(this.state.pageOption.page, 16);
                     }
                 }
             },
@@ -138,13 +147,16 @@ class Trade extends React.Component {
                                 pathname: `/TradeDetail/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                         >
-                            {ellipsis(text)}
+                            {ellipsisfour(text)}
                         </Link>
                     ),
                     // ellipsis: true,
-                    width: '150px',
+                    // width: '150px',
                 },
                 {
                     title: 'TXN Time',
@@ -158,6 +170,7 @@ class Trade extends React.Component {
                         </span>
                     ),
                     ellipsis: true,
+                    width: '180px',
                 },
                 {
                     title: 'Block Height',
@@ -169,7 +182,10 @@ class Trade extends React.Component {
                                 pathname: '/BlockChain/BlockDetails',
                                 state: { blockid: text },
                             }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                         >
                             {text}
                         </Link>
@@ -185,12 +201,15 @@ class Trade extends React.Component {
                                 pathname: `/AccountDetail/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                         >
-                            {ellipsis(text)}
+                            {ellipsisfour(text)}
                         </Link>
                     ),
-                    width: '150px',
+                    // width: '150px',
                 },
                 {
                     title: 'Reciever',
@@ -202,12 +221,15 @@ class Trade extends React.Component {
                                 pathname: `/AccountDetail/${text}`,
                                 state: text,
                             }}
-                            style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
                         >
-                            {ellipsis(text)}
+                            {ellipsisfour(text)}
                         </Link>
                     ),
-                    width: '150px',
+                    // width: '150px',
                 },
                 {
                     title: 'Value (ERB)',
@@ -225,9 +247,10 @@ class Trade extends React.Component {
                         <span>{hexCharCodeToStr(data.input)}</span>
                     ),
                     ellipsis: true,
+                    width: '200px',
                 },
                 {
-                    title: 'TXN Status',
+                    title: 'Status',
                     key: 'status',
                     dataIndex: 'status',
                     render: (text, data) => (
@@ -568,7 +591,7 @@ class Trade extends React.Component {
                         </Chart>
                     </div>
                 </div>
-                <div className={Trade_ls.TradeBox1} id = 'TradeTable'>
+                <div className={Trade_ls.TradeBox1} id="TradeTable">
                     <p className={Trade_ls.TradeTitle}>TRANSACT</p>
                     <Table
                         columns={this.state.columns}

@@ -60,6 +60,7 @@ export default function HomePage() {
     const [multiple, setMultiple] = useState(0.11);
     //在线验证者
     const [validatoronline, setValidatoronline] = useState(0);
+    let L0 = 0.03;
     //区块分页
     let pagedata = {
         page: 1,
@@ -99,7 +100,7 @@ export default function HomePage() {
     const onlineAddr_q = async (item) => {
         const data = await onlineAddr(item);
         if (data) {
-            setValidatoronline(data.count);
+            setValidatoronline(data);
         }
         console.log('验证者在线查询');
         console.log(data);
@@ -816,12 +817,20 @@ export default function HomePage() {
 
                     <div className={HomePage_ls.mapboxz}>
                         <div className={HomePage_ls.mapboxz_center}>
-                            <div className={HomePage_ls.mapboxz_d}>
+                            <div className={HomePage_ls.mapboxz_onlinenodes}>
                                 <p className={HomePage_ls.mapboxz_d_name}>
-                                    Online Rate
+                                    Online Nodes
                                 </p>
                                 <p className={HomePage_ls.mapboxz_d_data}>
-                                    {validatoronline || 0}/
+                                    {validatoronline.onlineNode4h || 0}
+                                </p>
+                            </div>
+                            <div className={HomePage_ls.mapboxz_d}>
+                                <p className={HomePage_ls.mapboxz_d_name}>
+                                    Online Validators
+                                </p>
+                                <p className={HomePage_ls.mapboxz_d_data}>
+                                    {validatoronline.count || 0}/
                                     {totaldata.totalValidator || 0}
                                 </p>
                                 <div
@@ -832,10 +841,10 @@ export default function HomePage() {
                                 >
                                     <Progress
                                         percent={
-                                            validatoronline &&
+                                            validatoronline.count &&
                                             totaldata.totalValidator
                                                 ? (
-                                                      (validatoronline /
+                                                      (validatoronline.count /
                                                           totaldata.totalValidator) *
                                                       100
                                                   ).toFixed(2)
@@ -1089,7 +1098,13 @@ export default function HomePage() {
                                     }
                                 >
                                     {(
-                                        (totaldata.totalBlock - 1) * 1.15 || 0
+                                        Math.floor(
+                                            totaldata.rewardCoinCount *
+                                                multiple *
+                                                100,
+                                        ) /
+                                            100 +
+                                        parseInt(totaldata.rewardSNFTCount) * L0
                                     ).toFixed(2)}{' '}
                                     ERB
                                 </span>
@@ -1140,18 +1155,20 @@ export default function HomePage() {
                                     HomePage_ls.BlockINFORMATIONbox_right_data
                                 }
                             >
-                                {epochdata.timestamp?(new Date(
-                                    epochdata.timestamp * 1000,
-                                ).getFullYear() +
-                                    '/' +
-                                    (new Date(
-                                        epochdata.timestamp * 1000,
-                                    ).getMonth() +
-                                        1) +
-                                    '/' +
-                                    new Date(
-                                        epochdata.timestamp  * 1000,
-                                    ).getDate()):'0/0/0'}
+                                {epochdata.timestamp
+                                    ? new Date(
+                                          epochdata.timestamp * 1000,
+                                      ).getFullYear() +
+                                      '/' +
+                                      (new Date(
+                                          epochdata.timestamp * 1000,
+                                      ).getMonth() +
+                                          1) +
+                                      '/' +
+                                      new Date(
+                                          epochdata.timestamp * 1000,
+                                      ).getDate()
+                                    : '0/0/0'}
                             </p>
                         </div>
                         <div
@@ -1240,7 +1257,7 @@ export default function HomePage() {
                                     }
                                     style={{ width: '350px' }}
                                 >
-                                    Miner
+                                    Proposer
                                 </p>
                                 <p
                                     className={

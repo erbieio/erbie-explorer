@@ -32,10 +32,13 @@ export default function NFTApp() {
             key: 'name',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: '/NFTApp/NFTDetailsApp', state: { nftid: data } }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    to={{
+                        pathname: '/NFTApp/NFTDetailsApp',
+                        state: { nftid: data },
+                    }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
-                    {Number(text) != 0 ? text : '非法昵称'}
+                    {Number(text) != 0 ? text : ''}
                 </Link>
             ),
             ellipsis: true,
@@ -80,7 +83,7 @@ export default function NFTApp() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -94,7 +97,7 @@ export default function NFTApp() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -111,7 +114,7 @@ export default function NFTApp() {
                         pathname: '/ExchangeApp/ExchangeDetailsApp',
                         state: { exchangeid: text },
                     }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -343,7 +346,7 @@ export default function NFTApp() {
                                 +
                                 {Math.floor(
                                     (totaldata.total24HNFT /
-                                        totaldata.totalNFTTx) *
+                                        totaldata.totalNFT) *
                                         100,
                                 ) / 100 || 0}
                                 %
