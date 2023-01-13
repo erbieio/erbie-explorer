@@ -44,7 +44,7 @@ export default function SNFTDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/TradeDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -75,7 +75,7 @@ export default function SNFTDetails(props) {
                         pathname: '/Exchange/ExchangeDetails',
                         state: { exchangeid: text },
                     }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -88,7 +88,7 @@ export default function SNFTDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -101,7 +101,7 @@ export default function SNFTDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -139,6 +139,7 @@ export default function SNFTDetails(props) {
         // console.log('传过来的地址' +props.location.state?props.location.state.snftid:JSON.parse(localStorage.getItem('snfttext')));
         // console.log('传过来的meta' );
         // console.log(props.location.state?props.location.state.snftmata:JSON.parse(localStorage.getItem('snftmata')));
+        console.log(window);
         if (props.location.state != undefined) {
             localStorage.setItem(
                 'snfttext',
@@ -147,6 +148,14 @@ export default function SNFTDetails(props) {
             localStorage.setItem(
                 'snftmata',
                 JSON.stringify(props.location.state.snftmata),
+            );
+        } else if (
+            props.location.state == undefined &&
+            Object.keys(props.location.query.snftid).length != 0
+        ) {
+            localStorage.setItem(
+                'snfttext',
+                JSON.stringify(props.location.query.snftid),
             );
         }
         snftdetails_q(
@@ -423,7 +432,7 @@ export default function SNFTDetails(props) {
                                 >
                                     {snftdata.owner ? snftdata.owner : '-'}
                                 </Link>
-                                
+
                                 <p
                                     className={
                                         SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name

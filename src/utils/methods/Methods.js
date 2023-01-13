@@ -1,4 +1,6 @@
 import moment from 'moment';
+const deal = require('../../assets/json/dealType.json');
+const { dealType } = deal;
 // 数字缩减
 export function digitalreduction(data) {
     console.log(data);
@@ -98,5 +100,38 @@ export function ellipsisthree(data) {
         return (
             data.slice(0, 3) + '...' + data.slice(data.length - 3, data.length)
         );
+    }
+}
+//交易类型
+export function hexCharCodeToStr(hexCharCodeStr) {
+    // console.log(hexCharCodeStr)
+    var trimedStr = hexCharCodeStr.trim();
+    if (trimedStr === '0x') {
+        return 'Transfer';
+    }
+    var rawStr =
+        trimedStr.substr(0, 2).toLowerCase() === '0x'
+            ? trimedStr.substr(2)
+            : trimedStr;
+    var len = rawStr.length;
+    if (len % 2 !== 0) {
+        // alert("Illegal Format ASCII Code!");
+        return '';
+    }
+    var curCharCode;
+    var resultStr = [];
+    for (var i = 0; i < len; i = i + 2) {
+        curCharCode = parseInt(rawStr.substr(i, 2), 16); // ASCII Code Value
+        resultStr.push(String.fromCharCode(curCharCode));
+    }
+    let StrTran = resultStr.join('');
+    if (StrTran.substring(0, StrTran.indexOf(':')) !== 'wormholes') {
+        return 'Contract Based Transaction';
+    } else {
+        let obj = JSON.parse(StrTran.substring(10));
+        dealType.forEach((item) => {
+            obj.type === item.type ? (obj.name = item.name) : '';
+        });
+        return obj.name;
     }
 }

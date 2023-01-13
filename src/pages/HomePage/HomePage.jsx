@@ -456,44 +456,45 @@ export default function HomePage() {
                             }}
                         >
                             <div className={HomePage_ls.tableblocklistdatabox}>
-                            {
-                                item.miner == '0x0000000000000000000000000000000000000000'
-                                ?
-                                <Link
-                                    className={
-                                        HomePage_ls.tableblocklistdatanumber
-                                    }
-                                    style={{
-                                        color: '#16ADFF',
-                                        cursor: 'pointer',
-                                        fontWeight: '400',
-                                    }}
-                                    to={{
-                                        pathname: '/BlockChain/BlackholeBlockDeta',
-                                        state: { blockid: item.number },
-                                    }}
-                                >
-                                    {item.number}
-                                </Link>
-                                :
-                                <Link
-                                    className={
-                                        HomePage_ls.tableblocklistdatanumber
-                                    }
-                                    style={{
-                                        color: '#16ADFF',
-                                        cursor: 'pointer',
-                                        fontWeight: '400',
-                                    }}
-                                    to={{
-                                        pathname: '/BlockChain/BlockDetails',
-                                        state: { blockid: item.number },
-                                    }}
-                                >
-                                    {item.number}
-                                </Link>
-                            }
-                                
+                                {item.miner ==
+                                '0x0000000000000000000000000000000000000000' ? (
+                                    <Link
+                                        className={
+                                            HomePage_ls.tableblocklistdatanumber
+                                        }
+                                        style={{
+                                            color: '#16ADFF',
+                                            cursor: 'pointer',
+                                            fontWeight: '400',
+                                        }}
+                                        to={{
+                                            pathname:
+                                                '/BlockChain/BlackholeBlockDeta',
+                                            state: { blockid: item.number },
+                                        }}
+                                    >
+                                        {item.number}
+                                    </Link>
+                                ) : (
+                                    <Link
+                                        className={
+                                            HomePage_ls.tableblocklistdatanumber
+                                        }
+                                        style={{
+                                            color: '#16ADFF',
+                                            cursor: 'pointer',
+                                            fontWeight: '400',
+                                        }}
+                                        to={{
+                                            pathname:
+                                                '/BlockChain/BlockDetails',
+                                            state: { blockid: item.number },
+                                        }}
+                                    >
+                                        {item.number}
+                                    </Link>
+                                )}
+
                                 <Link
                                     className={
                                         HomePage_ls.tableblocklistdataminer
@@ -773,6 +774,7 @@ export default function HomePage() {
                                 HomePage_ls.HomePageBox_SearchBox_search_bottomBox_input
                             }
                             id="homepageinput"
+                            autocomplete="off"
                             placeholder="Search by Address / Txn Hash / Block / Token"
                         />
                         <BsSearch

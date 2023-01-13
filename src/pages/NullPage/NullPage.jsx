@@ -1,10 +1,8 @@
-import NullPage_ls from './NullPage.less'
-import {
-    soloblock
-} from '../../api/request_data/block_request';
+import NullPage_ls from './NullPage.less';
+import { soloblock } from '../../api/request_data/block_request';
 import React, { useState, useEffect } from 'react';
 import { history } from 'umi';
-export default function NullPage(props){
+export default function NullPage(props) {
     //单个区块查询
     const soloblock_q = async (item) => {
         const data = await soloblock(item);
@@ -17,15 +15,15 @@ export default function NullPage(props){
         ) {
             comingsoon404();
         }
-        if(data){
-            if(data.miner == '0x0000000000000000000000000000000000000000'){
+        if (data) {
+            if (data.miner == '0x0000000000000000000000000000000000000000') {
                 history.push({
                     pathname: '/BlockChain/BlackholeBlockDeta',
                     state: {
                         blockid: JSON.parse(localStorage.getItem('blocktext')),
                     },
                 });
-            }else{
+            } else {
                 history.push({
                     pathname: '/BlockChain/BlockDetails',
                     state: {
@@ -44,11 +42,13 @@ export default function NullPage(props){
         }
         soloblock_q(JSON.parse(localStorage.getItem('blocktext')));
     }, []);
-    return(
+    //404
+    function comingsoon404() {
+        history.push('/NoSearchResults');
+    }
+    return (
         <>
-            <div>
-
-            </div>
+            <div></div>
         </>
-    )
+    );
 }

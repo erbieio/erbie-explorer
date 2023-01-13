@@ -2,7 +2,7 @@ import HeaderApp_ls from './HeaderApp.less';
 import { FaRegMoon } from 'react-icons/fa';
 import { BsSearch } from 'react-icons/bs';
 import { GoTriangleDown } from 'react-icons/go';
-import { Link ,history} from 'umi';
+import { Link, history } from 'umi';
 import { UnorderedListOutlined, CloseOutlined } from '@ant-design/icons';
 import React, { useState, useEffect } from 'react';
 import PubSub from 'pubsub-js';
@@ -18,45 +18,54 @@ export default function HeaderApp(props) {
         setNavigationicon(index.Navigationicon);
         setNavigationheight(index.Navigationheight);
     });
-    
-    useEffect(()=>{
-        setNavigationheight('0px')
-        setNavigationicon(0);
-    },[props.props.location.pathname])
-   //搜索按钮
-   function homepageinputclick() {
-    // location.reload()
-    let data = document.getElementById('homepageinput').value
-    console.log(data);
-    if (data) {
-        if (Number(data) == data && data.slice(0, 2) != '0x' && data.slice(0, 2) != '0X') {
-            localStorage.setItem('blocktext', JSON.stringify(data))
-            //  location.reload()
-            // 区块
-            history.push({
-                pathname: '/NullPageApp',
-                state: {
-                    blockid: data,
-                },
-            })
-        } else if ((data.slice(0,2) == '0x' || data.slice(0,2) == '0X') && data.length == 42) {
-            //账户详情
-            history.push({
-                pathname: `/AccountDetailApp/${data}`,
-                state: data,
-            })
-        } else if ((data.slice(0,2) == '0x' || data.slice(0,2) == '0X') && data.length == 66) {
-            //交易hash
-            history.push({
-                pathname: `/TradeDetailApp/${data}`,
-                state: data,
-            })
-        }
-    } else {
-        message.error('Cannot be empty！');
-    }
 
-}
+    useEffect(() => {
+        setNavigationheight('0px');
+        setNavigationicon(0);
+    }, [props.props.location.pathname]);
+    //搜索按钮
+    function homepageinputclick() {
+        // location.reload()
+        let data = document.getElementById('homepageinput').value;
+        console.log(data);
+        if (data) {
+            if (
+                Number(data) == data &&
+                data.slice(0, 2) != '0x' &&
+                data.slice(0, 2) != '0X'
+            ) {
+                localStorage.setItem('blocktext', JSON.stringify(data));
+                //  location.reload()
+                // 区块
+                history.push({
+                    pathname: '/NullPageApp',
+                    state: {
+                        blockid: data,
+                    },
+                });
+            } else if (
+                (data.slice(0, 2) == '0x' || data.slice(0, 2) == '0X') &&
+                data.length == 42
+            ) {
+                //账户详情
+                history.push({
+                    pathname: `/AccountDetailApp/${data}`,
+                    state: data,
+                });
+            } else if (
+                (data.slice(0, 2) == '0x' || data.slice(0, 2) == '0X') &&
+                data.length == 66
+            ) {
+                //交易hash
+                history.push({
+                    pathname: `/TradeDetailApp/${data}`,
+                    state: data,
+                });
+            }
+        } else {
+            message.error('Cannot be empty！');
+        }
+    }
     return (
         <>
             <div className={HeaderApp_ls.HeaderAppbox}>
@@ -186,6 +195,7 @@ export default function HeaderApp(props) {
                                 HeaderApp_ls.HeaderBox_SearchBox_inputBox_input
                             }
                             id="homepageinput"
+                            autocomplete="off"
                         />
                     </div>
                     <div
@@ -211,7 +221,7 @@ export default function HeaderApp(props) {
                     <div
                         className={HeaderApp_ls.HeaderBox_SearchBox_inputBox}
                         id="headerselect"
-                        style={{width:'293px'}}
+                        style={{ width: '293px' }}
                     >
                         <input
                             placeholder="Search by Address/Txn Hash/Block/Token"
@@ -219,7 +229,8 @@ export default function HeaderApp(props) {
                                 HeaderApp_ls.HeaderBox_SearchBox_inputBox_input
                             }
                             id="homepageinput"
-                            style={{width:'291px'}}
+                            style={{ width: '291px' }}
+                            autocomplete="off"
                         />
                     </div>
                     <div

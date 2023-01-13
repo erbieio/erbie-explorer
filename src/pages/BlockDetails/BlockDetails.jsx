@@ -15,10 +15,12 @@ import { utils } from 'ethers';
 import moment from 'moment';
 import { history } from 'umi';
 import SearchBox from '../../components/SearchBox/SearchBox';
-import { timestamp, ellipsis } from '../../utils/methods/Methods';
+import {
+    timestamp,
+    ellipsis,
+    hexCharCodeToStr,
+} from '../../utils/methods/Methods';
 import React, { useState, useEffect } from 'react';
-const deal = require('../../assets/json/dealType.json');
-const { dealType } = deal;
 export default function BlockDetails(props) {
     const [pagenumber, setPagenumber] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(10);
@@ -57,6 +59,7 @@ export default function BlockDetails(props) {
                     )}
                 </span>
             ),
+            width: '180px',
         },
         {
             title: 'Sender',
@@ -91,14 +94,13 @@ export default function BlockDetails(props) {
             key: 'value',
             dataIndex: 'value',
             render: (text) => <span>{utils.formatEther(text)}</span>,
+            width: '170px',
         },
         {
             title: 'TXN Type',
             key: 'aaaa',
             dataIndex: 'aaaa',
-            render: (text, data) => (
-                <span>{hexCharCodeToStr(data.input)}</span>
-            ),
+            render: (text, data) => <span>{hexCharCodeToStr(data.input)}</span>,
             ellipsis: true,
             width: '200px',
         },
@@ -127,6 +129,7 @@ export default function BlockDetails(props) {
                     }
                 </span>
             ),
+            width: '90px',
         },
         {
             title: 'TXN Fee',
@@ -218,7 +221,7 @@ export default function BlockDetails(props) {
     };
     //404
     function comingsoon404() {
-        props.history.push('/NoSearchResults');
+        history.push('/NoSearchResults');
     }
     function BlockDetailsinputnumberonclick(e) {
         let data = document.getElementById('BlockDetailsinputnumber').value;
@@ -226,38 +229,6 @@ export default function BlockDetails(props) {
             if (Number(data) != NaN) {
                 setPagenumber(Number(data));
             }
-        }
-    }
-    function hexCharCodeToStr(hexCharCodeStr) {
-        // console.log(hexCharCodeStr)
-        var trimedStr = hexCharCodeStr.trim();
-        if (trimedStr === '0x') {
-            return 'Transfer';
-        }
-        var rawStr =
-            trimedStr.substr(0, 2).toLowerCase() === '0x'
-                ? trimedStr.substr(2)
-                : trimedStr;
-        var len = rawStr.length;
-        if (len % 2 !== 0) {
-            // alert("Illegal Format ASCII Code!");
-            return '';
-        }
-        var curCharCode;
-        var resultStr = [];
-        for (var i = 0; i < len; i = i + 2) {
-            curCharCode = parseInt(rawStr.substr(i, 2), 16); // ASCII Code Value
-            resultStr.push(String.fromCharCode(curCharCode));
-        }
-        let StrTran = resultStr.join('');
-        if (StrTran.substring(0, StrTran.indexOf(':')) !== 'wormholes') {
-            return 'Contract Based Transaction';
-        } else {
-            let obj = JSON.parse(StrTran.substring(10));
-            dealType.forEach((item) => {
-                obj.type === item.type ? (obj.name = item.name) : '';
-            });
-            return obj.name;
         }
     }
     //出块者
@@ -573,10 +544,15 @@ export default function BlockDetails(props) {
                                     id="progressbar"
                                 >
                                     <Progress
-                                        percent={soloblockdata.gasUsed&&soloblockdata.gasLimit?(
-                                            soloblockdata.gasUsed /
+                                        percent={
+                                            soloblockdata.gasUsed &&
                                             soloblockdata.gasLimit
-                                        ).toFixed(2):0}
+                                                ? (
+                                                      soloblockdata.gasUsed /
+                                                      soloblockdata.gasLimit
+                                                  ).toFixed(2)
+                                                : 0
+                                        }
                                         status="active"
                                         strokeColor="#FE4FA7"
                                         strokeWidth={5.8}

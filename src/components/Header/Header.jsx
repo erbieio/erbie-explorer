@@ -178,6 +178,7 @@ export default function Header() {
                                 Header_ls.HeaderBox_SearchBox_inputBox_input
                             }
                             id="homepageinput"
+                            autocomplete="off"
                         />
                     </div>
                     <div

@@ -8,6 +8,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Helmet } from 'umi';
 const params = window.location.search;
 export default function IndexPage(props) {
+    console.log();
     useEffect(() => {
         console.log(props.location.pathname);
         document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -61,34 +62,34 @@ export default function IndexPage(props) {
             {getDevice().device == 'pc' ? (
                 <div
                     className={
-                        window.location.hash == '#/'
+                        props.location.pathname == '/'
                             ? styles.IndexPageBox
-                            : window.location.hash ==
-                                  '#/BlockChain/BlockDetails' ||
-                              window.location.hash ==
-                                  '#/BlockChain/BlackholeBlockDeta' ||
-                              window.location.hash == '#/NFT/NFTDetails' ||
-                              window.location.hash == '#/SNFT/SNFTDetails' ||
-                              window.location.hash ==
-                                  '#/Exchange/ExchangeDetails' ||
-                              window.location.hash.split('/')[1] ==
+                            : props.location.pathname ==
+                                  '/BlockChain/BlockDetails' ||
+                              props.location.pathname ==
+                                  '/BlockChain/BlackholeBlockDeta' ||
+                              props.location.pathname == '/NFT/NFTDetails' ||
+                              props.location.pathname == '/SNFT/SNFTDetails' ||
+                              props.location.pathname ==
+                                  '/Exchange/ExchangeDetails' ||
+                              props.location.pathname.split('/')[1] ==
                                   'TradeDetail' ||
-                              window.location.hash.split('/')[1] ==
+                              props.location.pathname.split('/')[1] ==
                                   'AccountDetail' ||
-                              window.location.hash == '#/ComingSoon404'
+                              props.location.pathname == '/ComingSoon404'
                             ? styles.IndexPageBox1
                             : styles.IndexPageBox2
                     }
                 >
                     <Header></Header>
                     <div className={styles.IndexPageBox_d}>
-                        {window.location.hash == '#/BlockChain' ||
-                        window.location.hash == '#/NFT' ||
-                        window.location.hash == '#/SNFT' ||
-                        window.location.hash == '#/Exchange' ||
-                        window.location.hash == '#/Trade' ||
-                        window.location.hash == '#/ranking' ||
-                        window.location.hash == '#/Validator' ? (
+                        {props.location.pathname == '/BlockChain' ||
+                        props.location.pathname == '/NFT' ||
+                        props.location.pathname == '/SNFT' ||
+                        props.location.pathname == '/Exchange' ||
+                        props.location.pathname == '/Trade' ||
+                        props.location.pathname == '/ranking' ||
+                        props.location.pathname == '/Validator' ? (
                             <img
                                 className={styles.IndexPageBox_img}
                                 src={require('../assets/images/HomePage/4.png')}
@@ -99,7 +100,7 @@ export default function IndexPage(props) {
                         {props.children}
                     </div>
                     <Footer></Footer>
-                    {window.location.hash == '#/' ? (
+                    {props.location.pathname == '/' ? (
                         <img
                             className={styles.indexBoximg}
                             src={require('../assets/images/HomePage/back.png')}
@@ -112,19 +113,19 @@ export default function IndexPage(props) {
                 <div className={styles.IndexPageBoxApp}>
                     <HeaderApp props={props} />
                     <div className={styles.IndexPageBox_d}>
-                        {window.location.hash == '#/BlockChainApp' ||
-                        window.location.hash == '#/NFTApp' ||
-                        window.location.hash == '#/SNFTApp' ||
-                        window.location.hash == '#/ExchangeApp' ||
-                        window.location.hash == '#/TradeApp' ||
-                        window.location.hash == '#/rankingApp' ||
-                        (window.location.hash == '#/ValidatorApp' &&
-                            window.location.hash != '#/') ? (
+                        {props.location.pathname == '/BlockChainApp' ||
+                        props.location.pathname == '/NFTApp' ||
+                        props.location.pathname == '/SNFTApp' ||
+                        props.location.pathname == '/ExchangeApp' ||
+                        props.location.pathname == '/TradeApp' ||
+                        props.location.pathname == '/rankingApp' ||
+                        (props.location.pathname == '/ValidatorApp' &&
+                            props.location.pathname != '/') ? (
                             <img
                                 className={styles.IndexPageBox_imgApp}
                                 src={require('../assets/images/HomePage/4.png')}
                             />
-                        ) : window.location.hash != '#/' ? (
+                        ) : props.location.pathname != '/' ? (
                             <img
                                 className={styles.IndexPageBox_imgApp}
                                 src={require('../assets/images/HomePage/background2.png')}
@@ -132,14 +133,14 @@ export default function IndexPage(props) {
                         ) : (
                             ''
                         )}
-                        {window.location.hash == '#/' ? (
+                        {props.location.pathname == '/' ? (
                             <HomePageApp />
                         ) : (
                             props.children
                         )}
                     </div>
                     <FooterApp />
-                    {window.location.hash == '#/' ? (
+                    {props.location.pathname == '/' ? (
                         <img
                             className={styles.indexBoximgphone}
                             src={require('../assets/images/HomePageApp/phone.png')}

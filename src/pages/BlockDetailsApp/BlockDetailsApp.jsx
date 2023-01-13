@@ -15,7 +15,12 @@ import { utils } from 'ethers';
 import moment from 'moment';
 import { history } from 'umi';
 import SearchBox from '../../components/SearchBox/SearchBox';
-import { timestamp, ellipsis,ellipsisthree } from '../../utils/methods/Methods';
+import {
+    timestamp,
+    ellipsis,
+    ellipsisthree,
+    hexCharCodeToStr,
+} from '../../utils/methods/Methods';
 import React, { useState, useEffect } from 'react';
 export default function BlockDetailsApp(props) {
     const [pagenumber, setPagenumber] = useState(1);
@@ -37,7 +42,7 @@ export default function BlockDetailsApp(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/TradeDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -55,6 +60,7 @@ export default function BlockDetailsApp(props) {
                     )}
                 </span>
             ),
+            width: '160px',
         },
         {
             title: 'Sender',
@@ -63,7 +69,7 @@ export default function BlockDetailsApp(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -77,7 +83,7 @@ export default function BlockDetailsApp(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -89,6 +95,56 @@ export default function BlockDetailsApp(props) {
             key: 'value',
             dataIndex: 'value',
             render: (text) => <span>{utils.formatEther(text)}</span>,
+        },
+        {
+            title: 'TXN Type',
+            key: 'aaaa',
+            dataIndex: 'aaaa',
+            render: (text, data) => <span>{hexCharCodeToStr(data.input)}</span>,
+            ellipsis: true,
+            width: '200px',
+        },
+        {
+            title: 'Status',
+            key: 'status',
+            dataIndex: 'status',
+            render: (text, data) => (
+                <span>
+                    {
+                        <Tag
+                            color={
+                                text == 1
+                                    ? 'rgba(168, 255, 210, .2)'
+                                    : 'rgba(254, 79, 167, .2)'
+                            }
+                            style={{
+                                color:
+                                    text == 1
+                                        ? 'rgba(158, 255, 204, 1)'
+                                        : '#FE4FA7',
+                            }}
+                        >
+                            {text == 1 ? 'Success' : 'Defeat'}
+                        </Tag>
+                    }
+                </span>
+            ),
+            width: '90px',
+        },
+        {
+            title: 'TXN Fee',
+            key: 'aaaa',
+            dataIndex: 'aaaa',
+            render: (text, data) => (
+                <span>
+                    {data
+                        ? utils.formatEther(
+                              String(data.gasPrice * data.gasUsed),
+                          )
+                        : 0}
+                </span>
+            ),
+            ellipsis: true,
         },
     ];
 
@@ -165,7 +221,7 @@ export default function BlockDetailsApp(props) {
     };
     //404
     function comingsoon404() {
-        props.history.push('/NoSearchResultsApp');
+        history.push('/NoSearchResultsApp');
     }
     function BlockDetailsinputnumberonclick(e) {
         let data = document.getElementById('BlockDetailsinputnumber').value;
@@ -340,7 +396,8 @@ export default function BlockDetailsApp(props) {
                                 BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verificationData
                             }
                         >
-                            {ellipsisthree(item.address)}<span></span>
+                            {ellipsisthree(item.address)}
+                            <span></span>
                         </Link>
                     );
                 }
@@ -475,9 +532,9 @@ export default function BlockDetailsApp(props) {
                                 }}
                             >
                                 <p>
-                                    {soloblockdata.gasUsed||0}(
-                                    {(soloblockdata.gasUsed /
-                                        soloblockdata.gasLimit)||0}
+                                    {soloblockdata.gasUsed || 0}(
+                                    {soloblockdata.gasUsed /
+                                        soloblockdata.gasLimit || 0}
                                     %)
                                 </p>
 
@@ -486,10 +543,15 @@ export default function BlockDetailsApp(props) {
                                     id="progressbar"
                                 >
                                     <Progress
-                                        percent={soloblockdata.gasUsed&&soloblockdata.gasLimit?(
-                                            soloblockdata.gasUsed /
+                                        percent={
+                                            soloblockdata.gasUsed &&
                                             soloblockdata.gasLimit
-                                        ).toFixed(2):0}
+                                                ? (
+                                                      soloblockdata.gasUsed /
+                                                      soloblockdata.gasLimit
+                                                  ).toFixed(2)
+                                                : 0
+                                        }
                                         status="active"
                                         strokeColor="#FE4FA7"
                                         strokeWidth={5.8}
@@ -696,7 +758,10 @@ export default function BlockDetailsApp(props) {
                                         className={
                                             BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
                                         }
-                                        style={{ width: '380px',display:'block' }}
+                                        style={{
+                                            width: '380px',
+                                            display: 'block',
+                                        }}
                                     >
                                         {blockmakeraddress(
                                             blockrewardpersondata,

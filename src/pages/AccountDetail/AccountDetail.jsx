@@ -27,9 +27,15 @@ import {
 import Trade_ls from '../Trade/Trade.less';
 import copy from 'copy-to-clipboard';
 import { history } from '../../.umi/core/history';
-import { timestamp, ellipsis } from '../../utils/methods/Methods';
+import {
+    timestamp,
+    ellipsis,
+    hexCharCodeToStr,
+} from '../../utils/methods/Methods';
+import { utils } from 'ethers';
 import { Link } from 'umi';
 import moment from 'moment';
+
 const handleCopy = (value) => {
     copy(value);
     message.success('copy Success');
@@ -165,7 +171,7 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                 },
                 {
-                    title: 'Volume (ERB)',
+                    title: 'Value',
                     key: 'value',
                     dataIndex: 'value',
                     render: (tags) => (
@@ -175,6 +181,59 @@ class AccountDetail extends React.Component {
                             ).toLocaleString()}
                         >
                             {(tags / 1000000000000000000).toLocaleString()}
+                        </span>
+                    ),
+                    ellipsis: true,
+                    width: '100px',
+                },
+                {
+                    title: 'TXN Type',
+                    key: 'aaaa',
+                    dataIndex: 'aaaa',
+                    render: (text, data) => (
+                        <span>{hexCharCodeToStr(data.input)}</span>
+                    ),
+                    ellipsis: true,
+                    width: '190px',
+                },
+                {
+                    title: 'Status',
+                    key: 'status',
+                    dataIndex: 'status',
+                    render: (text, data) => (
+                        <span>
+                            {
+                                <Tag
+                                    color={
+                                        text == 1
+                                            ? 'rgba(168, 255, 210, .2)'
+                                            : 'rgba(254, 79, 167, .2)'
+                                    }
+                                    style={{
+                                        color:
+                                            text == 1
+                                                ? 'rgba(158, 255, 204, 1)'
+                                                : '#FE4FA7',
+                                    }}
+                                >
+                                    {text == 1 ? 'Success' : 'Defeat'}
+                                </Tag>
+                            }
+                        </span>
+                    ),
+                    width: '90px',
+                },
+                {
+                    title: 'TXN Fee',
+                    key: 'aaaa',
+                    dataIndex: 'aaaa',
+                    render: (text, data) => (
+                        <span>
+                            {data
+                                ? utils.formatEther(
+                                      String(data.gasPrice * data.gasUsed),
+                                  )
+                                : 0}
                         </span>
                     ),
                     ellipsis: true,
@@ -239,7 +298,7 @@ class AccountDetail extends React.Component {
                     key: 'creator',
                     dataIndex: 'creator',
                     ellipsis: true,
-                    render: (text) => 
+                    render: (text) =>
                         text == '0x0000000000000000000000000000000000000000' ? (
                             <span>Official S-NFT</span>
                         ) : (
@@ -257,8 +316,7 @@ class AccountDetail extends React.Component {
                             >
                                 {text ? ellipsis(text) : '-'}
                             </Link>
-                        )
-                    
+                        ),
                 },
                 {
                     title: 'Owner',
@@ -340,7 +398,7 @@ class AccountDetail extends React.Component {
                     key: 'creator',
                     dataIndex: 'creator',
                     ellipsis: true,
-                    render: (text, data) => 
+                    render: (text, data) =>
                         text == '0x0000000000000000000000000000000000000000' ? (
                             <span>Official S-NFT</span>
                         ) : (
@@ -358,8 +416,7 @@ class AccountDetail extends React.Component {
                             >
                                 {text ? ellipsis(text) : '-'}
                             </Link>
-                        )
-                    
+                        ),
                 },
                 {
                     title: 'Owner',
@@ -603,8 +660,7 @@ class AccountDetail extends React.Component {
                                             maximumFractionDigits: 9,
                                         })}
                                     </span>
-                                    &nbsp;
-                                    ERB
+                                    &nbsp; ERB
                                 </div>
                                 <div>
                                     <p>Staked Amount</p>{' '}
