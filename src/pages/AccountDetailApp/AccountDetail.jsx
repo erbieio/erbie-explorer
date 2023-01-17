@@ -104,12 +104,49 @@ class AccountDetail extends React.Component {
                             {tags ? ellipsis(tags) : '-'}
                         </Link>
                     ),
+                    width: '120px',
                 },
                 {
                     title: 'Block Height',
                     dataIndex: 'blockNumber',
                     key: 'blockNumber',
-                    // render: (text) => <span>{moment(parseInt(text) * 1000).format("YYYY-MM-DD HH:mm:ss")}</span>,
+                    render: (text, data) =>
+                        data.number != 0 ? (
+                            data.miner ==
+                            '0x0000000000000000000000000000000000000000' ? (
+                                <Link
+                                    to={{
+                                        pathname:
+                                            '/BlockChainApp/BlackholeBlockDetaApp',
+                                        state: { blockid: text },
+                                    }}
+                                    style={{
+                                        color: '#7AA4FF',
+                                        fontFamily: 'CustomFontMedium',
+                                    }}
+                                >
+                                    {text}
+                                </Link>
+                            ) : (
+                                <Link
+                                    to={{
+                                        pathname:
+                                            '/BlockChainApp/BlockDetailsApp',
+                                        state: { blockid: text },
+                                    }}
+                                    style={{
+                                        color: '#7AA4FF',
+                                        fontFamily: 'CustomFontMedium',
+                                    }}
+                                >
+                                    {text}
+                                </Link>
+                            )
+                        ) : (
+                            '-'
+                        ),
+                    width: '110px',
+                    ellipsis: true,
                 },
                 {
                     title: 'TXN Time',
@@ -120,6 +157,8 @@ class AccountDetail extends React.Component {
                             {moment(parseInt(text) * 1000).format('YYYY-MM-DD')}
                         </span>
                     ),
+                    width: '120px',
+                    ellipsis: true,
                 },
                 {
                     title: 'Sender',
@@ -142,6 +181,8 @@ class AccountDetail extends React.Component {
                             {tags ? ellipsis(tags) : '-'}
                         </Link>
                     ),
+                    ellipsis: true,
+                    width: '120px',
                 },
                 {
                     title: 'Receiver',
@@ -164,6 +205,8 @@ class AccountDetail extends React.Component {
                             {tags ? ellipsis(tags) : '-'}
                         </Link>
                     ),
+                    ellipsis: true,
+                    width: '120px',
                 },
                 {
                     title: 'Value',
@@ -178,6 +221,8 @@ class AccountDetail extends React.Component {
                             {(tags / 1000000000000000000).toLocaleString()}
                         </span>
                     ),
+                    ellipsis: true,
+                    width: '120px',
                 },
                 {
                     title: 'TXN Type',
@@ -230,6 +275,7 @@ class AccountDetail extends React.Component {
                         </span>
                     ),
                     ellipsis: true,
+                    width: '150px',
                 },
             ],
             nftcolumns: [
@@ -765,7 +811,7 @@ class AccountDetail extends React.Component {
                                     ? this.state.snftcolumns
                                     : ''
                             }
-                            loading={this.state.loading}
+                            // loading={this.state.loading}
                             pagination={{
                                 position: ['bottomCenter'],
                                 current: this.state.pageOption.page,
