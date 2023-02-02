@@ -662,13 +662,203 @@ class AccountDetail extends React.Component {
                                     </span>
                                     &nbsp; ERB
                                 </div>
+
                                 <div>
-                                    <p>Staked Amount</p>{' '}
+                                    <p>Validator Staking</p>{' '}
                                     <span>
                                         {(
                                             this.state.accountData
                                                 .validatorAmount /
                                                 1000000000000000000 || 0
+                                        ).toLocaleString()}
+                                    </span>
+                                </div>
+                                <div>
+                                    <p>Online Weight</p>{' '}
+                                    {this.state.accountData.weight ? (
+                                        this.state.accountData.weight == 0 ? (
+                                            <span>non-validator</span>
+                                        ) : this.state.accountData.weight > 0 &&
+                                          this.state.accountData.weight < 40 ? (
+                                            <span>
+                                                {this.state.accountData.weight}
+                                                &nbsp;&nbsp;
+                                                <svg
+                                                    width="16px"
+                                                    height="16px"
+                                                    viewBox="0 0 16 16"
+                                                    version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xlink="http://www.w3.org/1999/xlink"
+                                                >
+                                                    <title>切片</title>
+                                                    <g
+                                                        id="英文版"
+                                                        stroke="none"
+                                                        stroke-width="1"
+                                                        fill="none"
+                                                        fill-rule="evenodd"
+                                                    >
+                                                        <g
+                                                            id="Validator"
+                                                            transform="translate(-1150.000000, -495.000000)"
+                                                            fill="#F72D86"
+                                                            fill-rule="nonzero"
+                                                        >
+                                                            <g
+                                                                id="区块信息列表"
+                                                                transform="translate(99.000000, 369.000000)"
+                                                            >
+                                                                <g
+                                                                    id="表情-meh"
+                                                                    transform="translate(1051.000000, 126.000000)"
+                                                                >
+                                                                    <rect
+                                                                        id="矩形"
+                                                                        opacity="0"
+                                                                        x="0"
+                                                                        y="0"
+                                                                        width="16"
+                                                                        height="16"
+                                                                    ></rect>
+                                                                    <path
+                                                                        d="M8,1 C11.865625,1 15,4.134375 15,8 C15,11.865625 11.865625,15 8,15 C4.134375,15 1,11.865625 1,8 C1,4.134375 4.134375,1 8,1 Z M8,8.328125 C6.6640625,8.328125 5.56875,9.3796875 5.5,10.696875 C5.496875,10.76875 5.553125,10.828125 5.625,10.828125 L5.625,10.828125 L6.3765625,10.828125 C6.4421875,10.828125 6.4984375,10.778125 6.503125,10.7125 C6.5609375,9.9390625 7.2109375,9.328125 8,9.328125 C8.7890625,9.328125 9.4375,9.9390625 9.496875,10.7125 C9.5015625,10.778125 9.5578125,10.828125 9.6234375,10.828125 L9.6234375,10.828125 L10.375,10.828125 C10.446875,10.828125 10.503125,10.76875 10.5,10.696875 C10.43125,9.3796875 9.3359375,8.328125 8,8.328125 Z M5.25,5.828125 C4.83578644,5.828125 4.5,6.16391144 4.5,6.578125 C4.5,6.99233856 4.83578644,7.328125 5.25,7.328125 C5.66421356,7.328125 6,6.99233856 6,6.578125 C6,6.16391144 5.66421356,5.828125 5.25,5.828125 Z M10.75,5.828125 C10.3357864,5.828125 10,6.16391144 10,6.578125 C10,6.99233856 10.3357864,7.328125 10.75,7.328125 C11.1642136,7.328125 11.5,6.99233856 11.5,6.578125 C11.5,6.16391144 11.1642136,5.828125 10.75,5.828125 Z"
+                                                                        id="形状"
+                                                                    ></path>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        ) : this.state.accountData.weight >=
+                                              40 &&
+                                          this.state.accountData.weight <=
+                                              50 ? (
+                                            <span>
+                                                {this.state.accountData.weight}
+                                                &nbsp;&nbsp;
+                                                <svg
+                                                    width="16px"
+                                                    height="16px"
+                                                    viewBox="0 0 16 16"
+                                                    version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xlink="http://www.w3.org/1999/xlink"
+                                                >
+                                                    <title>切片</title>
+                                                    <g
+                                                        id="英文版"
+                                                        stroke="none"
+                                                        stroke-width="1"
+                                                        fill="none"
+                                                        fill-rule="evenodd"
+                                                    >
+                                                        <g
+                                                            id="Validator"
+                                                            transform="translate(-1150.000000, -543.000000)"
+                                                            fill="#FFC35A"
+                                                            fill-rule="nonzero"
+                                                        >
+                                                            <g
+                                                                id="区块信息列表"
+                                                                transform="translate(99.000000, 369.000000)"
+                                                            >
+                                                                <g
+                                                                    id="表情"
+                                                                    transform="translate(1051.000000, 126.000000)"
+                                                                >
+                                                                    <g
+                                                                        id="表情-meh备份"
+                                                                        transform="translate(0.000000, 48.000000)"
+                                                                    >
+                                                                        <rect
+                                                                            id="矩形"
+                                                                            opacity="0"
+                                                                            x="0"
+                                                                            y="0"
+                                                                            width="16"
+                                                                            height="16"
+                                                                        ></rect>
+                                                                        <path
+                                                                            d="M8,1 C11.865625,1 15,4.134375 15,8 C15,11.865625 11.865625,15 8,15 C4.134375,15 1,11.865625 1,8 C1,4.134375 4.134375,1 8,1 Z M10.375,8.828125 L5.625,8.828125 C5.55625,8.828125 5.5,8.884375 5.5,8.953125 L5.5,9.703125 C5.5,9.771875 5.55625,9.828125 5.625,9.828125 L10.375,9.828125 C10.44375,9.828125 10.5,9.771875 10.5,9.703125 L10.5,8.953125 C10.5,8.884375 10.44375,8.828125 10.375,8.828125 Z M5.25,5.828125 C4.83578644,5.828125 4.5,6.16391144 4.5,6.578125 C4.5,6.99233856 4.83578644,7.328125 5.25,7.328125 C5.66421356,7.328125 6,6.99233856 6,6.578125 C6,6.16391144 5.66421356,5.828125 5.25,5.828125 Z M10.75,5.828125 C10.3357864,5.828125 10,6.16391144 10,6.578125 C10,6.99233856 10.3357864,7.328125 10.75,7.328125 C11.1642136,7.328125 11.5,6.99233856 11.5,6.578125 C11.5,6.16391144 11.1642136,5.828125 10.75,5.828125 Z"
+                                                                            id="形状"
+                                                                        ></path>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        ) : (
+                                            <span>
+                                                {this.state.accountData.weight}
+                                                &nbsp;&nbsp;
+                                                <svg
+                                                    width="16px"
+                                                    height="16px"
+                                                    viewBox="0 0 16 16"
+                                                    version="1.1"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xlink="http://www.w3.org/1999/xlink"
+                                                >
+                                                    <title>切片</title>
+                                                    <g
+                                                        id="英文版"
+                                                        stroke="none"
+                                                        stroke-width="1"
+                                                        fill="none"
+                                                        fill-rule="evenodd"
+                                                    >
+                                                        <g
+                                                            id="Validator"
+                                                            transform="translate(-1150.000000, -591.000000)"
+                                                            fill="#89FFC2"
+                                                            fill-rule="nonzero"
+                                                        >
+                                                            <g
+                                                                id="区块信息列表"
+                                                                transform="translate(99.000000, 369.000000)"
+                                                            >
+                                                                <g
+                                                                    id="表情"
+                                                                    transform="translate(1051.000000, 126.000000)"
+                                                                >
+                                                                    <g
+                                                                        id="表情-meh备份-2"
+                                                                        transform="translate(0.000000, 96.000000)"
+                                                                    >
+                                                                        <rect
+                                                                            id="矩形"
+                                                                            opacity="0"
+                                                                            x="0"
+                                                                            y="0"
+                                                                            width="16"
+                                                                            height="16"
+                                                                        ></rect>
+                                                                        <path
+                                                                            d="M8,1 C11.865625,1 15,4.134375 15,8 C15,11.865625 11.865625,15 8,15 C4.134375,15 1,11.865625 1,8 C1,4.134375 4.134375,1 8,1 Z M6.3765625,8.328125 L5.625,8.328125 C5.553125,8.328125 5.496875,8.3875 5.5,8.459375 C5.56875,9.7765625 6.6640625,10.828125 8,10.828125 C9.3359375,10.828125 10.43125,9.7765625 10.5,8.459375 C10.503125,8.3875 10.446875,8.328125 10.375,8.328125 L9.6234375,8.328125 C9.5578125,8.328125 9.5015625,8.378125 9.496875,8.44375 C9.4375,9.2171875 8.7890625,9.828125 8,9.828125 C7.2109375,9.828125 6.5609375,9.2171875 6.503125,8.44375 C6.4984375,8.378125 6.4421875,8.328125 6.3765625,8.328125 Z M5.25,5.828125 C4.83578644,5.828125 4.5,6.16391144 4.5,6.578125 C4.5,6.99233856 4.83578644,7.328125 5.25,7.328125 C5.66421356,7.328125 6,6.99233856 6,6.578125 C6,6.16391144 5.66421356,5.828125 5.25,5.828125 Z M10.75,5.828125 C10.3357864,5.828125 10,6.16391144 10,6.578125 C10,6.99233856 10.3357864,7.328125 10.75,7.328125 C11.1642136,7.328125 11.5,6.99233856 11.5,6.578125 C11.5,6.16391144 11.1642136,5.828125 10.75,5.828125 Z"
+                                                                            id="形状"
+                                                                        ></path>
+                                                                    </g>
+                                                                </g>
+                                                            </g>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        )
+                                    ) : (
+                                        <span>non-validator</span>
+                                    )}
+                                </div>
+                                <div>
+                                    <p>ERB Income</p>{' '}
+                                    <span>
+                                        {(
+                                            this.state.accountData
+                                                .rewardCoinCount * 0.11
                                         ).toLocaleString()}
                                     </span>
                                 </div>
@@ -694,12 +884,16 @@ class AccountDetail extends React.Component {
                                     </span>
                                 </div> */}
                                 <div>
-                                    <p>ERB Income</p>{' '}
+                                    <p>S-NFT Weight</p>{' '}
                                     <span>
-                                        {(
-                                            this.state.accountData
-                                                .rewardCoinCount * 0.11
-                                        ).toLocaleString()}
+                                        {this.state.accountData.snftValue
+                                            ? Number(
+                                                  utils.formatEther(
+                                                      this.state.accountData
+                                                          .snftValue,
+                                                  ),
+                                              ).toFixed(2)
+                                            : 0}
                                     </span>
                                 </div>
                                 <div>

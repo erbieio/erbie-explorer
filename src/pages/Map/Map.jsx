@@ -53,7 +53,7 @@ export default function MapChart() {
         const data = await lastmsg();
         console.log('地图fromto数据查询');
         console.log(data);
-
+        console.log(mapdatadetailed);
         // let text = []
         if (mapdatadetailed && data) {
             let text = data;
@@ -97,11 +97,12 @@ export default function MapChart() {
             }
             console.log(linedata);
             setLinedata(linedata);
-        } else {
+        }
+        if (data == null) {
             let text = [];
             // text.push({ from: [20.3522, 48.8566], to: [-74.006, 40.7128] });
             // text.push({ from: [60.3522, 48.8566], to: [-74.006, 40.7128] });
-            // console.log(text);
+            console.log(text);
             setLinedata(text);
         }
     };
@@ -463,7 +464,7 @@ export default function MapChart() {
                     <Line
                         from={item.from}
                         to={item.to}
-                        stroke="#3BCFFF"
+                        stroke="#7CFC00"
                         strokeWidth={1}
                         strokeLinecap="round"
                     />

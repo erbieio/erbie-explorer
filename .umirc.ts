@@ -36,7 +36,8 @@ export default defineConfig({
                 },
                 {
                     path: '/BlockChainApp/BlackholeBlockDetaApp',
-                    component: './BlackholeBlockDetaApp/BlackholeBlockDetaApp.jsx',
+                    component:
+                        './BlackholeBlockDetaApp/BlackholeBlockDetaApp.jsx',
                 },
                 {
                     path: '/BlockChainApp/BlockDetailsApp',
@@ -140,6 +141,14 @@ export default defineConfig({
                 {
                     path: '/NullPageApp',
                     component: './NullPageApp/NullPageApp.jsx',
+                },
+                {
+                    path: '/MapBs',
+                    component: './MapBs/MapBs.jsx',
+                },
+                {
+                    path: '/MapBs2',
+                    component: './MapBs2/MapBs2.jsx',
                 },
             ],
         },
