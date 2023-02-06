@@ -47,7 +47,7 @@ function hexCharCodeToStr(hexCharCodeStr) {
     // console.log(hexCharCodeStr)
     var trimedStr = hexCharCodeStr.trim();
     if (trimedStr === '0x') {
-        return { name: 'regular way', type: 999 };
+        return { name: 'Transfer', type: 999 };
     }
     var rawStr =
         trimedStr.substr(0, 2).toLowerCase() === '0x'
@@ -329,15 +329,17 @@ class TradeDetail extends React.Component {
                                 <span>
                                     <Link
                                         to={{
-                                            pathname:
-                                                '/NullPageApp',
+                                            pathname: '/NullPageApp',
                                             state: {
                                                 blockid:
                                                     this.state.detailData
                                                         .blockNumber,
                                             },
                                         }}
-                                        style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
+                                        style={{
+                                            color: '#7AA4FF',
+                                            fontFamily: 'CustomFontMedium',
+                                        }}
                                     >
                                         {this.state.detailData.blockNumber}
                                     </Link>

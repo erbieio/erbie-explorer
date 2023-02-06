@@ -47,7 +47,7 @@ function hexCharCodeToStr(hexCharCodeStr) {
     // console.log(hexCharCodeStr)
     var trimedStr = hexCharCodeStr.trim();
     if (trimedStr === '0x') {
-        return { name: 'regular way', type: 999 };
+        return { name: 'Transfer', type: 999 };
     }
     var rawStr =
         trimedStr.substr(0, 2).toLowerCase() === '0x'
@@ -219,10 +219,9 @@ class TradeDetail extends React.Component {
                     });
                 }
                 const transactionres = await transaction(this.state.Trastate);
-                let state = JSON.stringify(transactionres)
-                if(state === "null" ) {
-                   return  this.comingsoon404()
-
+                let state = JSON.stringify(transactionres);
+                if (state === 'null') {
+                    return this.comingsoon404();
                 }
                 if (
                     JSON.parse(state).useCache !== undefined &&
@@ -332,8 +331,7 @@ class TradeDetail extends React.Component {
                                 <span>
                                     <Link
                                         to={{
-                                            pathname:
-                                                '/NullPage',
+                                            pathname: '/NullPage',
                                             state: {
                                                 blockid:
                                                     this.state.detailData
