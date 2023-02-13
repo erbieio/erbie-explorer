@@ -47,7 +47,7 @@ export default function Exchange() {
                         pathname: '/Exchange/ExchangeDetails',
                         state: { exchangeid: data.address },
                     }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -64,7 +64,7 @@ export default function Exchange() {
                         pathname: '/NullPage',
                         state: { blockid: text },
                     }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -78,7 +78,7 @@ export default function Exchange() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -307,8 +307,6 @@ export default function Exchange() {
     //总数查询
     const total_q = async () => {
         const data = await total();
-        console.log('总数查询');
-        console.log(data);
         if (data) {
             setTotaldata(data);
         }
@@ -316,8 +314,6 @@ export default function Exchange() {
     //交易所查询
     const exchanger_q = async (item) => {
         const data = await exchanger(item);
-        console.log('交易所查询');
-        console.log(data);
         if (data) {
             setExchangerdata(data);
         }
@@ -484,7 +480,7 @@ export default function Exchange() {
                                           utils.formatEther(
                                               totaldata.totalExchangerPledge,
                                           ),
-                                      ) 
+                                      )
                                     : 0}{' '}
                                 ERB
                             </p>
@@ -493,7 +489,7 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_name
                                 }
                             >
-                               Total Exchange Pledge Amount
+                                Total Exchange Pledge Amount
                             </p>
                         </div>
                         <img

@@ -37,9 +37,7 @@ import {
 import { utils } from 'ethers';
 const { Option } = Select;
 export default function HomePage() {
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+    const handleChange = (value) => {};
     //erb价格
     const [erbpricedata, setErbpricedata] = useState({});
     //总数
@@ -93,8 +91,6 @@ export default function HomePage() {
             setBlockdata(data);
             setBigheightblock(data.blocks[0].number);
         }
-        console.log('区块查询');
-        console.log(data);
     };
     //验证者在线查询
     const onlineAddr_q = async (item) => {
@@ -102,11 +98,8 @@ export default function HomePage() {
         if (data) {
             setValidatoronline(data);
         }
-        console.log('验证者在线查询');
-        console.log(data);
     };
     // useEffect(() => {
-    //     console.log(blockdata);
     //     if (blockdata.blocks) {
     //         blockrewardperson_q(blockdata.blocks[0].number)
     //     }
@@ -117,13 +110,10 @@ export default function HomePage() {
         if (data) {
             setErbpricedata(data);
         }
-        console.log(data);
     };
     //总数查询
     const total_q = async () => {
         const data = await total();
-        console.log('总数查询');
-        console.log(data);
         if (data) {
             setTotaldata(data);
         }
@@ -134,8 +124,6 @@ export default function HomePage() {
         if (data) {
             setEpochdata(data);
         }
-        console.log('系统NFT周期查询');
-        console.log(data);
     };
 
     //奖励人查询
@@ -149,8 +137,6 @@ export default function HomePage() {
     //         }
 
     //     }
-    //     console.log('奖励人查询');
-    //    console.log(data);
     // }
     //最新区块奖励人查询
     const blockrewardperson_q = async (item) => {
@@ -178,18 +164,13 @@ export default function HomePage() {
                 setRewardpersondata('');
             }
         }
-        console.log('最新区块奖励人查询');
-        console.log(data);
     };
     //折线图查询
     const homepagechart_q = async () => {
         const data = await homepagechart();
-        console.log(data);
         if (data) {
             setHomepagechartdata(data);
         }
-        console.log('折线图查询');
-        console.log(data);
         let text = [
             {
                 index: 0,

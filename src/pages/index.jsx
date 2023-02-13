@@ -8,9 +8,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Helmet } from 'umi';
 const params = window.location.search;
 export default function IndexPage(props) {
-    console.log();
     useEffect(() => {
-        console.log(props.location.pathname);
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         if (props.location.pathname != '/') {
             var i = 0;

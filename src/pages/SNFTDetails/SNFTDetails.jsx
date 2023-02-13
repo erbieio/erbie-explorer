@@ -121,9 +121,7 @@ export default function SNFTDetails(props) {
     const onChange = (data) => {
         setPagenumber(data);
     };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+    const handleChange = (value) => {};
     //snft交易分页
     let pagedata = {
         address:
@@ -139,7 +137,6 @@ export default function SNFTDetails(props) {
         // console.log('传过来的地址' +props.location.state?props.location.state.snftid:JSON.parse(localStorage.getItem('snfttext')));
         // console.log('传过来的meta' );
         // console.log(props.location.state?props.location.state.snftmata:JSON.parse(localStorage.getItem('snftmata')));
-        console.log(window);
         if (props.location.state != undefined) {
             localStorage.setItem(
                 'snfttext',
@@ -175,8 +172,6 @@ export default function SNFTDetails(props) {
     //snft详情查询
     const snftdetails_q = async (item) => {
         const data = await snftdetails(item);
-        console.log('snft详情查询');
-        console.log(data);
         if (data) {
             setSnftdata(data);
         }
@@ -184,8 +179,6 @@ export default function SNFTDetails(props) {
     //snft交易查询
     const snft_nft_tx_q = async (item) => {
         const data = await snft_nft_tx(item);
-        console.log('snft交易查询');
-        console.log(data);
         if (data) {
             setSnfttxdata(data);
         }
@@ -193,8 +186,6 @@ export default function SNFTDetails(props) {
     //meta查询
     const metainformation_q = async (item) => {
         const data = await metainformation(item);
-        console.log('meta查询');
-        console.log(data);
         if (data) {
             setMetadata(data);
         }
@@ -227,9 +218,7 @@ export default function SNFTDetails(props) {
             setTransactionmeta(0);
         }
     }
-    function onChange1(newValue) {
-        console.log('change', newValue);
-    }
+    function onChange1(newValue) {}
     return (
         <>
             <div className={SNFTDetails_ls.SNFTDetailsBox}>

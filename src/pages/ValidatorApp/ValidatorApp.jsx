@@ -39,7 +39,7 @@ export default function ValidatorApp() {
             key: 'address',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -467,14 +467,10 @@ export default function ValidatorApp() {
         if (data) {
             setValidatordata(data);
         }
-        console.log('Validator查询');
-        console.log(data);
     };
     //总数查询
     const total_q = async () => {
         const data = await total();
-        console.log('总数查询');
-        console.log(data);
         if (data) {
             setTotaldata(data);
         }

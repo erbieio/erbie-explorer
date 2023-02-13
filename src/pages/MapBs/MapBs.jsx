@@ -48,16 +48,16 @@ export default function MapBs() {
     //地图数据查询
     const locations_q = async () => {
         const data = await locations();
-        console.log('地图数据查询');
-        console.log(data);
+        // console.log('地图数据查询');
+        // console.log(data);
         if (data) {
             setMapdatadetailed(data);
         }
     };
     const onlineAddr_q = async () => {
         const data = await onlineAddr();
-        console.log('验证者在线查询');
-        console.log(data);
+        // console.log('验证者在线查询');
+        // console.log(data);
         if (data) {
             setValidatoronline(data.addrs);
         }
@@ -65,9 +65,9 @@ export default function MapBs() {
     //地图fromto数据查询
     const lastmsg_q = async () => {
         const data = await lastmsg();
-        console.log('地图fromto数据查询');
-        console.log(data);
-        console.log(mapdatadetailed);
+        // console.log('地图fromto数据查询');
+        // console.log(data);
+        // console.log(mapdatadetailed);
         // let text = []
         if (mapdatadetailed && data) {
             let text = data;
@@ -109,7 +109,7 @@ export default function MapBs() {
                     linedata.push(text[b]);
                 }
             }
-            console.log(linedata);
+            // console.log(linedata);
             setLinedata(linedata);
         }
         if (data == null) {
@@ -122,8 +122,8 @@ export default function MapBs() {
     useEffect(() => {}, []);
     useEffect(() => {
         if (validatoronline.length != 0 && mapdatadetailed.length != 0) {
-            console.log(validatoronline);
-            console.log(mapdatadetailed);
+            // console.log(validatoronline);
+            // console.log(mapdatadetailed);
             let text1 = [];
             for (let i = 0; i < validatoronline.length; i++) {
                 for (let k = 0; k < mapdatadetailed.length; k++) {
@@ -132,7 +132,7 @@ export default function MapBs() {
                     }
                 }
             }
-            console.log(text1);
+            // console.log(text1);
             let text = [];
             let mapdzx = [];
             let mapdbzx = [];
@@ -188,10 +188,10 @@ export default function MapBs() {
                 mathjs = 0;
             }
 
-            console.log(mapdzx);
-            console.log(mapdbzx);
-            console.log(mapdbzxBS);
-            console.log(text);
+            // console.log(mapdzx);
+            // console.log(mapdbzx);
+            // console.log(mapdbzxBS);
+            // console.log(text);
             setMapdata(text);
             setSubscript(mapdzx);
             setNosubscript(mapdbzxBS);
@@ -218,10 +218,10 @@ export default function MapBs() {
     scene.on('loaded', () => {
         Promise.all([locations(), onlineAddr()])
             .then(([data1, data2]) => {
-                console.log('所有坐标');
-                console.log(data1);
-                console.log('在线者地址');
-                console.log(data2.addrs);
+                // console.log('所有坐标');
+                // console.log(data1);
+                // console.log('在线者地址');
+                // console.log(data2.addrs);
 
                 for (let i = 0; i < data1.length; i++) {
                     let count = 0;
@@ -236,7 +236,7 @@ export default function MapBs() {
                         data1[i].online = 0;
                     }
                 }
-                console.log(data1);
+                // console.log(data1);
 
                 let dian = [
                     {

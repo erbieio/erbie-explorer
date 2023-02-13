@@ -480,7 +480,6 @@ class AccountDetail extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         const id = nextProps.location.state;
-        console.log(nextProps);
         if (id) {
             window.sessionStorage.setItem('hash', id);
         }
@@ -497,7 +496,6 @@ class AccountDetail extends React.Component {
     }
     //插入DOM前的回调函数
     componentDidMount() {
-        console.log(this.props.location);
         if (this.props.location.state) {
             window.sessionStorage.setItem('hash', this.props.location.state);
         } else {
@@ -527,7 +525,6 @@ class AccountDetail extends React.Component {
                 });
                 const res = await accountDetail(this.state.stateHash);
                 let state = JSON.stringify(res);
-                console.log(state);
                 if (
                     JSON.parse(state).useCache != undefined &&
                     JSON.parse(state).useCache == false

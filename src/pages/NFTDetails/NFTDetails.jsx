@@ -28,7 +28,6 @@ import FileViewer from 'react-file-viewer';
 import { stagenumber, timestamp, ellipsis } from '../../utils/methods/Methods';
 const { Option } = Select;
 export default function NFTDetails(props) {
-    console.log(JSON.parse(localStorage.getItem('nfttext')));
     const [transactionmetadata, setTransactionmeta] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(10);
     const [pagenumber, setPagenumber] = useState(1);
@@ -133,11 +132,8 @@ export default function NFTDetails(props) {
     const onChange = (data) => {
         setPagenumber(data);
     };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+    const handleChange = (value) => {};
     useEffect(() => {
-        console.log(props.location.state.nftid);
         if (props.location.state != undefined) {
             localStorage.setItem(
                 'nfttext',
@@ -149,8 +145,6 @@ export default function NFTDetails(props) {
                 props.location.state.nftid.address,
         );
         snft_nft_tx_q(pagedata);
-
-        console.log(Object.keys(metadata).length);
     }, []);
     useEffect(() => {
         snft_nft_tx_q(pagedata);
@@ -163,8 +157,6 @@ export default function NFTDetails(props) {
     //snft详情查询
     const nftdetails_q = async (item) => {
         const data = await nftdetails(item);
-        console.log('nft详情查询');
-        console.log(data);
         if (data) {
             setNftdata(data);
         }
@@ -172,8 +164,6 @@ export default function NFTDetails(props) {
     //snft交易查询
     const snft_nft_tx_q = async (item) => {
         const data = await snft_nft_tx(item);
-        console.log('snft交易查询');
-        console.log(data);
         if (data) {
             setSnfttxdata(data);
         }
@@ -182,8 +172,6 @@ export default function NFTDetails(props) {
     const metainformation_q = async (item) => {
         if (item != '') {
             const data = await metainformation(item);
-            console.log('meta查询');
-            console.log(data);
             if (data) {
                 setMetadata(data);
             }
@@ -255,9 +243,7 @@ export default function NFTDetails(props) {
             setTransactionmeta(0);
         }
     }
-    function onChange1(newValue) {
-        console.log('change', newValue);
-    }
+    function onChange1(newValue) {}
     return (
         <>
             <div className={NFTDetails_ls.NFTDetailsBox}>

@@ -58,7 +58,6 @@ export default function Ranking() {
         (async () => {
             const res = await rankingExchanger(params);
             // updata(res);
-            console.log(res);
             if (!didCancel && res && res.exchangers) {
                 let exchangers = [...res.exchangers];
                 // exchangers = exchangers.map((item) => {
@@ -71,7 +70,6 @@ export default function Ranking() {
                 // });
                 rankMoney.push(...exchangers);
                 let rankExchange = Array.from(new Set(rankMoney));
-                console.log(rankExchange);
                 updata(rankExchange);
             }
         })();
@@ -98,7 +96,6 @@ export default function Ranking() {
         let didCancel = false;
         (async () => {
             const res = await rankingSnft(SNFTparams);
-            console.log(res);
             if (!didCancel && res && res.nfts) {
                 SNFTMoney.push(...res.nfts);
                 let rankExchange = Array.from(new Set(SNFTMoney));
@@ -120,26 +117,21 @@ export default function Ranking() {
             SNFTDatanum++;
             SNFTupdataSNFTDatanum(SNFTDatanum);
             setSNFTParams({ page: SNFTDatanum, page_size: 10 });
-            // console.log({limit:size,pageNo:exchangeDatanum,page_size:10})
         }
     };
     useEffect(() => {
         let data = document.getElementById('contentIFrame');
-        console.log(data);
         // data.style.width = "39px";
         // data.style.height = "39px";
         RankingNFTBoxUl = document.getElementById('RankingNFTBoxUl');
-        console.log(RankingNFTBoxUl);
         RankingNFTBoxUl.addEventListener('scroll', NFThandleScroll);
         let didCancel = false;
         (async () => {
             const res = await rankingNft(NFTparams);
-            console.log(res);
             if (!didCancel && res && res.nfts) {
                 NFTMoney.push(...res.nfts);
                 let rankExchange = Array.from(new Set(NFTMoney));
                 NFTupdata(rankExchange);
-                // console.log(NFTMoney)
             }
         })();
         return () => {
@@ -157,7 +149,6 @@ export default function Ranking() {
             NFTDatanum++;
             NFTupdataNFTDatanum(NFTDatanum);
             setNFTParams({ page: NFTDatanum, page_size: 10 });
-            // console.log({limit:size,pageNo:NFTDatanum,page_size:10})
         }
     };
     function handleClick(e) {

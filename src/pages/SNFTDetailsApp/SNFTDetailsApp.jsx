@@ -121,9 +121,7 @@ export default function SNFTDetailsApp(props) {
     const onChange = (data) => {
         setPagenumber(data);
     };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+    const handleChange = (value) => {};
     //snft交易分页
     let pagedata = {
         address:
@@ -166,8 +164,6 @@ export default function SNFTDetailsApp(props) {
     //snft详情查询
     const snftdetails_q = async (item) => {
         const data = await snftdetails(item);
-        console.log('snft详情查询');
-        console.log(data);
         if (data) {
             setSnftdata(data);
         }
@@ -175,8 +171,6 @@ export default function SNFTDetailsApp(props) {
     //snft交易查询
     const snft_nft_tx_q = async (item) => {
         const data = await snft_nft_tx(item);
-        console.log('snft交易查询');
-        console.log(data);
         if (data) {
             setSnfttxdata(data);
         }
@@ -184,8 +178,6 @@ export default function SNFTDetailsApp(props) {
     //meta查询
     const metainformation_q = async (item) => {
         const data = await metainformation(item);
-        console.log('meta查询');
-        console.log(data);
         if (data) {
             setMetadata(data);
         }
@@ -218,9 +210,7 @@ export default function SNFTDetailsApp(props) {
             setTransactionmeta(0);
         }
     }
-    function onChange1(newValue) {
-        console.log('change', newValue);
-    }
+    function onChange1(newValue) {}
     return (
         <>
             <div className={SNFTDetailsApp_ls.SNFTDetailsBox}>
@@ -384,7 +374,9 @@ export default function SNFTDetailsApp(props) {
                                         SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                 >
-                                    {snftdata.address?ellipsis(snftdata.address):'-'}
+                                    {snftdata.address
+                                        ? ellipsis(snftdata.address)
+                                        : '-'}
                                 </p>
                                 {snftdata.last_price ? (
                                     <p
@@ -485,7 +477,9 @@ export default function SNFTDetailsApp(props) {
                                         style={{ color: '#7AA4FF' }}
                                         id="soloimg"
                                     >
-                                        {snftdata.exchanger?ellipsis(snftdata.exchanger):'-'}
+                                        {snftdata.exchanger
+                                            ? ellipsis(snftdata.exchanger)
+                                            : '-'}
                                     </Link>
                                 )}
                                 <p

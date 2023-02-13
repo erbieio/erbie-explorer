@@ -143,8 +143,6 @@ export default function NFTApp() {
     //总数查询
     const total_q = async () => {
         const data = await total();
-        console.log('总数查询');
-        console.log(data);
         if (data) {
             setTotaldata(data);
         }
@@ -152,8 +150,6 @@ export default function NFTApp() {
     //NFT折线图
     const nftchart_q = async () => {
         const data = await nftchart();
-        console.log('NFT折线图');
-        console.log(data);
         let text = [
             {
                 hour: 0,
@@ -266,13 +262,10 @@ export default function NFTApp() {
         } else {
             setNftchartdata(text);
         }
-        console.log(text);
     };
     //nft查询
     const nft_q = async (item) => {
         const data = await nft(item);
-        console.log('nft查询');
-        console.log(data);
         if (data) {
             setNftdata(data);
         }

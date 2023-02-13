@@ -28,7 +28,6 @@ import FileViewer from 'react-file-viewer';
 import { stagenumber, timestamp, ellipsis } from '../../utils/methods/Methods';
 const { Option } = Select;
 export default function NFTDetailsApp(props) {
-    console.log(JSON.parse(localStorage.getItem('nfttext')));
     const [transactionmetadata, setTransactionmeta] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(10);
     const [pagenumber, setPagenumber] = useState(1);
@@ -46,7 +45,7 @@ export default function NFTDetailsApp(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/TradeDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -73,7 +72,7 @@ export default function NFTDetailsApp(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -87,7 +86,7 @@ export default function NFTDetailsApp(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -104,7 +103,7 @@ export default function NFTDetailsApp(props) {
                         pathname: '/NullPageApp',
                         state: { blockid: text },
                     }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -133,11 +132,8 @@ export default function NFTDetailsApp(props) {
     const onChange = (data) => {
         setPagenumber(data);
     };
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+    const handleChange = (value) => {};
     useEffect(() => {
-        console.log();
         if (props.location.state != undefined) {
             localStorage.setItem(
                 'nfttext',
@@ -149,8 +145,6 @@ export default function NFTDetailsApp(props) {
                 props.location.state.nftid.address,
         );
         snft_nft_tx_q(pagedata);
-
-        console.log(Object.keys(metadata).length);
     }, []);
     useEffect(() => {
         snft_nft_tx_q(pagedata);
@@ -163,8 +157,6 @@ export default function NFTDetailsApp(props) {
     //snft详情查询
     const nftdetails_q = async (item) => {
         const data = await nftdetails(item);
-        console.log('nft详情查询');
-        console.log(data);
         if (data) {
             setNftdata(data);
         }
@@ -172,8 +164,6 @@ export default function NFTDetailsApp(props) {
     //snft交易查询
     const snft_nft_tx_q = async (item) => {
         const data = await snft_nft_tx(item);
-        console.log('snft交易查询');
-        console.log(data);
         if (data) {
             setSnfttxdata(data);
         }
@@ -181,8 +171,6 @@ export default function NFTDetailsApp(props) {
     //meta查询
     const metainformation_q = async (item) => {
         const data = await metainformation(item);
-        console.log('meta查询');
-        console.log(data);
         if (data) {
             setMetadata(data);
         }
@@ -253,9 +241,7 @@ export default function NFTDetailsApp(props) {
             setTransactionmeta(0);
         }
     }
-    function onChange1(newValue) {
-        console.log('change', newValue);
-    }
+    function onChange1(newValue) {}
     return (
         <>
             <div className={NFTDetailsApp_ls.NFTDetailsBox}>
@@ -615,7 +601,7 @@ export default function NFTDetailsApp(props) {
                                 defaultValue="ViewMetaplexMetadata"
                                 style={{
                                     width: 174,
-                                    marginLeft:'140px'
+                                    marginLeft: '140px',
                                 }}
                                 suffixIcon={
                                     <>

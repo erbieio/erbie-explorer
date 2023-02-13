@@ -69,7 +69,6 @@ export default function Ranking() {
     };
     useEffect(() => {
         RankingExchangeBoxUl = document.getElementById('RankingExchangeBoxUl');
-        console.log(RankingExchangeBoxUl);
         RankingExchangeBoxUl.addEventListener('scroll', handleScroll);
         let didCancel = false;
         (async () => {
@@ -87,7 +86,6 @@ export default function Ranking() {
                 // });
                 rankMoney.push(...exchangers);
                 let rankExchange = Array.from(new Set(rankMoney));
-                console.log(rankExchange);
                 updata(rankExchange);
             }
         })();
@@ -110,7 +108,6 @@ export default function Ranking() {
     };
     useEffect(() => {
         RankingSNFTBoxUl = document.getElementById('RankingSNFTBoxUl');
-        console.log(RankingSNFTBoxUl);
         RankingSNFTBoxUl.addEventListener('scroll', SNFThandleScroll);
         let didCancel = false;
         (async () => {
@@ -128,7 +125,6 @@ export default function Ranking() {
         };
     }, [SNFTparams]);
     const SNFThandleScroll = (event) => {
-        console.log('SNFT');
         //scroll height
         let clientHeight = RankingSNFTBoxUl.clientHeight; //clientHeight
         let scrollTop = RankingSNFTBoxUl.scrollTop; //scrollTop
@@ -142,11 +138,9 @@ export default function Ranking() {
     };
     useEffect(() => {
         let data = document.getElementById('contentIFrame');
-        console.log(data);
         // data.style.width = "39px";
         // data.style.height = "39px";
         RankingNFTBoxUl = document.getElementById('RankingNFTBoxUl');
-        console.log(RankingNFTBoxUl);
         RankingNFTBoxUl.addEventListener('scroll', NFThandleScroll);
         let didCancel = false;
         (async () => {

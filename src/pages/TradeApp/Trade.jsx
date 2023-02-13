@@ -117,8 +117,7 @@ class Trade extends React.Component {
             tableData: [],
             onChange: (data) => {
                 this.state.pageOption.page = data;
-                this.paginationChange(this.state.pageOption.page, 16),
-                    console.log(this.state.pageOption.page);
+                this.paginationChange(this.state.pageOption.page, 16);
             },
             SNFTinputnumberonclick: (e) => {
                 let data = document.getElementById('SNFTinputnumber').value;
@@ -347,7 +346,6 @@ class Trade extends React.Component {
         this.transactionPage = async () => {
             const res = await transactionPage(this.state.pageOption);
             if (res) {
-                console.log(res);
                 this.setState({
                     tableData: res.transactions,
                     tableTotal: res.total,

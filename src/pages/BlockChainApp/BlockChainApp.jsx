@@ -29,33 +29,35 @@ export default function BlockChainApp() {
             key: 'number',
             render: (text, data) =>
                 data.number != 0 ? (
-                    data.miner == '0x0000000000000000000000000000000000000000'
-                    ?
-                    <Link
-                        to={{
-                            pathname: '/BlockChainApp/BlackholeBlockDetaApp',
-                            state: { blockid: text },
-                        }}
-                        style={{
-                            color: '#7AA4FF',
-                            fontFamily: 'CustomFontMedium',
-                        }}
-                    >
-                        {text}
-                    </Link>
-                    :
-                    <Link
-                        to={{
-                            pathname: '/BlockChainApp/BlockDetailsApp',
-                            state: { blockid: text },
-                        }}
-                        style={{
-                            color: '#7AA4FF',
-                            fontFamily: 'CustomFontMedium',
-                        }}
-                    >
-                        {text}
-                    </Link>
+                    data.miner ==
+                    '0x0000000000000000000000000000000000000000' ? (
+                        <Link
+                            to={{
+                                pathname:
+                                    '/BlockChainApp/BlackholeBlockDetaApp',
+                                state: { blockid: text },
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {text}
+                        </Link>
+                    ) : (
+                        <Link
+                            to={{
+                                pathname: '/BlockChainApp/BlockDetailsApp',
+                                state: { blockid: text },
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {text}
+                        </Link>
+                    )
                 ) : (
                     '-'
                 ),
@@ -139,7 +141,6 @@ export default function BlockChainApp() {
         total_q();
     }, []);
     useEffect(() => {
-        console.log(pagenumber);
         block_q(pagedata);
     }, [pagenumber]);
     useEffect(() => {
@@ -160,14 +161,10 @@ export default function BlockChainApp() {
             setBlockdata(data);
             setBigheightblock(data.blocks[0].number);
         }
-        console.log('区块查询');
-        console.log(data);
     };
     //总数查询
     const total_q = async () => {
         const data = await total();
-        console.log('总数查询');
-        console.log(data);
         if (data) {
             setTotaldata(data);
         }

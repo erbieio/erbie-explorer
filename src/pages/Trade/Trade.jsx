@@ -121,15 +121,13 @@ class Trade extends React.Component {
             tableData: [],
             onChange: (data) => {
                 this.state.pageOption.page = data;
-                this.paginationChange(this.state.pageOption.page, 16),
-                    console.log(this.state.pageOption.page);
+                this.paginationChange(this.state.pageOption.page, 16);
             },
             SNFTinputnumberonclick: (e) => {
                 let data = document.getElementById('SNFTinputnumber').value;
                 if (e.keyCode == 13) {
                     if (Number(data) != NaN) {
                         // this.state.pagenumber = Number(data);
-                        console.log(Number(data));
                         this.state.pageOption.page = Number(data);
                         this.paginationChange(this.state.pageOption.page, 16);
                     }

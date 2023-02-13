@@ -6,9 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { history } from 'umi';
 const { Option } = Select;
 export default function Search() {
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+    const handleChange = (value) => {};
     return (
         <>
             <div className={Search_ls.SearchBox}>

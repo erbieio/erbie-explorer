@@ -7,13 +7,9 @@ import React, { useState, useEffect } from 'react';
 import { history, Link } from 'umi';
 const { Option } = Select;
 export default function Header() {
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+    const handleChange = (value) => {};
     // const params = window.location.search;
-    useEffect(() => {
-        // console.log(window);
-    }, []);
+    useEffect(() => {}, []);
     //路由跳转
     function handleClick(e) {
         if (e == 'Ranking') {

@@ -34,8 +34,8 @@ export default function MapChart() {
     //地图数据查询
     const locations_q = async () => {
         const data = await locations();
-        console.log('地图数据查询');
-        console.log(data);
+        // console.log('地图数据查询');
+        // console.log(data);
         if (data) {
             setMapdatadetailed(data);
         }
@@ -45,17 +45,18 @@ export default function MapChart() {
         if (data) {
             setValidatoronline(data.addrs);
         }
-        console.log('验证者在线查询');
-        console.log(data);
+        // console.log('验证者在线查询');
+        // console.log(data);
     };
     //地图fromto数据查询
     const lastmsg_q = async () => {
         const data = await lastmsg();
-        console.log('地图fromto数据查询');
+        // console.log('地图fromto数据查询');
         console.log(data);
-        console.log(mapdatadetailed);
+        // console.log(mapdatadetailed);
         // let text = []
         if (mapdatadetailed && data) {
+            console.log(1111);
             let text = data;
             for (let i = 0; i < data.length; i++) {
                 for (let j = 0; j < mapdatadetailed.length; j++) {
@@ -95,15 +96,16 @@ export default function MapChart() {
                     linedata.push(text[b]);
                 }
             }
-            console.log(linedata);
+            // console.log(linedata);
             setLinedata(linedata);
         }
         if (data == null) {
-            let text = [];
+            // let text = [];
+            // console.log(222);
             // text.push({ from: [20.3522, 48.8566], to: [-74.006, 40.7128] });
             // text.push({ from: [60.3522, 48.8566], to: [-74.006, 40.7128] });
-            console.log(text);
-            setLinedata(text);
+            // console.log(text);
+            // setLinedata(text);
         }
     };
     useEffect(() => {
@@ -112,8 +114,8 @@ export default function MapChart() {
     }, []);
     useEffect(() => {
         if (validatoronline.length != 0 && mapdatadetailed.length != 0) {
-            console.log(validatoronline);
-            console.log(mapdatadetailed);
+            // console.log(validatoronline);
+            // console.log(mapdatadetailed);
             let text1 = [];
             for (let i = 0; i < validatoronline.length; i++) {
                 for (let k = 0; k < mapdatadetailed.length; k++) {
@@ -122,7 +124,7 @@ export default function MapChart() {
                     }
                 }
             }
-            console.log(text1);
+            // console.log(text1);
             let text = [];
             let mapdzx = [];
             let mapdbzx = [];
@@ -178,10 +180,10 @@ export default function MapChart() {
                 mathjs = 0;
             }
 
-            console.log(mapdzx);
-            console.log(mapdbzx);
-            console.log(mapdbzxBS);
-            console.log(text);
+            // console.log(mapdzx);
+            // console.log(mapdbzx);
+            // console.log(mapdbzxBS);
+            // console.log(text);
             setMapdata(text);
             setSubscript(mapdzx);
             setNosubscript(mapdbzxBS);

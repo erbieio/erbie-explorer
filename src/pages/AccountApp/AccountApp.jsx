@@ -31,7 +31,9 @@ export default function AccountApp() {
     //Transaction Value
     const [transactionvaluecolor, setTransactionvaluecolor] = useState(0);
     //分页排序order参数
-    const [orderdata, setOrderdata] = useState('LENGTH(balance) DESC, balance DESC');
+    const [orderdata, setOrderdata] = useState(
+        'LENGTH(balance) DESC, balance DESC',
+    );
     const columns = [
         {
             title: 'Address',
@@ -40,7 +42,7 @@ export default function AccountApp() {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium'  }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -258,14 +260,10 @@ export default function AccountApp() {
         if (data) {
             setAccountdata(data);
         }
-        console.log('Account查询');
-        console.log(data);
     };
     //总数查询
     const total_q = async () => {
         const data = await total();
-        console.log('总数查询');
-        console.log(data);
         if (data) {
             setTotaldata(data);
         }
@@ -314,7 +312,9 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(1);
-                setOrderdata('LENGTH(validator_amount) ASC, validator_amount ASC');
+                setOrderdata(
+                    'LENGTH(validator_amount) ASC, validator_amount ASC',
+                );
             }
         } else {
             if (totalcollectionscolor == 2) {
@@ -322,7 +322,9 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(2);
-                setOrderdata('LENGTH(validator_amount) DESC, validator_amount DESC');
+                setOrderdata(
+                    'LENGTH(validator_amount) DESC, validator_amount DESC',
+                );
             }
         }
     }
@@ -338,7 +340,9 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTotalnftscolor(1);
-                setOrderdata('LENGTH(exchanger_amount) ASC, exchanger_amount ASC');
+                setOrderdata(
+                    'LENGTH(exchanger_amount) ASC, exchanger_amount ASC',
+                );
             }
         } else {
             if (totalnftscolor == 2) {
@@ -346,7 +350,9 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTotalnftscolor(2);
-                setOrderdata('LENGTH(exchanger_amount) DESC, exchanger_amount DESC');
+                setOrderdata(
+                    'LENGTH(exchanger_amount) DESC, exchanger_amount DESC',
+                );
             }
         }
     }

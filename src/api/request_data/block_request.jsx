@@ -103,7 +103,6 @@ export const snft_nft_tx = (data) => {
 };
 //meta查询
 export const metainformation = (data) => {
-    console.log(data);
     return request.get(`${data}`);
     // return request.get(`${host}${data}`)
 };

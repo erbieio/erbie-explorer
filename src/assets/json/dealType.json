@@ -27,6 +27,7 @@
         {"type" : 24,"name":"Nominate S-NFTs(Proxy)"},
         {"type" : 25,"name":"Unlock Account"},
         {"type" : 26,"name":"Restore Validator Weight"},
+        {"type" : 27,"name":"Bulk trading S-NFTs"},
         {"type" : 31,"name":"Validator Delegation"}
     ]
 }

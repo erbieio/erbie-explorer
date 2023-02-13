@@ -6,8 +6,6 @@ export default function NullPageApp(props) {
     //单个区块查询
     const soloblock_q = async (item) => {
         const data = await soloblock(item);
-        console.log('单个区块查询');
-        console.log(data);
         let state = JSON.stringify(data);
         if (
             JSON.parse(state).useCache != undefined &&

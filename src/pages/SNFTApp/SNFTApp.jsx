@@ -201,16 +201,12 @@ export default function SNFTApp() {
     //snft查询
     const snft_q = async (item) => {
         const data = await snft(item);
-        console.log('snft查询');
-        console.log(data);
         if (data) {
             setSnftdata(data);
         }
     };
     const total_q = async () => {
         const data = await total();
-        console.log('总数查询');
-        console.log(data);
         if (data) {
             setTotaldata(data);
         }

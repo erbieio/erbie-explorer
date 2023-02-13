@@ -11,9 +11,7 @@ const { Option } = Select;
 export default function HeaderApp(props) {
     const [navigationicon, setNavigationicon] = useState(0);
     const [navigationheight, setNavigationheight] = useState('0px');
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+    const handleChange = (value) => {};
     PubSub.subscribe('pubsubNavigationdata', (msg, index) => {
         setNavigationicon(index.Navigationicon);
         setNavigationheight(index.Navigationheight);
@@ -27,7 +25,6 @@ export default function HeaderApp(props) {
     function homepageinputclick() {
         // location.reload()
         let data = document.getElementById('homepageinput').value;
-        console.log(data);
         if (data) {
             if (
                 Number(data) == data &&

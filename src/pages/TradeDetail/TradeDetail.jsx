@@ -102,11 +102,9 @@ class TradeDetail extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         const id = nextProps.location.state;
-        console.log(nextProps);
         if (id) {
             window.sessionStorage.setItem('Trastate', id);
         }
-        console.log(id);
         this.state.Trastate = window.sessionStorage.getItem('Trastate');
         this.commonFunc();
         // history.replace({ pathname: nextProps.location.pathname, state: id })
@@ -114,7 +112,6 @@ class TradeDetail extends React.Component {
 
     //插入DOM前的回调函数
     componentDidMount() {
-        console.log(this.props.location);
         let subArr = this.props.location.pathname.split('/');
         if (this.props.location.state) {
             window.sessionStorage.setItem(
@@ -176,7 +173,6 @@ class TradeDetail extends React.Component {
                     });
                     // rea.topics = detail;
 
-                    console.log(rea);
                     // val = JSON.stringify(JSON.parse(this.state.dataLog[index].topics[index1]).type = false)
                 }
                 // switch (value) {
@@ -190,11 +186,9 @@ class TradeDetail extends React.Component {
                 });
             };
             this.onChangeExchange = (e) => {
-                console.log(e);
                 this.setState({ type: e.target.value });
             };
             this.onChangeinput = (e) => {
-                console.log(e);
                 this.setState({ typeGroup: e.target.value });
             };
 

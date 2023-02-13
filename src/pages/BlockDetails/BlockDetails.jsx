@@ -23,6 +23,7 @@ import {
 import React, { useState, useEffect } from 'react';
 export default function BlockDetails(props) {
     const [pagenumber, setPagenumber] = useState(1);
+
     const [pagenumbersize, setPagenumbersize] = useState(10);
     //单个区块
     const [soloblockdata, setSoloblockdata] = useState({});
@@ -167,7 +168,6 @@ export default function BlockDetails(props) {
                 JSON.stringify(props.location.state.blockid),
             );
         }
-        console.log(JSON.parse(localStorage.getItem('blocktext')));
         soloblock_q(JSON.parse(localStorage.getItem('blocktext')));
         soloblocktransaction_q(pagedata);
         blockrewardperson_q(JSON.parse(localStorage.getItem('blocktext')));
@@ -191,8 +191,6 @@ export default function BlockDetails(props) {
         if (data) {
             setSoloblockdata(data);
         }
-        console.log('单个区块查询');
-        console.log(data);
         let state = JSON.stringify(data);
         if (
             JSON.parse(state).useCache != undefined &&
@@ -207,8 +205,6 @@ export default function BlockDetails(props) {
         if (data) {
             setSoloblocktransactiondata(data);
         }
-        console.log('单个区块交易列表查询');
-        console.log(data);
     };
     //区块奖励人查询
     const blockrewardperson_q = async (item) => {
@@ -216,8 +212,6 @@ export default function BlockDetails(props) {
         if (data) {
             setBlockrewardpersondata(data);
         }
-        console.log('区块奖励人查询');
-        console.log(data);
     };
     //404
     function comingsoon404() {
@@ -287,7 +281,6 @@ export default function BlockDetails(props) {
                             '0x0000000000000000000000000000000000000000' ||
                         item.proxy == null
                     ) {
-                        console.log(1);
                         return (
                             <p
                                 className={
@@ -305,7 +298,6 @@ export default function BlockDetails(props) {
                             </p>
                         );
                     } else {
-                        console.log(2);
                         return (
                             <Link
                                 to={{
@@ -424,7 +416,6 @@ export default function BlockDetails(props) {
     }
     //燃料计算
     function gasusedlv(data) {
-        console.log(data);
         if (data) {
             let text = 0;
             for (let i = 0; i < data.length; i++) {
@@ -437,7 +428,6 @@ export default function BlockDetails(props) {
     }
     //父块
     function fatherblock() {
-        console.log(JSON.parse(localStorage.getItem('blocktext')));
         localStorage.setItem(
             'blocktext',
             JSON.stringify(JSON.parse(localStorage.getItem('blocktext')) - 1),

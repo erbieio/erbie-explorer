@@ -4,14 +4,11 @@ import { BsSearch } from 'react-icons/bs';
 import { Select, message } from 'antd';
 import { history } from 'umi';
 export default function SearchBox() {
-    const handleChange = (value) => {
-        console.log(`selected ${value}`);
-    };
+    const handleChange = (value) => {};
     //搜索按钮
     function homepageinputclick() {
         // location.reload()
         let data = document.getElementById('homepageinput').value;
-        console.log(data);
         if (data) {
             if (
                 Number(data) == data &&

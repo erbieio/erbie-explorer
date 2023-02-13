@@ -138,7 +138,6 @@ export default function BlockChain() {
         total_q();
     }, []);
     useEffect(() => {
-        console.log(pagenumber);
         block_q(pagedata);
     }, [pagenumber]);
     useEffect(() => {
@@ -159,14 +158,10 @@ export default function BlockChain() {
             setBlockdata(data);
             setBigheightblock(data.blocks[0].number);
         }
-        console.log('区块查询');
-        console.log(data);
     };
     //总数查询
     const total_q = async () => {
         const data = await total();
-        console.log('总数查询');
-        console.log(data);
         if (data) {
             setTotaldata(data);
         }
@@ -179,7 +174,7 @@ export default function BlockChain() {
             }
         }
     }
-    
+
     return (
         <>
             <div className={BlockChain_ls.BlockChainBox}>

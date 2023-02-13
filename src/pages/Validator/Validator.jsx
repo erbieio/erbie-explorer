@@ -465,14 +465,10 @@ export default function Validator() {
         if (data) {
             setValidatordata(data);
         }
-        console.log('Validator查询');
-        console.log(data);
     };
     //总数查询
     const total_q = async () => {
         const data = await total();
-        console.log('总数查询');
-        console.log(data);
         if (data) {
             setTotaldata(data);
         }

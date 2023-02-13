@@ -49,7 +49,7 @@ export default function ExchangeDetails(props) {
                         pathname: '/SNFT/SNFTDetails',
                         state: { snftid: data.address, snftmata: data },
                     }}
-                    style={{ color: '#7AA4FF' ,fontFamily:'CustomFontMedium'}}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
                 </Link>
@@ -74,7 +74,7 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -88,7 +88,7 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -104,7 +104,7 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/TradeDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -144,7 +144,7 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -158,7 +158,7 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{ pathname: `/AccountDetail/${text}`, state: text }}
-                    style={{ color: '#7AA4FF',fontFamily:'CustomFontMedium' }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
                 </Link>
@@ -202,7 +202,6 @@ export default function ExchangeDetails(props) {
                 JSON.stringify(props.location.state.exchangeid),
             );
         }
-        console.log(JSON.parse(localStorage.getItem('exchangetext')));
         soloexchanger_q(JSON.parse(localStorage.getItem('exchangetext')));
         exchangermap_q(JSON.parse(localStorage.getItem('exchangetext')));
         snft_q(pagedata);
@@ -215,11 +214,8 @@ export default function ExchangeDetails(props) {
     //单个交易所查询
     const soloexchanger_q = async (item) => {
         const data = await soloexchanger(item);
-        console.log('单个交易所查询');
-        console.log(data);
         if (data) {
             if (data.address == '') {
-                console.log(data.address);
                 history.push('/NoSearchResults');
             }
             setExchangerdata(data);
@@ -228,8 +224,6 @@ export default function ExchangeDetails(props) {
     //交易所柱状图查询
     const exchangermap_q = async (item) => {
         const data = await exchangermap(item);
-        console.log('交易所柱状图查询');
-        console.log(data);
         if (data) {
             setExchangermapdata(data);
         }
@@ -237,8 +231,6 @@ export default function ExchangeDetails(props) {
     //snft查询
     const snft_q = async (item) => {
         const data = await snft(item);
-        console.log('snft查询');
-        console.log(data);
         if (data) {
             setSnftdata(data);
         }
@@ -246,8 +238,6 @@ export default function ExchangeDetails(props) {
     //snft交易查询
     const snft_nft_tx_q = async (item) => {
         const data = await snft_nft_tx(item);
-        console.log('snft交易查询');
-        console.log(data);
         if (data) {
             setSnfttxdata(data);
         }
