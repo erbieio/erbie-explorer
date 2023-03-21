@@ -693,7 +693,7 @@ export default function TermsOfServiceApp() {
                         construed in accordance with, in all respects including
                         as to validity, interpretation and effect, the laws of
                         the British Virgin Islands. Questions about the Terms
-                        should be sent to <span>support@wormholes.com.</span>
+                        should be sent to support@wormholes.com.
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
                         In relation to any dispute, controversy or claim arising

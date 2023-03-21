@@ -532,7 +532,7 @@ export default function PrivacyNotice() {
                         If you would like to contact us regarding this Notice or
                         to withdraw your consent to this Notice or any aspect of
                         it, please send us an email at{' '}
-                        <span>dataprivacy@wormholes.com.</span>
+                        dataprivacy@wormholes.com.
                     </p>
                     <p className={PrivacyNotice_ls.text}>
                         We try to respond to all legitimate enquiries within 30
