@@ -111,6 +111,7 @@ export default function MapChart() {
     useEffect(() => {
         locations_q();
         onlineAddr_q();
+        console.log(window.location.hash);
     }, []);
     useEffect(() => {
         if (validatoronline.length != 0 && mapdatadetailed.length != 0) {

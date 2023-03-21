@@ -163,5 +163,31 @@ export const accounts = (data) => {
 };
 // 在线验证者查询
 export const onlineAddr = () => {
-    return request.get(`https://www.wormholes.com/upload/onlineAddr.json`);
+    return request.get(`https://www.wormholesscan.com/upload/onlineAddr.json`);
+};
+//creator查询
+export const creator = (data) => {
+    return request.get(`${host}/creator/page`, {
+        params: {
+            page: data.page,
+            page_size: data.page_size,
+            order: data.order,
+        },
+    });
+};
+//creator柱状图查询
+export const creatorHistogram = () => {
+    return request.get(`${host}/creator/top`, {
+        params: {
+            size: 7,
+        },
+    });
+};
+//creator账户查询
+export const creatorAddress = (data) => {
+    return request.get(`${host}/creator`, {
+        params: {
+            addr: data,
+        },
+    });
 };

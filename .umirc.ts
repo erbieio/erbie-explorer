@@ -150,6 +150,30 @@ export default defineConfig({
                     path: '/MapBs2',
                     component: './MapBs2/MapBs2.jsx',
                 },
+                {
+                    path: '/Creator',
+                    component: './Creator/Creator.jsx',
+                },
+                {
+                    path: '/CreatorApp',
+                    component: './CreatorApp/CreatorApp.jsx',
+                },
+                {
+                    path: '/PrivacyNotice',
+                    component: './PrivacyNotice/PrivacyNotice.jsx',
+                },
+                {
+                    path: '/PrivacyNoticeApp',
+                    component: './PrivacyNoticeApp/PrivacyNoticeApp.jsx',
+                },
+                {
+                    path: '/TermsOfServiceApp',
+                    component: './TermsOfServiceApp/TermsOfServiceApp.jsx',
+                },
+                {
+                    path: '/TermsOfService',
+                    component: './TermsOfService/TermsOfService.jsx',
+                },
             ],
         },
     ],

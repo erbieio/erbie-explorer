@@ -86,6 +86,12 @@ export default function Header() {
                     >
                         BLOCKCHAIN
                     </Link>
+                    {/* <Link
+                        to={{ pathname: '/Creator', state: '' }}
+                        className={Header_ls.HeaderBox_navigationBox_text}
+                    >
+                        CREATOR
+                    </Link> */}
                     <Link
                         to={{ pathname: '/Validator', state: '' }}
                         className={Header_ls.HeaderBox_navigationBox_text}
@@ -132,6 +138,7 @@ export default function Header() {
                 {/* <div className={Header_ls.HeaderBox_patternBox}> */}
                 {/* <FaRegMoon /> */}
                 {/* </div> */}
+                {/* || window.location.hash == '#/Creator' */}
             </div>
             {window.location.hash == '#/BlockChain' ||
             window.location.hash == '#/NFT' ||

@@ -129,8 +129,18 @@ h3 {
         color: rgba(122, 164, 255, 1);
     }
 }
+.table_redblock{
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    padding: 0 11px;
+    background-color: #D63A49;
+    border-radius: 4px;
+}
 .other {
     display: flex;
+    width: 600px;
+    position: relative;
     > div:last-child {
         padding-left: 128px;
         padding-top: 5px;
@@ -140,17 +150,23 @@ h3 {
     }
     ul {
         display: flex;
+        margin-bottom: 18px;
         p {
-            width: 120px;
+            // width: 120px;
             margin-right: 11px;
         }
         span {
             display: inline-block;
-            width: 100px;
+            // width: 100px;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;
         }
+    }
+    img{
+        position: absolute;
+        top: 0;
+        right: 0;
     }
 }
 .changeButton {
@@ -358,7 +374,45 @@ h3 {
     color: #7aa4ff;
     cursor: pointer;
 }
-
+.tablexbox {
+    display: flex;
+    justify-content: flex-start;
+    // border: 1px solid red;
+}
+.tablexbox2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.tablexbox2_icon{
+    margin-left: 5px;
+    cursor: pointer;
+}
+.tablex {
+    width: 20px;
+    height: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    margin-top: -2px;
+    margin-left: 5px;
+}
+.tablespan {
+    display: flex;
+    align-items: center;
+}
+.tablexbox2_titletext{
+    display: flex;
+    align-items: center;
+    
+    span{
+        color: #ffffff !important;
+        margin-left: 5px;
+    }
+    svg{
+        color: #ffffff !important;
+    }
+}
 .AccountDetailButtonGroup {
     margin: 40px 0 24px 0 !important;
     :global {

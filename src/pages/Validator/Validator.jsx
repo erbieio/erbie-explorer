@@ -30,6 +30,8 @@ export default function Validator() {
     const [feeratecolor, setFeeratecolor] = useState(0);
     //Transaction Value
     const [transactionvaluecolor, setTransactionvaluecolor] = useState(0);
+    // totalAnnualizedcolor
+    const [totalAnnualizedcolor, setTotalAnnualizedcolor] = useState(0);
     //分页排序order参数
     const [orderdata, setOrderdata] = useState('');
     const columns = [
@@ -46,6 +48,7 @@ export default function Validator() {
                 </Link>
             ),
             ellipsis: true,
+            width: '140px',
         },
         {
             title: () => (
@@ -143,6 +146,48 @@ export default function Validator() {
         {
             title: () => (
                 <div className={Validator_ls.tablexbox}>
+                    Annualized Return
+                    {totalAnnualizedcolor == 0 ? (
+                        <div className={Validator_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={AnnualizedCollections.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={AnnualizedCollections.bind(this, 2)}
+                            />
+                        </div>
+                    ) : totalAnnualizedcolor == 1 ? (
+                        <div className={Validator_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={AnnualizedCollections.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={AnnualizedCollections.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={Validator_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={AnnualizedCollections.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={AnnualizedCollections.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
+                </div>
+            ),
+            dataIndex: 'apr',
+            key: 'apr',
+            render: (text, data) => (
+                <>{text ? (text * 100).toFixed(2) : '0'} %</>
+            ),
+        },
+        {
+            title: () => (
+                <div className={Validator_ls.tablexbox}>
                     Time
                     {totalnftscolor == 0 ? (
                         <div className={Validator_ls.tablex}>
@@ -186,6 +231,7 @@ export default function Validator() {
                 </span>
             ),
             ellipsis: true,
+            width: '130px',
         },
         {
             title: () => (
@@ -232,7 +278,7 @@ export default function Validator() {
                     {text}
                 </Link>
             ),
-            width: '270px',
+            width: '240px',
         },
         {
             title: () => (
@@ -462,6 +508,7 @@ export default function Validator() {
     //Validator查询
     const validators_q = async (item) => {
         const data = await validators(item);
+        console.log(data);
         if (data) {
             setValidatordata(data);
         }
@@ -487,6 +534,7 @@ export default function Validator() {
         setTotalnftscolor(0);
         setFeeratecolor(0);
         setTransactionvaluecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
             if (stakevaluecolor == 1) {
                 setStakevaluecolor(0);
@@ -511,6 +559,7 @@ export default function Validator() {
         setTotalnftscolor(0);
         setFeeratecolor(0);
         setTransactionvaluecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
             if (totalcollectionscolor == 1) {
                 setTotalcollectionscolor(0);
@@ -535,6 +584,7 @@ export default function Validator() {
         setTotalcollectionscolor(0);
         setFeeratecolor(0);
         setTransactionvaluecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
             if (totalnftscolor == 1) {
                 setTotalnftscolor(0);
@@ -553,12 +603,38 @@ export default function Validator() {
             }
         }
     }
+    //AnnualizedCollections 排序
+    function AnnualizedCollections(text) {
+        setStakevaluecolor(0);
+        setTotalcollectionscolor(0);
+        setTotalnftscolor(0);
+        setTransactionvaluecolor(0);
+        setFeeratecolor(0);
+        if (text == 1) {
+            if (totalAnnualizedcolor == 1) {
+                setTotalAnnualizedcolor(0);
+                setOrderdata('');
+            } else {
+                setTotalAnnualizedcolor(1);
+                setOrderdata('apr ASC');
+            }
+        } else {
+            if (totalAnnualizedcolor == 2) {
+                setTotalAnnualizedcolor(0);
+                setOrderdata('');
+            } else {
+                setTotalAnnualizedcolor(2);
+                setOrderdata('apr DESC');
+            }
+        }
+    }
     //Fee Rate 排序
     function FeeRate(text) {
         setStakevaluecolor(0);
         setTotalcollectionscolor(0);
         setTotalnftscolor(0);
         setTransactionvaluecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
             if (feeratecolor == 1) {
                 setFeeratecolor(0);
@@ -583,6 +659,7 @@ export default function Validator() {
         setTotalcollectionscolor(0);
         setTotalnftscolor(0);
         setFeeratecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
             if (transactionvaluecolor == 1) {
                 setTransactionvaluecolor(0);

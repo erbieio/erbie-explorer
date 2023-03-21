@@ -1,6 +1,7 @@
 import FooterApp_ls from './FooterApp.less';
 import { Tooltip, Button, message, Space } from 'antd';
 import React, { useState, useEffect } from 'react';
+import { history, Link } from 'umi';
 export default function FooterApp() {
     function AboutWormholesBlockchain() {
         window.open('https://www.wormholes.com/docs/Overview');
@@ -212,6 +213,21 @@ export default function FooterApp() {
                     </div>
                     <p className={FooterApp_ls.FooterBox_bootomtext}>
                         Copyright © 2022 - Wormholes
+                    </p>
+                    <p className={FooterApp_ls.FooterBox_bootomtext2}>
+                        <Link
+                            to={{ pathname: '/PrivacyNoticeApp', state: '' }}
+                            className={FooterApp_ls.FooterBox_bootomlink}
+                        >
+                            Privacy Notice
+                        </Link>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                        <Link
+                            to={{ pathname: '/TermsOfServiceApp', state: '' }}
+                            className={FooterApp_ls.FooterBox_bootomlink}
+                        >
+                            Terms of Service
+                        </Link>
                     </p>
                 </div>
             </div>

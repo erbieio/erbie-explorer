@@ -198,6 +198,7 @@ class TradeDetail extends React.Component {
             (async () => {
                 const res = await transactionDetail(this.state.Trastate);
                 if (res) {
+                    console.log(res);
                     res.forEach((item) => {
                         let val = [];
                         item.topics.forEach((value) => {
@@ -213,6 +214,7 @@ class TradeDetail extends React.Component {
                     });
                 }
                 const transactionres = await transaction(this.state.Trastate);
+                console.log(transactionres);
                 let state = JSON.stringify(transactionres);
                 if (state === 'null') {
                     return this.comingsoon404();

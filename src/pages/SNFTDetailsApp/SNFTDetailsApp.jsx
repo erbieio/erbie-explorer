@@ -146,6 +146,14 @@ export default function SNFTDetailsApp(props) {
                 'snftmata',
                 JSON.stringify(props.location.state.snftmata),
             );
+            // } else if (
+            //     props.location.state == undefined &&
+            //     Object.keys(props.location.query).length != 0
+            // ) {
+            //     localStorage.setItem(
+            //         'snfttext',
+            //         JSON.stringify(props.location.query.snftid),
+            //     );
         }
         snftdetails_q(
             JSON.parse(localStorage.getItem('snfttext')) ||
@@ -313,6 +321,100 @@ export default function SNFTDetailsApp(props) {
                                         SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_namebig
                                     }
                                 >
+                                    {/* {Object.keys(snftdata) != 0 ? (
+                                        <span>
+                                            {snftdata.address.length >= 39 ? (
+                                                <Tooltip
+                                                    title="L3"
+                                                    color="#4D4D55"
+                                                >
+                                                    <span
+                                                        className={
+                                                            SNFTDetailsApp_ls.SNFTBox_tablelevelPeriod
+                                                        }
+                                                    >
+                                                        {parseInt(
+                                                            '0x' +
+                                                                snftdata.address.slice(
+                                                                    4,
+                                                                    39,
+                                                                ),
+                                                        ) + 1}
+                                                    </span>
+                                                </Tooltip>
+                                            ) : (
+                                                ' '
+                                            )}
+                                            {snftdata.address.length >= 40 ? (
+                                                <Tooltip
+                                                    title="L2"
+                                                    color="#4D4D55"
+                                                >
+                                                    <span
+                                                        className={
+                                                            SNFTDetailsApp_ls.SNFTBox_tablelevelCollection
+                                                        }
+                                                    >
+                                                        {parseInt(
+                                                            '0x' +
+                                                                snftdata.address.slice(
+                                                                    39,
+                                                                    40,
+                                                                ),
+                                                        ) + 1}
+                                                    </span>
+                                                </Tooltip>
+                                            ) : (
+                                                ''
+                                            )}
+                                            {snftdata.address.length >= 41 ? (
+                                                <Tooltip
+                                                    title="L1"
+                                                    color="#4D4D55"
+                                                >
+                                                    <span
+                                                        className={
+                                                            SNFTDetailsApp_ls.SNFTBox_tablelevelnft
+                                                        }
+                                                    >
+                                                        {parseInt(
+                                                            '0x' +
+                                                                snftdata.address.slice(
+                                                                    40,
+                                                                    41,
+                                                                ),
+                                                        ) + 1}
+                                                    </span>
+                                                </Tooltip>
+                                            ) : (
+                                                ''
+                                            )}
+                                            {snftdata.address.length >= 42 ? (
+                                                <Tooltip
+                                                    title="L0"
+                                                    color="#4D4D55"
+                                                >
+                                                    <span
+                                                        className={
+                                                            SNFTDetailsApp_ls.SNFTBox_tablelevelsnft
+                                                        }
+                                                    >
+                                                        {parseInt(
+                                                            '0x' +
+                                                                snftdata.address.slice(
+                                                                    41,
+                                                                    42,
+                                                                ),
+                                                        ) + 1}
+                                                    </span>
+                                                </Tooltip>
+                                            ) : (
+                                                ''
+                                            )}
+                                        </span>
+                                    ) : (
+                                        ''
+                                    )} */}
                                     {Object.keys(snftdata) != 0 ? (
                                         snftdata.address.length == 42 ? (
                                             <span

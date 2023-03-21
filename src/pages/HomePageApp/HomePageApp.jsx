@@ -1175,7 +1175,11 @@ export default function HomePageApp() {
                         S-NFT Weight
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_data}>
-                        {epochdata.voteWeight || 0}
+                        {epochdata.voteWeight
+                            ? Number(
+                                  utils.formatEther(epochdata.voteWeight),
+                              ).toFixed(2)
+                            : 0}
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>
                         S-NFT Creator

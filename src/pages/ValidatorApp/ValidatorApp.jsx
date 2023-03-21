@@ -30,6 +30,8 @@ export default function ValidatorApp() {
     const [feeratecolor, setFeeratecolor] = useState(0);
     //Transaction Value
     const [transactionvaluecolor, setTransactionvaluecolor] = useState(0);
+    // totalAnnualizedcolor
+    const [totalAnnualizedcolor, setTotalAnnualizedcolor] = useState(0);
     //分页排序order参数
     const [orderdata, setOrderdata] = useState('');
     const columns = [
@@ -144,6 +146,48 @@ export default function ValidatorApp() {
         {
             title: () => (
                 <div className={ValidatorApp_ls.tablexbox}>
+                    Annualized Return
+                    {totalAnnualizedcolor == 0 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TotalAnnualized.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TotalAnnualized.bind(this, 2)}
+                            />
+                        </div>
+                    ) : totalAnnualizedcolor == 1 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TotalAnnualized.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={TotalAnnualized.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TotalAnnualized.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TotalAnnualized.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
+                </div>
+            ),
+            dataIndex: 'apr',
+            key: 'apr',
+            render: (text, data) => (
+                <>{text ? (text * 100).toFixed(2) : '0'} %</>
+            ),
+        },
+        {
+            title: () => (
+                <div className={ValidatorApp_ls.tablexbox}>
                     Time
                     {totalnftscolor == 0 ? (
                         <div className={ValidatorApp_ls.tablex}>
@@ -233,7 +277,7 @@ export default function ValidatorApp() {
                     {text}
                 </Link>
             ),
-            width: '250px',
+            width: '230px',
         },
         {
             title: () => (
@@ -489,6 +533,7 @@ export default function ValidatorApp() {
         setTotalnftscolor(0);
         setFeeratecolor(0);
         setTransactionvaluecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
             if (stakevaluecolor == 1) {
                 setStakevaluecolor(0);
@@ -513,6 +558,7 @@ export default function ValidatorApp() {
         setTotalnftscolor(0);
         setFeeratecolor(0);
         setTransactionvaluecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
             if (totalcollectionscolor == 1) {
                 setTotalcollectionscolor(0);
@@ -531,11 +577,37 @@ export default function ValidatorApp() {
             }
         }
     }
+    //TotalAnnualized 排序
+    function TotalAnnualized(text) {
+        setStakevaluecolor(0);
+        setTotalcollectionscolor(0);
+        setFeeratecolor(0);
+        setTransactionvaluecolor(0);
+        setTotalnftscolor(0);
+        if (text == 1) {
+            if (totalAnnualizedcolor == 1) {
+                setTotalAnnualizedcolor(0);
+                setOrderdata('');
+            } else {
+                setTotalAnnualizedcolor(1);
+                setOrderdata('apr ASC');
+            }
+        } else {
+            if (totalAnnualizedcolor == 2) {
+                setTotalAnnualizedcolor(0);
+                setOrderdata('');
+            } else {
+                setTotalAnnualizedcolor(2);
+                setOrderdata('apr DESC');
+            }
+        }
+    }
     //Total NFTs 排序
     function TotalNFTs(text) {
         setStakevaluecolor(0);
         setTotalcollectionscolor(0);
         setFeeratecolor(0);
+        setTotalAnnualizedcolor(0);
         setTransactionvaluecolor(0);
         if (text == 1) {
             if (totalnftscolor == 1) {
@@ -561,6 +633,7 @@ export default function ValidatorApp() {
         setTotalcollectionscolor(0);
         setTotalnftscolor(0);
         setTransactionvaluecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
             if (feeratecolor == 1) {
                 setFeeratecolor(0);
@@ -585,6 +658,7 @@ export default function ValidatorApp() {
         setTotalcollectionscolor(0);
         setTotalnftscolor(0);
         setFeeratecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
             if (transactionvaluecolor == 1) {
                 setTransactionvaluecolor(0);

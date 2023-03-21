@@ -87,13 +87,17 @@ export default function IndexPage(props) {
                         props.location.pathname == '/Exchange' ||
                         props.location.pathname == '/Trade' ||
                         props.location.pathname == '/ranking' ||
-                        props.location.pathname == '/Validator' ? (
+                        props.location.pathname == '/Validator' ||
+                        props.location.pathname == '/Creator' ? (
                             <img
                                 className={styles.IndexPageBox_img}
                                 src={require('../assets/images/HomePage/4.png')}
                             />
                         ) : (
-                            ''
+                            <img
+                                className={styles.IndexPageBox_imgbs}
+                                src={require('../assets/images/HomePage/Slice 14.png')}
+                            />
                         )}
                         {props.children}
                     </div>

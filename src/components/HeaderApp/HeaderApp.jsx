@@ -114,6 +114,14 @@ export default function HeaderApp(props) {
                     </div>
                 </Link>
                 <Link
+                    to={{ pathname: '/CreatorApp', state: '' }}
+                    className={HeaderApp_ls.Navigationbox_div}
+                >
+                    <div className={HeaderApp_ls.Navigationbox_divcenter}>
+                        <span>CREATOR</span>
+                    </div>
+                </Link>
+                <Link
                     to={{ pathname: '/ValidatorApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >

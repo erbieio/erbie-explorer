@@ -49,20 +49,35 @@ export function timestamp(data) {
             return moment(parseInt(data) * 1000).format('YYYY-MM-DD HH:mm:ss');
         } else {
             difference = t - data;
+            // if (difference < 60) {
+            //     return difference * 1000 + ' Millisecond Ago';
+            // } else if (difference >= 60 && difference < 3600) {
+            //     return Math.ceil(difference / 60) + ' Minutes Ago';
+            // } else if (difference >= 3600 && difference < 86400) {
+            //     return Math.ceil(difference / 3600) + ' Hours Ago';
+            // } else if (difference >= 86400 && difference < 604800) {
+            //     return Math.ceil(difference / 86400) + ' Day Ago';
+            // } else if (difference >= 604800 && difference < 2592000) {
+            //     return Math.ceil(difference / 604800) + ' Week Ago';
+            // } else if (difference >= 2592000 && difference < 31536000) {
+            //     return Math.ceil(difference / 2592000) + ' Month Ago';
+            // } else if (difference >= 31536000) {
+            //     return Math.ceil(difference / 31536000) + ' Year Ago';
+            // }
             if (difference < 60) {
-                return difference + ' Seconds Ago';
+                return difference * 1000 + ' ms';
             } else if (difference >= 60 && difference < 3600) {
-                return Math.ceil(difference / 60) + ' Minutes Ago';
+                return Math.ceil(difference / 60) + ' min';
             } else if (difference >= 3600 && difference < 86400) {
-                return Math.ceil(difference / 3600) + ' Hours Ago';
+                return Math.ceil(difference / 3600) + ' h';
             } else if (difference >= 86400 && difference < 604800) {
-                return Math.ceil(difference / 86400) + ' Day Ago';
+                return Math.ceil(difference / 86400) + ' d';
             } else if (difference >= 604800 && difference < 2592000) {
-                return Math.ceil(difference / 604800) + ' Week Ago';
+                return Math.ceil(difference / 604800) + ' w';
             } else if (difference >= 2592000 && difference < 31536000) {
-                return Math.ceil(difference / 2592000) + ' Month Ago';
+                return Math.ceil(difference / 2592000) + ' m';
             } else if (difference >= 31536000) {
-                return Math.ceil(difference / 31536000) + ' Year Ago';
+                return Math.ceil(difference / 31536000) + ' y';
             }
         }
     }

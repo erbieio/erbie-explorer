@@ -95,6 +95,7 @@ export default function HomePage() {
     //验证者在线查询
     const onlineAddr_q = async (item) => {
         const data = await onlineAddr(item);
+        console.log(data);
         if (data) {
             setValidatoronline(data);
         }
@@ -121,6 +122,7 @@ export default function HomePage() {
     //系统NFT周期查询
     const epoch_q = async () => {
         const data = await epoch();
+        console.log(data);
         if (data) {
             setEpochdata(data);
         }
@@ -1191,7 +1193,13 @@ export default function HomePage() {
                                     HomePage_ls.BlockINFORMATIONbox_right_data
                                 }
                             >
-                                {epochdata.voteWeight || 0}
+                                {epochdata.voteWeight
+                                    ? Number(
+                                          utils.formatEther(
+                                              epochdata.voteWeight,
+                                          ),
+                                      ).toFixed(2)
+                                    : 0}
                             </p>
                         </div>
                         <div

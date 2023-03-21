@@ -1,5 +1,5 @@
 import SNFTApp_ls from './SNFTApp.less';
-import { Space, Table, Tag, Pagination, Progress } from 'antd';
+import { Space, Table, Tag, Pagination, Progress, Tooltip } from 'antd';
 import moment from 'moment';
 import {
     erbprice,
@@ -10,12 +10,17 @@ import {
     nft,
     snft,
 } from '../../api/request_data/block_request';
-import { CaretDownOutlined } from '@ant-design/icons';
+// import { CaretDownOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import {
+    CaretDownOutlined,
+    CaretUpOutlined,
+    QuestionCircleOutlined,
+} from '@ant-design/icons';
 import {
     Chart,
     Interval,
     Axis,
-    Tooltip,
+    // Tooltip,
     Coordinate,
     Legend,
     View,
@@ -89,6 +94,111 @@ export default function SNFTApp() {
             ),
             ellipsis: true,
         },
+        // {
+        //     title: () => (
+        //         <div className={SNFTApp_ls.tablexbox2}>
+        //             <span>Period</span>
+        //             <Tooltip
+        //                 placement="bottom"
+        //                 title={() => {
+        //                     return (
+        //                         <div className={SNFTApp_ls.tablexbox2_Period}>
+        //                             <p>
+        //                                 S-NFT Grades Are LO, L1, L2, And L3 From
+        //                                 The Lowest To The Highest. YouCan
+        //                                 Synthesize It To Higher Levels For
+        //                                 Higher Revenue.
+        //                             </p>
+        //                             <p>The Rules Are As Below:</p>
+        //                             <p>
+        //                                 16 Specifc S-NFT LO Synthesizes A Unique
+        //                                 S-NFT L1.
+        //                             </p>
+        //                             <p>
+        //                                 16 Specifc S-NFT L1 Synthesizes A Unique
+        //                                 S-NFT L2.
+        //                             </p>
+        //                             <p>
+        //                                 16 Specifc S-NFT L2 Synthesizes A Unique
+        //                                 S-NFT L3.{' '}
+        //                             </p>
+        //                             <p>
+        //                                 The Blue Number Indicates The S-NFT LO
+        //                                 Position Number In An S-NFT L1.
+        //                             </p>
+        //                             <p>
+        //                                 The Green Number Indicates The Position
+        //                                 Number Of S-NFT L1In An S-NFT L2.
+        //                             </p>
+        //                             <p>
+        //                                 The Yellow Number Indicates The S-NFT L2
+        //                                 Position Number In An S-NFT L3.
+        //                             </p>
+        //                             <p>
+        //                                 The Red Number Refers To The Position
+        //                                 Number Of An S-NFT L3.
+        //                             </p>
+        //                         </div>
+        //                     );
+        //                 }}
+        //                 color="#4D4D55"
+        //             >
+        //                 <span className={SNFTApp_ls.tablexbox2_icon}>
+        //                     <QuestionCircleOutlined />
+        //                 </span>
+        //             </Tooltip>
+        //         </div>
+        //     ),
+        //     dataIndex: 'address',
+        //     key: 'address',
+        //     render: (text) => (
+        //         <span>
+        //             {text.length >= 39 ? (
+        //                 <Tooltip title="L3" color="#4D4D55">
+        //                     <span
+        //                         className={SNFTApp_ls.SNFTBox_tablelevelPeriod}
+        //                     >
+        //                         {parseInt('0x' + text.slice(4, 39)) + 1}
+        //                     </span>
+        //                 </Tooltip>
+        //             ) : (
+        //                 ' '
+        //             )}
+        //             {text.length >= 40 ? (
+        //                 <Tooltip title="L2" color="#4D4D55">
+        //                     <span
+        //                         className={
+        //                             SNFTApp_ls.SNFTBox_tablelevelCollection
+        //                         }
+        //                     >
+        //                         {parseInt('0x' + text.slice(39, 40)) + 1}
+        //                     </span>
+        //                 </Tooltip>
+        //             ) : (
+        //                 ''
+        //             )}
+        //             {text.length >= 41 ? (
+        //                 <Tooltip title="L1" color="#4D4D55">
+        //                     <span className={SNFTApp_ls.SNFTBox_tablelevelnft}>
+        //                         {parseInt('0x' + text.slice(40, 41)) + 1}
+        //                     </span>
+        //                 </Tooltip>
+        //             ) : (
+        //                 ''
+        //             )}
+        //             {text.length >= 42 ? (
+        //                 <Tooltip title="L0" color="#4D4D55">
+        //                     <span className={SNFTApp_ls.SNFTBox_tablelevelsnft}>
+        //                         {parseInt('0x' + text.slice(41, 42)) + 1}
+        //                     </span>
+        //                 </Tooltip>
+        //             ) : (
+        //                 ''
+        //             )}
+        //         </span>
+        //     ),
+        //     width: '150px',
+        // },
         {
             title: 'Creation Time',
             dataIndex: 'reward_at',
@@ -141,6 +251,19 @@ export default function SNFTApp() {
                 ),
             width: '150px',
         },
+        // {
+        //     title: 'Owner Get Time',
+        //     dataIndex: 'reward_at',
+        //     key: 'reward_at',
+        //     render: (text) => (
+        //         <span>
+        //             {moment(parseInt(text) * 1000).format(
+        //                 'YYYY-MM-DD HH:mm:ss',
+        //             )}
+        //         </span>
+        //     ),
+        //     ellipsis: true,
+        // },
         {
             title: 'L1',
             key: 'address',

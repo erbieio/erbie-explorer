@@ -1,0 +1,218 @@
+.CreatorBox{
+    width: 100%;
+}
+.CreatorBox_center{
+    width: 345px;
+    margin: auto;
+}
+.CreatorBox_titlebox{
+    width: 345px;
+}
+.CreatorBox_titlebox_left{
+    width: 345px;
+    height: 146px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.CreatorBox_titlebox_left_1{
+    width: 168px;
+    height: 69px;
+    background-image: url('../../assets/images/Creator/blockcolor.png');
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    div{
+        height: 40px;
+    }
+    p{
+        font-size: 12px;
+        color: white;
+        margin: 0;
+    }
+    span{
+        display: block;
+        font-size: 11px;
+        color: #ffffff90;
+        line-height: 11px;
+    }
+    img{
+        width: 40px;
+    }
+}
+.CreatorBox_titlebox_left_2{
+    width: 345px;
+    height: 69px;
+    background-image: url('../../assets/images/Creator/blockcolor.png');
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    div{
+        height: 45px;
+    }
+    p{
+        font-size: 12px;
+        color: white;
+        margin: 0;
+    }
+    span{
+        font-size: 11px;
+        color: #ffffff90;
+    }
+    img{
+        width: 56px;
+    }
+}
+.CreatorBox_titlebox_right{
+    width: 580px;
+    height: 344px;
+}
+.CreatorBox_titlebox_right_title{
+    font-size: 12px;
+    color: white;
+    margin:15px 0 0;
+}
+.CreatorBox_titlebox_right_block{
+    width: 345px;
+    height: 200px;
+    margin-top: 15px;
+}
+.CreatorBox_table {
+    width: 1240px;
+    //   height: 967px;
+    border-radius: 8px;
+    background-color: #1b1a21;
+    margin-top: 32px;
+    padding-top: 24px;
+    padding-bottom: 30px;
+}
+.CreatorBox_table_title {
+    color: white;
+    font-size: 14px;
+    margin: 0 0 0 12px;
+}
+.CreatorBox_Pagination {
+    //   border: 1px solid red;
+    margin-top: 30px;
+    text-align: right;
+    padding-right: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+.CreatorBox_Pagination_d {
+    width: 82px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    margin-left: 16px;
+    font-size: 14px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+}
+.CreatorBox_Pagination_span1 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+    margin: 0 8px;
+}
+.CreatorBox_Pagination_input {
+    width: 48px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    color: white;
+    font-size: 14px;
+    padding-left: 12px;
+    margin-right: 8px;
+}
+.CreatorBox_Pagination_span2 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+}
+
+.tablebox {
+    width: 345px;
+    margin: 15px auto 0;
+    overflow: auto;
+
+}
+.tablexbox{
+    display: flex;
+    justify-content: flex-start;
+}
+.tablexbox2{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.tablexbox2_icon{
+    margin-left: 5px;
+    cursor: pointer;
+}
+.tablex {
+    width: 20px;
+    height: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    margin-top: -2px;
+    margin-left: 5px;
+}
+.tablespan {
+    display: flex;
+    align-items: center;
+}
+.table_redblock{
+    // display: block;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    padding: 0 11px;
+    background-color: #D63A49;
+    border-radius: 4px;
+}
+:global {
+    #CreatorTableApp {
+        .ant-table-wrapper {
+            //   border: 1px solid red;
+            //   height: 820px !important;
+            //   overflow: hidden;
+        }
+        .ant-table-cell{
+            font-size: 11px !important;
+            font-family: CustomFontRegular!important;
+            color: #ffffff !important;
+        }
+    }
+    #CreatorBoxPagination {
+        .ant-pagination-item-link {
+            background-color: #03041a !important;
+            color: white !important;
+        }
+        .ant-pagination-item {
+            background-color: #03041a !important;
+            a {
+                color: white !important;
+            }
+        }
+        .ant-pagination-item:hover {
+            background-color: #f72d86 !important;
+            border: 0 !important;
+        }
+        .ant-pagination-item-ellipsis {
+            color: white !important;
+        }
+        .ant-pagination-item-active {
+            background-color: #f72d86 !important;
+            border: 1px solid #f72d86;
+        }
+    }
+}

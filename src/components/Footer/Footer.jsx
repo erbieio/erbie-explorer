@@ -1,6 +1,7 @@
 import Footer_ls from './Footer.less';
 import { Tooltip, Button, message, Space } from 'antd';
 import React, { useState, useEffect } from 'react';
+import { history, Link } from 'umi';
 export default function Footer() {
     function AboutWormholesBlockchain() {
         window.open('https://www.wormholes.com/docs/Overview');
@@ -216,6 +217,21 @@ export default function Footer() {
                                 Limino & Tutorial
                             </li>
                         </ul>
+                    </div>
+                    <div className={Footer_ls.FooterBox_bottomlinkblock}>
+                        <Link
+                            className={Footer_ls.FooterBox_textBox_right_ul_li}
+                            to={{ pathname: '/PrivacyNotice', state: '' }}
+                        >
+                            Privacy Notice
+                        </Link>
+                        <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                        <Link
+                            className={Footer_ls.FooterBox_textBox_right_ul_li}
+                            to={{ pathname: '/TermsOfService', state: '' }}
+                        >
+                            Terms of Service
+                        </Link>
                     </div>
                 </div>
             </div>
