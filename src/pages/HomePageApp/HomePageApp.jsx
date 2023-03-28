@@ -22,6 +22,7 @@ import {
     digitalreduction,
     timestamp,
     stagenumber,
+    getBit,
 } from '../../utils/methods/Methods';
 import {
     erbprice,
@@ -1175,10 +1176,12 @@ export default function HomePageApp() {
                         S-NFT Weight
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_data}>
-                        {epochdata.voteWeight
-                            ? Number(
-                                  utils.formatEther(epochdata.voteWeight),
-                              ).toFixed(2)
+                        {epochdata.weightValue
+                            ? getBit(
+                                  Number(
+                                      utils.formatEther(epochdata.weightValue),
+                                  ).toFixed(2) * epochdata.weightAmount,
+                              )
                             : 0}
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>

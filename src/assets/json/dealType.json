@@ -28,6 +28,7 @@
         {"type" : 25,"name":"Unlock Account"},
         {"type" : 26,"name":"Restore Validator Weight"},
         {"type" : 27,"name":"Bulk trading S-NFTs"},
+        {"type" : 28,"name":"Buy or Sell By Force"},
         {"type" : 31,"name":"Validator Delegation"}
     ]
 }

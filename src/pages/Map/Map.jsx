@@ -34,24 +34,26 @@ export default function MapChart() {
     //地图数据查询
     const locations_q = async () => {
         const data = await locations();
-        // console.log('地图数据查询');
-        // console.log(data);
+        console.log('地图数据查询');
+        console.log(data);
         if (data) {
             setMapdatadetailed(data);
         }
     };
     const onlineAddr_q = async (item) => {
         const data = await onlineAddr(item);
+        console.log('验证者在线查询');
+        console.log(data);
         if (data) {
-            setValidatoronline(data.addrs);
+            if (data.count) {
+                setValidatoronline(data.addrs);
+            }
         }
-        // console.log('验证者在线查询');
-        // console.log(data);
     };
     //地图fromto数据查询
     const lastmsg_q = async () => {
         const data = await lastmsg();
-        // console.log('地图fromto数据查询');
+        console.log('地图fromto数据查询');
         console.log(data);
         // console.log(mapdatadetailed);
         // let text = []

@@ -1,5 +1,5 @@
 import Creator_ls from './Creator.less';
-import { Chart, Interval, getTheme } from 'bizcharts';
+import { Chart, Interval, getTheme, Tooltip as Tooltipbs } from 'bizcharts';
 import { Space, Table, Tag, Pagination, Tooltip } from 'antd';
 import { Link } from 'umi';
 import React, { useState, useEffect } from 'react';
@@ -75,6 +75,13 @@ export default function Creator() {
             setEpochdata(data);
         }
     };
+    function getBit(value) {
+        const reg = /([0-9]+\.[0-9]{2})[0-9]*/;
+        let str = value.toString();
+        str = str.replace(reg, '$1');
+        console.log(str);
+        return str;
+    }
     //柱状图查询
     const creatorHistogram_q = async () => {
         const data = await creatorHistogram();
@@ -84,14 +91,9 @@ export default function Creator() {
             for (let i = 0; i < 7; i++) {
                 if (data[i]) {
                     text.push({
-                        data: Number(
-                            utils.formatEther(
-                                String(
-                                    Number(data[i].profit) +
-                                        Number(data[i].reward),
-                                ),
-                            ),
-                        ),
+                        data:
+                            Number(getBit(utils.formatEther(data[i].profit))) +
+                            Number(getBit(utils.formatEther(data[i].reward))),
                         index: String(i + 1),
                     });
                 } else {
@@ -127,7 +129,7 @@ export default function Creator() {
     }
     const columns = [
         {
-            title: 'Creator address',
+            title: 'Creator Address',
             dataIndex: 'address',
             key: 'address',
             render: (text) => (
@@ -206,7 +208,7 @@ export default function Creator() {
         {
             title: () => (
                 <div className={Creator_ls.tablexbox2}>
-                    <span>Block height</span>
+                    <span>Block Height</span>
                     <Tooltip
                         title={() => {
                             return (
@@ -281,7 +283,7 @@ export default function Creator() {
         {
             title: () => (
                 <div className={Creator_ls.tablexbox2}>
-                    <span>Timmes</span>
+                    <span>Times</span>
                     <Tooltip
                         title={() => {
                             return (
@@ -330,12 +332,17 @@ export default function Creator() {
             ),
             dataIndex: 'reward',
             key: 'reward',
-            render: (text) => (
+            render: (text, data) => (
                 <span>
-                    {text ? Number(utils.formatEther(text)).toFixed(2) : 0}
+                    {text ? Number(utils.formatEther(text)).toFixed(4) : 0}{' '}
+                    {data.address ==
+                    '0x0000000000000000000000000000000000000000'
+                        ? '(Burned)'
+                        : ''}
                 </span>
             ),
             width: '190px',
+            ellipsis: true,
         },
         {
             title: () => (
@@ -403,12 +410,17 @@ export default function Creator() {
             ),
             dataIndex: 'profit',
             key: 'profit',
-            render: (text) => (
+            render: (text, data) => (
                 <span>
-                    {text ? Number(utils.formatEther(text)).toFixed(2) : 0}
+                    {text ? Number(utils.formatEther(text)).toFixed(2) : 0}{' '}
+                    {data.address ==
+                    '0x0000000000000000000000000000000000000000'
+                        ? '(Burned)'
+                        : ''}
                 </span>
             ),
             width: '190px',
+            ellipsis: true,
         },
     ];
     //Stake Value 排序
@@ -536,7 +548,7 @@ export default function Creator() {
                             >
                                 <Chart
                                     height={240}
-                                    autoFit
+                                    autoFit={true}
                                     animate={false}
                                     data={histogramdata}
                                 >
@@ -544,7 +556,7 @@ export default function Creator() {
                                         position="index*data"
                                         color="#FD4BA5"
                                     />
-                                    {/* <Tooltip shared /> */}
+                                    <Tooltipbs shared />
                                 </Chart>
                             </div>
                         </div>

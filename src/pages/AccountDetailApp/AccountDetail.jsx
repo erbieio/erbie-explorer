@@ -67,45 +67,45 @@ function stagenumber(data) {
     }
 }
 //Stake Value 排序
-// function StakeValue(text) {
-//     if (text == 1) {
-//         if (this.state.stakevaluecolor == 1) {
-//             this.setState({
-//                 stakevaluecolor: 0,
-//                 orderdata: '',
-//             });
-//             this.epochpage();
-//             // this.state.stakevaluecolor = 0;
-//             // this.state.orderdata = '';
-//         } else {
-//             this.setState({
-//                 stakevaluecolor: 1,
-//                 orderdata: 'start_time ASC',
-//             });
-//             this.epochpage();
-//             // this.state.stakevaluecolor = 1;
-//             // this.state.orderdata = 'start_time ASC';
-//         }
-//     } else {
-//         if (this.state.stakevaluecolor == 2) {
-//             this.setState({
-//                 stakevaluecolor: 0,
-//                 orderdata: '',
-//             });
-//             this.epochpage();
-//             // this.state.stakevaluecolor = 0;
-//             // this.state.orderdata = '';
-//         } else {
-//             this.setState({
-//                 stakevaluecolor: 2,
-//                 orderdata: 'start_time DESC',
-//             });
-//             this.epochpage();
-//             // this.state.stakevaluecolor = 2;
-//             // this.state.orderdata = 'start_time DESC';
-//         }
-//     }
-// }
+function StakeValue(text) {
+    if (text == 1) {
+        if (this.state.stakevaluecolor == 1) {
+            this.setState({
+                stakevaluecolor: 0,
+                orderdata: '',
+            });
+            this.epochpage();
+            // this.state.stakevaluecolor = 0;
+            // this.state.orderdata = '';
+        } else {
+            this.setState({
+                stakevaluecolor: 1,
+                orderdata: 'start_time ASC',
+            });
+            this.epochpage();
+            // this.state.stakevaluecolor = 1;
+            // this.state.orderdata = 'start_time ASC';
+        }
+    } else {
+        if (this.state.stakevaluecolor == 2) {
+            this.setState({
+                stakevaluecolor: 0,
+                orderdata: '',
+            });
+            this.epochpage();
+            // this.state.stakevaluecolor = 0;
+            // this.state.orderdata = '';
+        } else {
+            this.setState({
+                stakevaluecolor: 2,
+                orderdata: 'start_time DESC',
+            });
+            this.epochpage();
+            // this.state.stakevaluecolor = 2;
+            // this.state.orderdata = 'start_time DESC';
+        }
+    }
+}
 class AccountDetail extends React.Component {
     //Clock构造函数
     constructor(props) {
@@ -129,9 +129,9 @@ class AccountDetail extends React.Component {
             },
             stateHash: '',
             detailFrom: '',
-            // stakevaluecolor: 0,
-            // orderdata: '',
-            // totaldata: {},
+            stakevaluecolor: 0,
+            orderdata: '',
+            totaldata: {},
             transcolumns: [
                 {
                     title: 'TXN Hash',
@@ -462,7 +462,23 @@ class AccountDetail extends React.Component {
                                 fontFamily: 'CustomFontMedium',
                             }}
                         >
-                            {text}
+                            {text ? (
+                                text
+                            ) : data.address ? (
+                                data.address.length == 42 ? (
+                                    <>SNFT - L0</>
+                                ) : data.address.length == 41 ? (
+                                    <>SNFT - L1</>
+                                ) : data.address.length == 40 ? (
+                                    <>SNFT - L2</>
+                                ) : data.address.length == 39 ? (
+                                    <>SNFT - L3</>
+                                ) : (
+                                    ' '
+                                )
+                            ) : (
+                                ''
+                            )}
                         </Link>
                     ),
                 },
@@ -483,25 +499,22 @@ class AccountDetail extends React.Component {
                     key: 'creator',
                     dataIndex: 'creator',
 
-                    render: (text, data) =>
-                        text == '0x0000000000000000000000000000000000000000' ? (
-                            <span>Official S-NFT</span>
-                        ) : (
-                            <Link
-                                to={{
-                                    pathname: `/AccountDetailApp/${text}`,
-                                    state: text,
-                                }}
-                                style={{
-                                    color: '#7AA4FF',
-                                    fontFamily: 'CustomFontMedium',
-                                }}
-                                title={text}
-                                replace={true}
-                            >
-                                {text ? ellipsis(text) : '-'}
-                            </Link>
-                        ),
+                    render: (text, data) => (
+                        <Link
+                            to={{
+                                pathname: `/AccountDetailApp/${text}`,
+                                state: text,
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                            title={text}
+                            replace={true}
+                        >
+                            {text ? ellipsis(text) : '-'}
+                        </Link>
+                    ),
                 },
                 {
                     title: 'Owner',
@@ -526,258 +539,369 @@ class AccountDetail extends React.Component {
                     ),
                 },
             ],
-            // creatorcolumns: [
-            //     {
-            //         title: 'Period Address',
-            //         dataIndex: 'id',
-            //         key: 'id',
-            //         render: (text) => <span>{ellipsis(text)}</span>,
-            //     },
-            //     {
-            //         title: () => (
-            //             <div className={AccountDetail_ls.tablexbox2}>
-            //                 <span>Period</span>
-            //                 <Tooltip
-            //                     placement="bottom"
-            //                     title={() => {
-            //                         return (
-            //                             <div
-            //                                 className={
-            //                                     AccountDetail_ls.tablexbox2_Period
-            //                                 }
-            //                             >
-            //                                 <p>
-            //                                     S-NFT Grades Are LO, L1, L2, And
-            //                                     L3 From The Lowest To The
-            //                                     Highest. YouCan Synthesize It To
-            //                                     Higher Levels For Higher
-            //                                     Revenue.
-            //                                 </p>
-            //                                 <p>The Rules Are As Below:</p>
-            //                                 <p>
-            //                                     16 Specifc S-NFT LO Synthesizes
-            //                                     A Unique S-NFT L1.
-            //                                 </p>
-            //                                 <p>
-            //                                     16 Specifc S-NFT L1 Synthesizes
-            //                                     A Unique S-NFT L2.
-            //                                 </p>
-            //                                 <p>
-            //                                     16 Specifc S-NFT L2 Synthesizes
-            //                                     A Unique S-NFT L3.{' '}
-            //                                 </p>
-            //                                 <p>
-            //                                     The Blue Number Indicates The
-            //                                     S-NFT LO Position Number In An
-            //                                     S-NFT L1.
-            //                                 </p>
-            //                                 <p>
-            //                                     The Green Number Indicates The
-            //                                     Position Number Of S-NFT L1In An
-            //                                     S-NFT L2.
-            //                                 </p>
-            //                                 <p>
-            //                                     The Yellow Number Indicates The
-            //                                     S-NFT L2 Position Number In An
-            //                                     S-NFT L3.
-            //                                 </p>
-            //                                 <p>
-            //                                     The Red Number Refers To The
-            //                                     Position Number Of An S-NFT L3.
-            //                                 </p>
-            //                             </div>
-            //                         );
-            //                     }}
-            //                     color="#4D4D55"
-            //                 >
-            //                     <span
-            //                         className={AccountDetail_ls.tablexbox2_icon}
-            //                     >
-            //                         <QuestionCircleOutlined />
-            //                     </span>
-            //                 </Tooltip>
-            //             </div>
-            //         ),
-            //         dataIndex: 'id',
-            //         key: 'id',
-            //         render: (text) => (
-            //             <span className={AccountDetail_ls.table_redblock}>
-            //                 {text
-            //                     ? parseInt('0x' + text.slice(4, text.length)) +
-            //                       1
-            //                     : 0}
-            //             </span>
-            //         ),
-            //     },
-            //     {
-            //         title: () => (
-            //             <div className={AccountDetail_ls.tablexbox}>
-            //                 TXN Time
-            //                 {this.state.stakevaluecolor == 0 ? (
-            //                     <div className={AccountDetail_ls.tablex}>
-            //                         <CaretUpOutlined
-            //                             onClick={StakeValue.bind(this, 1)}
-            //                         />
-            //                         <CaretDownOutlined
-            //                             onClick={StakeValue.bind(this, 2)}
-            //                         />
-            //                     </div>
-            //                 ) : this.state.stakevaluecolor == 1 ? (
-            //                     <div className={AccountDetail_ls.tablex}>
-            //                         <CaretUpOutlined
-            //                             onClick={StakeValue.bind(this, 1)}
-            //                             style={{ color: '#7AA4FF' }}
-            //                         />
-            //                         <CaretDownOutlined
-            //                             onClick={StakeValue.bind(this, 2)}
-            //                         />
-            //                     </div>
-            //                 ) : (
-            //                     <div className={AccountDetail_ls.tablex}>
-            //                         <CaretUpOutlined
-            //                             onClick={StakeValue.bind(this, 1)}
-            //                         />
-            //                         <CaretDownOutlined
-            //                             onClick={StakeValue.bind(this, 2)}
-            //                             style={{ color: '#7AA4FF' }}
-            //                         />
-            //                     </div>
-            //                 )}
-            //             </div>
-            //         ),
-            //         dataIndex: 'startTime',
-            //         key: 'startTime',
-            //         render: (text) => (
-            //             <span>
-            //                 {moment(parseInt(text) * 1000).format(
-            //                     'YYYY-MM-DD HH:mm:ss',
-            //                 )}
-            //             </span>
-            //         ),
-            //     },
-            //     {
-            //         title: () => (
-            //             <div className={AccountDetail_ls.tablexbox2}>
-            //                 <span>Block Height</span>
-            //                 <Tooltip
-            //                     title={() => {
-            //                         return (
-            //                             <div
-            //                                 className={
-            //                                     AccountDetail_ls.tablexbox2_Period
-            //                                 }
-            //                             >
-            //                                 <p>
-            //                                     The lastest block height that
-            //                                     user been CreatorEvery creators'
-            //                                     block height is different.
-            //                                 </p>
-            //                             </div>
-            //                         );
-            //                     }}
-            //                     color="#4D4D55"
-            //                 >
-            //                     <span
-            //                         className={AccountDetail_ls.tablexbox2_icon}
-            //                     >
-            //                         <QuestionCircleOutlined />
-            //                     </span>
-            //                 </Tooltip>
-            //             </div>
-            //         ),
-            //         dataIndex: 'startNumber',
-            //         key: 'startNumber',
-            //         render: (text) => <span>{text}</span>,
-            //     },
-            //     {
-            //         title: () => (
-            //             <div className={AccountDetail_ls.tablexbox2}>
-            //                 <span>TXN Hash</span>
-            //             </div>
-            //         ),
-            //         dataIndex: 'tx_hash',
-            //         key: 'tx_hash',
-            //         render: (text) => <span>{ellipsis(text)}</span>,
-            //     },
-            //     {
-            //         title: () => (
-            //             <div className={AccountDetail_ls.tablexbox}>
-            //                 TXN Type
-            //             </div>
-            //         ),
-            //         dataIndex: 'number',
-            //         key: 'number',
-            //         render: (text) => <span>{text}</span>,
-            //     },
-            //     {
-            //         title: () => (
-            //             <div className={AccountDetail_ls.tablexbox2}>
-            //                 <span>Rewards</span>
-            //                 <Tooltip
-            //                     title={() => {
-            //                         return (
-            //                             <div
-            //                                 className={
-            //                                     AccountDetail_ls.tablexbox2_Period
-            //                                 }
-            //                             >
-            //                                 <p>
-            //                                     Creators can get a rewards as a
-            //                                     transaction creator.creators can
-            //                                     get 10% of total tansactions
-            //                                     amount as royalty
-            //                                 </p>
-            //                             </div>
-            //                         );
-            //                     }}
-            //                     color="#4D4D55"
-            //                 >
-            //                     <span
-            //                         className={AccountDetail_ls.tablexbox2_icon}
-            //                     >
-            //                         <QuestionCircleOutlined />
-            //                     </span>
-            //                 </Tooltip>
-            //             </div>
-            //         ),
-            //         dataIndex: 'reward',
-            //         key: 'reward',
-            //         render: (text) => <span>{text}</span>,
-            //     },
-            //     {
-            //         title: () => (
-            //             <div className={AccountDetail_ls.tablexbox2}>
-            //                 <span>Action</span>
-            //                 <Tooltip
-            //                     title={() => {
-            //                         return (
-            //                             <div
-            //                                 className={
-            //                                     AccountDetail_ls.tablexbox2_Period
-            //                                 }
-            //                             >
-            //                                 <p>
-            //                                     Go to marketplace to check the
-            //                                     details.
-            //                                 </p>
-            //                             </div>
-            //                         );
-            //                     }}
-            //                     color="#4D4D55"
-            //                 >
-            //                     <span
-            //                         className={AccountDetail_ls.tablexbox2_icon}
-            //                     >
-            //                         <QuestionCircleOutlined />
-            //                     </span>
-            //                 </Tooltip>
-            //             </div>
-            //         ),
-            //         dataIndex: 'aaaa',
-            //         key: 'aaaa',
-            //         render: (text) => <span>Go it</span>,
-            //     },
-            // ],
+            creatorcolumns: [
+                {
+                    title: 'Period Address',
+                    dataIndex: 'id',
+                    key: 'id',
+                    render: (text) => (
+                        <Link
+                            to={{
+                                pathname: `/AccountDetailApp/${text}`,
+                                state: text,
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {ellipsis(text)}
+                        </Link>
+                    ),
+                },
+                {
+                    title: () => (
+                        <div className={AccountDetail_ls.tablexbox2}>
+                            <span>Period</span>
+                            <Tooltip
+                                placement="bottom"
+                                title={() => {
+                                    return (
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tablexbox2_Period
+                                            }
+                                        >
+                                            <p>
+                                                S-NFT Grades Are LO, L1, L2, And
+                                                L3 From The Lowest To The
+                                                Highest. YouCan Synthesize It To
+                                                Higher Levels For Higher
+                                                Revenue.
+                                            </p>
+                                            <p>The Rules Are As Below:</p>
+                                            <p>
+                                                16 Specifc S-NFT LO Synthesizes
+                                                A Unique S-NFT L1.
+                                            </p>
+                                            <p>
+                                                16 Specifc S-NFT L1 Synthesizes
+                                                A Unique S-NFT L2.
+                                            </p>
+                                            <p>
+                                                16 Specifc S-NFT L2 Synthesizes
+                                                A Unique S-NFT L3.{' '}
+                                            </p>
+                                            <p>
+                                                The Blue Number Indicates The
+                                                S-NFT LO Position Number In An
+                                                S-NFT L1.
+                                            </p>
+                                            <p>
+                                                The Green Number Indicates The
+                                                Position Number Of S-NFT L1In An
+                                                S-NFT L2.
+                                            </p>
+                                            <p>
+                                                The Yellow Number Indicates The
+                                                S-NFT L2 Position Number In An
+                                                S-NFT L3.
+                                            </p>
+                                            <p>
+                                                The Red Number Refers To The
+                                                Position Number Of An S-NFT L3.
+                                            </p>
+                                        </div>
+                                    );
+                                }}
+                                color="#4D4D55"
+                            >
+                                <span
+                                    className={AccountDetail_ls.tablexbox2_icon}
+                                >
+                                    <QuestionCircleOutlined />
+                                </span>
+                            </Tooltip>
+                        </div>
+                    ),
+                    dataIndex: 'id',
+                    key: 'id',
+                    render: (text) => (
+                        <span>
+                            {text.length >= 39 ? (
+                                <Tooltip title="L3" color="#4D4D55">
+                                    <span
+                                        className={
+                                            AccountDetail_ls.SNFTBox_tablelevelPeriod
+                                        }
+                                    >
+                                        {parseInt('0x' + text.slice(4, 39))}
+                                    </span>
+                                </Tooltip>
+                            ) : (
+                                ' '
+                            )}
+                            {text.length >= 40 ? (
+                                <Tooltip title="L2" color="#4D4D55">
+                                    <span
+                                        className={
+                                            AccountDetail_ls.SNFTBox_tablelevelCollection
+                                        }
+                                    >
+                                        {parseInt('0x' + text.slice(39, 40)) +
+                                            1}
+                                    </span>
+                                </Tooltip>
+                            ) : (
+                                ''
+                            )}
+                            {text.length >= 41 ? (
+                                <Tooltip title="L1" color="#4D4D55">
+                                    <span
+                                        className={
+                                            AccountDetail_ls.SNFTBox_tablelevelnft
+                                        }
+                                    >
+                                        {parseInt('0x' + text.slice(40, 41)) +
+                                            1}
+                                    </span>
+                                </Tooltip>
+                            ) : (
+                                ''
+                            )}
+                            {text.length >= 42 ? (
+                                <Tooltip title="L0" color="#4D4D55">
+                                    <span
+                                        className={
+                                            AccountDetail_ls.SNFTBox_tablelevelsnft
+                                        }
+                                    >
+                                        {parseInt('0x' + text.slice(41, 42)) +
+                                            1}
+                                    </span>
+                                </Tooltip>
+                            ) : (
+                                ''
+                            )}
+                        </span>
+                    ),
+                },
+                {
+                    title: () => (
+                        <div className={AccountDetail_ls.tablexbox}>
+                            TXN Time
+                            {this.state.stakevaluecolor == 0 ? (
+                                <div className={AccountDetail_ls.tablex}>
+                                    <CaretUpOutlined
+                                        onClick={StakeValue.bind(this, 1)}
+                                    />
+                                    <CaretDownOutlined
+                                        onClick={StakeValue.bind(this, 2)}
+                                    />
+                                </div>
+                            ) : this.state.stakevaluecolor == 1 ? (
+                                <div className={AccountDetail_ls.tablex}>
+                                    <CaretUpOutlined
+                                        onClick={StakeValue.bind(this, 1)}
+                                        style={{ color: '#7AA4FF' }}
+                                    />
+                                    <CaretDownOutlined
+                                        onClick={StakeValue.bind(this, 2)}
+                                    />
+                                </div>
+                            ) : (
+                                <div className={AccountDetail_ls.tablex}>
+                                    <CaretUpOutlined
+                                        onClick={StakeValue.bind(this, 1)}
+                                    />
+                                    <CaretDownOutlined
+                                        onClick={StakeValue.bind(this, 2)}
+                                        style={{ color: '#7AA4FF' }}
+                                    />
+                                </div>
+                            )}
+                        </div>
+                    ),
+                    dataIndex: 'startTime',
+                    key: 'startTime',
+                    render: (text) => (
+                        <span>
+                            {moment(parseInt(text) * 1000).format(
+                                'YYYY-MM-DD HH:mm:ss',
+                            )}
+                        </span>
+                    ),
+                },
+                {
+                    title: () => (
+                        <div className={AccountDetail_ls.tablexbox2}>
+                            <span>Block Height</span>
+                            <Tooltip
+                                title={() => {
+                                    return (
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tablexbox2_Period
+                                            }
+                                        >
+                                            <p>
+                                                The lastest block height that
+                                                user been CreatorEvery creators'
+                                                block height is different.
+                                            </p>
+                                        </div>
+                                    );
+                                }}
+                                color="#4D4D55"
+                            >
+                                <span
+                                    className={AccountDetail_ls.tablexbox2_icon}
+                                >
+                                    <QuestionCircleOutlined />
+                                </span>
+                            </Tooltip>
+                        </div>
+                    ),
+                    dataIndex: 'startNumber',
+                    key: 'startNumber',
+                    render: (text, data) =>
+                        data.number != 0 ? (
+                            data.miner ==
+                            '0x0000000000000000000000000000000000000000' ? (
+                                <Link
+                                    to={{
+                                        pathname:
+                                            '/BlockChainApp/BlackholeBlockDetaApp',
+                                        state: { blockid: text },
+                                    }}
+                                    style={{
+                                        color: '#7AA4FF',
+                                        fontFamily: 'CustomFontMedium',
+                                    }}
+                                >
+                                    {text}
+                                </Link>
+                            ) : (
+                                <Link
+                                    to={{
+                                        pathname:
+                                            '/BlockChainApp/BlockDetailsApp',
+                                        state: { blockid: text },
+                                    }}
+                                    style={{
+                                        color: '#7AA4FF',
+                                        fontFamily: 'CustomFontMedium',
+                                    }}
+                                >
+                                    {text}
+                                </Link>
+                            )
+                        ) : (
+                            '-'
+                        ),
+                },
+                {
+                    title: () => (
+                        <div className={AccountDetail_ls.tablexbox2}>
+                            <span>TXN Hash</span>
+                        </div>
+                    ),
+                    dataIndex: 'tx_hash',
+                    key: 'tx_hash',
+                    render: (text) => (
+                        <Link
+                            to={{
+                                pathname: `/TradeDetailApp/${text}`,
+                                state: text,
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {ellipsis(text)}
+                        </Link>
+                    ),
+                },
+                {
+                    title: () => (
+                        <div className={AccountDetail_ls.tablexbox}>
+                            TXN Type
+                        </div>
+                    ),
+                    dataIndex: 'number',
+                    key: 'number',
+                    render: (text) => <span>{text}</span>,
+                },
+                {
+                    title: () => (
+                        <div className={AccountDetail_ls.tablexbox2}>
+                            <span>Rewards</span>
+                            <Tooltip
+                                title={() => {
+                                    return (
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tablexbox2_Period
+                                            }
+                                        >
+                                            <p>
+                                                Creators can get a rewards as a
+                                                transaction creator.creators can
+                                                get 10% of total tansactions
+                                                amount as royalty
+                                            </p>
+                                        </div>
+                                    );
+                                }}
+                                color="#4D4D55"
+                            >
+                                <span
+                                    className={AccountDetail_ls.tablexbox2_icon}
+                                >
+                                    <QuestionCircleOutlined />
+                                </span>
+                            </Tooltip>
+                        </div>
+                    ),
+                    dataIndex: 'reward',
+                    key: 'reward',
+                    render: (text) => <span>{text}</span>,
+                },
+                {
+                    title: () => (
+                        <div className={AccountDetail_ls.tablexbox2}>
+                            <span>Action</span>
+                            <Tooltip
+                                title={() => {
+                                    return (
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tablexbox2_Period
+                                            }
+                                        >
+                                            <p>
+                                                Go to marketplace to check the
+                                                details.
+                                            </p>
+                                        </div>
+                                    );
+                                }}
+                                color="#4D4D55"
+                            >
+                                <span
+                                    className={AccountDetail_ls.tablexbox2_icon}
+                                >
+                                    <QuestionCircleOutlined />
+                                </span>
+                            </Tooltip>
+                        </div>
+                    ),
+                    dataIndex: 'aaaa',
+                    key: 'aaaa',
+                    render: (text) => <span>Go it</span>,
+                },
+            ],
         };
     }
     componentWillReceiveProps(nextProps) {
@@ -840,15 +964,15 @@ class AccountDetail extends React.Component {
                     });
                 }
             })();
-            // (async () => {
-            //     const res = await totals();
-            //     console.log(res);
-            //     if (res) {
-            //         this.setState({
-            //             totaldata: res,
-            //         });
-            //     }
-            // })();
+            (async () => {
+                const res = await totals();
+                console.log(res);
+                if (res) {
+                    this.setState({
+                        totaldata: res,
+                    });
+                }
+            })();
             this.nftPage = async () => {
                 this.setState({
                     tableData: [],
@@ -906,24 +1030,24 @@ class AccountDetail extends React.Component {
                     });
                 }
             };
-            // this.epochpage = async () => {
-            //     this.setState({
-            //         loading: true,
-            //     });
-            //     const res = await epochpage({
-            //         creator: this.state.stateHash,
-            //         ...this.state.pageOption,
-            //         order: this.state.orderdata,
-            //     });
-            //     console.log(res);
-            //     if (res) {
-            //         this.setState({
-            //             tableData: res.epochs,
-            //             tableTotal: res.total,
-            //             loading: false,
-            //         });
-            //     }
-            // };
+            this.epochpage = async () => {
+                this.setState({
+                    loading: true,
+                });
+                const res = await epochpage({
+                    creator: this.state.stateHash,
+                    ...this.state.pageOption,
+                    order: this.state.orderdata,
+                });
+                console.log(res);
+                if (res) {
+                    this.setState({
+                        tableData: res.epochs,
+                        tableTotal: res.total,
+                        loading: false,
+                    });
+                }
+            };
             this.paginationChange = async (current, size) => {
                 this.state.pageOption.page = current;
                 this.state.pageOption.page_size = size;
@@ -933,9 +1057,9 @@ class AccountDetail extends React.Component {
                     ? this.nftPage()
                     : this.state.type == 'SNFT'
                     ? this.snftPage()
-                    : // : this.state.type == 'CREATOR'
-                      // ? this.epochpage()
-                      '';
+                    : this.state.type == 'CREATOR'
+                    ? this.epochpage()
+                    : '';
             };
         };
         this.commonFunc();
@@ -1224,7 +1348,7 @@ class AccountDetail extends React.Component {
                                     </span>
                                 </div>
                                 <div>
-                                    {/* <p>Annualized Return</p>{' '}
+                                    <p>Annualized Return</p>{' '}
                                     <span>
                                         {this.state.accountData.apr
                                             ? (
@@ -1235,7 +1359,7 @@ class AccountDetail extends React.Component {
                                         %
                                     </span>
                                 </div>
-                                <div> */}
+                                <div>
                                     <p>Marketplace Staking</p>{' '}
                                     <span>
                                         {(
@@ -1256,19 +1380,7 @@ class AccountDetail extends React.Component {
                                         ).toLocaleString() }
                                     </span>
                                 </div> */}
-                                <div>
-                                    <p>S-NFT Weight</p>{' '}
-                                    <span>
-                                        {this.state.accountData.snftValue
-                                            ? Number(
-                                                  utils.formatEther(
-                                                      this.state.accountData
-                                                          .snftValue,
-                                                  ),
-                                              ).toFixed(2)
-                                            : 0}
-                                    </span>
-                                </div>
+
                                 <div>
                                     <p>S-NFT Income</p>{' '}
                                     <span>
@@ -1300,7 +1412,7 @@ class AccountDetail extends React.Component {
                                         {this.state.accountData.snftCount || 0}
                                     </span>
                                 </ul>
-                                {/* <ul>
+                                <ul>
                                     <p>Direct rewards</p>
                                     <span>
                                         {this.state.accountData.reward
@@ -1476,7 +1588,7 @@ class AccountDetail extends React.Component {
                                               ).toFixed(2)
                                             : 0}
                                     </span>
-                                </ul> */}
+                                </ul>
                             </div>
                             <div>
                                 <img src={other} />
@@ -1502,7 +1614,7 @@ class AccountDetail extends React.Component {
                         </Radio.Button>
                         <Radio.Button value="SNFT">S-NFT</Radio.Button>
                         <Radio.Button value="NFT">NFT</Radio.Button>
-                        {/* <Radio.Button value="CREATOR">CREATOR</Radio.Button> */}
+                        <Radio.Button value="CREATOR">CREATOR</Radio.Button>
                     </Radio.Group>
                 </div>
                 <div
@@ -1522,9 +1634,9 @@ class AccountDetail extends React.Component {
                                     ? this.state.nftcolumns
                                     : this.state.type == 'SNFT'
                                     ? this.state.snftcolumns
-                                    : // : this.state.type == 'CREATOR'
-                                      // ? this.state.creatorcolumns
-                                      ''
+                                    : this.state.type == 'CREATOR'
+                                    ? this.state.creatorcolumns
+                                    : ''
                             }
                             // loading={this.state.loading}
                             pagination={{

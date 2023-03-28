@@ -157,7 +157,7 @@ export default function FooterApp() {
                                 Wormholes Official Website
                             </li>
                         </ul>
-                        <ul className={FooterApp_ls.FooterBox_textBox_right_ul}>
+                        {/* <ul className={FooterApp_ls.FooterBox_textBox_right_ul}>
                             <li
                                 className={
                                     FooterApp_ls.FooterBox_textBox_right_ul_lititle
@@ -181,7 +181,7 @@ export default function FooterApp() {
                             >
                                 One-Click NFT Marketplace
                             </li>
-                        </ul>
+                        </ul> */}
                         <ul className={FooterApp_ls.FooterBox_textBox_right_ul}>
                             <li
                                 className={

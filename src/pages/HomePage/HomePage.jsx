@@ -23,6 +23,7 @@ import {
     digitalreduction,
     timestamp,
     stagenumber,
+    getBit,
 } from '../../utils/methods/Methods';
 import {
     erbprice,
@@ -69,7 +70,7 @@ export default function HomePage() {
         total_q();
         epoch_q();
         block_q(pagedata);
-        homepagechart_q();
+        // homepagechart_q();
         onlineAddr_q();
         // rewardperson_q()
     }, []);
@@ -87,6 +88,8 @@ export default function HomePage() {
     //区块查询
     const block_q = async (item) => {
         const data = await block(item);
+        console.log('区块查询');
+        console.log(data);
         if (data) {
             setBlockdata(data);
             setBigheightblock(data.blocks[0].number);
@@ -95,6 +98,7 @@ export default function HomePage() {
     //验证者在线查询
     const onlineAddr_q = async (item) => {
         const data = await onlineAddr(item);
+        console.log('验证者在线查询');
         console.log(data);
         if (data) {
             setValidatoronline(data);
@@ -108,6 +112,8 @@ export default function HomePage() {
     //查询erb价格
     const erbprice_q = async () => {
         const data = await erbprice();
+        console.log('查询erb价格');
+        console.log(data);
         if (data) {
             setErbpricedata(data);
         }
@@ -115,6 +121,8 @@ export default function HomePage() {
     //总数查询
     const total_q = async () => {
         const data = await total();
+        console.log('总数查询');
+        console.log(data);
         if (data) {
             setTotaldata(data);
         }
@@ -122,6 +130,7 @@ export default function HomePage() {
     //系统NFT周期查询
     const epoch_q = async () => {
         const data = await epoch();
+        console.log('系统NFT周期查询');
         console.log(data);
         if (data) {
             setEpochdata(data);
@@ -143,6 +152,8 @@ export default function HomePage() {
     //最新区块奖励人查询
     const blockrewardperson_q = async (item) => {
         const data = await blockrewardperson(item);
+        console.log('最新区块奖励人查询');
+        console.log(data);
         let text = [];
         if (data) {
             for (let i = 0; i < data.length; i++) {
@@ -1193,12 +1204,14 @@ export default function HomePage() {
                                     HomePage_ls.BlockINFORMATIONbox_right_data
                                 }
                             >
-                                {epochdata.voteWeight
-                                    ? Number(
-                                          utils.formatEther(
-                                              epochdata.voteWeight,
-                                          ),
-                                      ).toFixed(2)
+                                {epochdata.weightValue
+                                    ? getBit(
+                                          Number(
+                                              utils.formatEther(
+                                                  epochdata.weightValue,
+                                              ),
+                                          ).toFixed(2) * epochdata.weightAmount,
+                                      )
                                     : 0}
                             </p>
                         </div>

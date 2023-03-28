@@ -130,7 +130,9 @@
     color: white;
     line-height: 40px;
     height: 40px;
-
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
     font-family: CustomFontMedium;
 }
 .SNFTDetailsBox_titleData_text_nftattribute_right_name {
@@ -312,49 +314,49 @@
     padding: 20px 15px;
     font-size: 12px;
 }
-// .SNFTBox_tablelevelsnft {
-//     height: 20px;
-//     font-size: 12px;
-//     background-color: #037CD6;
-//     border-radius: 4px;
-//     text-align: center;
-//     padding: 0 5px;
-//     line-height: 20px;
-//     color: #ffffff;
-// }
-// .SNFTBox_tablelevelnft {
-//     height: 20px;
-//     font-size: 12px;
-//     background-color: #3AAE55;
-//     border-radius: 4px;
-//     text-align: center;
-//     padding: 0 5px;
-//     line-height: 20px;
-//     margin-right: 4px;
-//     color: #ffffff;
-// }
-// .SNFTBox_tablelevelCollection {
-//     height: 20px;
-//     font-size: 12px;
-//     background-color: #F7BF03;
-//     border-radius: 4px;
-//     text-align: center;
-//     padding: 0 5px;
-//     line-height: 20px;
-//     margin-right: 4px;
-//     color: #ffffff;
-// }
-// .SNFTBox_tablelevelPeriod {
-//     height: 20px;
-//     font-size: 12px;
-//     background-color: #D73A49;
-//     border-radius: 4px;
-//     text-align: center;
-//     padding: 0 5px;
-//     line-height: 20px;
-//     margin-right: 4px;
-//     color: #ffffff;
-// }
+.SNFTBox_tablelevelsnft {
+    height: 20px;
+    font-size: 12px;
+    background-color: #037CD6;
+    border-radius: 4px;
+    text-align: center;
+    padding: 0 5px;
+    line-height: 20px;
+    color: #ffffff;
+}
+.SNFTBox_tablelevelnft {
+    height: 20px;
+    font-size: 12px;
+    background-color: #3AAE55;
+    border-radius: 4px;
+    text-align: center;
+    padding: 0 5px;
+    line-height: 20px;
+    margin-right: 4px;
+    color: #ffffff;
+}
+.SNFTBox_tablelevelCollection {
+    height: 20px;
+    font-size: 12px;
+    background-color: #F7BF03;
+    border-radius: 4px;
+    text-align: center;
+    padding: 0 5px;
+    line-height: 20px;
+    margin-right: 4px;
+    color: #ffffff;
+}
+.SNFTBox_tablelevelPeriod {
+    height: 20px;
+    font-size: 12px;
+    background-color: #D73A49;
+    border-radius: 4px;
+    text-align: center;
+    padding: 0 5px;
+    line-height: 20px;
+    margin-right: 4px;
+    color: #ffffff;
+}
 :global {
     #progressbar {
         .ant-progress-text {
@@ -407,4 +409,9 @@
     .ace_content {
         color: white;
     }
+}
+.tablexbox2_icon{
+    color: #ffffff;
+    cursor: pointer;
+    margin-left: 10px;
 }

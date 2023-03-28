@@ -152,3 +152,20 @@ export function hexCharCodeToStr(hexCharCodeStr) {
         }
     }
 }
+export function hexCharCodeToStrmath(data) {
+    if (data) {
+        let text;
+        dealType.forEach((item) => {
+            data == item.type ? (text = item.name) : '';
+        });
+        return text;
+    }
+}
+//保留两位小数
+export function getBit(value) {
+    const reg = /([0-9]+\.[0-9]{2})[0-9]*/;
+    let str = value.toString();
+    str = str.replace(reg, '$1');
+    console.log(str);
+    return str;
+}

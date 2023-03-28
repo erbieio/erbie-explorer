@@ -75,6 +75,13 @@ export default function CreatorApp() {
             setEpochdata(data);
         }
     };
+    function getBit(value) {
+        const reg = /([0-9]+\.[0-9]{2})[0-9]*/;
+        let str = value.toString();
+        str = str.replace(reg, '$1');
+        console.log(str);
+        return str;
+    }
     //柱状图查询
     const creatorHistogram_q = async () => {
         const data = await creatorHistogram();
@@ -84,14 +91,9 @@ export default function CreatorApp() {
             for (let i = 0; i < 7; i++) {
                 if (data[i]) {
                     text.push({
-                        data: Number(
-                            utils.formatEther(
-                                String(
-                                    Number(data[i].profit) +
-                                        Number(data[i].reward),
-                                ),
-                            ),
-                        ),
+                        data:
+                            Number(getBit(utils.formatEther(data[i].profit))) +
+                            Number(getBit(utils.formatEther(data[i].reward))),
                         index: String(i + 1),
                     });
                 } else {
@@ -127,7 +129,7 @@ export default function CreatorApp() {
     }
     const columns = [
         {
-            title: 'Creator address',
+            title: 'Creator Address',
             dataIndex: 'address',
             key: 'address',
             render: (text) => (
@@ -208,7 +210,7 @@ export default function CreatorApp() {
         {
             title: () => (
                 <div className={CreatorApp_ls.tablexbox2}>
-                    <span>Block height</span>
+                    <span>Block Height</span>
                     <Tooltip
                         title={() => {
                             return (
@@ -285,7 +287,7 @@ export default function CreatorApp() {
         {
             title: () => (
                 <div className={CreatorApp_ls.tablexbox2}>
-                    <span>Timmes</span>
+                    <span>Times</span>
                     <Tooltip
                         title={() => {
                             return (
@@ -338,9 +340,13 @@ export default function CreatorApp() {
             ),
             dataIndex: 'reward',
             key: 'reward',
-            render: (text) => (
+            render: (text, data) => (
                 <span>
-                    {text ? Number(utils.formatEther(text)).toFixed(2) : 0}
+                    {text ? Number(utils.formatEther(text)).toFixed(4) : 0}{' '}
+                    {data.address ==
+                    '0x0000000000000000000000000000000000000000'
+                        ? '(Burned)'
+                        : ''}
                 </span>
             ),
             width: '190px',
@@ -413,9 +419,13 @@ export default function CreatorApp() {
             ),
             dataIndex: 'profit',
             key: 'profit',
-            render: (text) => (
+            render: (text, data) => (
                 <span>
-                    {text ? Number(utils.formatEther(text)).toFixed(2) : 0}
+                    {text ? Number(utils.formatEther(text)).toFixed(2) : 0}{' '}
+                    {data.address ==
+                    '0x0000000000000000000000000000000000000000'
+                        ? '(Burned)'
+                        : ''}
                 </span>
             ),
             width: '190px',

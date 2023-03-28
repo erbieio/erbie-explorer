@@ -30,7 +30,7 @@ import {
 import { utils } from 'ethers';
 import { Link } from 'umi';
 import React, { useState, useEffect } from 'react';
-import { timestamp, ellipsis } from '../../utils/methods/Methods';
+import { timestamp, ellipsis, getBit } from '../../utils/methods/Methods';
 export default function SNFTApp() {
     const [pagenumber, setPagenumber] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(16);
@@ -58,147 +58,163 @@ export default function SNFTApp() {
                     }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
-                    {text}
+                    {text ? (
+                        text
+                    ) : data ? (
+                        data.address.length == 42 ? (
+                            <>SNFT - L0</>
+                        ) : data.address.length == 41 ? (
+                            <>SNFT - L1</>
+                        ) : data.address.length == 40 ? (
+                            <>SNFT - L2</>
+                        ) : data.address.length == 39 ? (
+                            <>SNFT - L3</>
+                        ) : (
+                            ' '
+                        )
+                    ) : (
+                        ''
+                    )}
                 </Link>
             ),
             ellipsis: true,
         },
-        {
-            title: 'Level',
-            dataIndex: 'address',
-            key: 'address',
-            render: (text) => (
-                <span>
-                    {text.length == 42 ? (
-                        <span className={SNFTApp_ls.SNFTBox_tablelevelsnft}>
-                            Level 0
-                        </span>
-                    ) : text.length == 41 ? (
-                        <span className={SNFTApp_ls.SNFTBox_tablelevelnft}>
-                            Level 1
-                        </span>
-                    ) : text.length == 40 ? (
-                        <span
-                            className={SNFTApp_ls.SNFTBox_tablelevelCollection}
-                        >
-                            Level 2
-                        </span>
-                    ) : text.length == 39 ? (
-                        <span className={SNFTApp_ls.SNFTBox_tablelevelPeriod}>
-                            Level 3
-                        </span>
-                    ) : (
-                        ' '
-                    )}
-                </span>
-            ),
-            ellipsis: true,
-        },
         // {
-        //     title: () => (
-        //         <div className={SNFTApp_ls.tablexbox2}>
-        //             <span>Period</span>
-        //             <Tooltip
-        //                 placement="bottom"
-        //                 title={() => {
-        //                     return (
-        //                         <div className={SNFTApp_ls.tablexbox2_Period}>
-        //                             <p>
-        //                                 S-NFT Grades Are LO, L1, L2, And L3 From
-        //                                 The Lowest To The Highest. YouCan
-        //                                 Synthesize It To Higher Levels For
-        //                                 Higher Revenue.
-        //                             </p>
-        //                             <p>The Rules Are As Below:</p>
-        //                             <p>
-        //                                 16 Specifc S-NFT LO Synthesizes A Unique
-        //                                 S-NFT L1.
-        //                             </p>
-        //                             <p>
-        //                                 16 Specifc S-NFT L1 Synthesizes A Unique
-        //                                 S-NFT L2.
-        //                             </p>
-        //                             <p>
-        //                                 16 Specifc S-NFT L2 Synthesizes A Unique
-        //                                 S-NFT L3.{' '}
-        //                             </p>
-        //                             <p>
-        //                                 The Blue Number Indicates The S-NFT LO
-        //                                 Position Number In An S-NFT L1.
-        //                             </p>
-        //                             <p>
-        //                                 The Green Number Indicates The Position
-        //                                 Number Of S-NFT L1In An S-NFT L2.
-        //                             </p>
-        //                             <p>
-        //                                 The Yellow Number Indicates The S-NFT L2
-        //                                 Position Number In An S-NFT L3.
-        //                             </p>
-        //                             <p>
-        //                                 The Red Number Refers To The Position
-        //                                 Number Of An S-NFT L3.
-        //                             </p>
-        //                         </div>
-        //                     );
-        //                 }}
-        //                 color="#4D4D55"
-        //             >
-        //                 <span className={SNFTApp_ls.tablexbox2_icon}>
-        //                     <QuestionCircleOutlined />
-        //                 </span>
-        //             </Tooltip>
-        //         </div>
-        //     ),
+        //     title: 'Level',
         //     dataIndex: 'address',
         //     key: 'address',
         //     render: (text) => (
         //         <span>
-        //             {text.length >= 39 ? (
-        //                 <Tooltip title="L3" color="#4D4D55">
-        //                     <span
-        //                         className={SNFTApp_ls.SNFTBox_tablelevelPeriod}
-        //                     >
-        //                         {parseInt('0x' + text.slice(4, 39)) + 1}
-        //                     </span>
-        //                 </Tooltip>
+        //             {text.length == 42 ? (
+        //                 <span className={SNFTApp_ls.SNFTBox_tablelevelsnft}>
+        //                     Level 0
+        //                 </span>
+        //             ) : text.length == 41 ? (
+        //                 <span className={SNFTApp_ls.SNFTBox_tablelevelnft}>
+        //                     Level 1
+        //                 </span>
+        //             ) : text.length == 40 ? (
+        //                 <span
+        //                     className={SNFTApp_ls.SNFTBox_tablelevelCollection}
+        //                 >
+        //                     Level 2
+        //                 </span>
+        //             ) : text.length == 39 ? (
+        //                 <span className={SNFTApp_ls.SNFTBox_tablelevelPeriod}>
+        //                     Level 3
+        //                 </span>
         //             ) : (
         //                 ' '
         //             )}
-        //             {text.length >= 40 ? (
-        //                 <Tooltip title="L2" color="#4D4D55">
-        //                     <span
-        //                         className={
-        //                             SNFTApp_ls.SNFTBox_tablelevelCollection
-        //                         }
-        //                     >
-        //                         {parseInt('0x' + text.slice(39, 40)) + 1}
-        //                     </span>
-        //                 </Tooltip>
-        //             ) : (
-        //                 ''
-        //             )}
-        //             {text.length >= 41 ? (
-        //                 <Tooltip title="L1" color="#4D4D55">
-        //                     <span className={SNFTApp_ls.SNFTBox_tablelevelnft}>
-        //                         {parseInt('0x' + text.slice(40, 41)) + 1}
-        //                     </span>
-        //                 </Tooltip>
-        //             ) : (
-        //                 ''
-        //             )}
-        //             {text.length >= 42 ? (
-        //                 <Tooltip title="L0" color="#4D4D55">
-        //                     <span className={SNFTApp_ls.SNFTBox_tablelevelsnft}>
-        //                         {parseInt('0x' + text.slice(41, 42)) + 1}
-        //                     </span>
-        //                 </Tooltip>
-        //             ) : (
-        //                 ''
-        //             )}
         //         </span>
         //     ),
-        //     width: '150px',
+        //     ellipsis: true,
         // },
+        {
+            title: () => (
+                <div className={SNFTApp_ls.tablexbox2}>
+                    <span>S-NFT Number</span>
+                    <Tooltip
+                        placement="bottom"
+                        title={() => {
+                            return (
+                                <div className={SNFTApp_ls.tablexbox2_Period}>
+                                    <p>
+                                        S-NFT Grades Are LO, L1, L2, And L3 From
+                                        The Lowest To The Highest. YouCan
+                                        Synthesize It To Higher Levels For
+                                        Higher Revenue.
+                                    </p>
+                                    <p>The Rules Are As Below:</p>
+                                    <p>
+                                        16 Specifc S-NFT LO Synthesizes A Unique
+                                        S-NFT L1.
+                                    </p>
+                                    <p>
+                                        16 Specifc S-NFT L1 Synthesizes A Unique
+                                        S-NFT L2.
+                                    </p>
+                                    <p>
+                                        16 Specifc S-NFT L2 Synthesizes A Unique
+                                        S-NFT L3.{' '}
+                                    </p>
+                                    <p>
+                                        The Blue Number Indicates The S-NFT LO
+                                        Position Number In An S-NFT L1.
+                                    </p>
+                                    <p>
+                                        The Green Number Indicates The Position
+                                        Number Of S-NFT L1In An S-NFT L2.
+                                    </p>
+                                    <p>
+                                        The Yellow Number Indicates The S-NFT L2
+                                        Position Number In An S-NFT L3.
+                                    </p>
+                                    <p>
+                                        The Red Number Refers To The Position
+                                        Number Of An S-NFT L3.
+                                    </p>
+                                </div>
+                            );
+                        }}
+                        color="#4D4D55"
+                    >
+                        <span className={SNFTApp_ls.tablexbox2_icon}>
+                            <QuestionCircleOutlined />
+                        </span>
+                    </Tooltip>
+                </div>
+            ),
+            dataIndex: 'address',
+            key: 'address',
+            render: (text) => (
+                <span>
+                    {text.length >= 39 ? (
+                        <Tooltip title="L3" color="#4D4D55">
+                            <span
+                                className={SNFTApp_ls.SNFTBox_tablelevelPeriod}
+                            >
+                                {parseInt('0x' + text.slice(4, 39))}
+                            </span>
+                        </Tooltip>
+                    ) : (
+                        ' '
+                    )}
+                    {text.length >= 40 ? (
+                        <Tooltip title="L2" color="#4D4D55">
+                            <span
+                                className={
+                                    SNFTApp_ls.SNFTBox_tablelevelCollection
+                                }
+                            >
+                                {parseInt('0x' + text.slice(39, 40)) + 1}
+                            </span>
+                        </Tooltip>
+                    ) : (
+                        ''
+                    )}
+                    {text.length >= 41 ? (
+                        <Tooltip title="L1" color="#4D4D55">
+                            <span className={SNFTApp_ls.SNFTBox_tablelevelnft}>
+                                {parseInt('0x' + text.slice(40, 41)) + 1}
+                            </span>
+                        </Tooltip>
+                    ) : (
+                        ''
+                    )}
+                    {text.length >= 42 ? (
+                        <Tooltip title="L0" color="#4D4D55">
+                            <span className={SNFTApp_ls.SNFTBox_tablelevelsnft}>
+                                {parseInt('0x' + text.slice(41, 42)) + 1}
+                            </span>
+                        </Tooltip>
+                    ) : (
+                        ''
+                    )}
+                </span>
+            ),
+            width: '150px',
+        },
         {
             title: 'Creation Time',
             dataIndex: 'reward_at',
@@ -228,81 +244,78 @@ export default function SNFTApp() {
             width: '150px',
         },
         {
-            title: 'S-NFT Creator',
+            title: 'Creator',
             key: 'creator',
             dataIndex: 'creator',
             ellipsis: true,
-            render: (text, data) =>
-                text == '0x0000000000000000000000000000000000000000' ? (
-                    'Official S-NFT'
-                ) : (
-                    <Link
-                        to={{
-                            pathname: `/AccountDetailApp/${text}`,
-                            state: text,
-                        }}
-                        style={{
-                            color: '#7AA4FF',
-                            fontFamily: 'CustomFontMedium',
-                        }}
-                    >
-                        {ellipsis(text)}
-                    </Link>
-                ),
+            render: (text, data) => (
+                <Link
+                    to={{
+                        pathname: `/AccountDetailApp/${text}`,
+                        state: text,
+                    }}
+                    style={{
+                        color: '#7AA4FF',
+                        fontFamily: 'CustomFontMedium',
+                    }}
+                >
+                    {ellipsis(text)}
+                </Link>
+            ),
             width: '150px',
         },
-        // {
-        //     title: 'Owner Get Time',
-        //     dataIndex: 'reward_at',
-        //     key: 'reward_at',
-        //     render: (text) => (
-        //         <span>
-        //             {moment(parseInt(text) * 1000).format(
-        //                 'YYYY-MM-DD HH:mm:ss',
-        //             )}
-        //         </span>
-        //     ),
-        //     ellipsis: true,
-        // },
         {
-            title: 'L1',
-            key: 'address',
-            dataIndex: 'address',
-            render: (text, data) => (
+            title: 'Owner Get Time',
+            dataIndex: 'reward_at',
+            key: 'reward_at',
+            render: (text) => (
                 <span>
-                    {parseInt(
-                        '0x' + text.slice(text.length - 2, text.length - 1),
-                    ) + 1}
-                </span>
-            ),
-            ellipsis: true,
-        },
-        {
-            title: 'L2',
-            key: 'address',
-            dataIndex: 'address',
-            render: (text, data) => (
-                <span>
-                    {parseInt(
-                        '0x' + text.slice(text.length - 3, text.length - 2),
-                    ) + 1}
-                </span>
-            ),
-            ellipsis: true,
-        },
-        {
-            title: 'L3',
-            key: 'address',
-            dataIndex: 'address',
-            render: (text, data) => (
-                <span>
-                    {parseInt(
-                        '0x' + text.slice(text.length - 4, text.length - 3),
+                    {moment(parseInt(text) * 1000).format(
+                        'YYYY-MM-DD HH:mm:ss',
                     )}
                 </span>
             ),
             ellipsis: true,
         },
+        // {
+        //     title: 'L1',
+        //     key: 'address',
+        //     dataIndex: 'address',
+        //     render: (text, data) => (
+        //         <span>
+        //             {parseInt(
+        //                 '0x' + text.slice(text.length - 2, text.length - 1),
+        //             ) + 1}
+        //         </span>
+        //     ),
+        //     ellipsis: true,
+        // },
+        // {
+        //     title: 'L2',
+        //     key: 'address',
+        //     dataIndex: 'address',
+        //     render: (text, data) => (
+        //         <span>
+        //             {parseInt(
+        //                 '0x' + text.slice(text.length - 3, text.length - 2),
+        //             ) + 1}
+        //         </span>
+        //     ),
+        //     ellipsis: true,
+        // },
+        // {
+        //     title: 'L3',
+        //     key: 'address',
+        //     dataIndex: 'address',
+        //     render: (text, data) => (
+        //         <span>
+        //             {parseInt(
+        //                 '0x' + text.slice(text.length - 4, text.length - 3),
+        //             )}
+        //         </span>
+        //     ),
+        //     ellipsis: true,
+        // },
     ];
     const onChange = (data) => {
         setPagenumber(data);
@@ -368,8 +381,10 @@ export default function SNFTApp() {
                                 }
                             >
                                 {totaldata.totalSNFTAmount
-                                    ? utils.formatEther(
-                                          totaldata.totalSNFTAmount,
+                                    ? getBit(
+                                          utils.formatEther(
+                                              totaldata.totalSNFTAmount,
+                                          ),
                                       )
                                     : 0}
                                 {/* {totaldata.totalSNFTAmount} */}
