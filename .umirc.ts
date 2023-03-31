@@ -174,6 +174,14 @@ export default defineConfig({
                     path: '/TermsOfService',
                     component: './TermsOfService/TermsOfService.jsx',
                 },
+                {
+                    path: '/NoNetwork',
+                    component: './NoNetwork/NoNetwork.jsx',
+                },
+                {
+                    path: '/EmptyPage',
+                    component: './EmptyPage/EmptyPage.jsx',
+                },
             ],
         },
     ],

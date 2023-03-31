@@ -224,361 +224,379 @@ export default function SNFTDetails(props) {
     return (
         <>
             <div className={SNFTDetails_ls.SNFTDetailsBox}>
-                <div className={SNFTDetails_ls.SNFTDetailsBox_title}>
-                    S-NFT Details
-                    <SearchBox />
-                </div>
                 <div className={SNFTDetails_ls.SNFTDetailsBox_titleData}>
-                    <div
-                        className={
-                            SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox
-                        }
-                    >
-                        <img
-                            className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox_img
-                            }
-                            src={snftdata.source_url}
-                        />
-                        {/* 图片 */}
+                    <div className={SNFTDetails_ls.SNFTDetailsBox_title}>
+                        S-NFT Details
                     </div>
-                    <div
-                        className={SNFTDetails_ls.SNFTDetailsBox_titleData_text}
-                    >
-                        <p
-                            className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname
-                            }
-                        >
-                            <span
-                                className={
-                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_time
-                                }
-                            >
-                                {moment(
-                                    parseInt(snftdata.reward_at) * 1000,
-                                ).format('YYYY-MM-DD')}
-                            </span>
-                        </p>
+                    <div className={SNFTDetails_ls.SNFTDetailsBox_titleData2}>
                         <div
                             className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute
+                                SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox
                             }
                         >
-                            <div
+                            <img
                                 className={
-                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left
+                                    SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox_img
+                                }
+                                src={snftdata.source_url}
+                            />
+                            {/* 图片 */}
+                        </div>
+                        <div
+                            className={
+                                SNFTDetails_ls.SNFTDetailsBox_titleData_text
+                            }
+                        >
+                            <p
+                                className={
+                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname
                                 }
                             >
-                                <p
+                                <span
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_namebig
+                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_time
                                     }
                                 >
-                                    {snftdata.name ? (
-                                        snftdata.name
-                                    ) : snftdata.address ? (
-                                        snftdata.address.length == 42 ? (
-                                            <>SNFT - L0</>
-                                        ) : snftdata.address.length == 41 ? (
-                                            <>SNFT - L1</>
-                                        ) : snftdata.address.length == 40 ? (
-                                            <>SNFT - L2</>
-                                        ) : snftdata.address.length == 39 ? (
-                                            <>SNFT - L3</>
+                                    {moment(
+                                        parseInt(snftdata.reward_at) * 1000,
+                                    ).format('YYYY-MM-DD')}
+                                </span>
+                            </p>
+                            <div
+                                className={
+                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute
+                                }
+                            >
+                                <div
+                                    className={
+                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left
+                                    }
+                                >
+                                    <p
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_namebig
+                                        }
+                                    >
+                                        {snftdata.name ? (
+                                            snftdata.name
+                                        ) : snftdata.address ? (
+                                            snftdata.address.length == 42 ? (
+                                                <>SNFT - L0</>
+                                            ) : snftdata.address.length ==
+                                              41 ? (
+                                                <>SNFT - L1</>
+                                            ) : snftdata.address.length ==
+                                              40 ? (
+                                                <>SNFT - L2</>
+                                            ) : snftdata.address.length ==
+                                              39 ? (
+                                                <>SNFT - L3</>
+                                            ) : (
+                                                ' '
+                                            )
                                         ) : (
-                                            ' '
-                                        )
-                                    ) : (
-                                        ''
-                                    )}
-                                </p>
-                                <p
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Address
-                                </p>
-                                <p
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Price
-                                </p>
-                                <p
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Owner
-                                </p>
-                                {/* <p
+                                            ''
+                                        )}
+                                    </p>
+                                    <p
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Address
+                                    </p>
+                                    <p
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Price
+                                    </p>
+                                    <p
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Owner
+                                    </p>
+                                    {/* <p
                                     className={
                                         SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
                                     Author
                                 </p> */}
-                                <p
+                                    <p
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Creator
+                                    </p>
+                                    <p
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Royalties
+                                    </p>
+                                </div>
+                                <div
                                     className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
+                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right
                                     }
                                 >
-                                    Creator
-                                </p>
-                                <p
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Royalties
-                                </p>
-                            </div>
-                            <div
-                                className={
-                                    SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right
-                                }
-                            >
-                                <p
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_namebig
-                                    }
-                                >
-                                    {Object.keys(snftdata) != 0 ? (
-                                        <span>
-                                            {snftdata.address.length >= 39 ? (
-                                                <Tooltip
-                                                    title="L3"
-                                                    color="#4D4D55"
-                                                >
-                                                    <span
-                                                        className={
-                                                            SNFTDetails_ls.SNFTBox_tablelevelPeriod
-                                                        }
+                                    <p
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_namebig
+                                        }
+                                    >
+                                        {Object.keys(snftdata) != 0 ? (
+                                            <span>
+                                                {snftdata.address.length >=
+                                                39 ? (
+                                                    <Tooltip
+                                                        title="L3"
+                                                        color="#4D4D55"
                                                     >
-                                                        {parseInt(
-                                                            '0x' +
-                                                                snftdata.address.slice(
-                                                                    4,
-                                                                    39,
-                                                                ),
-                                                        )}
-                                                    </span>
-                                                </Tooltip>
-                                            ) : (
-                                                ' '
-                                            )}
-                                            {snftdata.address.length >= 40 ? (
-                                                <Tooltip
-                                                    title="L2"
-                                                    color="#4D4D55"
-                                                >
-                                                    <span
-                                                        className={
-                                                            SNFTDetails_ls.SNFTBox_tablelevelCollection
-                                                        }
+                                                        <span
+                                                            className={
+                                                                SNFTDetails_ls.SNFTBox_tablelevelPeriod
+                                                            }
+                                                        >
+                                                            {parseInt(
+                                                                '0x' +
+                                                                    snftdata.address.slice(
+                                                                        4,
+                                                                        39,
+                                                                    ),
+                                                            )}
+                                                        </span>
+                                                    </Tooltip>
+                                                ) : (
+                                                    ' '
+                                                )}
+                                                {snftdata.address.length >=
+                                                40 ? (
+                                                    <Tooltip
+                                                        title="L2"
+                                                        color="#4D4D55"
                                                     >
-                                                        {parseInt(
-                                                            '0x' +
-                                                                snftdata.address.slice(
-                                                                    39,
-                                                                    40,
-                                                                ),
-                                                        ) + 1}
-                                                    </span>
-                                                </Tooltip>
-                                            ) : (
-                                                ''
-                                            )}
-                                            {snftdata.address.length >= 41 ? (
-                                                <Tooltip
-                                                    title="L1"
-                                                    color="#4D4D55"
-                                                >
-                                                    <span
-                                                        className={
-                                                            SNFTDetails_ls.SNFTBox_tablelevelnft
-                                                        }
+                                                        <span
+                                                            className={
+                                                                SNFTDetails_ls.SNFTBox_tablelevelCollection
+                                                            }
+                                                        >
+                                                            {parseInt(
+                                                                '0x' +
+                                                                    snftdata.address.slice(
+                                                                        39,
+                                                                        40,
+                                                                    ),
+                                                            ) + 1}
+                                                        </span>
+                                                    </Tooltip>
+                                                ) : (
+                                                    ''
+                                                )}
+                                                {snftdata.address.length >=
+                                                41 ? (
+                                                    <Tooltip
+                                                        title="L1"
+                                                        color="#4D4D55"
                                                     >
-                                                        {parseInt(
-                                                            '0x' +
-                                                                snftdata.address.slice(
-                                                                    40,
-                                                                    41,
-                                                                ),
-                                                        ) + 1}
-                                                    </span>
-                                                </Tooltip>
-                                            ) : (
-                                                ''
-                                            )}
-                                            {snftdata.address.length >= 42 ? (
-                                                <Tooltip
-                                                    title="L0"
-                                                    color="#4D4D55"
-                                                >
-                                                    <span
-                                                        className={
-                                                            SNFTDetails_ls.SNFTBox_tablelevelsnft
-                                                        }
+                                                        <span
+                                                            className={
+                                                                SNFTDetails_ls.SNFTBox_tablelevelnft
+                                                            }
+                                                        >
+                                                            {parseInt(
+                                                                '0x' +
+                                                                    snftdata.address.slice(
+                                                                        40,
+                                                                        41,
+                                                                    ),
+                                                            ) + 1}
+                                                        </span>
+                                                    </Tooltip>
+                                                ) : (
+                                                    ''
+                                                )}
+                                                {snftdata.address.length >=
+                                                42 ? (
+                                                    <Tooltip
+                                                        title="L0"
+                                                        color="#4D4D55"
                                                     >
-                                                        {parseInt(
-                                                            '0x' +
-                                                                snftdata.address.slice(
-                                                                    41,
-                                                                    42,
-                                                                ),
-                                                        ) + 1}
-                                                    </span>
-                                                </Tooltip>
-                                            ) : (
-                                                ''
-                                            )}
-                                        </span>
-                                    ) : (
-                                        ''
-                                    )}
-                                    {/* <span
+                                                        <span
+                                                            className={
+                                                                SNFTDetails_ls.SNFTBox_tablelevelsnft
+                                                            }
+                                                        >
+                                                            {parseInt(
+                                                                '0x' +
+                                                                    snftdata.address.slice(
+                                                                        41,
+                                                                        42,
+                                                                    ),
+                                                            ) + 1}
+                                                        </span>
+                                                    </Tooltip>
+                                                ) : (
+                                                    ''
+                                                )}
+                                            </span>
+                                        ) : (
+                                            ''
+                                        )}
+                                        {/* <span
                                         className={
                                             SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_block
                                         }
                                     >
                                         #{snftdata.reward_number}
                                     </span> */}
-                                    <Tooltip
-                                        placement="bottom"
-                                        title={() => {
-                                            return (
-                                                <div
-                                                    className={
-                                                        SNFTDetails_ls.tablexbox2_Period
-                                                    }
-                                                >
-                                                    <p>
-                                                        S-NFT Grades Are LO, L1,
-                                                        L2, And L3 From The
-                                                        Lowest To The Highest.
-                                                        YouCan Synthesize It To
-                                                        Higher Levels For Higher
-                                                        Revenue.
-                                                    </p>
-                                                    <p>
-                                                        The Rules Are As Below:
-                                                    </p>
-                                                    <p>
-                                                        16 Specifc S-NFT LO
-                                                        Synthesizes A Unique
-                                                        S-NFT L1.
-                                                    </p>
-                                                    <p>
-                                                        16 Specifc S-NFT L1
-                                                        Synthesizes A Unique
-                                                        S-NFT L2.
-                                                    </p>
-                                                    <p>
-                                                        16 Specifc S-NFT L2
-                                                        Synthesizes A Unique
-                                                        S-NFT L3.{' '}
-                                                    </p>
-                                                    <p>
-                                                        The Blue Number
-                                                        Indicates The S-NFT LO
-                                                        Position Number In An
-                                                        S-NFT L1.
-                                                    </p>
-                                                    <p>
-                                                        The Green Number
-                                                        Indicates The Position
-                                                        Number Of S-NFT L1In An
-                                                        S-NFT L2.
-                                                    </p>
-                                                    <p>
-                                                        The Yellow Number
-                                                        Indicates The S-NFT L2
-                                                        Position Number In An
-                                                        S-NFT L3.
-                                                    </p>
-                                                    <p>
-                                                        The Red Number Refers To
-                                                        The Position Number Of
-                                                        An S-NFT L3.
-                                                    </p>
-                                                </div>
-                                            );
-                                        }}
-                                        color="#4D4D55"
+                                        <Tooltip
+                                            placement="bottom"
+                                            title={() => {
+                                                return (
+                                                    <div
+                                                        className={
+                                                            SNFTDetails_ls.tablexbox2_Period
+                                                        }
+                                                    >
+                                                        <p>
+                                                            S-NFT Grades Are LO,
+                                                            L1, L2, And L3 From
+                                                            The Lowest To The
+                                                            Highest. YouCan
+                                                            Synthesize It To
+                                                            Higher Levels For
+                                                            Higher Revenue.
+                                                        </p>
+                                                        <p>
+                                                            The Rules Are As
+                                                            Below:
+                                                        </p>
+                                                        <p>
+                                                            16 Specifc S-NFT LO
+                                                            Synthesizes A Unique
+                                                            S-NFT L1.
+                                                        </p>
+                                                        <p>
+                                                            16 Specifc S-NFT L1
+                                                            Synthesizes A Unique
+                                                            S-NFT L2.
+                                                        </p>
+                                                        <p>
+                                                            16 Specifc S-NFT L2
+                                                            Synthesizes A Unique
+                                                            S-NFT L3.{' '}
+                                                        </p>
+                                                        <p>
+                                                            The Blue Number
+                                                            Indicates The S-NFT
+                                                            LO Position Number
+                                                            In An S-NFT L1.
+                                                        </p>
+                                                        <p>
+                                                            The Green Number
+                                                            Indicates The
+                                                            Position Number Of
+                                                            S-NFT L1In An S-NFT
+                                                            L2.
+                                                        </p>
+                                                        <p>
+                                                            The Yellow Number
+                                                            Indicates The S-NFT
+                                                            L2 Position Number
+                                                            In An S-NFT L3.
+                                                        </p>
+                                                        <p>
+                                                            The Red Number
+                                                            Refers To The
+                                                            Position Number Of
+                                                            An S-NFT L3.
+                                                        </p>
+                                                    </div>
+                                                );
+                                            }}
+                                            color="#4D4D55"
+                                        >
+                                            <span
+                                                className={
+                                                    SNFTDetails_ls.tablexbox2_icon
+                                                }
+                                            >
+                                                <QuestionCircleOutlined />
+                                            </span>
+                                        </Tooltip>
+                                    </p>
+                                    <p
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                        }
                                     >
-                                        <span
+                                        {snftdata.address}
+                                    </p>
+                                    {snftdata.last_price ? (
+                                        <p
                                             className={
-                                                SNFTDetails_ls.tablexbox2_icon
+                                                SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                             }
                                         >
-                                            <QuestionCircleOutlined />
-                                        </span>
-                                    </Tooltip>
-                                </p>
-                                <p
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                >
-                                    {snftdata.address}
-                                </p>
-                                {snftdata.last_price ? (
-                                    <p
+                                            {utils.formatEther(
+                                                snftdata.last_price,
+                                            )}{' '}
+                                            ERB (${' '}
+                                            {utils.formatEther(
+                                                snftdata.last_price,
+                                            )}
+                                            )
+                                        </p>
+                                    ) : (
+                                        <p
+                                            className={
+                                                SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                            }
+                                        >
+                                            No Bid
+                                        </p>
+                                    )}
+                                    <Link
+                                        to={{
+                                            pathname: `/AccountDetail/${snftdata.owner}`,
+                                            state: snftdata.owner,
+                                        }}
                                         className={
                                             SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
+                                        style={{ color: '#7AA4FF' }}
                                     >
-                                        {utils.formatEther(snftdata.last_price)}{' '}
-                                        ERB (${' '}
-                                        {utils.formatEther(snftdata.last_price)}
-                                        )
-                                    </p>
-                                ) : (
-                                    <p
-                                        className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                        }
-                                    >
-                                        No Bid
-                                    </p>
-                                )}
-                                <Link
-                                    to={{
-                                        pathname: `/AccountDetail/${snftdata.owner}`,
-                                        state: snftdata.owner,
-                                    }}
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                    style={{ color: '#7AA4FF' }}
-                                >
-                                    {snftdata.owner ? snftdata.owner : '-'}
-                                </Link>
+                                        {snftdata.owner ? snftdata.owner : '-'}
+                                    </Link>
 
-                                <Link
-                                    to={{
-                                        pathname: `/AccountDetail/${snftdata.creator}`,
-                                        state: snftdata.creator,
-                                    }}
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                    style={{ color: '#7AA4FF' }}
-                                    id="soloimg"
-                                >
-                                    {snftdata.creator}
-                                </Link>
-                                <p
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                >
-                                    {snftdata.royaltyRatio / 100}%
-                                </p>
+                                    <Link
+                                        to={{
+                                            pathname: `/AccountDetail/${snftdata.creator}`,
+                                            state: snftdata.creator,
+                                        }}
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                        }
+                                        style={{ color: '#7AA4FF' }}
+                                        id="soloimg"
+                                    >
+                                        {snftdata.creator}
+                                    </Link>
+                                    <p
+                                        className={
+                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
+                                        }
+                                    >
+                                        {snftdata.royaltyRatio / 100}%
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

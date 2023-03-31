@@ -18,7 +18,11 @@ import TestPage from '../TestPage/TestPage';
 import React, { useState, useEffect } from 'react';
 import { GoTriangleDown } from 'react-icons/go';
 import { BsSearch } from 'react-icons/bs';
-import Icon, { DownOutlined, UpOutlined } from '@ant-design/icons';
+import Icon, {
+    DownOutlined,
+    UpOutlined,
+    CloseOutlined,
+} from '@ant-design/icons';
 import {
     digitalreduction,
     timestamp,
@@ -348,7 +352,7 @@ export default function HomePage() {
                         }
                     >
                         <img
-                            src={require('../../assets/images/HomePage/Validator.svg')}
+                            src={require('../../assets/images/HomePage/Validator.png')}
                         />
                         <Link
                             to={{
@@ -383,7 +387,7 @@ export default function HomePage() {
                         }
                     >
                         <img
-                            src={require('../../assets/images/HomePage/Marketplace.svg')}
+                            src={require('../../assets/images/HomePage/Marketplace.png')}
                         />
                         <Link
                             to={{
@@ -574,7 +578,7 @@ export default function HomePage() {
                                     }
                                 >
                                     <img
-                                        src={require('../../assets/images/HomePage/Proposal.svg')}
+                                        src={require('../../assets/images/HomePage/Proposal.png')}
                                     />
                                     <Link
                                         className={
@@ -747,7 +751,7 @@ export default function HomePage() {
                         }
                         id="HomePageselect"
                     >
-                        <Select
+                        {/* <Select
                             defaultValue="AllFilters"
                             onChange={handleChange}
                             suffixIcon={
@@ -762,7 +766,7 @@ export default function HomePage() {
                             }
                         >
                             <Option value="AllFilters">All Filters</Option>
-                        </Select>
+                        </Select> */}
                         <input
                             className={
                                 HomePage_ls.HomePageBox_SearchBox_search_bottomBox_input
@@ -770,6 +774,15 @@ export default function HomePage() {
                             id="homepageinput"
                             autocomplete="off"
                             placeholder="Search by Address / Txn Hash / Block / Token"
+                        />
+                        <CloseOutlined
+                            className={
+                                HomePage_ls.HomePageBox_SearchBox_search_bottomBox_button
+                            }
+                            onClick={() => {
+                                document.getElementById('homepageinput').value =
+                                    '';
+                            }}
                         />
                         <BsSearch
                             className={

@@ -502,7 +502,7 @@ export default function Creator() {
                                 </p>
                                 <span>Creator weight of current period</span>
                                 <img
-                                    src={require('../../assets/images/Creator/Slice 10.png')}
+                                    src={require('../../assets/images/Creator/Slice 834.png')}
                                 />
                             </div>
                             <div
@@ -525,13 +525,6 @@ export default function Creator() {
                                     Creator_ls.CreatorBox_titlebox_right_title
                                 }
                             >
-                                Total profits of creators
-                            </p>
-                            <p
-                                className={
-                                    Creator_ls.CreatorBox_titlebox_right_title
-                                }
-                            >
                                 {totaldata.totalProfit
                                     ? Number(
                                           utils.formatEther(
@@ -541,13 +534,21 @@ export default function Creator() {
                                     : 0}{' '}
                                 ERB
                             </p>
+                            <p
+                                className={
+                                    Creator_ls.CreatorBox_titlebox_right_titletext
+                                }
+                            >
+                                Total profits of creators
+                            </p>
                             <div
                                 className={
                                     Creator_ls.CreatorBox_titlebox_right_block
                                 }
                             >
                                 <Chart
-                                    height={240}
+                                    height={220}
+                                    width={544}
                                     autoFit={true}
                                     animate={false}
                                     data={histogramdata}

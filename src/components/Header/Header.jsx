@@ -156,7 +156,7 @@ export default function Header() {
                         className={Header_ls.HeaderBox_SearchBox_inputBox}
                         id="headerselect"
                     >
-                        <Select
+                        {/* <Select
                             defaultValue="AllFilters"
                             onChange={handleChange}
                             suffixIcon={
@@ -174,7 +174,7 @@ export default function Header() {
                             }
                         >
                             <Option value="AllFilters">All Filters</Option>
-                        </Select>
+                        </Select> */}
                         <input
                             placeholder="Search by Address / Txn Hash / Block / Token"
                             className={
@@ -183,12 +183,12 @@ export default function Header() {
                             id="homepageinput"
                             autocomplete="off"
                         />
-                    </div>
-                    <div
-                        className={Header_ls.HeaderBox_Search}
-                        onClick={homepageinputclick}
-                    >
-                        <BsSearch />
+                        <div
+                            className={Header_ls.HeaderBox_Search}
+                            onClick={homepageinputclick}
+                        >
+                            <BsSearch />
+                        </div>
                     </div>
                 </div>
             ) : (

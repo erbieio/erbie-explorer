@@ -416,7 +416,9 @@ class Trade extends React.Component {
                                 <p>Total Transaction Volume</p>
                             </ul>
                             <li>
-                                <img src={topLeftImg1} />
+                                <img
+                                    src={require('../../assets/images/Trade/Slice 873.png')}
+                                />
                             </li>
                         </div>
                         <div>
@@ -425,7 +427,9 @@ class Trade extends React.Component {
                                 <p>Total Transactions</p>
                             </ul>
                             <li>
-                                <img src={topLeftImg2} />
+                                <img
+                                    src={require('../../assets/images/Trade/Slice 874.png')}
+                                />
                             </li>
                         </div>
                     </div>
@@ -436,10 +440,10 @@ class Trade extends React.Component {
                                 <p>24h TXN Volume Growth</p>
                             </ul>
                             <li>
-                                <img
+                                {/* <img
                                     src={topCenterImg}
                                     style={{ width: 64, height: 64 }}
-                                />
+                                /> */}
                             </li>
                         </div>
                         <div>

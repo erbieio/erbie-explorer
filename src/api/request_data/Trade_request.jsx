@@ -30,3 +30,6 @@ export const recycle_tx = (data) => {
         },
     });
 };
+export const nfttx = (data) => {
+    return request.get(`${host}/nft/tx/${data}`, {});
+};

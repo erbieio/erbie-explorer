@@ -58,7 +58,6 @@ export default function MapChart() {
         // console.log(mapdatadetailed);
         // let text = []
         if (mapdatadetailed && data) {
-            console.log(1111);
             let text = data;
             for (let i = 0; i < data.length; i++) {
                 for (let j = 0; j < mapdatadetailed.length; j++) {
@@ -465,15 +464,17 @@ export default function MapChart() {
     function markerline(data) {
         if (data) {
             return data.map((item, index) => {
-                return (
-                    <Line
-                        from={item.from}
-                        to={item.to}
-                        stroke="#7CFC00"
-                        strokeWidth={1}
-                        strokeLinecap="round"
-                    />
-                );
+                if (item.from != undefined) {
+                    return (
+                        <Line
+                            from={item.from}
+                            to={item.to}
+                            stroke="#7CFC00"
+                            strokeWidth={1}
+                            strokeLinecap="round"
+                        />
+                    );
+                }
             });
         }
     }

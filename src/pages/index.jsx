@@ -94,10 +94,7 @@ export default function IndexPage(props) {
                                 src={require('../assets/images/HomePage/4.png')}
                             />
                         ) : (
-                            <img
-                                className={styles.IndexPageBox_imgbs}
-                                src={require('../assets/images/HomePage/Slice 14.png')}
-                            />
+                            ''
                         )}
                         {props.children}
                     </div>

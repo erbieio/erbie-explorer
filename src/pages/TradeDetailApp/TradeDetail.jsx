@@ -362,7 +362,7 @@ class TradeDetail extends React.Component {
                                 </span>
                             </div>
                             <div>
-                                <p>Txn Type</p>
+                                <p>TXN Type</p>
                                 <span>{this.state.transType.name} </span>
                             </div>
 

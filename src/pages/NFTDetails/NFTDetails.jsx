@@ -172,6 +172,7 @@ export default function NFTDetails(props) {
     const metainformation_q = async (item) => {
         if (item != '') {
             const data = await metainformation(item);
+            console.log(data);
             if (data) {
                 setMetadata(data);
             }
@@ -247,33 +248,20 @@ export default function NFTDetails(props) {
     return (
         <>
             <div className={NFTDetails_ls.NFTDetailsBox}>
-                <div className={NFTDetails_ls.NFTDetailsBox_title}>
-                    NFT Details
-                    <SearchBox />
-                </div>
                 <div className={NFTDetails_ls.NFTDetailsBox_titleData}>
-                    <div
-                        className={NFTDetails_ls.NFTDetailsBox_titleData_imgBox}
-                    >
-                        {/* 图片 */}
-                        {/* <img className={NFTDetails_ls.NFTDetailsBox_titleData_imgBoximg} src={nftdata.source_url} /> */}
-                        {Object.keys(metadata).length != 0 &&
-                        metadata.fileType != 'mp3' ? (
-                            <FileViewer
-                                className={
-                                    NFTDetails_ls.NFTDetailsBox_titleData_imgBoximg
-                                }
-                                fileType={metadata.fileType.toLowerCase()} //文件类型
-                                filePath={nftdata.source_url} //文件地址
-                            />
-                        ) : Object.keys(metadata).length != 0 &&
-                          metadata.fileType == 'mp3' ? (
-                            <div
-                                style={{ width: '100%', height: '100%' }}
-                                className={
-                                    NFTDetails_ls.NFTDetailsBox_titleData_imgBox_bg
-                                }
-                            >
+                    <div className={NFTDetails_ls.NFTDetailsBox_title}>
+                        NFT Details
+                    </div>
+                    <div className={NFTDetails_ls.NFTDetailsBox_titleData2}>
+                        <div
+                            className={
+                                NFTDetails_ls.NFTDetailsBox_titleData_imgBox
+                            }
+                        >
+                            {/* 图片 */}
+                            {/* <img className={NFTDetails_ls.NFTDetailsBox_titleData_imgBoximg} src={nftdata.source_url} /> */}
+                            {Object.keys(metadata).length != 0 &&
+                            metadata.fileType != 'mp3' ? (
                                 <FileViewer
                                     className={
                                         NFTDetails_ls.NFTDetailsBox_titleData_imgBoximg
@@ -281,181 +269,201 @@ export default function NFTDetails(props) {
                                     fileType={metadata.fileType.toLowerCase()} //文件类型
                                     filePath={nftdata.source_url} //文件地址
                                 />
-                            </div>
-                        ) : (
-                            ''
-                        )}
-                    </div>
-                    <div className={NFTDetails_ls.NFTDetailsBox_titleData_text}>
-                        <p
-                            className={
-                                NFTDetails_ls.NFTDetailsBox_titleData_text_nftname
-                            }
-                        >
-                            {nftdata.name}
-                        </p>
+                            ) : Object.keys(metadata).length != 0 &&
+                              metadata.fileType == 'mp3' ? (
+                                <div
+                                    style={{ width: '100%', height: '100%' }}
+                                    className={
+                                        NFTDetails_ls.NFTDetailsBox_titleData_imgBox_bg
+                                    }
+                                >
+                                    <FileViewer
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_imgBoximg
+                                        }
+                                        fileType={metadata.fileType.toLowerCase()} //文件类型
+                                        filePath={nftdata.source_url} //文件地址
+                                    />
+                                </div>
+                            ) : (
+                                ''
+                            )}
+                        </div>
                         <div
                             className={
-                                NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute
+                                NFTDetails_ls.NFTDetailsBox_titleData_text
                             }
                         >
-                            <div
+                            <p
                                 className={
-                                    NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left
+                                    NFTDetails_ls.NFTDetailsBox_titleData_text_nftname
                                 }
                             >
-                                <p
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Price
-                                </p>
-                                <p
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Collection Name
-                                </p>
-                                <p
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Author
-                                </p>
-                                <p
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Owner
-                                </p>
-                                <p
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Minting Marketplace
-                                </p>
-                                <p
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    Royalties
-                                </p>
-                                <p
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
-                                    NFT Properties
-                                </p>
-                            </div>
+                                {nftdata.name}
+                            </p>
                             <div
                                 className={
-                                    NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right
+                                    NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute
                                 }
                             >
-                                <p
+                                <div
                                     className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
+                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left
                                     }
                                 >
-                                    {nftdata.last_price &&
-                                    nftdata.last_price != 0
-                                        ? utils.formatEther(
-                                              String(nftdata.last_price),
-                                          ) + ' ERB'
-                                        : 'No Bid'}
-                                    {/* ($ {nftdata.last_price ? utils.formatEther(nftdata.last_price) : 0}) */}
-                                </p>
-                                <p
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Price
+                                    </p>
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Collection Name
+                                    </p>
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Author
+                                    </p>
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Owner
+                                    </p>
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Minting Marketplace
+                                    </p>
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        Royalties
+                                    </p>
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
+                                        }
+                                    >
+                                        NFT Properties
+                                    </p>
+                                </div>
+                                <div
                                     className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
+                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right
                                     }
                                 >
-                                    {nftdata.collectionName || '-'}
-                                </p>
-                                <Link
-                                    to={{
-                                        pathname: `/AccountDetail/${nftdata.creator}`,
-                                        state: nftdata.creator,
-                                    }}
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                    style={{ color: '#7AA4FF' }}
-                                >
-                                    {nftdata.creator || '-'}
-                                </Link>
-                                <Link
-                                    to={{
-                                        pathname: `/AccountDetail/${nftdata.owner}`,
-                                        state: nftdata.owner,
-                                    }}
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                    style={{ color: '#7AA4FF' }}
-                                >
-                                    {nftdata.owner || '-'}
-                                </Link>
-                                {nftdata.exchanger_addr ? (
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
+                                        }
+                                    >
+                                        {nftdata.last_price &&
+                                        nftdata.last_price != 0
+                                            ? utils.formatEther(
+                                                  String(nftdata.last_price),
+                                              ) + ' ERB'
+                                            : 'No Bid'}
+                                        {/* ($ {nftdata.last_price ? utils.formatEther(nftdata.last_price) : 0}) */}
+                                    </p>
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
+                                        }
+                                    >
+                                        {nftdata.collectionName || '-'}
+                                    </p>
                                     <Link
                                         to={{
-                                            pathname:
-                                                '/Exchange/ExchangeDetails',
-                                            state: {
-                                                exchangeid:
-                                                    nftdata.exchanger_addr,
-                                            },
+                                            pathname: `/AccountDetail/${nftdata.creator}`,
+                                            state: nftdata.creator,
                                         }}
                                         className={
                                             NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
                                         style={{ color: '#7AA4FF' }}
-                                        id="soloimg"
                                     >
-                                        {nftdata.exchanger_addr} Marketplace
-                                        <Tooltip
-                                            title="Exclusive"
-                                            color="#3F4357"
-                                        >
-                                            <img
-                                                className={
-                                                    NFTDetails_ls.NFTDetailsBox_soloimg
-                                                }
-                                                src={require('@/assets/images/NFTDetails/1.png')}
-                                            />
-                                        </Tooltip>
+                                        {nftdata.creator || '-'}
                                     </Link>
-                                ) : (
-                                    <span
+                                    <Link
+                                        to={{
+                                            pathname: `/AccountDetail/${nftdata.owner}`,
+                                            state: nftdata.owner,
+                                        }}
                                         className={
                                             NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
-                                        id="soloimg"
+                                        style={{ color: '#7AA4FF' }}
                                     >
-                                        -
-                                    </span>
-                                )}
+                                        {nftdata.owner || '-'}
+                                    </Link>
+                                    {nftdata.exchanger_addr ? (
+                                        <Link
+                                            to={{
+                                                pathname:
+                                                    '/Exchange/ExchangeDetails',
+                                                state: {
+                                                    exchangeid:
+                                                        nftdata.exchanger_addr,
+                                                },
+                                            }}
+                                            className={
+                                                NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
+                                            }
+                                            style={{ color: '#7AA4FF' }}
+                                            id="soloimg"
+                                        >
+                                            {nftdata.exchanger_addr} Marketplace
+                                            <Tooltip
+                                                title="Exclusive"
+                                                color="#3F4357"
+                                            >
+                                                <img
+                                                    className={
+                                                        NFTDetails_ls.NFTDetailsBox_soloimg
+                                                    }
+                                                    src={require('@/assets/images/NFTDetails/1.png')}
+                                                />
+                                            </Tooltip>
+                                        </Link>
+                                    ) : (
+                                        <span
+                                            className={
+                                                NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
+                                            }
+                                            id="soloimg"
+                                        >
+                                            -
+                                        </span>
+                                    )}
 
-                                <p
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                >
-                                    {nftdata.royalty_ratio / 100}%
-                                </p>
-                                <div
-                                    className={
-                                        NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
-                                    }
-                                >
-                                    {nftattribute(nftdata.attributes)}
+                                    <p
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
+                                        }
+                                    >
+                                        {nftdata.royalty_ratio / 100}%
+                                    </p>
+                                    <div
+                                        className={
+                                            NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
+                                        }
+                                    >
+                                        {nftattribute(nftdata.attributes)}
+                                    </div>
                                 </div>
                             </div>
                         </div>

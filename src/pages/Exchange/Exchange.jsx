@@ -492,9 +492,9 @@ export default function Exchange() {
                                 Total Exchange Pledge Amount
                             </p>
                         </div>
-                        <img
+                        {/* <img
                             src={require('../../assets/images/Exchange/Exchange1.png')}
-                        />
+                        /> */}
                     </div>
                     <div className={Exchange_ls.ExchangeBox_headerTitle_d}>
                         <div

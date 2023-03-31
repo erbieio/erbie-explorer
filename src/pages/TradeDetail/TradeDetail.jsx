@@ -10,6 +10,7 @@ import {
     Button,
     message,
 } from 'antd';
+import { utils } from 'ethers';
 const { Option } = Select;
 const { Column, ColumnGroup } = Table;
 import zhCN from 'antd/es/locale/zh_CN';
@@ -21,6 +22,7 @@ import {
     transactionDetail,
     transaction,
     recycle_tx,
+    nfttx,
 } from '../../api/request_data/Trade_request';
 import copy from 'copy-to-clipboard';
 import { history } from '../../.umi/core/history';
@@ -98,6 +100,7 @@ class TradeDetail extends React.Component {
             Trastate: '',
             typeGroup: 'log',
             inputData: [],
+            nfttxdata: {},
         };
     }
     componentWillReceiveProps(nextProps) {
@@ -191,7 +194,15 @@ class TradeDetail extends React.Component {
             this.onChangeinput = (e) => {
                 this.setState({ typeGroup: e.target.value });
             };
-
+            // (async () => {
+            //     const res = await nfttx(transactionres.hash);
+            //     console.log(res);
+            //     if (res) {
+            //         this.setState({
+            //             nfttxdata: res,
+            //         });
+            //     }
+            // })();
             // this.setState( {
             //     Trastate: window.sessionStorage.getItem("Trastate")
             // })
@@ -215,6 +226,16 @@ class TradeDetail extends React.Component {
                 }
                 const transactionres = await transaction(this.state.Trastate);
                 console.log(transactionres);
+                if (transactionres) {
+                    console.log(transactionres);
+                    const res = await nfttx(transactionres.hash);
+                    console.log(res);
+                    if (res) {
+                        this.setState({
+                            nfttxdata: res,
+                        });
+                    }
+                }
                 let state = JSON.stringify(transactionres);
                 if (state === 'null') {
                     return this.comingsoon404();
@@ -281,7 +302,6 @@ class TradeDetail extends React.Component {
                 <div className={TradeDetail_ls.TradeDetailBox}>
                     <div className={TradeDetail_ls.titleAndSearch}>
                         <h2>Transaction Details</h2>
-                        <Search></Search>
                     </div>
                     <div className={TradeDetail_ls.TradeDetailBoxTop}>
                         <div className={TradeDetail_ls.hash}>
@@ -341,15 +361,6 @@ class TradeDetail extends React.Component {
                                 </span>
                             </div>
                             <div>
-                                <p>TXN Fee</p>{' '}
-                                <span>
-                                    {(this.state.detailData.gasPrice *
-                                        this.state.detailData.gasUsed) /
-                                        1000000000000000000}{' '}
-                                    ERB
-                                </span>
-                            </div>
-                            <div>
                                 <p>TXN Hash</p>
                                 <Tooltip
                                     placement="top"
@@ -381,16 +392,8 @@ class TradeDetail extends React.Component {
                                     {batchTime(this.state.detailData.timestamp)}
                                 </span>
                             </div>
-                            <div>
-                                <p>Volume</p>{' '}
-                                <span>
-                                    {this.state.detailData.value /
-                                        1000000000000000000}{' '}
-                                    ERB
-                                </span>
-                            </div>
                             <div className={TradeDetail_ls.common}>
-                                <p>Sender</p>
+                                <p>From</p>
                                 <Tooltip
                                     placement="top"
                                     title={this.state.detailData.from}
@@ -430,15 +433,6 @@ class TradeDetail extends React.Component {
                                             1000000000,
                                     )}{' '}
                                     Gwei
-                                </span>
-                            </div>
-                            <div>
-                                <p>Gas Used</p>
-                                <span>
-                                    {Number(
-                                        this.state.detailData.gasUsed,
-                                    ).toLocaleString()}{' '}
-                                    gas
                                 </span>
                             </div>
                             <div className={TradeDetail_ls.common}>
@@ -481,8 +475,90 @@ class TradeDetail extends React.Component {
                                 )}
                             </div>
                             <div>
-                                <p>Txn Type</p>
+                                <p>TXN Type</p>
                                 <span>{this.state.transType.name} </span>
+                            </div>
+                            <div>
+                                <p>Marketplace commission profits</p>
+                                <span>
+                                    {this.state.nfttxdata.fee
+                                        ? Number(
+                                              utils.formatEther(
+                                                  this.state.nfttxdata.fee,
+                                              ),
+                                          ).toFixed(2)
+                                        : 0.0}{' '}
+                                    ERB
+                                </span>
+                            </div>
+                            <div>
+                                <p>TXN Fee</p>{' '}
+                                <span>
+                                    {(this.state.detailData.gasPrice *
+                                        this.state.detailData.gasUsed) /
+                                        1000000000000000000}{' '}
+                                    ERB
+                                </span>
+                            </div>
+                            <div>
+                                <p>Seller profits</p>
+                                <span>
+                                    {this.state.nfttxdata.royalty &&
+                                    this.state.nfttxdata.fee &&
+                                    this.state.nfttxdata.price
+                                        ? (
+                                              Number(
+                                                  utils.formatEther(
+                                                      this.state.nfttxdata
+                                                          .price,
+                                                  ),
+                                              ) -
+                                              Number(
+                                                  utils.formatEther(
+                                                      this.state.nfttxdata.fee,
+                                                  ),
+                                              ) -
+                                              Number(
+                                                  utils.formatEther(
+                                                      this.state.nfttxdata
+                                                          .royalty,
+                                                  ),
+                                              )
+                                          ).toFixed(2)
+                                        : 0.0}{' '}
+                                    ERB
+                                </span>
+                            </div>
+                            <div>
+                                <p>Volume</p>{' '}
+                                <span>
+                                    {this.state.detailData.value /
+                                        1000000000000000000}{' '}
+                                    ERB
+                                </span>
+                            </div>
+                            <div>
+                                <p>Creator royalty profits</p>
+                                <span>
+                                    {this.state.nfttxdata.royalty
+                                        ? Number(
+                                              utils.formatEther(
+                                                  this.state.nfttxdata.royalty,
+                                              ),
+                                          ).toFixed(2)
+                                        : 0.0}{' '}
+                                    ERB
+                                </span>
+                            </div>
+
+                            <div>
+                                <p>Gas Used</p>
+                                <span>
+                                    {Number(
+                                        this.state.detailData.gasUsed,
+                                    ).toLocaleString()}{' '}
+                                    gas
+                                </span>
                             </div>
 
                             {this.state.transType.type === 6 ? (
@@ -491,7 +567,7 @@ class TradeDetail extends React.Component {
                                     <span>
                                         {Number(
                                             this.state.newDetailData.price /
-                                                1000000000000000000 || 0,
+                                                1000000000000000000 || 0.0,
                                         ).toLocaleString()}{' '}
                                         ERB
                                     </span>
