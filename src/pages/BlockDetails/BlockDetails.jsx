@@ -388,7 +388,7 @@ export default function BlockDetails(props) {
                             style={{
                                 display: 'inline',
                                 borderRight: '1px solid #ffffff',
-                                padding: '0 5px 0 5px',
+                                padding: '0 10px',
                             }}
                         >
                             {item.address
@@ -763,7 +763,7 @@ export default function BlockDetails(props) {
                                             className={
                                                 BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data_box_data
                                             }
-                                            style={{ width: '380px' }}
+                                            style={{ width: '400px' }}
                                         >
                                             {blockmakeraddress(
                                                 blockrewardpersondata,

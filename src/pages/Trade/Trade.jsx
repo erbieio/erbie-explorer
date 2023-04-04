@@ -312,6 +312,7 @@ class Trade extends React.Component {
         (async () => {
             const res = await totals();
             if (res) {
+                console.log(res);
                 this.setState({
                     totalAll: res,
                     totalTransaction: Number(
@@ -319,7 +320,7 @@ class Trade extends React.Component {
                     ).toLocaleString(),
                     totalAmount: Number(res.totalAmount / 1000000000000000000),
                     proportion: (res.total24HTx / res.totalTransaction).toFixed(
-                        1,
+                        4,
                     ),
                     chartData: [
                         {
@@ -474,26 +475,6 @@ class Trade extends React.Component {
                                     fields={'交易量：'}
                                     visible={true}
                                     showContent={true}
-                                    itemTpl={
-                                        '<li data-index={index} >' +
-                                        '<span style="background:rgba(64, 69, 77, 1);  min-width:140px;height:21px;text-align: center; line-height: 21px;font-size:6px;  position:absolute;top:0;left:0"> Trading volume：{value} </span>' +
-                                        '</li>'
-                                    }
-                                    domStyles={{
-                                        'g2-tooltip': {
-                                            background: 'none',
-                                            color: '#eee',
-                                            boxShadow: 'none',
-                                        },
-                                        'g2-tooltip-title': {},
-                                        'g2-tooltip-list': {},
-                                        'g2-tooltip-list-item': {},
-                                        'g2-tooltip-marker': {
-                                            background: 'rgba(254, 79, 167, 1)',
-                                        },
-                                        'g2-tooltip-value': {},
-                                        'g2-tooltip-name': {},
-                                    }}
                                 ></AntdTooltip>
                                 <Geom
                                     tooltip={[

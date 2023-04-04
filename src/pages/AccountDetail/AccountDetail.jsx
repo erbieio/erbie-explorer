@@ -1063,7 +1063,7 @@ class AccountDetail extends React.Component {
                         for (let i = 0; i < res.epochs.length; i++) {
                             res.epochs[i].key = i;
                         }
-                        // console.log(res.epochs);
+                        console.log('===' + res.epochs);
                         this.setState({
                             tableData: res.epochs,
                             tableTotal: res.total,
@@ -1253,6 +1253,7 @@ class AccountDetail extends React.Component {
             };
             //BLOCK LIST 表格组件
             this.tableblocklist = (data) => {
+                console.log(data);
                 if (data) {
                     return data.map((item, index) => {
                         return (
@@ -2680,7 +2681,20 @@ class AccountDetail extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        {this.tableblocklist(this.state.tableData)}
+                        {this.state.tableData ? (
+                            this.state.tableData.length != 0 ? (
+                                this.tableblocklist(this.state.tableData)
+                            ) : (
+                                <div className={AccountDetail_ls.nodata}>
+                                    No Data
+                                </div>
+                            )
+                        ) : (
+                            <div className={AccountDetail_ls.nodata}>
+                                No Data
+                            </div>
+                        )}
+                        {}
                         <div
                             className={
                                 AccountDetail_ls.BlockChainBox_Pagination
