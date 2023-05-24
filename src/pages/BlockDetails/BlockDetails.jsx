@@ -651,7 +651,7 @@ export default function BlockDetails(props) {
                                             }
                                             style={{ cursor: 'auto' }}
                                         >
-                                            Marketplace
+                                            Staker
                                         </div>
                                         <div
                                             className={

@@ -245,10 +245,10 @@ export default function NFTDetailsApp(props) {
     return (
         <>
             <div className={NFTDetailsApp_ls.NFTDetailsBox}>
-                <div className={NFTDetailsApp_ls.NFTDetailsBox_title}>
-                    NFT Details
-                </div>
                 <div className={NFTDetailsApp_ls.NFTDetailsBox_titleData}>
+                    <div className={NFTDetailsApp_ls.NFTDetailsBox_title}>
+                        NFT Details
+                    </div>
                     <div
                         className={
                             NFTDetailsApp_ls.NFTDetailsBox_titleData_imgBox

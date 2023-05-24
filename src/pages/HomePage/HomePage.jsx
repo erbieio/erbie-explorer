@@ -428,7 +428,7 @@ export default function HomePage() {
                                 item.snft.slice(24, 42)}
                         </div>
                         <Tooltip
-                            title="This is the address of this S-NFT.The No.39 number of the address shows the stage number of the S-NFT fragment.The  No.40 number of the address shows the collection number of the S-NFT fragment.The No.41 number of the address shows the S-NFT number of  the S-NFT fragment.The NO.42 number of the address shows the fragment number of the S-NFT fragment."
+                            title="This is the address of this SNFT.The No.39 number of the address shows the stage number of the SNFT synthesis.The  No.40 number of the address shows the collection number of the SNFT synthesis.The No.41 number of the address shows the SNFT number of  the SNFT synthesis.The NO.42 number of the address shows the synthesis number of the SNFT synthesis."
                             color="#00000040"
                         >
                             <img
@@ -811,7 +811,7 @@ export default function HomePage() {
                                     : 0}
                             </p>
                             <p className={HomePage_ls.titlebox_databox_d_name}>
-                                Total staking
+                                Total Staking
                             </p>
                         </div>
                         <div className={HomePage_ls.titlebox_databox_d}>
@@ -827,7 +827,7 @@ export default function HomePage() {
                                 {parseInt(totaldata.rewardSNFTCount) || '0'}
                             </p>
                             <p className={HomePage_ls.titlebox_databox_d_name}>
-                                Total S-NFT Rewards
+                                Total SNFT Rewards
                             </p>
                         </div>
                         <div className={HomePage_ls.titlebox_databox_d2}>
@@ -896,7 +896,7 @@ export default function HomePage() {
                 <div className={HomePage_ls.MarketplacesBox}>
                     <div className={HomePage_ls.MarketplacesBox_center}>
                         <p className={HomePage_ls.MarketplacesBox_center_title}>
-                            MARKETPLACE INFORMATION
+                            STAKER INFORMATION
                         </p>
                         <div className={HomePage_ls.MarketplacesBox_databox}>
                             <div
@@ -909,7 +909,7 @@ export default function HomePage() {
                                         HomePage_ls.MarketplacesBox_databox_left_name
                                     }
                                 >
-                                    Number of Marketplaces
+                                    Staker Number
                                 </p>
                                 <p
                                     className={
@@ -936,7 +936,7 @@ export default function HomePage() {
                                     >
                                         <div
                                             className={
-                                                HomePage_ls.MarketplacesBox_databox_rightd1
+                                                HomePage_ls.MarketplacesBox_databox_rightd4
                                             }
                                         >
                                             <p
@@ -944,15 +944,22 @@ export default function HomePage() {
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_name
                                                 }
                                             >
-                                                Transaction Number
+                                                Total Staking ERBs
                                             </p>
                                             <p
                                                 className={
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_data
                                                 }
                                             >
-                                                {totaldata.totalExchangerTx ||
-                                                    0}
+                                                {totaldata.totalExchangerPledge
+                                                    ? Number(
+                                                          utils.formatEther(
+                                                              String(
+                                                                  totaldata.totalExchangerPledge,
+                                                              ),
+                                                          ),
+                                                      ).toFixed(2)
+                                                    : 0}
                                             </p>
                                         </div>
                                     </div>
@@ -977,15 +984,46 @@ export default function HomePage() {
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_name
                                                 }
                                             >
-                                                NFT Collection Number
+                                                Total SNFT Rewards
                                             </p>
                                             <p
                                                 className={
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_data
                                                 }
                                             >
-                                                {totaldata.totalNFTCollection ||
-                                                    0}
+                                                {totaldata.rewardSNFTCount || 0}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    className={
+                                        HomePage_ls.MarketplacesBox_databox_right_cbox
+                                    }
+                                >
+                                    <div
+                                        className={
+                                            HomePage_ls.MarketplacesBox_databox_right_cboxblock
+                                        }
+                                    >
+                                        <div
+                                            className={
+                                                HomePage_ls.MarketplacesBox_databox_rightd1
+                                            }
+                                        >
+                                            <p
+                                                className={
+                                                    HomePage_ls.MarketplacesBox_databox_rightd1_name
+                                                }
+                                            >
+                                                Total SNFT Transactions
+                                            </p>
+                                            <p
+                                                className={
+                                                    HomePage_ls.MarketplacesBox_databox_rightd1_data
+                                                }
+                                            >
+                                                {totaldata.totalSNFTTx || 0}
                                             </p>
                                         </div>
                                     </div>
@@ -1010,54 +1048,14 @@ export default function HomePage() {
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_name
                                                 }
                                             >
-                                                NFT Number
+                                                Total SNFT Conversions
                                             </p>
                                             <p
                                                 className={
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_data
                                                 }
                                             >
-                                                {totaldata.totalNFT || 0}
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className={
-                                        HomePage_ls.MarketplacesBox_databox_right_cbox
-                                    }
-                                >
-                                    <div
-                                        className={
-                                            HomePage_ls.MarketplacesBox_databox_right_cboxblock
-                                        }
-                                    >
-                                        <div
-                                            className={
-                                                HomePage_ls.MarketplacesBox_databox_rightd4
-                                            }
-                                        >
-                                            <p
-                                                className={
-                                                    HomePage_ls.MarketplacesBox_databox_rightd1_name
-                                                }
-                                            >
-                                                Pledge Amount
-                                            </p>
-                                            <p
-                                                className={
-                                                    HomePage_ls.MarketplacesBox_databox_rightd1_data
-                                                }
-                                            >
-                                                {totaldata.totalExchangerPledge
-                                                    ? Number(
-                                                          utils.formatEther(
-                                                              String(
-                                                                  totaldata.totalExchangerPledge,
-                                                              ),
-                                                          ),
-                                                      ).toFixed(2)
-                                                    : 0}
+                                                {totaldata.totalRecycle || 0}
                                             </p>
                                         </div>
                                     </div>
@@ -1169,7 +1167,7 @@ export default function HomePage() {
                                 HomePage_ls.BlockINFORMATIONbox_right_name
                             }
                         >
-                            CURRENT S-NFT TRANSACTION INFORMATION
+                            CURRENT SNFT TRANSACTION INFORMATION
                         </p>
                         <div
                             className={HomePage_ls.BlockINFORMATIONbox_right_d}
@@ -1210,7 +1208,7 @@ export default function HomePage() {
                                     HomePage_ls.BlockINFORMATIONbox_right_title
                                 }
                             >
-                                S-NFT Weight
+                                SNFT Weight
                             </p>
                             <p
                                 className={
@@ -1238,7 +1236,7 @@ export default function HomePage() {
                                     HomePage_ls.BlockINFORMATIONbox_right_title
                                 }
                             >
-                                S-NFT Creator
+                                SNFT Creator
                             </p>
                             {epochdata.creator ==
                                 '0x0000000000000000000000000000000000000000' ||
@@ -1249,7 +1247,7 @@ export default function HomePage() {
                                     }
                                     style={{ color: '#ffffff' }}
                                 >
-                                    Official S-NFT
+                                    Official SNFT
                                 </p>
                             ) : (
                                 <Link

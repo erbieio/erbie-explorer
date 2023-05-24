@@ -36,24 +36,24 @@ export default function Exchange() {
     //分页排序order参数
     const [orderdata, setOrderdata] = useState('');
     const columns = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
-            // render: (text, data) => <Link to={{ pathname: '/Exchange/ExchangeDetails', state: { exchangeid: data.address } }} style={{ color: '#7AA4FF' }}> {data.block_number != 0 ? hexCharCodeToStr(text) : text}</Link>,
-            render: (text, data) => (
-                <Link
-                    to={{
-                        pathname: '/ExchangeApp/ExchangeDetailsApp',
-                        state: { exchangeid: data.address },
-                    }}
-                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
-                >
-                    {text}
-                </Link>
-            ),
-            // ellipsis: true,
-        },
+        // {
+        //     title: 'Name',
+        //     dataIndex: 'name',
+        //     key: 'name',
+        //     // render: (text, data) => <Link to={{ pathname: '/Exchange/ExchangeDetails', state: { exchangeid: data.address } }} style={{ color: '#7AA4FF' }}> {data.block_number != 0 ? hexCharCodeToStr(text) : text}</Link>,
+        //     render: (text, data) => (
+        //         <Link
+        //             to={{
+        //                 pathname: '/ExchangeApp/ExchangeDetailsApp',
+        //                 state: { exchangeid: data.address },
+        //             }}
+        //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
+        //         >
+        //             {text}
+        //         </Link>
+        //     ),
+        //     // ellipsis: true,
+        // },
         {
             title: 'Block Height',
             dataIndex: 'block_number',
@@ -127,165 +127,188 @@ export default function Exchange() {
             width: '140px',
         },
         {
-            title: () => (
-                <div className={Exchange_ls.tablexbox}>
-                    Collections
-                    {totalcollectionscolor == 0 ? (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalCollections.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalCollections.bind(this, 2)}
-                            />
-                        </div>
-                    ) : totalcollectionscolor == 1 ? (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalCollections.bind(this, 1)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalCollections.bind(this, 2)}
-                            />
-                        </div>
-                    ) : (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalCollections.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalCollections.bind(this, 2)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                        </div>
-                    )}
-                </div>
-            ),
-            key: 'collectionCount',
-            dataIndex: 'collectionCount',
-            width: '140px',
-            // ellipsis: true,
+            title: 'SNFT Income',
+            dataIndex: 'reward',
+            key: 'reward',
+            render: (text) => <span>{utils.formatEther(String(text))}</span>,
         },
         {
-            title: () => (
-                <div className={Exchange_ls.tablexbox}>
-                    NFTs
-                    {totalnftscolor == 0 ? (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalNFTs.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalNFTs.bind(this, 2)}
-                            />
-                        </div>
-                    ) : totalnftscolor == 1 ? (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalNFTs.bind(this, 1)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalNFTs.bind(this, 2)}
-                            />
-                        </div>
-                    ) : (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalNFTs.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalNFTs.bind(this, 2)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                        </div>
-                    )}
-                </div>
-            ),
-            key: 'nft_count',
-            dataIndex: 'nft_count',
-            width: '100px',
+            title: 'Stake Time',
+            dataIndex: 'timestamp',
+            key: 'timestamp',
+
+            render: (text, data) =>
+                text != 0 ? (
+                    <span>
+                        {moment(parseInt(text) * 1000).format(
+                            'YYYY-MM-DD HH:mm:ss',
+                        )}
+                    </span>
+                ) : (
+                    '-'
+                ),
+            ellipsis: true,
         },
-        {
-            title: () => (
-                <div className={Exchange_ls.tablexbox}>
-                    Fee Rate
-                    {feeratecolor == 0 ? (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
-                            <CaretDownOutlined
-                                onClick={FeeRate.bind(this, 2)}
-                            />
-                        </div>
-                    ) : feeratecolor == 1 ? (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={FeeRate.bind(this, 1)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                            <CaretDownOutlined
-                                onClick={FeeRate.bind(this, 2)}
-                            />
-                        </div>
-                    ) : (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
-                            <CaretDownOutlined
-                                onClick={FeeRate.bind(this, 2)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                        </div>
-                    )}
-                </div>
-            ),
-            key: 'fee_ratio',
-            dataIndex: 'fee_ratio',
-            render: (text) => <span>{text / 100} %</span>,
-            width: '130px',
-        },
-        {
-            title: () => (
-                <div className={Exchange_ls.tablexbox}>
-                    Transaction Value
-                    {transactionvaluecolor == 0 ? (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TransactionValue.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TransactionValue.bind(this, 2)}
-                            />
-                        </div>
-                    ) : transactionvaluecolor == 1 ? (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TransactionValue.bind(this, 1)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                            <CaretDownOutlined
-                                onClick={TransactionValue.bind(this, 2)}
-                            />
-                        </div>
-                    ) : (
-                        <div className={Exchange_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TransactionValue.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TransactionValue.bind(this, 2)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                        </div>
-                    )}
-                </div>
-            ),
-            key: 'tx_amount',
-            dataIndex: 'tx_amount',
-            render: (text) => <span>{utils.formatEther(text || 0)}</span>,
-            width: '185px',
-            // ellipsis: true,
-        },
+        // {
+        //     title: () => (
+        //         <div className={Exchange_ls.tablexbox}>
+        //             Collections
+        //             {totalcollectionscolor == 0 ? (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TotalCollections.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TotalCollections.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : totalcollectionscolor == 1 ? (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TotalCollections.bind(this, 1)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TotalCollections.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TotalCollections.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TotalCollections.bind(this, 2)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                 </div>
+        //             )}
+        //         </div>
+        //     ),
+        //     key: 'collectionCount',
+        //     dataIndex: 'collectionCount',
+        //     width: '140px',
+        //     // ellipsis: true,
+        // },
+        // {
+        //     title: () => (
+        //         <div className={Exchange_ls.tablexbox}>
+        //             NFTs
+        //             {totalnftscolor == 0 ? (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TotalNFTs.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TotalNFTs.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : totalnftscolor == 1 ? (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TotalNFTs.bind(this, 1)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TotalNFTs.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TotalNFTs.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TotalNFTs.bind(this, 2)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                 </div>
+        //             )}
+        //         </div>
+        //     ),
+        //     key: 'nft_count',
+        //     dataIndex: 'nft_count',
+        //     width: '100px',
+        // },
+        // {
+        //     title: () => (
+        //         <div className={Exchange_ls.tablexbox}>
+        //             Fee Rate
+        //             {feeratecolor == 0 ? (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
+        //                     <CaretDownOutlined
+        //                         onClick={FeeRate.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : feeratecolor == 1 ? (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={FeeRate.bind(this, 1)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={FeeRate.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
+        //                     <CaretDownOutlined
+        //                         onClick={FeeRate.bind(this, 2)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                 </div>
+        //             )}
+        //         </div>
+        //     ),
+        //     key: 'fee_ratio',
+        //     dataIndex: 'fee_ratio',
+        //     render: (text) => <span>{text / 100} %</span>,
+        //     width: '130px',
+        // },
+        // {
+        //     title: () => (
+        //         <div className={Exchange_ls.tablexbox}>
+        //             Transaction Value
+        //             {transactionvaluecolor == 0 ? (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TransactionValue.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TransactionValue.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : transactionvaluecolor == 1 ? (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TransactionValue.bind(this, 1)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TransactionValue.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : (
+        //                 <div className={Exchange_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TransactionValue.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TransactionValue.bind(this, 2)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                 </div>
+        //             )}
+        //         </div>
+        //     ),
+        //     key: 'tx_amount',
+        //     dataIndex: 'tx_amount',
+        //     render: (text) => <span>{utils.formatEther(text || 0)}</span>,
+        //     width: '185px',
+        //     // ellipsis: true,
+        // },
     ];
     const onChange = (data) => {
         setPagenumber(data);
@@ -351,7 +374,7 @@ export default function Exchange() {
                 setOrderdata('');
             } else {
                 setStakevaluecolor(1);
-                setOrderdata('length(amount) asc, amount asc');
+                setOrderdata('amount asc');
             }
         } else {
             if (stakevaluecolor == 2) {
@@ -359,7 +382,7 @@ export default function Exchange() {
                 setOrderdata('');
             } else {
                 setStakevaluecolor(2);
-                setOrderdata('length(amount) desc, amount desc');
+                setOrderdata('amount desc');
             }
         }
     }
@@ -447,7 +470,7 @@ export default function Exchange() {
                 setOrderdata('');
             } else {
                 setTransactionvaluecolor(1);
-                setOrderdata('length(tx_amount) asc, tx_amount asc');
+                setOrderdata('tx_amount asc');
             }
         } else {
             if (transactionvaluecolor == 2) {
@@ -455,7 +478,7 @@ export default function Exchange() {
                 setOrderdata('');
             } else {
                 setTransactionvaluecolor(2);
-                setOrderdata('length(tx_amount) desc, tx_amount desc');
+                setOrderdata('tx_amount desc');
             }
         }
     }
@@ -464,7 +487,7 @@ export default function Exchange() {
             <div className={Exchange_ls.ExchangeBox}>
                 {/* 头部三块数据 */}
                 <div className={Exchange_ls.ExchangeBox_headerTitle}>
-                    <div className={Exchange_ls.ExchangeBox_headerTitle_d}>
+                    {/* <div className={Exchange_ls.ExchangeBox_headerTitle_d}>
                         <div
                             className={
                                 Exchange_ls.ExchangeBox_headerTitle_d_left
@@ -489,13 +512,13 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_name
                                 }
                             >
-                                Total Exchange Pledge Amount
+                                Total Staker Pledge Amount
                             </p>
                         </div>
                         <img
-                            src={require('../../assets/images/Exchange/Exchange1.png')}
+                            src={require('../../assets/images/ExchangeApp/1.png')}
                         />
-                    </div>
+                    </div> */}
                     <div className={Exchange_ls.ExchangeBox_headerTitle_d}>
                         <div
                             className={
@@ -507,18 +530,18 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_data
                                 }
                             >
-                                {totaldata.totalExchangerTx || 0}
+                                {totaldata.totalExchanger || 0}
                             </p>
                             <p
                                 className={
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_name
                                 }
                             >
-                                Total Transactions
+                                Staker Number
                             </p>
                         </div>
                         <img
-                            src={require('../../assets/images/Exchange/Exchange2.png')}
+                            src={require('../../assets/images/ExchangeApp/2.png')}
                         />
                     </div>
                     <div className={Exchange_ls.ExchangeBox_headerTitle_d}>
@@ -532,27 +555,24 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_data
                                 }
                             >
-                                {totaldata.total24HExchangerTx != undefined &&
-                                totaldata.totalExchangerTx != undefined &&
-                                totaldata.totalExchangerTx != 0
-                                    ? (
-                                          (totaldata.total24HExchangerTx /
-                                              totaldata.totalExchangerTx) *
-                                          100
-                                      ).toFixed(2) || 0
+                                {totaldata.totalExchangerPledge
+                                    ? utils.formatEther(
+                                          String(
+                                              totaldata.totalExchangerPledge,
+                                          ),
+                                      )
                                     : 0}
-                                %
                             </p>
                             <p
                                 className={
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_name
                                 }
                             >
-                                Transaction Volume Growth Rate
+                                Total Staking ERBs
                             </p>
                         </div>
                         <img
-                            src={require('../../assets/images/Exchange/Exchange3.png')}
+                            src={require('../../assets/images/ExchangeApp/3.png')}
                         />
                     </div>
                 </div>
@@ -562,7 +582,7 @@ export default function Exchange() {
                     id="ExchangeTableApp"
                 >
                     <p className={Exchange_ls.ExchangeBox_table_title}>
-                        MARKETPLACE
+                        STAKER INFORMATION
                     </p>
                     <Table
                         columns={columns}

@@ -541,7 +541,7 @@ export default function Validator() {
                 setOrderdata('');
             } else {
                 setStakevaluecolor(1);
-                setOrderdata('LENGTH(amount) ASC, amount ASC');
+                setOrderdata('amount ASC');
             }
         } else {
             if (stakevaluecolor == 2) {
@@ -549,7 +549,7 @@ export default function Validator() {
                 setOrderdata('');
             } else {
                 setStakevaluecolor(2);
-                setOrderdata('LENGTH(amount) DESC, amount DESC');
+                setOrderdata('amount DESC');
             }
         }
     }
@@ -566,7 +566,7 @@ export default function Validator() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(1);
-                setOrderdata('LENGTH(reward) ASC, reward ASC');
+                setOrderdata('reward ASC');
             }
         } else {
             if (totalcollectionscolor == 2) {
@@ -574,7 +574,7 @@ export default function Validator() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(2);
-                setOrderdata('LENGTH(reward) DESC, reward DESC');
+                setOrderdata('reward DESC');
             }
         }
     }

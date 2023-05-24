@@ -64,23 +64,23 @@ export default function SNFTDetails(props) {
             ),
             ellipsis: true,
         },
-        {
-            title: 'Transaction Marketplace',
-            dataIndex: 'exchanger_addr',
-            key: 'exchanger_addr',
-            ellipsis: true,
-            render: (text, data) => (
-                <Link
-                    to={{
-                        pathname: '/Exchange/ExchangeDetails',
-                        state: { exchangeid: text },
-                    }}
-                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
-                >
-                    {ellipsis(text)}
-                </Link>
-            ),
-        },
+        // {
+        //     title: 'Transaction Marketplace',
+        //     dataIndex: 'exchanger_addr',
+        //     key: 'exchanger_addr',
+        //     ellipsis: true,
+        //     render: (text, data) => (
+        //         <Link
+        //             to={{
+        //                 pathname: '/Exchange/ExchangeDetails',
+        //                 state: { exchangeid: text },
+        //             }}
+        //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
+        //         >
+        //             {ellipsis(text)}
+        //         </Link>
+        //     ),
+        // },
         {
             title: 'Sender',
             key: 'from',
@@ -226,7 +226,7 @@ export default function SNFTDetails(props) {
             <div className={SNFTDetails_ls.SNFTDetailsBox}>
                 <div className={SNFTDetails_ls.SNFTDetailsBox_titleData}>
                     <div className={SNFTDetails_ls.SNFTDetailsBox_title}>
-                        S-NFT Details
+                        SNFT Details
                     </div>
                     <div className={SNFTDetails_ls.SNFTDetailsBox_titleData2}>
                         <div
@@ -466,7 +466,7 @@ export default function SNFTDetails(props) {
                                                         }
                                                     >
                                                         <p>
-                                                            S-NFT Grades Are LO,
+                                                            SNFT Grades Are LO,
                                                             L1, L2, And L3 From
                                                             The Lowest To The
                                                             Highest. YouCan
@@ -479,44 +479,44 @@ export default function SNFTDetails(props) {
                                                             Below:
                                                         </p>
                                                         <p>
-                                                            16 Specifc S-NFT LO
+                                                            16 Specifc SNFT LO
                                                             Synthesizes A Unique
-                                                            S-NFT L1.
+                                                            SNFT L1.
                                                         </p>
                                                         <p>
-                                                            16 Specifc S-NFT L1
+                                                            16 Specifc SNFT L1
                                                             Synthesizes A Unique
-                                                            S-NFT L2.
+                                                            SNFT L2.
                                                         </p>
                                                         <p>
-                                                            16 Specifc S-NFT L2
+                                                            16 Specifc SNFT L2
                                                             Synthesizes A Unique
-                                                            S-NFT L3.{' '}
+                                                            SNFT L3.{' '}
                                                         </p>
                                                         <p>
                                                             The Blue Number
-                                                            Indicates The S-NFT
+                                                            Indicates The SNFT
                                                             LO Position Number
-                                                            In An S-NFT L1.
+                                                            In An SNFT L1.
                                                         </p>
                                                         <p>
                                                             The Green Number
                                                             Indicates The
                                                             Position Number Of
-                                                            S-NFT L1In An S-NFT
+                                                            SNFT L1In An SNFT
                                                             L2.
                                                         </p>
                                                         <p>
                                                             The Yellow Number
-                                                            Indicates The S-NFT
+                                                            Indicates The SNFT
                                                             L2 Position Number
-                                                            In An S-NFT L3.
+                                                            In An SNFT L3.
                                                         </p>
                                                         <p>
                                                             The Red Number
                                                             Refers To The
                                                             Position Number Of
-                                                            An S-NFT L3.
+                                                            An SNFT L3.
                                                         </p>
                                                     </div>
                                                 );

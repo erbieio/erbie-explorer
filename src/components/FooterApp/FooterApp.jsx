@@ -56,7 +56,7 @@ export default function FooterApp() {
     }
     //Telegram
     function Telegram() {
-        window.open('https://t.me/wormholes_chain');
+        window.open('https://t.me/wormholesofficial');
     }
     return (
         <>
@@ -132,7 +132,7 @@ export default function FooterApp() {
                         </Tooltip>
                     </div>
                     <div className={FooterApp_ls.FooterBox_textBox_right}>
-                        <ul className={FooterApp_ls.FooterBox_textBox_right_ul}>
+                        {/* <ul className={FooterApp_ls.FooterBox_textBox_right_ul}>
                             <li
                                 className={
                                     FooterApp_ls.FooterBox_textBox_right_ul_lititle
@@ -148,15 +148,8 @@ export default function FooterApp() {
                             >
                                 About Wormholes Blockchain
                             </li>
-                            <li
-                                onClick={WormholesOfficialWebsite}
-                                className={
-                                    FooterApp_ls.FooterBox_textBox_right_ul_li
-                                }
-                            >
-                                Wormholes Official Website
-                            </li>
-                        </ul>
+                            
+                        </ul> */}
                         {/* <ul className={FooterApp_ls.FooterBox_textBox_right_ul}>
                             <li
                                 className={
@@ -188,16 +181,16 @@ export default function FooterApp() {
                                     FooterApp_ls.FooterBox_textBox_right_ul_lititle
                                 }
                             >
-                                Resources
+                                About US
                             </li>
-                            <li
+                            {/* <li
                                 onClick={wiki}
                                 className={
                                     FooterApp_ls.FooterBox_textBox_right_ul_li
                                 }
                             >
                                 Wormholes Technology Wiki
-                            </li>
+                            </li> */}
                             {/* <li onClick={download} className={FooterApp_ls.FooterBox_textBox_right_ul_li}>
                             Wormholes Whitepaper
                             </li> */}
@@ -208,6 +201,14 @@ export default function FooterApp() {
                                 }
                             >
                                 Limino & Tutorial
+                            </li>
+                            <li
+                                onClick={WormholesOfficialWebsite}
+                                className={
+                                    FooterApp_ls.FooterBox_textBox_right_ul_li
+                                }
+                            >
+                                Wormholes Official Website
                             </li>
                         </ul>
                     </div>

@@ -16,16 +16,16 @@ export default function PrivacyNotice() {
                         how we collect and process your personal information,
                         how we define it, and how we will handle it. By using
                         any of our services, including but not limited to our
-                        One-Click NFT Marketplace, Wormholes Digital Wallet,
-                        Wormholes Blockchain Explorer, Wormholes Faucet or by
-                        purchasing Wormholes Blockchain's native ERB tokens
-                        (“Tokens”)(together “our Services”) or by accessing our
-                        Website www.wormholes.com, you accept and consent to the
-                        practices described in this notice. If you do not wish
-                        for your personal information to be used in the manner
-                        described within this Notice, you should not access our
-                        Services, Website or any subdomains or otherwise provide
-                        us with your personal information.
+                        Wormholes Digital Wallet, Wormholes Blockchain Explorer,
+                        Wormholes Faucet or by purchasing Wormholes Blockchain's
+                        native ERB tokens (“Tokens”)(together “our Services”) or
+                        by accessing our Website www.wormholes.com, you accept
+                        and consent to the practices described in this notice.
+                        If you do not wish for your personal information to be
+                        used in the manner described within this Notice, you
+                        should not access our Services, Website or any
+                        subdomains or otherwise provide us with your personal
+                        information.
                     </p>
                     <p className={PrivacyNotice_ls.text}>
                         The Company is the data controller of your personal

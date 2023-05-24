@@ -108,7 +108,17 @@ export default function BlockChain() {
             title: 'Gas Used',
             key: 'gasUsed',
             dataIndex: 'gasUsed',
-            render: (text, data) => (data.number != 0 ? <>{text}</> : '-'),
+            render: (text, data) =>
+                data.number != 0 ? (
+                    <>
+                        {text && data.gasLimit
+                            ? ((text / data.gasLimit) * 100).toFixed(2)
+                            : 0.0}{' '}
+                        %
+                    </>
+                ) : (
+                    '-'
+                ),
         },
         {
             title: 'Gas Limit',
@@ -223,7 +233,7 @@ export default function BlockChain() {
                                     BlockChain_ls.BlockChainBox_headerTitle_d_left_name
                                 }
                             >
-                                Total S-NFT Rewards
+                                Total SNFT Rewards
                             </p>
                         </div>
                         <img

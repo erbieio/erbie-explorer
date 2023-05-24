@@ -10,6 +10,7 @@ import {
     Button,
     message,
 } from 'antd';
+import { utils } from 'ethers';
 const { Option } = Select;
 const { Column, ColumnGroup } = Table;
 import zhCN from 'antd/es/locale/zh_CN';
@@ -21,6 +22,7 @@ import {
     transactionDetail,
     transaction,
     recycle_tx,
+    nfttx,
 } from '../../api/request_data/Trade_request';
 import copy from 'copy-to-clipboard';
 import { history } from '../../.umi/core/history';
@@ -70,7 +72,6 @@ function hexCharCodeToStr(hexCharCodeStr) {
         let obj = JSON.parse(StrTran.substring(10));
         dealType.forEach((item) => {
             obj.type === item.type ? (obj.name = item.name) : '';
-            console.log(item.name);
         });
 
         // obj.name = `Deal No. ${obj.type}`
@@ -99,6 +100,7 @@ class TradeDetail extends React.Component {
             Trastate: '',
             typeGroup: 'log',
             inputData: [],
+            nfttxdata: {},
         };
     }
     componentWillReceiveProps(nextProps) {
@@ -221,6 +223,16 @@ class TradeDetail extends React.Component {
                 }
                 const transactionres = await transaction(this.state.Trastate);
                 let state = JSON.stringify(transactionres);
+                if (transactionres) {
+                    console.log(transactionres);
+                    const res = await nfttx(transactionres.hash);
+                    console.log(res);
+                    if (res) {
+                        this.setState({
+                            nfttxdata: res,
+                        });
+                    }
+                }
                 console.log(state === 'null');
                 if (state === 'null') {
                     return this.comingsoon404();
@@ -285,10 +297,10 @@ class TradeDetail extends React.Component {
         return (
             <>
                 <div className={TradeDetail_ls.TradeDetailBox}>
-                    <div className={TradeDetail_ls.titleAndSearch}>
-                        Transaction Details
-                    </div>
                     <div className={TradeDetail_ls.TradeDetailBoxTop}>
+                        <div className={TradeDetail_ls.titleAndSearch}>
+                            Transaction Details
+                        </div>
                         <div className={TradeDetail_ls.hash}>
                             {this.state.detailData.hash}{' '}
                             {/* <AiOutlineCopy
@@ -382,7 +394,7 @@ class TradeDetail extends React.Component {
                             )}
                             {/* {this.state.transType.type === 6 ? ( */}
                             {/* <div> */}
-                            {/*<p>S-NFT Address</p>*/}
+                            {/*<p>SNFT Address</p>*/}
                             {/*<Link to={{ pathname: '/SNFT/SNFTDetails', state: { snftid: this.state.newDetailData.address,snftmata:this.state.detailData } }} style={{ color: '#7AA4FF' }}>*/}
                             {/*<span>{*/}
                             {/*    this.state.newDetailData.address ?*/}
@@ -490,27 +502,29 @@ class TradeDetail extends React.Component {
                                     placement="top"
                                     title={this.state.detailData.to}
                                 >
-                                    <span
-                                        style={{ paddingRight: 5 }}
-                                        onClick={this.handleRouter.bind(
-                                            this,
-                                            '/AccountDetailApp',
-                                            this.state.detailData.to,
-                                        )}
-                                    >
-                                        {this.state.detailData.to
-                                            ? this.state.detailData.to.slice(
-                                                  0,
-                                                  12,
-                                              ) +
-                                              '...' +
-                                              this.state.detailData.to.slice(
-                                                  -14,
-                                                  this.state.detailData.to
-                                                      .length,
-                                              )
-                                            : ''}
-                                    </span>
+                                    {this.state.detailData.to ? (
+                                        <span
+                                            style={{ paddingRight: 5 }}
+                                            onClick={this.handleRouter.bind(
+                                                this,
+                                                '/AccountDetailApp',
+                                                this.state.detailData.to,
+                                            )}
+                                        >
+                                            {this.state.detailData.to.slice(
+                                                0,
+                                                12,
+                                            ) +
+                                                '...' +
+                                                this.state.detailData.to.slice(
+                                                    -14,
+                                                    this.state.detailData.to
+                                                        .length,
+                                                )}
+                                        </span>
+                                    ) : (
+                                        '-'
+                                    )}
                                 </Tooltip>
                                 {this.state.detailData.to ? (
                                     <AiOutlineCopy
@@ -522,6 +536,65 @@ class TradeDetail extends React.Component {
                                 ) : (
                                     ''
                                 )}
+                            </div>
+                            {/* <div>
+                                <p style={{ width: '200px' }}>
+                                    Marketplace commission profits
+                                </p>
+                                <span>
+                                    {this.state.nfttxdata.fee
+                                        ? Number(
+                                              utils.formatEther(
+                                                  this.state.nfttxdata.fee,
+                                              ),
+                                          ).toFixed(2)
+                                        : 0.0}{' '}
+                                    ERB
+                                </span>
+                            </div> */}
+                            <div>
+                                <p style={{ width: '200px' }}>Seller profits</p>
+                                <span>
+                                    {this.state.nfttxdata.royalty &&
+                                    this.state.nfttxdata.fee &&
+                                    this.state.nfttxdata.price
+                                        ? (
+                                              Number(
+                                                  utils.formatEther(
+                                                      this.state.nfttxdata
+                                                          .price,
+                                                  ),
+                                              ) -
+                                              Number(
+                                                  utils.formatEther(
+                                                      this.state.nfttxdata.fee,
+                                                  ),
+                                              ) -
+                                              Number(
+                                                  utils.formatEther(
+                                                      this.state.nfttxdata
+                                                          .royalty,
+                                                  ),
+                                              )
+                                          ).toFixed(2)
+                                        : 0.0}{' '}
+                                    ERB
+                                </span>
+                            </div>
+                            <div>
+                                <p style={{ width: '200px' }}>
+                                    Creator royalty profits
+                                </p>
+                                <span>
+                                    {this.state.nfttxdata.royalty
+                                        ? Number(
+                                              utils.formatEther(
+                                                  this.state.nfttxdata.royalty,
+                                              ),
+                                          ).toFixed(2)
+                                        : 0.0}{' '}
+                                    ERB
+                                </span>
                             </div>
                         </div>
                     </div>

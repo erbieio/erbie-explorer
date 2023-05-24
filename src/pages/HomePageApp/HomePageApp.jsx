@@ -403,7 +403,7 @@ export default function HomePageApp() {
                                     item.snft.slice(24, 42)}
                             </div>
                             <Tooltip
-                                title="This is the address of this S-NFT.The No.39 number of the address shows the stage number of the S-NFT fragment.The  No.40 number of the address shows the collection number of the S-NFT fragment.The No.41 number of the address shows the S-NFT number of  the S-NFT fragment.The NO.42 number of the address shows the fragment number of the S-NFT fragment."
+                                title="This is the address of this SNFT.The No.39 number of the address shows the stage number of the SNFT synthesis.The  No.40 number of the address shows the collection number of the SNFT synthesis.The No.41 number of the address shows the SNFT number of  the SNFT synthesis.The NO.42 number of the address shows the synthesis number of the SNFT synthesis."
                                 color="#00000040"
                             >
                                 <img
@@ -436,7 +436,7 @@ export default function HomePageApp() {
                                 item.snft.slice(24, 42)}
                         </div>
                         <Tooltip
-                            title="This is the address of this S-NFT.The No.39 number of the address shows the stage number of the S-NFT fragment.The  No.40 number of the address shows the collection number of the S-NFT fragment.The No.41 number of the address shows the S-NFT number of  the S-NFT fragment.The NO.42 number of the address shows the fragment number of the S-NFT fragment."
+                            title="This is the address of this SNFT.The No.39 number of the address shows the stage number of the SNFT synthesis.The  No.40 number of the address shows the collection number of the SNFT synthesis.The No.41 number of the address shows the SNFT number of  the SNFT synthesis.The NO.42 number of the address shows the synthesis number of the SNFT synthesis."
                             color="#00000040"
                         >
                             <img
@@ -884,7 +884,7 @@ export default function HomePageApp() {
                                             HomePageApp_ls.titlebox_databox_d_name
                                         }
                                     >
-                                        Total staking
+                                        Total Staking
                                     </p>
                                 </div>
                                 <div
@@ -925,7 +925,7 @@ export default function HomePageApp() {
                                             HomePageApp_ls.titlebox_databox_d_name
                                         }
                                     >
-                                        Total S-NFT Rewards
+                                        Total SNFT Rewards
                                     </p>
                                 </div>
                                 <div
@@ -1011,7 +1011,7 @@ export default function HomePageApp() {
                         HomePageApp_ls.HomePageAppbox_MARKETPLACEINFORMAT
                     }
                 >
-                    MARKETPLACE INFORMATION
+                    STAKER INFORMATION
                 </p>
                 <div className={HomePageApp_ls.HomePageAppbox_Mdatabox}>
                     <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d1}>
@@ -1020,7 +1020,7 @@ export default function HomePageApp() {
                                 HomePageApp_ls.MarketplacesBox_databox_left_name
                             }
                         >
-                            Number of Marketplaces
+                            Staker Number
                         </p>
                         <p
                             className={
@@ -1036,55 +1036,7 @@ export default function HomePageApp() {
                                 HomePageApp_ls.MarketplacesBox_databox_rightd1_name
                             }
                         >
-                            Transaction Number
-                        </p>
-                        <p
-                            className={
-                                HomePageApp_ls.MarketplacesBox_databox_rightd1_data
-                            }
-                        >
-                            {totaldata.totalExchangerTx || 0}
-                        </p>
-                    </div>
-                    <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d3}>
-                        <p
-                            className={
-                                HomePageApp_ls.MarketplacesBox_databox_rightd1_name
-                            }
-                        >
-                            NFT Collection Number
-                        </p>
-                        <p
-                            className={
-                                HomePageApp_ls.MarketplacesBox_databox_rightd1_data
-                            }
-                        >
-                            {totaldata.totalNFTCollection || 0}
-                        </p>
-                    </div>
-                    <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d4}>
-                        <p
-                            className={
-                                HomePageApp_ls.MarketplacesBox_databox_rightd1_name
-                            }
-                        >
-                            NFT Numbers
-                        </p>
-                        <p
-                            className={
-                                HomePageApp_ls.MarketplacesBox_databox_rightd1_data
-                            }
-                        >
-                            {totaldata.totalNFT || 0}
-                        </p>
-                    </div>
-                    <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d5}>
-                        <p
-                            className={
-                                HomePageApp_ls.MarketplacesBox_databox_rightd1_name
-                            }
-                        >
-                            Pledge Amount
+                            Total Staking ERBs
                         </p>
                         <p
                             className={
@@ -1100,6 +1052,54 @@ export default function HomePageApp() {
                                       ),
                                   ).toFixed(2)
                                 : 0}
+                        </p>
+                    </div>
+                    <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d3}>
+                        <p
+                            className={
+                                HomePageApp_ls.MarketplacesBox_databox_rightd1_name
+                            }
+                        >
+                            Total SNFT Rewards
+                        </p>
+                        <p
+                            className={
+                                HomePageApp_ls.MarketplacesBox_databox_rightd1_data
+                            }
+                        >
+                            {totaldata.rewardSNFTCount || 0}
+                        </p>
+                    </div>
+                    <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d4}>
+                        <p
+                            className={
+                                HomePageApp_ls.MarketplacesBox_databox_rightd1_name
+                            }
+                        >
+                            Total SNFT Transactions
+                        </p>
+                        <p
+                            className={
+                                HomePageApp_ls.MarketplacesBox_databox_rightd1_data
+                            }
+                        >
+                            {totaldata.totalSNFTTx || 0}
+                        </p>
+                    </div>
+                    <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d5}>
+                        <p
+                            className={
+                                HomePageApp_ls.MarketplacesBox_databox_rightd1_name
+                            }
+                        >
+                            Total SNFT Conversions
+                        </p>
+                        <p
+                            className={
+                                HomePageApp_ls.MarketplacesBox_databox_rightd1_data
+                            }
+                        >
+                            {totaldata.totalRecycle || 0}
                         </p>
                     </div>
                 </div>
@@ -1154,7 +1154,7 @@ export default function HomePageApp() {
                         HomePageApp_ls.HomePageAppbox_MARKETPLACEINFORMAT
                     }
                 >
-                    CURRENT S-NFT VOTE INFORMATION
+                    CURRENT SNFT VOTE INFORMATION
                 </p>
                 <div className={HomePageApp_ls.HomePageAppbox_nft}>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>
@@ -1173,7 +1173,7 @@ export default function HomePageApp() {
                             : '0/0/0'}
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>
-                        S-NFT Weight
+                        SNFT Weight
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_data}>
                         {epochdata.weightValue
@@ -1185,7 +1185,7 @@ export default function HomePageApp() {
                             : 0}
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>
-                        S-NFT Creator
+                        SNFT Creator
                     </p>
                     {epochdata.creator ==
                     '0x0000000000000000000000000000000000000000' ? (
@@ -1195,7 +1195,7 @@ export default function HomePageApp() {
                             }
                             style={{ color: '#ffffff' }}
                         >
-                            Official S-NFT
+                            Official SNFT
                         </p>
                     ) : (
                         <Link

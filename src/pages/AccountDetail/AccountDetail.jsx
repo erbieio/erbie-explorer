@@ -320,7 +320,7 @@ class AccountDetail extends React.Component {
                     ellipsis: true,
                     render: (text) =>
                         text == '0x0000000000000000000000000000000000000000' ? (
-                            <span>Official S-NFT</span>
+                            <span>Official SNFT</span>
                         ) : (
                             <Link
                                 to={{
@@ -372,18 +372,6 @@ class AccountDetail extends React.Component {
                     title: 'Name',
                     dataIndex: 'name',
                     key: 'name',
-                    onCell: () => {
-                        return {
-                            style: {
-                                maxWidth: 120,
-                                overflow: 'hidden',
-                                whiteSpace: 'nowrap',
-                                textOverflow: 'ellipsis',
-                                cursor: 'pointer',
-                                color: '#7AA4FF',
-                            },
-                        };
-                    },
                     render: (text, data) => (
                         <Link
                             title={text}
@@ -415,11 +403,13 @@ class AccountDetail extends React.Component {
                             )}
                         </Link>
                     ),
+                    width: '120px',
+                    ellipsis: true,
                 },
                 {
                     title: () => (
                         <div className={AccountDetail_ls.tablexbox2}>
-                            <span> S-NFT Number</span>
+                            <span> SNFT Number</span>
                             <Tooltip
                                 placement="bottom"
                                 title={() => {
@@ -430,7 +420,7 @@ class AccountDetail extends React.Component {
                                             }
                                         >
                                             <p>
-                                                S-NFT Grades Are LO, L1, L2, And
+                                                SNFT Grades Are LO, L1, L2, And
                                                 L3 From The Lowest To The
                                                 Highest. YouCan Synthesize It To
                                                 Higher Levels For Higher
@@ -438,35 +428,35 @@ class AccountDetail extends React.Component {
                                             </p>
                                             <p>The Rules Are As Below:</p>
                                             <p>
-                                                16 Specifc S-NFT LO Synthesizes
-                                                A Unique S-NFT L1.
+                                                16 Specifc SNFT LO Synthesizes A
+                                                Unique SNFT L1.
                                             </p>
                                             <p>
-                                                16 Specifc S-NFT L1 Synthesizes
-                                                A Unique S-NFT L2.
+                                                16 Specifc SNFT L1 Synthesizes A
+                                                Unique SNFT L2.
                                             </p>
                                             <p>
-                                                16 Specifc S-NFT L2 Synthesizes
-                                                A Unique S-NFT L3.{' '}
+                                                16 Specifc SNFT L2 Synthesizes A
+                                                Unique SNFT L3.{' '}
                                             </p>
                                             <p>
                                                 The Blue Number Indicates The
-                                                S-NFT LO Position Number In An
-                                                S-NFT L1.
+                                                SNFT LO Position Number In An
+                                                SNFT L1.
                                             </p>
                                             <p>
                                                 The Green Number Indicates The
-                                                Position Number Of S-NFT L1In An
-                                                S-NFT L2.
+                                                Position Number Of SNFT L1In An
+                                                SNFT L2.
                                             </p>
                                             <p>
                                                 The Yellow Number Indicates The
-                                                S-NFT L2 Position Number In An
-                                                S-NFT L3.
+                                                SNFT L2 Position Number In An
+                                                SNFT L3.
                                             </p>
                                             <p>
                                                 The Red Number Refers To The
-                                                Position Number Of An S-NFT L3.
+                                                Position Number Of An SNFT L3.
                                             </p>
                                         </div>
                                     );
@@ -551,8 +541,8 @@ class AccountDetail extends React.Component {
                 },
                 {
                     title: 'Creation Time',
-                    dataIndex: 'reward_at',
-                    key: 'reward_at',
+                    dataIndex: 'createdAt',
+                    key: 'createdAt',
                     render: (text) => (
                         <span>
                             {moment(parseInt(text) * 1000).format(
@@ -606,6 +596,20 @@ class AccountDetail extends React.Component {
                         </Link>
                     ),
                 },
+                {
+                    title: 'Owner Get Time',
+                    dataIndex: 'reward_at',
+                    key: 'reward_at',
+                    render: (text) => (
+                        <span>
+                            {moment(parseInt(text) * 1000).format(
+                                'YYYY-MM-DD HH:mm:ss',
+                            )}
+                        </span>
+                    ),
+                    ellipsis: true,
+                    width: '250px',
+                },
             ],
             creatorcolumns: [
                 {
@@ -641,7 +645,7 @@ class AccountDetail extends React.Component {
                                             }
                                         >
                                             <p>
-                                                S-NFT Grades Are LO, L1, L2, And
+                                                SNFT Grades Are LO, L1, L2, And
                                                 L3 From The Lowest To The
                                                 Highest. YouCan Synthesize It To
                                                 Higher Levels For Higher
@@ -649,35 +653,35 @@ class AccountDetail extends React.Component {
                                             </p>
                                             <p>The Rules Are As Below:</p>
                                             <p>
-                                                16 Specifc S-NFT LO Synthesizes
-                                                A Unique S-NFT L1.
+                                                16 Specifc SNFT LO Synthesizes A
+                                                Unique SNFT L1.
                                             </p>
                                             <p>
-                                                16 Specifc S-NFT L1 Synthesizes
-                                                A Unique S-NFT L2.
+                                                16 Specifc SNFT L1 Synthesizes A
+                                                Unique SNFT L2.
                                             </p>
                                             <p>
-                                                16 Specifc S-NFT L2 Synthesizes
-                                                A Unique S-NFT L3.{' '}
+                                                16 Specifc SNFT L2 Synthesizes A
+                                                Unique SNFT L3.{' '}
                                             </p>
                                             <p>
                                                 The Blue Number Indicates The
-                                                S-NFT LO Position Number In An
-                                                S-NFT L1.
+                                                SNFT LO Position Number In An
+                                                SNFT L1.
                                             </p>
                                             <p>
                                                 The Green Number Indicates The
-                                                Position Number Of S-NFT L1In An
-                                                S-NFT L2.
+                                                Position Number Of SNFT L1In An
+                                                SNFT L2.
                                             </p>
                                             <p>
                                                 The Yellow Number Indicates The
-                                                S-NFT L2 Position Number In An
-                                                S-NFT L3.
+                                                SNFT L2 Position Number In An
+                                                SNFT L3.
                                             </p>
                                             <p>
                                                 The Red Number Refers To The
-                                                Position Number Of An S-NFT L3.
+                                                Position Number Of An SNFT L3.
                                             </p>
                                         </div>
                                     );
@@ -2162,7 +2166,7 @@ class AccountDetail extends React.Component {
                                     </span>
                                 </div>
                                 <div>
-                                    <p>Marketplace Staking</p>{' '}
+                                    <p>Staker Staking</p>{' '}
                                     <span>
                                         {(
                                             this.state.accountData
@@ -2172,7 +2176,7 @@ class AccountDetail extends React.Component {
                                     </span>
                                 </div>
                                 {/* <div>
-                                    <p>S-NFT Staking</p>{' '}
+                                    <p>SNFT Staking</p>{' '}
                                     <span>
                                         {(
                                             this.state.accountData
@@ -2183,7 +2187,7 @@ class AccountDetail extends React.Component {
                                     </span>
                                 </div> */}
                                 <div>
-                                    <p>S-NFT Income</p>{' '}
+                                    <p>SNFT Income</p>{' '}
                                     <span>
                                         {this.state.accountData.rewardSNFTCount.toLocaleString()}
                                     </span>
@@ -2196,14 +2200,14 @@ class AccountDetail extends React.Component {
                         </div>
                         <div className={AccountDetail_ls.other}>
                             <h3>Other Information</h3>
-                            <ul>
+                            {/* <ul>
                                 <p>Owned NFTs</p>
                                 <span title={this.state.accountData.totalNFT}>
                                     {this.state.accountData.nftCount || 0}
                                 </span>
-                            </ul>
+                            </ul> */}
                             <ul>
-                                <p>Owned S-NFTs</p>
+                                <p>Owned SNFTs</p>
                                 <span title={this.state.accountData.totalSNFT}>
                                     {this.state.accountData.snftCount || 0}
                                 </span>
@@ -2264,7 +2268,7 @@ class AccountDetail extends React.Component {
                                         AccountDetail_ls.tablexbox2_titletext
                                     }
                                 >
-                                    S-NFT Value{' '}
+                                    SNFT Value{' '}
                                     <Tooltip
                                         title={() => {
                                             return (
@@ -2349,7 +2353,7 @@ class AccountDetail extends React.Component {
                                                 >
                                                     <p>
                                                         Current block height *
-                                                        S-NFT value.
+                                                        SNFT value.
                                                     </p>
                                                 </div>
                                             );
@@ -2398,7 +2402,7 @@ class AccountDetail extends React.Component {
                         <Radio.Button defaultChecked={true} value="trade">
                             TXN
                         </Radio.Button>
-                        <Radio.Button value="SNFT">S-NFT</Radio.Button>
+                        <Radio.Button value="SNFT">SNFT</Radio.Button>
                         <Radio.Button value="NFT">NFT</Radio.Button>
                         <Radio.Button value="CREATOR">CREATOR</Radio.Button>
                     </Radio.Group>
@@ -2441,7 +2445,7 @@ class AccountDetail extends React.Component {
                                                         }
                                                     >
                                                         <p>
-                                                            S-NFT Grades Are LO,
+                                                            SNFT Grades Are LO,
                                                             L1, L2, And L3 From
                                                             The Lowest To The
                                                             Highest. YouCan
@@ -2454,44 +2458,44 @@ class AccountDetail extends React.Component {
                                                             Below:
                                                         </p>
                                                         <p>
-                                                            16 Specifc S-NFT LO
+                                                            16 Specifc SNFT LO
                                                             Synthesizes A Unique
-                                                            S-NFT L1.
+                                                            SNFT L1.
                                                         </p>
                                                         <p>
-                                                            16 Specifc S-NFT L1
+                                                            16 Specifc SNFT L1
                                                             Synthesizes A Unique
-                                                            S-NFT L2.
+                                                            SNFT L2.
                                                         </p>
                                                         <p>
-                                                            16 Specifc S-NFT L2
+                                                            16 Specifc SNFT L2
                                                             Synthesizes A Unique
-                                                            S-NFT L3.{' '}
+                                                            SNFT L3.{' '}
                                                         </p>
                                                         <p>
                                                             The Blue Number
-                                                            Indicates The S-NFT
+                                                            Indicates The SNFT
                                                             LO Position Number
-                                                            In An S-NFT L1.
+                                                            In An SNFT L1.
                                                         </p>
                                                         <p>
                                                             The Green Number
                                                             Indicates The
                                                             Position Number Of
-                                                            S-NFT L1In An S-NFT
+                                                            SNFT L1In An SNFT
                                                             L2.
                                                         </p>
                                                         <p>
                                                             The Yellow Number
-                                                            Indicates The S-NFT
+                                                            Indicates The SNFT
                                                             L2 Position Number
-                                                            In An S-NFT L3.
+                                                            In An SNFT L3.
                                                         </p>
                                                         <p>
                                                             The Red Number
                                                             Refers To The
                                                             Position Number Of
-                                                            An S-NFT L3.
+                                                            An SNFT L3.
                                                         </p>
                                                     </div>
                                                 );
@@ -2685,13 +2689,79 @@ class AccountDetail extends React.Component {
                             this.state.tableData.length != 0 ? (
                                 this.tableblocklist(this.state.tableData)
                             ) : (
-                                <div className={AccountDetail_ls.nodata}>
-                                    No Data
+                                <div className={AccountDetail_ls.nodatabox}>
+                                    <svg
+                                        class="ant-empty-img-simple"
+                                        width="64"
+                                        height="41"
+                                        viewBox="0 0 64 41"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <g
+                                            transform="translate(0 1)"
+                                            fill="none"
+                                            fill-rule="evenodd"
+                                        >
+                                            <ellipse
+                                                class="ant-empty-img-simple-ellipse"
+                                                cx="32"
+                                                cy="33"
+                                                rx="32"
+                                                ry="7"
+                                            ></ellipse>
+                                            <g
+                                                class="ant-empty-img-simple-g"
+                                                fill-rule="nonzero"
+                                            >
+                                                <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
+                                                <path
+                                                    d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                                                    class="ant-empty-img-simple-path"
+                                                ></path>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                    <div className={AccountDetail_ls.nodata}>
+                                        No Data
+                                    </div>
                                 </div>
                             )
                         ) : (
-                            <div className={AccountDetail_ls.nodata}>
-                                No Data
+                            <div className={AccountDetail_ls.nodatabox}>
+                                <svg
+                                    class="ant-empty-img-simple"
+                                    width="64"
+                                    height="41"
+                                    viewBox="0 0 64 41"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <g
+                                        transform="translate(0 1)"
+                                        fill="none"
+                                        fill-rule="evenodd"
+                                    >
+                                        <ellipse
+                                            class="ant-empty-img-simple-ellipse"
+                                            cx="32"
+                                            cy="33"
+                                            rx="32"
+                                            ry="7"
+                                        ></ellipse>
+                                        <g
+                                            class="ant-empty-img-simple-g"
+                                            fill-rule="nonzero"
+                                        >
+                                            <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
+                                            <path
+                                                d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                                                class="ant-empty-img-simple-path"
+                                            ></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                                <div className={AccountDetail_ls.nodata}>
+                                    No Data
+                                </div>
                             </div>
                         )}
                         {}

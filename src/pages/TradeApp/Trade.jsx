@@ -205,23 +205,26 @@ class Trade extends React.Component {
                     width: 150,
                 },
                 {
-                    title: 'Reciever',
+                    title: 'Receiver',
                     key: 'to',
                     dataIndex: 'to',
-                    render: (text, data) => (
-                        <Link
-                            to={{
-                                pathname: `/AccountDetailApp/${text}`,
-                                state: text,
-                            }}
-                            style={{
-                                color: '#7AA4FF',
-                                fontFamily: 'CustomFontMedium',
-                            }}
-                        >
-                            {ellipsis(text)}
-                        </Link>
-                    ),
+                    render: (text, data) =>
+                        text ? (
+                            <Link
+                                to={{
+                                    pathname: `/AccountDetailApp/${text}`,
+                                    state: text,
+                                }}
+                                style={{
+                                    color: '#7AA4FF',
+                                    fontFamily: 'CustomFontMedium',
+                                }}
+                            >
+                                {ellipsis(text)}
+                            </Link>
+                        ) : (
+                            '-'
+                        ),
                     width: 150,
                 },
                 {
@@ -244,7 +247,7 @@ class Trade extends React.Component {
                     ellipsis: true,
                 },
                 {
-                    title: 'TXN Status',
+                    title: 'Status',
                     key: 'status',
                     dataIndex: 'status',
                     width: 150,
@@ -325,7 +328,7 @@ class Trade extends React.Component {
                             population: res.totalExchangerTx,
                         },
                         { year: 'NFT Trading', population: res.totalNFTTx },
-                        { year: 'S-NFT Trading', population: res.totalSNFTTx },
+                        { year: 'SNFT Trading', population: res.totalSNFTTx },
                         {
                             year: 'Wormholes Trading',
                             population: res.totalWormholesTx,
@@ -413,7 +416,9 @@ class Trade extends React.Component {
                                 <p>Total Transaction Volume</p>
                             </ul>
                             <li>
-                                <img src={topLeftImg1} />
+                                <img
+                                    src={require('../../assets/images/TradeApp/Slice 873.png')}
+                                />
                             </li>
                         </div>
                         <div>
@@ -422,7 +427,9 @@ class Trade extends React.Component {
                                 <p>Total Transactions</p>
                             </ul>
                             <li>
-                                <img src={topLeftImg2} />
+                                <img
+                                    src={require('../../assets/images/TradeApp/Slice 874.png')}
+                                />
                             </li>
                         </div>
                     </div>
@@ -506,7 +513,7 @@ class Trade extends React.Component {
                         <h2>TRANSACTIONS BY TYPE</h2>
                         <Chart
                             height={180}
-                            width={345}
+                            width={320}
                             data={this.state.chartData}
                             autoFit
                             appendPadding={[0, 0, 0, 60]}

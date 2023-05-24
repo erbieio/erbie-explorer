@@ -435,333 +435,333 @@ export default function BlockDetailsApp(props) {
     return (
         <>
             <div className={BlockDetailsApp_ls.BlockDetailsAppBox}>
-                <div className={BlockDetailsApp_ls.BlockDetailsBox_title}>
-                    Block Details
-                </div>
-                <p className={BlockDetailsApp_ls.BlockDetailsBox_blockid}>
-                    #{JSON.parse(localStorage.getItem('blocktext'))}
-                </p>
-                <div className={BlockDetailsApp_ls.BlockDetailsBox_databox}>
-                    <div
-                        className={
-                            BlockDetailsApp_ls.BlockDetailsBox_databox_left
-                        }
-                    >
+                <div className={BlockDetailsApp_ls.BlockDetailsAppBox_titlebox}>
+                    <div className={BlockDetailsApp_ls.BlockDetailsBox_title}>
+                        Block Details
+                    </div>
+                    <p className={BlockDetailsApp_ls.BlockDetailsBox_blockid}>
+                        #{JSON.parse(localStorage.getItem('blocktext'))}
+                    </p>
+                    <div className={BlockDetailsApp_ls.BlockDetailsBox_databox}>
                         <div
                             className={
-                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                BlockDetailsApp_ls.BlockDetailsBox_databox_left
                             }
                         >
                             <div
                                 className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
                                 }
-                                style={{ width: '150px' }}
                             >
-                                Block Generation Time
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Block Generation Time
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ cursor: 'auto' }}
+                                >
+                                    {timestamp(soloblockdata.timestamp)}
+                                </div>
                             </div>
                             <div
                                 className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
                                 }
-                                style={{ cursor: 'auto' }}
                             >
-                                {timestamp(soloblockdata.timestamp)}
-                            </div>
-                        </div>
-                        <div
-                            className={
-                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                            }
-                        >
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                }
-                                style={{ width: '150px' }}
-                            >
-                                Parent Hash
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                }
-                                style={{ color: '#7AA4FF' }}
-                            >
-                                <span
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Parent Hash
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
                                     style={{ color: '#7AA4FF' }}
-                                    onClick={fatherblock}
                                 >
-                                    {ellipsis(soloblockdata.parentHash)}
-                                </span>
-                            </div>
-                        </div>
-                        <div
-                            className={
-                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                            }
-                        >
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                }
-                                style={{ width: '150px' }}
-                            >
-                                Gas Used
+                                    <span
+                                        style={{ color: '#7AA4FF' }}
+                                        onClick={fatherblock}
+                                    >
+                                        {ellipsis(soloblockdata.parentHash)}
+                                    </span>
+                                </div>
                             </div>
                             <div
                                 className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
                                 }
-                                style={{
-                                    // display: 'flex',
-                                    // justifyContent: 'space-between',
-                                    width: '230px',
-                                    cursor: 'auto',
-                                }}
                             >
-                                <p>
-                                    {soloblockdata.gasUsed || 0}(
-                                    {soloblockdata.gasUsed /
-                                        soloblockdata.gasLimit || 0}
-                                    %)
-                                </p>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Gas Used
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{
+                                        // display: 'flex',
+                                        // justifyContent: 'space-between',
+                                        width: '230px',
+                                        cursor: 'auto',
+                                    }}
+                                >
+                                    <p>
+                                        {soloblockdata.gasUsed || 0}(
+                                        {soloblockdata.gasUsed /
+                                            soloblockdata.gasLimit || 0}
+                                        %)
+                                    </p>
 
-                                <div
-                                    style={{ width: '180px' }}
-                                    id="progressbar"
-                                >
-                                    <Progress
-                                        percent={
-                                            soloblockdata.gasUsed &&
-                                            soloblockdata.gasLimit
-                                                ? (
-                                                      soloblockdata.gasUsed /
-                                                      soloblockdata.gasLimit
-                                                  ).toFixed(2)
-                                                : 0
-                                        }
-                                        status="active"
-                                        strokeColor="#FE4FA7"
-                                        strokeWidth={5.8}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className={
-                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                            }
-                        >
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                }
-                                style={{ width: '150px' }}
-                            >
-                                Proposer
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                }
-                                style={{ color: '#7AA4FF' }}
-                            >
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
-                                    }
-                                >
                                     <div
-                                        className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification1
-                                        }
-                                        style={{ cursor: 'auto' }}
+                                        style={{ width: '180px' }}
+                                        id="progressbar"
                                     >
-                                        Proposer
-                                    </div>
-                                    <div
-                                        className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
-                                        }
-                                    >
-                                        {blockmaker(blockrewardpersondata)}
+                                        <Progress
+                                            percent={
+                                                soloblockdata.gasUsed &&
+                                                soloblockdata.gasLimit
+                                                    ? (
+                                                          soloblockdata.gasUsed /
+                                                          soloblockdata.gasLimit
+                                                      ).toFixed(2)
+                                                    : 0
+                                            }
+                                            status="active"
+                                            strokeColor="#FE4FA7"
+                                            strokeWidth={5.8}
+                                        />
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div
-                            className={
-                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                            }
-                            style={{ marginTop: '-40px' }}
-                        >
                             <div
                                 className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
                                 }
-                                style={{ width: '150px' }}
-                            >
-                                Reward
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                }
-                                style={{ color: '#7AA4FF', cursor: 'auto' }}
                             >
                                 <div
                                     className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
                                     }
                                 >
-                                    <div
-                                        className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification2
-                                        }
-                                        style={{ cursor: 'auto' }}
-                                    >
-                                        Validator
-                                    </div>
-                                    <div
-                                        className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
-                                        }
-                                    >
-                                        {verifier(blockrewardpersondata)}
-                                    </div>
+                                    Proposer
                                 </div>
                                 <div
                                     className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
                                     }
+                                    style={{ color: '#7AA4FF' }}
                                 >
                                     <div
                                         className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification3
-                                        }
-                                        style={{ cursor: 'auto' }}
-                                    >
-                                        Marketplace
-                                    </div>
-                                    <div
-                                        className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
                                         }
                                     >
-                                        {exchange(blockrewardpersondata)}
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification1
+                                            }
+                                            style={{ cursor: 'auto' }}
+                                        >
+                                            Proposer
+                                        </div>
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                            }
+                                        >
+                                            {blockmaker(blockrewardpersondata)}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div
-                            className={
-                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                            }
-                        >
                             <div
                                 className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
                                 }
-                            >
-                                Block Size
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                }
-                                style={{ cursor: 'auto' }}
-                            >
-                                {soloblockdata.size} bytes
-                            </div>
-                        </div>
-                        <div
-                            className={
-                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                            }
-                        >
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                }
-                            >
-                                Gas Price
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                }
-                                style={{ cursor: 'auto' }}
-                            >
-                                {gasusedlvsolo(
-                                    soloblocktransactiondata.transactions,
-                                ) / 1000000000}{' '}
-                                Gwei
-                            </div>
-                        </div>
-                        <div
-                            className={
-                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                            }
-                        >
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                }
-                            >
-                                Gas Limit
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                }
-                                style={{ cursor: 'auto' }}
-                            >
-                                {soloblockdata.gasLimit}
-                            </div>
-                        </div>
-                        <div
-                            className={
-                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                            }
-                        >
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                }
-                            >
-                                Delegated Accounts
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                }
-                                style={{ color: '#7AA4FF' }}
+                                style={{ marginTop: '-40px' }}
                             >
                                 <div
                                     className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
                                     }
+                                >
+                                    Reward
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ color: '#7AA4FF', cursor: 'auto' }}
                                 >
                                     <div
                                         className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
                                         }
-                                        style={{
-                                            width: '380px',
-                                            display: 'block',
-                                        }}
                                     >
-                                        {blockmakeraddress(
-                                            blockrewardpersondata,
-                                        )}
-                                        {verifieraddress(blockrewardpersondata)}
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification2
+                                            }
+                                            style={{ cursor: 'auto' }}
+                                        >
+                                            Validator
+                                        </div>
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                            }
+                                        >
+                                            {verifier(blockrewardpersondata)}
+                                        </div>
+                                    </div>
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                        }
+                                    >
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification3
+                                            }
+                                            style={{ cursor: 'auto' }}
+                                        >
+                                            Staker
+                                        </div>
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                            }
+                                        >
+                                            {exchange(blockrewardpersondata)}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                className={
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Block Size
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ cursor: 'auto' }}
+                                >
+                                    {soloblockdata.size} bytes
+                                </div>
+                            </div>
+                            <div
+                                className={
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Gas Price
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ cursor: 'auto' }}
+                                >
+                                    {gasusedlvsolo(
+                                        soloblocktransactiondata.transactions,
+                                    ) / 1000000000}{' '}
+                                    Gwei
+                                </div>
+                            </div>
+                            <div
+                                className={
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Gas Limit
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ cursor: 'auto' }}
+                                >
+                                    {soloblockdata.gasLimit}
+                                </div>
+                            </div>
+                            <div
+                                className={
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Delegated Accounts
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ color: '#7AA4FF' }}
+                                >
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                        }
+                                    >
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                            }
+                                            style={{
+                                                width: '380px',
+                                                display: 'block',
+                                            }}
+                                        >
+                                            {blockmakeraddress(
+                                                blockrewardpersondata,
+                                            )}
+                                            {verifieraddress(
+                                                blockrewardpersondata,
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div className={BlockDetailsApp_ls.tableBox}>
                     <div
                         className={BlockDetailsApp_ls.BlockDetailsBox_table}

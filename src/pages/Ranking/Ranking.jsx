@@ -259,7 +259,7 @@ export default function Ranking() {
                     >
                         <div className={Ranking_ls.RankingSNFTTitle}>
                             <ul>
-                                S-NFT
+                                SNFT
                                 <br />
                                 Rankings
                             </ul>

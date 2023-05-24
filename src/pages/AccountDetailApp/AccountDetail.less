@@ -57,6 +57,7 @@ h3 {
 .AccountDetailBox {
     width: 345px;
     margin: auto;
+    margin-top: 10px;
     color: white;
     svg {
         cursor: pointer;
@@ -75,9 +76,13 @@ h3 {
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        
     }
     .AccountDetailBoxTop {
         width: 345px;
+        background-image: url('../../assets/images/AccountDetail/Slice\ 894.png');
+        background-size: 100% 100%;
+        padding: 12px;
         .tags {
             margin-top: 18px;
             display: flex;
@@ -111,15 +116,15 @@ h3 {
                 margin-top: 8px;
                 align-items: center;
                 p {
-                    width: 150px;
+                    width: 220px;
                     font-size: 11px;
                 }
                 span {
                     display: inline-block;
                     font-size: 11px;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    text-overflow: ellipsis;
+                    // overflow: hidden;
+                    // white-space: nowrap;
+                    // text-overflow: ellipsis;
                 }
                 &:first-child {
                     margin-top: 0;
@@ -144,57 +149,54 @@ h3 {
     }
 }
 .other {
+    width: 345px;
     display: flex;
     position: relative;
-    > div:last-child {
-        padding-left: 10px;
-        padding-top: 20px;
-        img {
-            width: 86px;
-            height: 78px;
-            position: absolute;
-            // right: 0px;
-            // top: 30px;
-            right: -100px;
-            bottom: 0;
-        }
-    }
+    background-image: url('../../assets/images/AccountDetail/Slice\ 894.png');
+    background-size: 100% 100%;
+    padding: 12px;
+    margin-top: 8px;
+
     h3 {
         margin-bottom: 8px;
-        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 300;
     }
     ul {
         display: flex;
         margin-bottom: 10px;
         p {
-            width: 150px;
+            width: 220px;
             margin-right: 5px;
             font-size: 11px;
+            display: flex;
+            align-items: center;
             // margin-right: 20px;
         }
         span {
             display: inline-block;
-            width: 50px;
-            overflow: hidden;
-            white-space: nowrap;
-            text-overflow: ellipsis;
+            // width: 50px;
+            // overflow: hidden;
+            // white-space: nowrap;
+            // text-overflow: ellipsis;
             font-size: 11px;
         }
     }
 }
-// .tablexbox{
-//     display: flex;
-//     justify-content: flex-start;
-// }
-// .tablex {
-//     width: 20px;
-//     height: 25px;
-//     display: flex;
-//     flex-wrap: wrap;
-//     cursor: pointer;
-//     margin-top: -2px;
-//     margin-left: 5px;
-// }
+.tablexbox{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.tablex {
+    width: 20px;
+    height: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    margin-top: -2px;
+    margin-left: 5px;
+}
 // .tablexbox2_titletext{
 //     display: flex;
 //     align-items: center;
@@ -210,6 +212,8 @@ h3 {
 .changeButton {
     width: 345px;
     margin: 0 auto !important;
+    display: flex;
+    justify-content: space-between;
     //margin-left:0;
     // padding-left: 20px;
     :global {
@@ -222,7 +226,7 @@ h3 {
                 border-radius: 4px;
                 width: 80px;
                 height: 24px;
-                margin-right: 16px;
+                margin-right: 5px;
                 // margin-right: 5px;
 
                 &:is(:first-child) {
@@ -238,20 +242,18 @@ h3 {
 }
 .AccountDetailBox1 {
     width: 345px;
-    margin: auto;
-    color: white;
-}
-.AccountDetailBox1 {
-    width: 345px;
     min-height: 470px;
     border-radius: 8px;
-    background-color: rgba(69, 59, 69, 0.5);
+    background-image: url('../../assets/images/BlockChainApp/Slice\ 885.png');
+    background-size: 100% 100%;
     color: white;
     // padding: 0 21px;
+    margin: auto;
     margin-bottom: 20px;
     position: relative;
     padding-top: 15px;
     padding-bottom: 15px;
+    overflow: auto;
     :global {
         #AccountDetailTable {
             min-height: 400px;
@@ -438,7 +440,7 @@ h3 {
             line-height: 22px;
             border: 1px solid #fff;
             // margin-right: 5px;
-            margin-right: 12px;
+            margin-right: 5px;
             color: white;
             padding: 0 8px;
             border-radius: 4px;
@@ -471,6 +473,10 @@ h3 {
             }
         }
     }
+}
+.SNFTBox_tablelevelPeriodbox{
+    display: flex;
+    justify-content: space-between;
 }
 .SNFTBox_tablelevelsnft {
     height: 20px;
@@ -511,4 +517,427 @@ h3 {
     padding: 0 5px;
     line-height: 20px;
     margin-right: 4px;
+}
+.HomePageAppbox_tablebox {
+    width: 345px;
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: auto;
+    position: relative;
+    // overscroll-behavior: none !important;
+    -webkit-overflow-scrolling: touch;
+}
+.table_redblock{
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    padding: 0 11px;
+    background-color: #D63A49;
+    border-radius: 4px;
+}
+.HomePageAppbox_tablebox_title {
+    width: 345px;
+    height: 50px;
+    background-color: #ffffff20;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+    font-size: 16px;
+    font-family: CustomFontBold;
+    color: white;
+    
+    // overscroll-behavior: none !important;
+}
+.Blockrewardbox {
+    width: 100%;
+    // min-height: 1200px;
+}
+.Blockrewardbox_center {
+    width: 1200px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.Blockrewardbox_titlebox {
+    width: 1200px;
+    height: 44px;
+    background-color: #ffffff20;
+    padding: 0 15px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.Blockrewardbox_title {
+    font-size: 16px;
+    color: white;
+    margin: 0;
+    font-family: CustomFontBold;
+}
+.Blockrewardbox_namebox {
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+.Blockrewardbox_nameboxp {
+    font-size: 14px;
+    color: white;
+    width: 277.5px;
+    font-family: CustomFontThin;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Blockrewardbox_nameboxtp {
+    font-size: 14px;
+    color: white;
+    font-weight: 100;
+    min-width: 100px;
+    font-family: CustomFontThin;
+}
+.tableblocklistbox {
+    width: 1200px;
+    
+}
+.tableblocklisttitbox {
+    width: 1200px;
+    height: 48px;
+    padding: 0 23px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.tableblocklistdatabox {
+    display: flex;
+    justify-content: space-between;
+    width: 1200px;
+    height: 48px;
+    p {
+        font-size: 12px;
+        color: white;
+        line-height: 48px;
+    }
+}
+.Blockrewardbox_Occlusion {
+    width: 32px;
+    // min-height: 200px;
+    background-color: #ffffff10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: absolute;
+    top: 83px;
+    right: 0;
+    border-radius: 0 0 10px 0;
+    box-shadow: -10px 0px 10px #00000050;
+}
+.zztable_redblock{
+    line-height: 48px;
+    color: #ffffff;
+    font-size: 12px;
+}
+.tableblocklistdata {
+    width: 80px;
+    font-family: CustomFontThin;
+}
+.tableblocklistdatanumber {
+    width: 80px;
+    font-family: CustomFontBold;
+    line-height: 48px;
+    font-size: 13px;
+}
+.tableblocklistdatanumber:hover {
+    text-decoration: underline;
+}
+.tableblocklistdataminer {
+    font-family: CustomFontBold;
+    width: 80px;
+    line-height: 48px;
+    font-size: 13px;
+}
+.tableblocklistdataminer:hover {
+    text-decoration: underline;
+}
+.tableblocklistdatat {
+    min-width: 100px;
+    font-family: CustomFontThin;
+}
+.tableblocklistarrowp {
+    width: 32px;
+    height: 48px;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    // position:absolute;
+    // left: 310px;
+}
+// .tableblocklistarrow {
+//   font-size: 14px;
+//   color: white;
+//   line-height: 48px;
+//   cursor: pointer;
+//   transition: all 0.3s;
+// }
+.tableblocklistselectbox0 {
+    width: 1200px;
+    height: 276px;
+}
+.tableblocklistselectbox_div {
+    width: 1153px;
+    height: 228px;
+    margin: auto;
+    background-color: #ffffff20;
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+.tableblocklistselectbox_div_longblock{
+    width: 100%;
+    min-height: 441px;
+}
+.tableztableboxless{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+    line-height: 40px;
+}
+.tableblocklistselectbox_BlockProducer {
+    width: 220px;
+    // border: 1px solid red;
+    display: flex;
+    justify-content: flex-start;
+    img {
+        width: 16px;
+        height: 16px;
+    }
+    .tableblocklistselectbox_BlockProducer_p {
+        font-size: 13px;
+        color: white;
+        height: 16px;
+        cursor: pointer;
+        width: 80px;
+        margin-left: 5px;
+        margin-right: 60px;
+        font-family: CustomFontBold;
+    }
+    span {
+        font-size: 10px;
+        color: white;
+        line-height: 16px;
+        font-family: CustomFontThin;
+    }
+}
+.tableblocklistselectbox_Validator_box {
+    width: 220px;
+    height: 16px;
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 12px;
+}
+.tableblocklistselectbox_Validator {
+    width: 220px;
+
+    img {
+        width: 16px;
+        height: 16px;
+    }
+    .tableblocklistselectbox_Validator_box_p {
+        font-size: 13px;
+        color: white;
+        height: 16px;
+        cursor: pointer;
+        margin-left: 5px;
+        margin-right: 60px;
+        width: 80px;
+        font-family: CustomFontBold;
+    }
+    span {
+        font-size: 10px;
+        color: white;
+        line-height: 16px;
+        font-family: CustomFontThin;
+    }
+}
+.tableblocklistselectbox_Exchange {
+    width: 220px;
+    height: 16px;
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    img {
+        width: 16px;
+        height: 16px;
+    }
+    .tableblocklistselectbox_Exchange_box_p {
+        font-size: 13px;
+        color: white;
+        height: 16px;
+        cursor: pointer;
+        margin-left: 5px;
+        width: 80px;
+        font-family: CustomFontBold;
+    }
+}
+.tableblocklistselectbox_Exchange_box {
+    width: 220px;
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    span {
+        font-size: 10px;
+        color: white;
+        line-height: 16px;
+        font-family: CustomFontThin;
+        float: right;
+        margin-left: 60px;
+    }
+}
+.tableblocklistselectbox_Exchangesnft {
+    width: 220px;
+    height: 30px;
+    margin-top: -30px;
+    margin-left: 70px;
+    display: flex;
+    justify-content: flex-start;
+}
+.tableblocklistselectbox_Exchangesnft_box {
+    width: 170px;
+    height: 20px;
+    color: white;
+    font-size: 12px;
+    font-family: CustomFontThin;
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    float: left;
+    margin-left: 20px;
+    img {
+        cursor: pointer;
+        width: 12px;
+        height: 12px;
+        margin-left: 7px;
+    }
+}
+.Blockrewardbox_button_cbox {
+    width: 120px;
+    height: 40px;
+    margin: auto;
+    margin-top: 24px;
+    border-radius: 4px;
+    background: linear-gradient(to right, #4f81ff, #4071fc, #fe4fa7, #fe4fa7);
+    position: relative;
+    padding: 1px;
+}
+.Blockrewardbox_button_cblcok {
+    width: 118px;
+    height: 38px;
+    border-radius: 4px;
+    background-color: #03041a;
+}
+.HomePageAppbox_tablebigbox {
+    width: 345px;
+    margin: auto;
+    position: relative;
+    // overscroll-behavior: none !important;
+}
+.Blockrewardbox_Occlusion {
+    width: 32px;
+    // min-height: 200px;
+    background-color: #ffffff10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: absolute;
+    top: 83px;
+    right: 0;
+    border-radius: 0 0 10px 0;
+    box-shadow: -10px 0px 10px #00000050;
+}
+.BlockINFORMATIONbox_rightimgbox {
+    float: left;
+    width: 116px;
+    height: 116px;
+    border-radius: 10px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    overflow: hidden;
+}
+.HomePageBox_homepageimg {
+    width: 29px;
+    height: 29px;
+}
+.Blockrewardbox_button {
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-weight: 400;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    background: linear-gradient(to right, #e1329e, #5c3afa, #5c3afa);
+    display: block;
+    margin: auto;
+    margin-top: 24px;
+}
+.nodata{
+    width: 1200px;
+    height: 500px;
+    background-color: #ffffff20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+}
+.BlockChainBox_Pagination {
+    //   border: 1px solid red;
+    margin-top: 30px;
+    text-align: right;
+    padding-right: 24px;
+    display: flex;
+    justify-content: flex-end;
+}
+.BlockChainBox_Pagination_d {
+    width: 82px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    margin-left: 16px;
+    font-size: 14px;
+    color: white;
+    line-height: 30px;
+    text-align: center;
+}
+.BlockChainBox_Pagination_span1 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
+    margin: 0 8px;
+}
+.BlockChainBox_Pagination_input {
+    width: 48px;
+    height: 32px;
+    border: 1px solid #ffffff;
+    background-color: #03041a;
+    border-radius: 2px;
+    color: white;
+    font-size: 14px;
+    padding-left: 12px;
+    margin-right: 8px;
+}
+.BlockChainBox_Pagination_span2 {
+    font-size: 14px;
+    color: white;
+    line-height: 32px;
 }

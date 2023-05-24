@@ -326,7 +326,7 @@ export default function NFTApp() {
                         />
                     </div>
                     <div
-                        className={NFTApp_ls.NFTBox_headerTitle_d}
+                        className={NFTApp_ls.NFTBox_headerTitle_d2}
                         style={{ width: '345px', height: '69px' }}
                     >
                         <div className={NFTApp_ls.NFTBox_headerTitle_d_left}>

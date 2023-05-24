@@ -31,9 +31,7 @@ export default function Account() {
     //Transaction Value
     const [transactionvaluecolor, setTransactionvaluecolor] = useState(0);
     //分页排序order参数
-    const [orderdata, setOrderdata] = useState(
-        'LENGTH(balance) DESC, balance DESC',
-    );
+    const [orderdata, setOrderdata] = useState('balance DESC');
     const columns = [
         {
             title: 'Address',
@@ -145,7 +143,7 @@ export default function Account() {
         {
             title: () => (
                 <div className={Account_ls.tablexbox}>
-                    Exchange Pledge(ERB)
+                    Staker Pledge(ERB)
                     {totalnftscolor == 0 ? (
                         <div className={Account_ls.tablex}>
                             <CaretUpOutlined
@@ -191,7 +189,7 @@ export default function Account() {
         {
             title: () => (
                 <div className={Account_ls.tablexbox}>
-                    S-NFT Weight
+                    SNFT Weight
                     {feeratecolor == 0 ? (
                         <div className={Account_ls.tablex}>
                             <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
@@ -288,7 +286,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setStakevaluecolor(1);
-                setOrderdata('LENGTH(balance) ASC, balance ASC');
+                setOrderdata('balance ASC');
             }
         } else {
             if (stakevaluecolor == 2) {
@@ -296,7 +294,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setStakevaluecolor(2);
-                setOrderdata('LENGTH(balance) DESC, balance DESC');
+                setOrderdata('balance DESC');
             }
         }
     }
@@ -312,9 +310,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(1);
-                setOrderdata(
-                    'LENGTH(validator_amount) ASC, validator_amount ASC',
-                );
+                setOrderdata('validator_amount ASC');
             }
         } else {
             if (totalcollectionscolor == 2) {
@@ -322,9 +318,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(2);
-                setOrderdata(
-                    'LENGTH(validator_amount) DESC, validator_amount DESC',
-                );
+                setOrderdata('validator_amount DESC');
             }
         }
     }
@@ -340,9 +334,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTotalnftscolor(1);
-                setOrderdata(
-                    'LENGTH(exchanger_amount) ASC, exchanger_amount ASC',
-                );
+                setOrderdata('exchanger_amount ASC');
             }
         } else {
             if (totalnftscolor == 2) {
@@ -350,9 +342,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTotalnftscolor(2);
-                setOrderdata(
-                    'LENGTH(exchanger_amount) DESC, exchanger_amount DESC',
-                );
+                setOrderdata('exchanger_amount DESC');
             }
         }
     }
@@ -368,7 +358,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setFeeratecolor(1);
-                setOrderdata('LENGTH(snft_value) ASC, snft_value ASC');
+                setOrderdata('snft_value ASC');
             }
         } else {
             if (feeratecolor == 2) {
@@ -376,7 +366,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setFeeratecolor(2);
-                setOrderdata('LENGTH(snft_value) DESC, snft_value DESC');
+                setOrderdata('snft_value DESC');
             }
         }
     }

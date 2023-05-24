@@ -83,7 +83,7 @@ export default function HeaderApp(props) {
                             <span
                                 onClick={() => {
                                     setNavigationicon(1);
-                                    setNavigationheight('392px');
+                                    setNavigationheight('441px');
                                 }}
                             >
                                 <UnorderedListOutlined />
@@ -142,23 +142,23 @@ export default function HeaderApp(props) {
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
-                        <span>S-NFT</span>
+                        <span>SNFT</span>
                     </div>
                 </Link>
-                <Link
+                {/* <Link
                     to={{ pathname: '/NFTApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
                         <span>NFT</span>
                     </div>
-                </Link>
+                </Link> */}
                 <Link
                     to={{ pathname: '/ExchangeApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
-                        <span>MARKETPLACE</span>
+                        <span>STAKER</span>
                     </div>
                 </Link>
                 <Link
@@ -169,14 +169,14 @@ export default function HeaderApp(props) {
                         <span>TRANSACT</span>
                     </div>
                 </Link>
-                <Link
+                {/* <Link
                     to={{ pathname: '/rankingApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
                         <span>RANKINGS</span>
                     </div>
-                </Link>
+                </Link> */}
             </div>
             {window.location.hash == '#/BlockChainApp' ||
             window.location.hash == '#/NFTApp' ||
@@ -213,7 +213,7 @@ export default function HeaderApp(props) {
             ) : (
                 ''
             )}
-            {window.location.hash != '#/BlockChainApp' &&
+            {/* {window.location.hash != '#/BlockChainApp' &&
             window.location.hash != '#/NFTApp' &&
             window.location.hash != '#/SNFTApp' &&
             window.location.hash != '#/ExchangeApp' &&
@@ -247,7 +247,7 @@ export default function HeaderApp(props) {
                 </div>
             ) : (
                 ''
-            )}
+            )} */}
         </>
     );
 }

@@ -108,19 +108,19 @@ export default function Header() {
                         to={{ pathname: '/SNFT', state: '' }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
-                        S-NFT
+                        SNFT
                     </Link>
-                    <Link
+                    {/* <Link
                         to={{ pathname: '/NFT', state: '' }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         NFT
-                    </Link>
+                    </Link>*/}
                     <Link
                         to={{ pathname: '/Exchange', state: '' }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
-                        MARKETPLACE
+                        STAKER
                     </Link>
                     <Link
                         to={{ pathname: '/Trade', state: '' }}
@@ -128,11 +128,11 @@ export default function Header() {
                     >
                         TRANSACT
                     </Link>
-                    <p className={Header_ls.HeaderBox_navigationBox_text}>
+                    {/* <p className={Header_ls.HeaderBox_navigationBox_text}>
                         <span onClick={handleClick.bind(this, 'Ranking')}>
                             RANKINGS
                         </span>
-                    </p>
+                    </p> */}
                 </div>
                 {/* 模式切换 */}
                 {/* <div className={Header_ls.HeaderBox_patternBox}> */}

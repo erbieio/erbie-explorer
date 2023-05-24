@@ -153,39 +153,39 @@ export default function CreatorApp() {
                                     className={CreatorApp_ls.tablexbox2_Period}
                                 >
                                     <p>
-                                        S-NFT Grades Are LO, L1, L2, And L3 From
+                                        SNFT Grades Are LO, L1, L2, And L3 From
                                         The Lowest To The Highest. YouCan
                                         Synthesize It To Higher Levels For
                                         Higher Revenue.
                                     </p>
                                     <p>The Rules Are As Below:</p>
                                     <p>
-                                        16 Specifc S-NFT LO Synthesizes A Unique
-                                        S-NFT L1.
+                                        16 Specifc SNFT LO Synthesizes A Unique
+                                        SNFT L1.
                                     </p>
                                     <p>
-                                        16 Specifc S-NFT L1 Synthesizes A Unique
-                                        S-NFT L2.
+                                        16 Specifc SNFT L1 Synthesizes A Unique
+                                        SNFT L2.
                                     </p>
                                     <p>
-                                        16 Specifc S-NFT L2 Synthesizes A Unique
-                                        S-NFT L3.{' '}
+                                        16 Specifc SNFT L2 Synthesizes A Unique
+                                        SNFT L3.{' '}
                                     </p>
                                     <p>
-                                        The Blue Number Indicates The S-NFT LO
-                                        Position Number In An S-NFT L1.
+                                        The Blue Number Indicates The SNFT LO
+                                        Position Number In An SNFT L1.
                                     </p>
                                     <p>
                                         The Green Number Indicates The Position
-                                        Number Of S-NFT L1In An S-NFT L2.
+                                        Number Of SNFT L1In An SNFT L2.
                                     </p>
                                     <p>
-                                        The Yellow Number Indicates The S-NFT L2
-                                        Position Number In An S-NFT L3.
+                                        The Yellow Number Indicates The SNFT L2
+                                        Position Number In An SNFT L3.
                                     </p>
                                     <p>
                                         The Red Number Refers To The Position
-                                        Number Of An S-NFT L3.
+                                        Number Of An SNFT L3.
                                     </p>
                                 </div>
                             );
@@ -202,7 +202,7 @@ export default function CreatorApp() {
             key: 'lastEpoch',
             render: (text) => (
                 <span className={CreatorApp_ls.table_redblock}>
-                    {parseInt('0x' + text.slice(4, text.length)) + 1}
+                    {parseInt('0x' + text.slice(4, text.length))}
                 </span>
             ),
             width: '100px',
@@ -287,7 +287,7 @@ export default function CreatorApp() {
         {
             title: () => (
                 <div className={CreatorApp_ls.tablexbox2}>
-                    <span>Times</span>
+                    <span>Number of elected</span>
                     <Tooltip
                         title={() => {
                             return (
@@ -311,7 +311,7 @@ export default function CreatorApp() {
             dataIndex: 'count',
             key: 'count',
             render: (text) => <span>{text}</span>,
-            width: '100px',
+            width: '200px',
         },
         {
             title: () => (
@@ -349,7 +349,7 @@ export default function CreatorApp() {
                         : ''}
                 </span>
             ),
-            width: '190px',
+            width: '180px',
         },
         {
             title: () => (
@@ -390,7 +390,7 @@ export default function CreatorApp() {
             dataIndex: 'count',
             key: 'count',
             render: (text) => <span>{text}</span>,
-            width: '220px',
+            width: '180px',
         },
         {
             title: () => (
@@ -527,46 +527,55 @@ export default function CreatorApp() {
                                     </span>
                                 </div>
                                 <img
-                                    src={require('../../assets/images/Creator/Slice 10.png')}
+                                    src={require('../../assets/images/CreatorApp/Slice 834.png')}
                                 />
                             </div>
                         </div>
-                        <p
-                            className={
-                                CreatorApp_ls.CreatorBox_titlebox_right_title
-                            }
-                        >
-                            Total profits of creators
-                        </p>
-                        <p
-                            className={
-                                CreatorApp_ls.CreatorBox_titlebox_right_title
-                            }
-                        >
-                            {totaldata.totalProfit
-                                ? Number(
-                                      utils.formatEther(totaldata.totalProfit),
-                                  ).toFixed(2)
-                                : 0}{' '}
-                            ERB
-                        </p>
                         <div
                             className={
-                                CreatorApp_ls.CreatorBox_titlebox_right_block
+                                CreatorApp_ls.CreatorBox_titlebox_right_titlebox
                             }
                         >
-                            <Chart
-                                height={200}
-                                autoFit
-                                animate={false}
-                                data={histogramdata}
+                            <p
+                                className={
+                                    CreatorApp_ls.CreatorBox_titlebox_right_title
+                                }
                             >
-                                <Interval
-                                    position="index*data"
-                                    color="#FD4BA5"
-                                />
-                                {/* <Tooltip shared /> */}
-                            </Chart>
+                                {totaldata.totalProfit
+                                    ? Number(
+                                          utils.formatEther(
+                                              totaldata.totalProfit,
+                                          ),
+                                      ).toFixed(2)
+                                    : 0}{' '}
+                                ERB
+                            </p>
+                            <p
+                                className={
+                                    CreatorApp_ls.CreatorBox_titlebox_right_title
+                                }
+                            >
+                                Total profits of creators
+                            </p>
+                            <div
+                                className={
+                                    CreatorApp_ls.CreatorBox_titlebox_right_block
+                                }
+                            >
+                                <Chart
+                                    width={320}
+                                    height={150}
+                                    autoFit
+                                    animate={false}
+                                    data={histogramdata}
+                                >
+                                    <Interval
+                                        position="index*data"
+                                        color="#FD4BA5"
+                                    />
+                                    {/* <Tooltip shared /> */}
+                                </Chart>
+                            </div>
                         </div>
                     </div>
                     {/* 表格 */}

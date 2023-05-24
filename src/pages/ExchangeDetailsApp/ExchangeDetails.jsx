@@ -245,7 +245,7 @@ export default function ExchangeDetails(props) {
     }
     function Histogram() {
         return (
-            <Chart height={120} autoFit data={histogramdata} pure>
+            <Chart height={120} width={325} autoFit data={histogramdata} pure>
                 <Interval position="time*sales" animate={false} />
                 <Tooltip shared showTitle={false} />
             </Chart>
@@ -287,18 +287,22 @@ export default function ExchangeDetails(props) {
                 >
                     <div
                         className={
-                            ExchangeDetails_ls.ExchangeDetailsBox_headerData_title
-                        }
-                    >
-                        Marketplace Details
-                        {/* <SearchBox /> */}
-                    </div>
-                    <div
-                        className={
                             ExchangeDetails_ls.ExchangeDetailsBox_headerData_textBox
                         }
                     >
-                        <div>
+                        <div
+                            className={
+                                ExchangeDetails_ls.ExchangeDetailsBox_headerData_textBox_box
+                            }
+                        >
+                            <div
+                                className={
+                                    ExchangeDetails_ls.ExchangeDetailsBox_headerData_title
+                                }
+                            >
+                                Marketplace Details
+                                {/* <SearchBox /> */}
+                            </div>
                             <div
                                 className={
                                     ExchangeDetails_ls.ExchangeDetailsBox_headerData_textBox_imgtitle
@@ -462,7 +466,7 @@ export default function ExchangeDetails(props) {
                                 }
                                 onClick={transactionmeta.bind(this, 0)}
                             >
-                                Submitted S-NFTs
+                                Submitted SNFTs
                             </div>
                         ) : (
                             <div
@@ -470,7 +474,7 @@ export default function ExchangeDetails(props) {
                                     ExchangeDetails_ls.ExchangeDetailsBox_titleData_buttonBox_Transactionhistory2
                                 }
                             >
-                                Submitted S-NFTs
+                                Submitted SNFTs
                             </div>
                         )}
                         {transactionmetadata == 1 ? (

@@ -457,7 +457,7 @@ export default function ExchangeDetails(props) {
                                 }
                                 onClick={transactionmeta.bind(this, 0)}
                             >
-                                Submitted S-NFTs
+                                Submitted SNFTs
                             </div>
                         ) : (
                             <div
@@ -465,7 +465,7 @@ export default function ExchangeDetails(props) {
                                     ExchangeDetails_ls.ExchangeDetailsBox_titleData_buttonBox_Transactionhistory2
                                 }
                             >
-                                Submitted S-NFTs
+                                Submitted SNFTs
                             </div>
                         )}
                         {transactionmetadata == 1 ? (

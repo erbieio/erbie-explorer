@@ -9,6 +9,7 @@ import {
     Tag,
     Button,
     message,
+    Pagination,
 } from 'antd';
 const { Option } = Select;
 const { Column, ColumnGroup } = Table;
@@ -24,21 +25,24 @@ import {
     snftPage,
     totals,
     epochpage,
+    creatorAddressdetailed,
 } from '../../api/request_data/AccountDetail_request';
 import {
     CaretUpOutlined,
     CaretDownOutlined,
     QuestionCircleOutlined,
+    DownOutlined,
 } from '@ant-design/icons';
-import Trade_ls from '../Trade/Trade.less';
-import copy from 'copy-to-clipboard';
-import { history } from '../../.umi/core/history';
-import { utils } from 'ethers';
 import {
     timestamp,
     ellipsis,
     hexCharCodeToStr,
+    hexCharCodeToStrmath,
 } from '../../utils/methods/Methods';
+import Trade_ls from '../Trade/Trade.less';
+import copy from 'copy-to-clipboard';
+import { history } from '../../.umi/core/history';
+import { utils } from 'ethers';
 import { Link } from 'umi';
 import moment from 'moment';
 const handleCopy = (value) => {
@@ -66,46 +70,7 @@ function stagenumber(data) {
         }
     }
 }
-//Stake Value 排序
-function StakeValue(text) {
-    if (text == 1) {
-        if (this.state.stakevaluecolor == 1) {
-            this.setState({
-                stakevaluecolor: 0,
-                orderdata: '',
-            });
-            this.epochpage();
-            // this.state.stakevaluecolor = 0;
-            // this.state.orderdata = '';
-        } else {
-            this.setState({
-                stakevaluecolor: 1,
-                orderdata: 'start_time ASC',
-            });
-            this.epochpage();
-            // this.state.stakevaluecolor = 1;
-            // this.state.orderdata = 'start_time ASC';
-        }
-    } else {
-        if (this.state.stakevaluecolor == 2) {
-            this.setState({
-                stakevaluecolor: 0,
-                orderdata: '',
-            });
-            this.epochpage();
-            // this.state.stakevaluecolor = 0;
-            // this.state.orderdata = '';
-        } else {
-            this.setState({
-                stakevaluecolor: 2,
-                orderdata: 'start_time DESC',
-            });
-            this.epochpage();
-            // this.state.stakevaluecolor = 2;
-            // this.state.orderdata = 'start_time DESC';
-        }
-    }
-}
+
 class AccountDetail extends React.Component {
     //Clock构造函数
     constructor(props) {
@@ -132,6 +97,8 @@ class AccountDetail extends React.Component {
             stakevaluecolor: 0,
             orderdata: '',
             totaldata: {},
+            epochtableData: {},
+            addressid: {},
             transcolumns: [
                 {
                     title: 'TXN Hash',
@@ -317,7 +284,7 @@ class AccountDetail extends React.Component {
                     dataIndex: 'aaaa',
                     render: (text, data) => (
                         <span>
-                            {data
+                            {data.gasPrice && data.gasUsed
                                 ? utils.formatEther(
                                       String(data.gasPrice * data.gasUsed),
                                   )
@@ -334,18 +301,7 @@ class AccountDetail extends React.Component {
                     dataIndex: 'name',
                     key: 'name',
                     showSorterTooltip: true,
-                    onCell: () => {
-                        return {
-                            style: {
-                                maxWidth: 120,
-                                overflow: 'hidden',
-                                whiteSpace: 'nowrap',
-                                textOverflow: 'ellipsis',
-                                cursor: 'pointer',
-                                color: '#7AA4FF',
-                            },
-                        };
-                    },
+
                     render: (text, data) => (
                         <Link
                             title={text}
@@ -387,7 +343,7 @@ class AccountDetail extends React.Component {
 
                     render: (text, data) =>
                         text == '0x0000000000000000000000000000000000000000' ? (
-                            <span>Official S-NFT</span>
+                            <span>Official SNFT</span>
                         ) : (
                             <Link
                                 to={{
@@ -438,18 +394,6 @@ class AccountDetail extends React.Component {
                     title: 'Name',
                     dataIndex: 'name',
                     key: 'name',
-                    onCell: () => {
-                        return {
-                            style: {
-                                maxWidth: 120,
-                                overflow: 'hidden',
-                                whiteSpace: 'nowrap',
-                                textOverflow: 'ellipsis',
-                                cursor: 'pointer',
-                                color: '#7AA4FF',
-                            },
-                        };
-                    },
                     render: (text, data) => (
                         <Link
                             title={text}
@@ -481,11 +425,149 @@ class AccountDetail extends React.Component {
                             )}
                         </Link>
                     ),
+                    width: '100px',
+                },
+                {
+                    title: () => (
+                        <div className={AccountDetail_ls.tablexbox2}>
+                            <span> SNFT Number</span>
+                            <Tooltip
+                                placement="bottom"
+                                title={() => {
+                                    return (
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tablexbox2_Period
+                                            }
+                                        >
+                                            <p>
+                                                SNFT Grades Are LO, L1, L2, And
+                                                L3 From The Lowest To The
+                                                Highest. YouCan Synthesize It To
+                                                Higher Levels For Higher
+                                                Revenue.
+                                            </p>
+                                            <p>The Rules Are As Below:</p>
+                                            <p>
+                                                16 Specifc SNFT LO Synthesizes A
+                                                Unique SNFT L1.
+                                            </p>
+                                            <p>
+                                                16 Specifc SNFT L1 Synthesizes A
+                                                Unique SNFT L2.
+                                            </p>
+                                            <p>
+                                                16 Specifc SNFT L2 Synthesizes A
+                                                Unique SNFT L3.{' '}
+                                            </p>
+                                            <p>
+                                                The Blue Number Indicates The
+                                                SNFT LO Position Number In An
+                                                SNFT L1.
+                                            </p>
+                                            <p>
+                                                The Green Number Indicates The
+                                                Position Number Of SNFT L1In An
+                                                SNFT L2.
+                                            </p>
+                                            <p>
+                                                The Yellow Number Indicates The
+                                                SNFT L2 Position Number In An
+                                                SNFT L3.
+                                            </p>
+                                            <p>
+                                                The Red Number Refers To The
+                                                Position Number Of An SNFT L3.
+                                            </p>
+                                        </div>
+                                    );
+                                }}
+                                color="#4D4D55"
+                            >
+                                <span
+                                    className={AccountDetail_ls.tablexbox2_icon}
+                                >
+                                    <QuestionCircleOutlined />
+                                </span>
+                            </Tooltip>
+                        </div>
+                    ),
+                    dataIndex: 'address',
+                    key: 'address',
+                    render: (text) =>
+                        text ? (
+                            <span
+                                className={
+                                    AccountDetail_ls.SNFTBox_tablelevelPeriodbox
+                                }
+                            >
+                                {text.length >= 39 ? (
+                                    <Tooltip title="L3" color="#4D4D55">
+                                        <span
+                                            className={
+                                                AccountDetail_ls.SNFTBox_tablelevelPeriod
+                                            }
+                                        >
+                                            {parseInt('0x' + text.slice(4, 39))}
+                                        </span>
+                                    </Tooltip>
+                                ) : (
+                                    ' '
+                                )}
+                                {text.length >= 40 ? (
+                                    <Tooltip title="L2" color="#4D4D55">
+                                        <span
+                                            className={
+                                                AccountDetail_ls.SNFTBox_tablelevelCollection
+                                            }
+                                        >
+                                            {parseInt(
+                                                '0x' + text.slice(39, 40),
+                                            ) + 1}
+                                        </span>
+                                    </Tooltip>
+                                ) : (
+                                    ''
+                                )}
+                                {text.length >= 41 ? (
+                                    <Tooltip title="L1" color="#4D4D55">
+                                        <span
+                                            className={
+                                                AccountDetail_ls.SNFTBox_tablelevelnft
+                                            }
+                                        >
+                                            {parseInt(
+                                                '0x' + text.slice(40, 41),
+                                            ) + 1}
+                                        </span>
+                                    </Tooltip>
+                                ) : (
+                                    ''
+                                )}
+                                {text.length >= 42 ? (
+                                    <Tooltip title="L0" color="#4D4D55">
+                                        <span
+                                            className={
+                                                AccountDetail_ls.SNFTBox_tablelevelsnft
+                                            }
+                                        >
+                                            {parseInt(
+                                                '0x' + text.slice(41, 42),
+                                            ) + 1}
+                                        </span>
+                                    </Tooltip>
+                                ) : (
+                                    ''
+                                )}
+                            </span>
+                        ) : (
+                            ''
+                        ),
                 },
                 {
                     title: 'Creation Time',
-                    dataIndex: 'reward_at',
-                    key: 'reward_at',
+                    dataIndex: 'createdAt',
+                    key: 'createdAt',
                     render: (text) => (
                         <span>
                             {moment(parseInt(text) * 1000).format(
@@ -493,12 +575,14 @@ class AccountDetail extends React.Component {
                             )}
                         </span>
                     ),
+                    // ellipsis: true,
+                    width: '150px',
                 },
                 {
-                    title: 'Author',
+                    title: 'Creator',
                     key: 'creator',
                     dataIndex: 'creator',
-
+                    // ellipsis: true,
                     render: (text, data) => (
                         <Link
                             to={{
@@ -520,7 +604,7 @@ class AccountDetail extends React.Component {
                     title: 'Owner',
                     dataIndex: 'owner',
                     key: 'owner',
-
+                    // ellipsis: true,
                     render: (text, data) => (
                         <Link
                             to={{
@@ -538,192 +622,10 @@ class AccountDetail extends React.Component {
                         </Link>
                     ),
                 },
-            ],
-            creatorcolumns: [
                 {
-                    title: 'Period Address',
-                    dataIndex: 'id',
-                    key: 'id',
-                    render: (text) => (
-                        <Link
-                            to={{
-                                pathname: `/AccountDetailApp/${text}`,
-                                state: text,
-                            }}
-                            style={{
-                                color: '#7AA4FF',
-                                fontFamily: 'CustomFontMedium',
-                            }}
-                        >
-                            {ellipsis(text)}
-                        </Link>
-                    ),
-                },
-                {
-                    title: () => (
-                        <div className={AccountDetail_ls.tablexbox2}>
-                            <span>Period</span>
-                            <Tooltip
-                                placement="bottom"
-                                title={() => {
-                                    return (
-                                        <div
-                                            className={
-                                                AccountDetail_ls.tablexbox2_Period
-                                            }
-                                        >
-                                            <p>
-                                                S-NFT Grades Are LO, L1, L2, And
-                                                L3 From The Lowest To The
-                                                Highest. YouCan Synthesize It To
-                                                Higher Levels For Higher
-                                                Revenue.
-                                            </p>
-                                            <p>The Rules Are As Below:</p>
-                                            <p>
-                                                16 Specifc S-NFT LO Synthesizes
-                                                A Unique S-NFT L1.
-                                            </p>
-                                            <p>
-                                                16 Specifc S-NFT L1 Synthesizes
-                                                A Unique S-NFT L2.
-                                            </p>
-                                            <p>
-                                                16 Specifc S-NFT L2 Synthesizes
-                                                A Unique S-NFT L3.{' '}
-                                            </p>
-                                            <p>
-                                                The Blue Number Indicates The
-                                                S-NFT LO Position Number In An
-                                                S-NFT L1.
-                                            </p>
-                                            <p>
-                                                The Green Number Indicates The
-                                                Position Number Of S-NFT L1In An
-                                                S-NFT L2.
-                                            </p>
-                                            <p>
-                                                The Yellow Number Indicates The
-                                                S-NFT L2 Position Number In An
-                                                S-NFT L3.
-                                            </p>
-                                            <p>
-                                                The Red Number Refers To The
-                                                Position Number Of An S-NFT L3.
-                                            </p>
-                                        </div>
-                                    );
-                                }}
-                                color="#4D4D55"
-                            >
-                                <span
-                                    className={AccountDetail_ls.tablexbox2_icon}
-                                >
-                                    <QuestionCircleOutlined />
-                                </span>
-                            </Tooltip>
-                        </div>
-                    ),
-                    dataIndex: 'id',
-                    key: 'id',
-                    render: (text) => (
-                        <span>
-                            {text.length >= 39 ? (
-                                <Tooltip title="L3" color="#4D4D55">
-                                    <span
-                                        className={
-                                            AccountDetail_ls.SNFTBox_tablelevelPeriod
-                                        }
-                                    >
-                                        {parseInt('0x' + text.slice(4, 39))}
-                                    </span>
-                                </Tooltip>
-                            ) : (
-                                ' '
-                            )}
-                            {text.length >= 40 ? (
-                                <Tooltip title="L2" color="#4D4D55">
-                                    <span
-                                        className={
-                                            AccountDetail_ls.SNFTBox_tablelevelCollection
-                                        }
-                                    >
-                                        {parseInt('0x' + text.slice(39, 40)) +
-                                            1}
-                                    </span>
-                                </Tooltip>
-                            ) : (
-                                ''
-                            )}
-                            {text.length >= 41 ? (
-                                <Tooltip title="L1" color="#4D4D55">
-                                    <span
-                                        className={
-                                            AccountDetail_ls.SNFTBox_tablelevelnft
-                                        }
-                                    >
-                                        {parseInt('0x' + text.slice(40, 41)) +
-                                            1}
-                                    </span>
-                                </Tooltip>
-                            ) : (
-                                ''
-                            )}
-                            {text.length >= 42 ? (
-                                <Tooltip title="L0" color="#4D4D55">
-                                    <span
-                                        className={
-                                            AccountDetail_ls.SNFTBox_tablelevelsnft
-                                        }
-                                    >
-                                        {parseInt('0x' + text.slice(41, 42)) +
-                                            1}
-                                    </span>
-                                </Tooltip>
-                            ) : (
-                                ''
-                            )}
-                        </span>
-                    ),
-                },
-                {
-                    title: () => (
-                        <div className={AccountDetail_ls.tablexbox}>
-                            TXN Time
-                            {this.state.stakevaluecolor == 0 ? (
-                                <div className={AccountDetail_ls.tablex}>
-                                    <CaretUpOutlined
-                                        onClick={StakeValue.bind(this, 1)}
-                                    />
-                                    <CaretDownOutlined
-                                        onClick={StakeValue.bind(this, 2)}
-                                    />
-                                </div>
-                            ) : this.state.stakevaluecolor == 1 ? (
-                                <div className={AccountDetail_ls.tablex}>
-                                    <CaretUpOutlined
-                                        onClick={StakeValue.bind(this, 1)}
-                                        style={{ color: '#7AA4FF' }}
-                                    />
-                                    <CaretDownOutlined
-                                        onClick={StakeValue.bind(this, 2)}
-                                    />
-                                </div>
-                            ) : (
-                                <div className={AccountDetail_ls.tablex}>
-                                    <CaretUpOutlined
-                                        onClick={StakeValue.bind(this, 1)}
-                                    />
-                                    <CaretDownOutlined
-                                        onClick={StakeValue.bind(this, 2)}
-                                        style={{ color: '#7AA4FF' }}
-                                    />
-                                </div>
-                            )}
-                        </div>
-                    ),
-                    dataIndex: 'startTime',
-                    key: 'startTime',
+                    title: 'Owner Get Time',
+                    dataIndex: 'reward_at',
+                    key: 'reward_at',
                     render: (text) => (
                         <span>
                             {moment(parseInt(text) * 1000).format(
@@ -731,175 +633,8 @@ class AccountDetail extends React.Component {
                             )}
                         </span>
                     ),
-                },
-                {
-                    title: () => (
-                        <div className={AccountDetail_ls.tablexbox2}>
-                            <span>Block Height</span>
-                            <Tooltip
-                                title={() => {
-                                    return (
-                                        <div
-                                            className={
-                                                AccountDetail_ls.tablexbox2_Period
-                                            }
-                                        >
-                                            <p>
-                                                The lastest block height that
-                                                user been CreatorEvery creators'
-                                                block height is different.
-                                            </p>
-                                        </div>
-                                    );
-                                }}
-                                color="#4D4D55"
-                            >
-                                <span
-                                    className={AccountDetail_ls.tablexbox2_icon}
-                                >
-                                    <QuestionCircleOutlined />
-                                </span>
-                            </Tooltip>
-                        </div>
-                    ),
-                    dataIndex: 'startNumber',
-                    key: 'startNumber',
-                    render: (text, data) =>
-                        data.number != 0 ? (
-                            data.miner ==
-                            '0x0000000000000000000000000000000000000000' ? (
-                                <Link
-                                    to={{
-                                        pathname:
-                                            '/BlockChainApp/BlackholeBlockDetaApp',
-                                        state: { blockid: text },
-                                    }}
-                                    style={{
-                                        color: '#7AA4FF',
-                                        fontFamily: 'CustomFontMedium',
-                                    }}
-                                >
-                                    {text}
-                                </Link>
-                            ) : (
-                                <Link
-                                    to={{
-                                        pathname:
-                                            '/BlockChainApp/BlockDetailsApp',
-                                        state: { blockid: text },
-                                    }}
-                                    style={{
-                                        color: '#7AA4FF',
-                                        fontFamily: 'CustomFontMedium',
-                                    }}
-                                >
-                                    {text}
-                                </Link>
-                            )
-                        ) : (
-                            '-'
-                        ),
-                },
-                {
-                    title: () => (
-                        <div className={AccountDetail_ls.tablexbox2}>
-                            <span>TXN Hash</span>
-                        </div>
-                    ),
-                    dataIndex: 'tx_hash',
-                    key: 'tx_hash',
-                    render: (text) => (
-                        <Link
-                            to={{
-                                pathname: `/TradeDetailApp/${text}`,
-                                state: text,
-                            }}
-                            style={{
-                                color: '#7AA4FF',
-                                fontFamily: 'CustomFontMedium',
-                            }}
-                        >
-                            {ellipsis(text)}
-                        </Link>
-                    ),
-                },
-                {
-                    title: () => (
-                        <div className={AccountDetail_ls.tablexbox}>
-                            TXN Type
-                        </div>
-                    ),
-                    dataIndex: 'number',
-                    key: 'number',
-                    render: (text) => <span>{text}</span>,
-                },
-                {
-                    title: () => (
-                        <div className={AccountDetail_ls.tablexbox2}>
-                            <span>Rewards</span>
-                            <Tooltip
-                                title={() => {
-                                    return (
-                                        <div
-                                            className={
-                                                AccountDetail_ls.tablexbox2_Period
-                                            }
-                                        >
-                                            <p>
-                                                Creators can get a rewards as a
-                                                transaction creator.creators can
-                                                get 10% of total tansactions
-                                                amount as royalty
-                                            </p>
-                                        </div>
-                                    );
-                                }}
-                                color="#4D4D55"
-                            >
-                                <span
-                                    className={AccountDetail_ls.tablexbox2_icon}
-                                >
-                                    <QuestionCircleOutlined />
-                                </span>
-                            </Tooltip>
-                        </div>
-                    ),
-                    dataIndex: 'reward',
-                    key: 'reward',
-                    render: (text) => <span>{text}</span>,
-                },
-                {
-                    title: () => (
-                        <div className={AccountDetail_ls.tablexbox2}>
-                            <span>Action</span>
-                            <Tooltip
-                                title={() => {
-                                    return (
-                                        <div
-                                            className={
-                                                AccountDetail_ls.tablexbox2_Period
-                                            }
-                                        >
-                                            <p>
-                                                Go to marketplace to check the
-                                                details.
-                                            </p>
-                                        </div>
-                                    );
-                                }}
-                                color="#4D4D55"
-                            >
-                                <span
-                                    className={AccountDetail_ls.tablexbox2_icon}
-                                >
-                                    <QuestionCircleOutlined />
-                                </span>
-                            </Tooltip>
-                        </div>
-                    ),
-                    dataIndex: 'aaaa',
-                    key: 'aaaa',
-                    render: (text) => <span>Go it</span>,
+                    // ellipsis: true,
+                    width: '150px',
                 },
             ],
         };
@@ -1042,11 +777,743 @@ class AccountDetail extends React.Component {
                 console.log(res);
                 if (res) {
                     this.setState({
-                        tableData: res.epochs,
+                        tableData: res.epochs ? res.epochs : [],
                         tableTotal: res.total,
                         loading: false,
                     });
                 }
+            };
+            this.creatorAddressdetailed = async (data) => {
+                // console.log(data);
+                this.setState({
+                    loading: true,
+                });
+                const res = await creatorAddressdetailed({
+                    ...this.state.pageOption,
+                    id: data.id,
+                });
+                // console.log(res);
+                if (res) {
+                    if (Object.keys(this.state.epochtableData).length == 0) {
+                        // console.log(111);
+                        this.setState({
+                            epochtableData: res,
+                            loading: false,
+                        });
+                    } else {
+                        // console.log(this.state.epochtableData);
+                        let text = [];
+                        for (
+                            let i = 0;
+                            i < this.state.epochtableData.nft_txs.length;
+                            i++
+                        ) {
+                            text.push(this.state.epochtableData.nft_txs[i]);
+                        }
+                        for (let i = 0; i < res.nft_txs.length; i++) {
+                            text.push(res.nft_txs[i]);
+                        }
+
+                        this.setState({
+                            epochtableData: {
+                                nft_txs: text,
+                            },
+                            loading: false,
+                        });
+                        console.log(this.state.epochtableData);
+                    }
+                }
+            };
+            this.tablearrowclick = (index, data, datalenght) => {
+                // console.log(data);
+                localStorage.setItem('creator_arrowhead', datalenght);
+
+                this.state.epochtableData = {};
+                this.state.addressid = data;
+                this.creatorAddressdetailed(data);
+                if (
+                    document.getElementsByClassName(`undefined${index}`)[0]
+                        .style.height == '0px'
+                ) {
+                    for (let i = 0; i < datalenght; i++) {
+                        document.getElementsByClassName(
+                            `undefined${i}`,
+                        )[0].style.height = '0px';
+                    }
+                }
+                if (
+                    document.getElementsByClassName(`undefined${index}`)[0]
+                        .style.height == '276px'
+                ) {
+                    document.getElementsByClassName(
+                        `undefined${index}`,
+                    )[0].style.height = '0px';
+                } else if (
+                    document.getElementsByClassName(`undefined${index}`)[0]
+                        .style.height == '0px'
+                ) {
+                    document.getElementsByClassName(
+                        `undefined${index}`,
+                    )[0].style.height = '276px';
+                }
+                if (
+                    document.getElementsByClassName(`undefinedicon${index}`)[0]
+                        .style.transform == 'rotate(0deg)'
+                ) {
+                    for (let i = 0; i < datalenght; i++) {
+                        document.getElementsByClassName(
+                            `undefinedicon${i}`,
+                        )[0].style.transform = 'rotate(0deg)';
+                    }
+                }
+                if (
+                    document.getElementsByClassName(`undefinedicon${index}`)[0]
+                        .style.transform == 'rotate(180deg)'
+                ) {
+                    document.getElementsByClassName(
+                        `undefinedicon${index}`,
+                    )[0].style.transform = 'rotate(0deg)';
+                } else if (
+                    document.getElementsByClassName(`undefinedicon${index}`)[0]
+                        .style.transform == 'rotate(0deg)'
+                ) {
+                    document.getElementsByClassName(
+                        `undefinedicon${index}`,
+                    )[0].style.transform = 'rotate(180deg)';
+                }
+            };
+            //Stake Value 排序
+            this.StakeValue = (text) => {
+                if (localStorage.getItem('creator_arrowhead')) {
+                    for (
+                        let i = 0;
+                        i < localStorage.getItem('creator_arrowhead');
+                        i++
+                    ) {
+                        document.getElementsByClassName(
+                            `undefined${i}`,
+                        )[0].style.height = '0px';
+                    }
+
+                    for (
+                        let i = 0;
+                        i < localStorage.getItem('creator_arrowhead');
+                        i++
+                    ) {
+                        document.getElementsByClassName(
+                            `undefinedicon${i}`,
+                        )[0].style.transform = 'rotate(0deg)';
+                    }
+                }
+
+                if (text == 1) {
+                    if (this.state.stakevaluecolor == 1) {
+                        this.setState({
+                            stakevaluecolor: 0,
+                            orderdata: '',
+                        });
+                        this.epochpage();
+                        // this.state.stakevaluecolor = 0;
+                        // this.state.orderdata = '';
+                    } else {
+                        this.setState({
+                            stakevaluecolor: 1,
+                            orderdata: 'start_time ASC',
+                        });
+                        this.epochpage();
+                        // this.state.stakevaluecolor = 1;
+                        // this.state.orderdata = 'start_time ASC';
+                    }
+                } else {
+                    if (this.state.stakevaluecolor == 2) {
+                        this.setState({
+                            stakevaluecolor: 0,
+                            orderdata: '',
+                        });
+                        this.epochpage();
+                        // this.state.stakevaluecolor = 0;
+                        // this.state.orderdata = '';
+                    } else {
+                        this.setState({
+                            stakevaluecolor: 2,
+                            orderdata: 'start_time DESC',
+                        });
+                        this.epochpage();
+                        // this.state.stakevaluecolor = 2;
+                        // this.state.orderdata = 'start_time DESC';
+                    }
+                }
+            };
+            this.creatorScroll = (e) => {
+                if (
+                    e.target.scrollHeight - e.target.scrollTop ===
+                    e.target.clientHeight
+                ) {
+                    // console.log('header bottom reached');
+                    this.state.pageOption.page = this.state.pageOption.page + 1;
+                    this.creatorAddressdetailed(this.state.addressid);
+                }
+            };
+            //BLOCK LIST 表格组件
+            this.tableblocklist = (data) => {
+                console.log(data);
+                if (data) {
+                    return data.map((item, index) => {
+                        return (
+                            <div className={AccountDetail_ls.tableblocklistbox}>
+                                <div
+                                    className={
+                                        AccountDetail_ls.tableblocklisttitbox
+                                    }
+                                    style={{
+                                        backgroundColor:
+                                            index % 2 == 0
+                                                ? '#FFFFFF10'
+                                                : '#FFFFFF20',
+                                    }}
+                                >
+                                    <div
+                                        className={
+                                            AccountDetail_ls.tableblocklistdatabox
+                                        }
+                                    >
+                                        <div
+                                            style={{
+                                                fontFamily: 'CustomFontMedium',
+                                                width: '200px',
+                                            }}
+                                            className={
+                                                AccountDetail_ls.zztable_redblock
+                                            }
+                                        >
+                                            {ellipsis(item.id)}
+                                        </div>
+                                        <div
+                                            className={
+                                                AccountDetail_ls.zztable_redblock
+                                            }
+                                            style={{ width: '200px' }}
+                                        >
+                                            <span
+                                                className={
+                                                    AccountDetail_ls.table_redblock
+                                                }
+                                            >
+                                                {item.id
+                                                    ? parseInt(
+                                                          '0x' +
+                                                              item.id.slice(
+                                                                  4,
+                                                                  item.id
+                                                                      .length,
+                                                              ),
+                                                      )
+                                                    : 0}
+                                            </span>
+                                        </div>
+                                        <span
+                                            className={
+                                                AccountDetail_ls.zztable_redblock
+                                            }
+                                            style={{ width: '250px' }}
+                                        >
+                                            {moment(
+                                                parseInt(item.startTime) * 1000,
+                                            ).format('YYYY-MM-DD HH:mm:ss')}
+                                        </span>
+                                        {item.startNumber != 0 ? (
+                                            item.miner ==
+                                            '0x0000000000000000000000000000000000000000' ? (
+                                                <Link
+                                                    to={{
+                                                        pathname:
+                                                            '/BlockChainApp/BlackholeBlockDetaApp',
+                                                        state: {
+                                                            blockid:
+                                                                item.startNumber,
+                                                        },
+                                                    }}
+                                                    style={{
+                                                        color: '#7AA4FF',
+                                                        fontFamily:
+                                                            'CustomFontMedium',
+                                                        width: '200px',
+                                                    }}
+                                                    className={
+                                                        AccountDetail_ls.zztable_redblock
+                                                    }
+                                                >
+                                                    {item.startNumber}
+                                                </Link>
+                                            ) : (
+                                                <Link
+                                                    to={{
+                                                        pathname:
+                                                            '/BlockChainApp/BlockDetailsApp',
+                                                        state: {
+                                                            blockid:
+                                                                item.startNumber,
+                                                        },
+                                                    }}
+                                                    style={{
+                                                        color: '#7AA4FF',
+                                                        fontFamily:
+                                                            'CustomFontMedium',
+                                                        width: '200px',
+                                                    }}
+                                                    className={
+                                                        AccountDetail_ls.zztable_redblock
+                                                    }
+                                                >
+                                                    {item.startNumber}
+                                                </Link>
+                                            )
+                                        ) : (
+                                            '-'
+                                        )}
+                                        ,
+                                        <Link
+                                            to={{
+                                                pathname: `/TradeDetailApp/${item.tx_hash}`,
+                                                state: item.tx_hash,
+                                            }}
+                                            style={{
+                                                color: '#7AA4FF',
+                                                fontFamily: 'CustomFontMedium',
+                                                width: '200px',
+                                            }}
+                                            className={
+                                                AccountDetail_ls.zztable_redblock
+                                            }
+                                        >
+                                            {ellipsis(item.tx_hash)}
+                                        </Link>
+                                        <Tooltip
+                                            title={hexCharCodeToStrmath(
+                                                item.txType,
+                                            )}
+                                            color="#4D4D55"
+                                        >
+                                            <span
+                                                className={
+                                                    AccountDetail_ls.zztable_redblock
+                                                }
+                                                style={{
+                                                    width: '170px',
+                                                    textOverflow: 'ellipsis',
+                                                    whiteSpace: 'nowrap',
+                                                    overflow: 'hidden',
+                                                }}
+                                            >
+                                                {hexCharCodeToStrmath(
+                                                    item.txType,
+                                                )}
+                                            </span>
+                                        </Tooltip>
+                                        <span
+                                            className={
+                                                AccountDetail_ls.zztable_redblock
+                                            }
+                                            style={{
+                                                width: '200px',
+                                                marginLeft: '20px',
+                                            }}
+                                        >
+                                            {item.reward
+                                                ? Number(
+                                                      utils.formatEther(
+                                                          item.reward,
+                                                      ),
+                                                  ).toFixed(4)
+                                                : 0}
+                                        </span>
+                                    </div>
+                                    {}
+                                    <p
+                                        onClick={this.tablearrowclick.bind(
+                                            this,
+                                            index,
+                                            item,
+                                            data.length,
+                                        )}
+                                        className={
+                                            AccountDetail_ls.tableblocklistarrowp
+                                        }
+                                    >
+                                        <DownOutlined
+                                            className={
+                                                AccountDetail_ls.tableblocklistarrow +
+                                                `icon${index}`
+                                            }
+                                            style={{
+                                                fontSize: '14px',
+                                                color: 'white',
+                                                lineHeight: '48px',
+                                                cursor: 'pointer',
+                                                transition: 'all 0.3s',
+                                                transform: 'rotate(0deg)',
+                                            }}
+                                        />
+                                    </p>
+                                </div>
+                                <div
+                                    className={
+                                        AccountDetail_ls.tableblocklistselectbox +
+                                        `${index}`
+                                    }
+                                    style={{
+                                        height: '0px',
+                                        backgroundColor: '#1E1E4380',
+                                        transition: 'all 0.3s',
+                                        overflow: 'hidden',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                    }}
+                                >
+                                    <div
+                                        className={
+                                            AccountDetail_ls.tableblocklistselectbox_div
+                                        }
+                                        id="creatorScrollheight"
+                                        onScroll={this.creatorScroll}
+                                    >
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tableblocklistselectbox_div_longblock
+                                            }
+                                            id="creatorScrollheightsmor"
+                                        >
+                                            <div
+                                                className={
+                                                    AccountDetail_ls.tableztableboxless
+                                                }
+                                            >
+                                                <div
+                                                    style={{
+                                                        fontFamily:
+                                                            'CustomFontMedium',
+                                                        width: '250px',
+                                                    }}
+                                                    className={
+                                                        AccountDetail_ls.zztable_redblock
+                                                    }
+                                                >
+                                                    {ellipsis(item.id)}
+                                                </div>
+                                                <div
+                                                    className={
+                                                        AccountDetail_ls.zztable_redblock
+                                                    }
+                                                    style={{ width: '200px' }}
+                                                >
+                                                    <span
+                                                        className={
+                                                            AccountDetail_ls.table_redblock
+                                                        }
+                                                    >
+                                                        {item.id
+                                                            ? parseInt(
+                                                                  '0x' +
+                                                                      item.id.slice(
+                                                                          4,
+                                                                          item
+                                                                              .id
+                                                                              .length,
+                                                                      ),
+                                                              )
+                                                            : 0}
+                                                    </span>
+                                                </div>
+                                                <span
+                                                    className={
+                                                        AccountDetail_ls.zztable_redblock
+                                                    }
+                                                    style={{ width: '250px' }}
+                                                >
+                                                    {moment(
+                                                        parseInt(
+                                                            item.startTime,
+                                                        ) * 1000,
+                                                    ).format(
+                                                        'YYYY-MM-DD HH:mm:ss',
+                                                    )}
+                                                </span>
+                                                {item.startNumber != 0 ? (
+                                                    item.miner ==
+                                                    '0x0000000000000000000000000000000000000000' ? (
+                                                        <Link
+                                                            to={{
+                                                                pathname:
+                                                                    '/BlockChain/BlackholeBlockDeta',
+                                                                state: {
+                                                                    blockid:
+                                                                        item.startNumber,
+                                                                },
+                                                            }}
+                                                            style={{
+                                                                color: '#7AA4FF',
+                                                                fontFamily:
+                                                                    'CustomFontMedium',
+                                                                width: '200px',
+                                                            }}
+                                                            className={
+                                                                AccountDetail_ls.zztable_redblock
+                                                            }
+                                                        >
+                                                            {item.startNumber}
+                                                        </Link>
+                                                    ) : (
+                                                        <Link
+                                                            to={{
+                                                                pathname:
+                                                                    '/BlockChain/BlockDetails',
+                                                                state: {
+                                                                    blockid:
+                                                                        item.startNumber,
+                                                                },
+                                                            }}
+                                                            style={{
+                                                                color: '#7AA4FF',
+                                                                fontFamily:
+                                                                    'CustomFontMedium',
+                                                                width: '200px',
+                                                            }}
+                                                            className={
+                                                                AccountDetail_ls.zztable_redblock
+                                                            }
+                                                        >
+                                                            {item.startNumber}
+                                                        </Link>
+                                                    )
+                                                ) : (
+                                                    '-'
+                                                )}
+                                                ,
+                                                <Link
+                                                    to={{
+                                                        pathname: `/TradeDetail/${item.tx_hash}`,
+                                                        state: item.tx_hash,
+                                                    }}
+                                                    style={{
+                                                        color: '#7AA4FF',
+                                                        fontFamily:
+                                                            'CustomFontMedium',
+                                                        width: '200px',
+                                                    }}
+                                                    className={
+                                                        AccountDetail_ls.zztable_redblock
+                                                    }
+                                                >
+                                                    {ellipsis(item.tx_hash)}
+                                                </Link>
+                                                <Tooltip
+                                                    title={hexCharCodeToStrmath(
+                                                        item.txType,
+                                                    )}
+                                                    color="#4D4D55"
+                                                >
+                                                    <span
+                                                        className={
+                                                            AccountDetail_ls.zztable_redblock
+                                                        }
+                                                        style={{
+                                                            width: '170px',
+                                                            textOverflow:
+                                                                'ellipsis',
+                                                            whiteSpace:
+                                                                'nowrap',
+                                                            overflow: 'hidden',
+                                                        }}
+                                                    >
+                                                        {hexCharCodeToStrmath(
+                                                            item.txType,
+                                                        )}
+                                                    </span>
+                                                </Tooltip>
+                                                <span
+                                                    className={
+                                                        AccountDetail_ls.zztable_redblock
+                                                    }
+                                                    style={{
+                                                        width: '200px',
+                                                        marginLeft: '20px',
+                                                    }}
+                                                >
+                                                    {item.reward
+                                                        ? Number(
+                                                              utils.formatEther(
+                                                                  item.reward,
+                                                              ),
+                                                          ).toFixed(4)
+                                                        : 0}
+                                                </span>
+                                            </div>
+                                            {this.tableztablebox(
+                                                this.state.epochtableData,
+                                                item,
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        );
+                    });
+                }
+            };
+            this.tableztablebox = (data, itembs) => {
+                if (data.nft_txs) {
+                    return data.nft_txs.map((item, index) => {
+                        return (
+                            <div
+                                className={AccountDetail_ls.tableztableboxless}
+                            >
+                                <div
+                                    style={{
+                                        fontFamily: 'CustomFontMedium',
+                                        width: '250px',
+                                    }}
+                                    className={
+                                        AccountDetail_ls.zztable_redblock
+                                    }
+                                >
+                                    {ellipsis(itembs.id)}
+                                </div>
+                                <div
+                                    className={
+                                        AccountDetail_ls.zztable_redblock
+                                    }
+                                    style={{ width: '200px' }}
+                                >
+                                    <span
+                                        className={
+                                            AccountDetail_ls.table_redblock
+                                        }
+                                    >
+                                        {itembs.id
+                                            ? parseInt(
+                                                  '0x' +
+                                                      itembs.id.slice(
+                                                          4,
+                                                          itembs.id.length,
+                                                      ),
+                                              )
+                                            : 0}
+                                    </span>
+                                </div>
+                                <span
+                                    className={
+                                        AccountDetail_ls.zztable_redblock
+                                    }
+                                    style={{ width: '250px' }}
+                                >
+                                    {moment(
+                                        parseInt(item.timestamp) * 1000,
+                                    ).format('YYYY-MM-DD HH:mm:ss')}
+                                </span>
+                                {item.block_number != 0 ? (
+                                    item.miner ==
+                                    '0x0000000000000000000000000000000000000000' ? (
+                                        <Link
+                                            to={{
+                                                pathname:
+                                                    '/BlockChain/BlackholeBlockDeta',
+                                                state: {
+                                                    blockid: item.block_number,
+                                                },
+                                            }}
+                                            style={{
+                                                color: '#7AA4FF',
+                                                fontFamily: 'CustomFontMedium',
+                                                width: '200px',
+                                            }}
+                                            className={
+                                                AccountDetail_ls.zztable_redblock
+                                            }
+                                        >
+                                            {item.block_number}
+                                        </Link>
+                                    ) : (
+                                        <Link
+                                            to={{
+                                                pathname:
+                                                    '/BlockChain/BlockDetails',
+                                                state: {
+                                                    blockid: item.block_number,
+                                                },
+                                            }}
+                                            style={{
+                                                color: '#7AA4FF',
+                                                fontFamily: 'CustomFontMedium',
+                                                width: '200px',
+                                            }}
+                                            className={
+                                                AccountDetail_ls.zztable_redblock
+                                            }
+                                        >
+                                            {item.block_number}
+                                        </Link>
+                                    )
+                                ) : (
+                                    '-'
+                                )}
+                                ,
+                                <Link
+                                    to={{
+                                        pathname: `/TradeDetail/${item.tx_hash}`,
+                                        state: item.tx_hash,
+                                    }}
+                                    style={{
+                                        color: '#7AA4FF',
+                                        fontFamily: 'CustomFontMedium',
+                                        width: '200px',
+                                    }}
+                                    className={
+                                        AccountDetail_ls.zztable_redblock
+                                    }
+                                >
+                                    {ellipsis(item.tx_hash)}
+                                </Link>
+                                <Tooltip
+                                    title={hexCharCodeToStrmath(item.tx_type)}
+                                    color="#4D4D55"
+                                >
+                                    <span
+                                        className={
+                                            AccountDetail_ls.zztable_redblock
+                                        }
+                                        style={{
+                                            width: '170px',
+                                            textOverflow: 'ellipsis',
+                                            whiteSpace: 'nowrap',
+                                            overflow: 'hidden',
+                                        }}
+                                    >
+                                        {hexCharCodeToStrmath(item.tx_type)}
+                                    </span>
+                                </Tooltip>
+                                <span
+                                    className={
+                                        AccountDetail_ls.zztable_redblock
+                                    }
+                                    style={{
+                                        width: '200px',
+                                        marginLeft: '20px',
+                                    }}
+                                >
+                                    {item.royalty
+                                        ? Number(
+                                              utils.formatEther(item.royalty),
+                                          ).toFixed(4)
+                                        : 0}
+                                </span>
+                            </div>
+                        );
+                    });
+                }
+            };
+            this.ceratoronChange = (data) => {
+                this.state.pageOption.page = data;
+                this.epochpage();
             };
             this.paginationChange = async (current, size) => {
                 this.state.pageOption.page = current;
@@ -1086,11 +1553,11 @@ class AccountDetail extends React.Component {
         return (
             <>
                 <div className={AccountDetail_ls.AccountDetailBox}>
-                    <div className={AccountDetail_ls.titleAndSearch}>
-                        Account Details
-                    </div>
                     <div className={AccountDetail_ls.flexColBox}>
                         <div className={AccountDetail_ls.AccountDetailBoxTop}>
+                            <div className={AccountDetail_ls.titleAndSearch}>
+                                Account Details
+                            </div>
                             <div className={AccountDetail_ls.hash}>
                                 <span>
                                     {this.state.detailFrom.slice(0, 16) +
@@ -1135,7 +1602,7 @@ class AccountDetail extends React.Component {
                                             1000000000000000000
                                         ).toLocaleString(undefined, {
                                             minimumFractionDigits: 2,
-                                            maximumFractionDigits: 9,
+                                            maximumFractionDigits: 4,
                                         })}
                                     >
                                         {(
@@ -1143,10 +1610,10 @@ class AccountDetail extends React.Component {
                                             1000000000000000000
                                         ).toLocaleString(undefined, {
                                             minimumFractionDigits: 2,
-                                            maximumFractionDigits: 9,
+                                            maximumFractionDigits: 4,
                                         })}
+                                        &nbsp; ERB
                                     </span>
-                                    &nbsp; ERB
                                 </div>
                                 <div>
                                     <p>Validator Staking</p>{' '}
@@ -1360,7 +1827,7 @@ class AccountDetail extends React.Component {
                                     </span>
                                 </div>
                                 <div>
-                                    <p>Marketplace Staking</p>{' '}
+                                    <p>Staker Staking</p>{' '}
                                     <span>
                                         {(
                                             this.state.accountData
@@ -1370,7 +1837,7 @@ class AccountDetail extends React.Component {
                                     </span>
                                 </div>
                                 {/* <div>
-                                    <p>S-NFT Staking</p>{' '}
+                                    <p>SNFT Staking</p>{' '}
                                     <span>
                                         {(
                                             this.state.accountData
@@ -1382,7 +1849,7 @@ class AccountDetail extends React.Component {
                                 </div> */}
 
                                 <div>
-                                    <p>S-NFT Income</p>{' '}
+                                    <p>SNFT Income</p>{' '}
                                     <span>
                                         {this.state.accountData.rewardSNFTCount.toLocaleString()}
                                     </span>
@@ -1396,16 +1863,16 @@ class AccountDetail extends React.Component {
                         <div className={AccountDetail_ls.other}>
                             <div>
                                 <h3>Other Information</h3>
-                                <ul>
+                                {/* <ul>
                                     <p>Owned NFTs</p>
                                     <span
                                         title={this.state.accountData.totalNFT}
                                     >
                                         {this.state.accountData.nftCount || 0}
                                     </span>
-                                </ul>
+                                </ul> */}
                                 <ul>
-                                    <p>Owned S-NFTs</p>
+                                    <p>Owned SNFTs</p>
                                     <span
                                         title={this.state.accountData.totalSNFT}
                                     >
@@ -1469,7 +1936,7 @@ class AccountDetail extends React.Component {
                                             AccountDetail_ls.tablexbox2_titletext
                                         }
                                     >
-                                        S-NFT Value{' '}
+                                        SNFT Value &nbsp;
                                         <Tooltip
                                             title={() => {
                                                 return (
@@ -1510,7 +1977,7 @@ class AccountDetail extends React.Component {
                                             AccountDetail_ls.tablexbox2_titletext
                                         }
                                     >
-                                        Blocks Number{' '}
+                                        Blocks Number &nbsp;
                                         <Tooltip
                                             title={() => {
                                                 return (
@@ -1546,7 +2013,7 @@ class AccountDetail extends React.Component {
                                             AccountDetail_ls.tablexbox2_titletext
                                         }
                                     >
-                                        Creator Pre-nomination Weight{' '}
+                                        Creator Pre-nomination Weight &nbsp;
                                         <Tooltip
                                             title={() => {
                                                 return (
@@ -1557,7 +2024,7 @@ class AccountDetail extends React.Component {
                                                     >
                                                         <p>
                                                             Current block height
-                                                            * S-NFT value.
+                                                            * SNFT value.
                                                         </p>
                                                     </div>
                                                 );
@@ -1590,14 +2057,11 @@ class AccountDetail extends React.Component {
                                     </span>
                                 </ul>
                             </div>
-                            <div>
-                                <img src={other} />
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div
-                    style={{ marginLeft: 40 }}
+                    // style={{ marginLeft: 40 }}
                     className={AccountDetail_ls.changeButton}
                     id="AccountDetailButtonGroup"
                 >
@@ -1612,18 +2076,386 @@ class AccountDetail extends React.Component {
                         <Radio.Button defaultChecked={true} value="trade">
                             TXN
                         </Radio.Button>
-                        <Radio.Button value="SNFT">S-NFT</Radio.Button>
+                        <Radio.Button value="SNFT">SNFT</Radio.Button>
                         <Radio.Button value="NFT">NFT</Radio.Button>
                         <Radio.Button value="CREATOR">CREATOR</Radio.Button>
                     </Radio.Group>
                 </div>
-                <div
-                    className={AccountDetail_ls.AccountDetailBox1}
-                    id="AccountDetailTableApp"
-                >
-                    <ConfigProvider
-                    // locale={zhCN}
+                {this.state.type == 'CREATOR' ? (
+                    <div
+                        className={AccountDetail_ls.HomePageAppbox_tablebox}
+                        id="apptable"
                     >
+                        <div className={AccountDetail_ls.Blockrewardbox_center}>
+                            <div
+                                className={
+                                    AccountDetail_ls.Blockrewardbox_namebox
+                                }
+                            >
+                                <div
+                                    className={
+                                        AccountDetail_ls.Blockrewardbox_titlebox
+                                    }
+                                >
+                                    <p
+                                        className={
+                                            AccountDetail_ls.Blockrewardbox_nameboxp
+                                        }
+                                        style={{ width: '250px' }}
+                                    >
+                                        Period Address
+                                    </p>
+                                    <div
+                                        className={
+                                            AccountDetail_ls.Blockrewardbox_nameboxp
+                                        }
+                                        style={{ width: '200px' }}
+                                    >
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tablexbox2
+                                            }
+                                        >
+                                            <span>Period</span>
+                                            <Tooltip
+                                                placement="bottom"
+                                                title={() => {
+                                                    return (
+                                                        <div
+                                                            className={
+                                                                AccountDetail_ls.tablexbox2_Period
+                                                            }
+                                                        >
+                                                            <p>
+                                                                SNFT Grades Are
+                                                                LO, L1, L2, And
+                                                                L3 From The
+                                                                Lowest To The
+                                                                Highest. YouCan
+                                                                Synthesize It To
+                                                                Higher Levels
+                                                                For Higher
+                                                                Revenue.
+                                                            </p>
+                                                            <p>
+                                                                The Rules Are As
+                                                                Below:
+                                                            </p>
+                                                            <p>
+                                                                16 Specifc SNFT
+                                                                LO Synthesizes A
+                                                                Unique SNFT L1.
+                                                            </p>
+                                                            <p>
+                                                                16 Specifc SNFT
+                                                                L1 Synthesizes A
+                                                                Unique SNFT L2.
+                                                            </p>
+                                                            <p>
+                                                                16 Specifc SNFT
+                                                                L2 Synthesizes A
+                                                                Unique SNFT L3.{' '}
+                                                            </p>
+                                                            <p>
+                                                                The Blue Number
+                                                                Indicates The
+                                                                SNFT LO Position
+                                                                Number In An
+                                                                SNFT L1.
+                                                            </p>
+                                                            <p>
+                                                                The Green Number
+                                                                Indicates The
+                                                                Position Number
+                                                                Of SNFT L1In An
+                                                                SNFT L2.
+                                                            </p>
+                                                            <p>
+                                                                The Yellow
+                                                                Number Indicates
+                                                                The SNFT L2
+                                                                Position Number
+                                                                In An SNFT L3.
+                                                            </p>
+                                                            <p>
+                                                                The Red Number
+                                                                Refers To The
+                                                                Position Number
+                                                                Of An SNFT L3.
+                                                            </p>
+                                                        </div>
+                                                    );
+                                                }}
+                                                color="#4D4D55"
+                                            >
+                                                <span
+                                                    className={
+                                                        AccountDetail_ls.tablexbox2_icon
+                                                    }
+                                                >
+                                                    <QuestionCircleOutlined />
+                                                </span>
+                                            </Tooltip>
+                                        </div>
+                                    </div>
+                                    <p
+                                        className={
+                                            AccountDetail_ls.Blockrewardbox_nameboxp
+                                        }
+                                        style={{ width: '250px' }}
+                                    >
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tablexbox
+                                            }
+                                        >
+                                            TXN Time
+                                            {this.state.stakevaluecolor == 0 ? (
+                                                <div
+                                                    className={
+                                                        AccountDetail_ls.tablex
+                                                    }
+                                                >
+                                                    <CaretUpOutlined
+                                                        onClick={this.StakeValue.bind(
+                                                            this,
+                                                            1,
+                                                        )}
+                                                    />
+                                                    <CaretDownOutlined
+                                                        onClick={this.StakeValue.bind(
+                                                            this,
+                                                            2,
+                                                        )}
+                                                    />
+                                                </div>
+                                            ) : this.state.stakevaluecolor ==
+                                              1 ? (
+                                                <div
+                                                    className={
+                                                        AccountDetail_ls.tablex
+                                                    }
+                                                >
+                                                    <CaretUpOutlined
+                                                        onClick={this.StakeValue.bind(
+                                                            this,
+                                                            1,
+                                                        )}
+                                                        style={{
+                                                            color: '#7AA4FF',
+                                                        }}
+                                                    />
+                                                    <CaretDownOutlined
+                                                        onClick={this.StakeValue.bind(
+                                                            this,
+                                                            2,
+                                                        )}
+                                                    />
+                                                </div>
+                                            ) : (
+                                                <div
+                                                    className={
+                                                        AccountDetail_ls.tablex
+                                                    }
+                                                >
+                                                    <CaretUpOutlined
+                                                        onClick={this.StakeValue.bind(
+                                                            this,
+                                                            1,
+                                                        )}
+                                                    />
+                                                    <CaretDownOutlined
+                                                        onClick={this.StakeValue.bind(
+                                                            this,
+                                                            2,
+                                                        )}
+                                                        style={{
+                                                            color: '#7AA4FF',
+                                                        }}
+                                                    />
+                                                </div>
+                                            )}
+                                        </div>
+                                    </p>
+                                    <div
+                                        className={
+                                            AccountDetail_ls.Blockrewardbox_nameboxp
+                                        }
+                                        style={{ width: '200px' }}
+                                    >
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tablexbox2
+                                            }
+                                        >
+                                            <span>Block Height</span>
+                                            <Tooltip
+                                                title={() => {
+                                                    return (
+                                                        <div
+                                                            className={
+                                                                AccountDetail_ls.tablexbox2_Period
+                                                            }
+                                                        >
+                                                            <p>
+                                                                The lastest
+                                                                block height
+                                                                that user been
+                                                                CreatorEvery
+                                                                creators' block
+                                                                height is
+                                                                different.
+                                                            </p>
+                                                        </div>
+                                                    );
+                                                }}
+                                                color="#4D4D55"
+                                            >
+                                                <span
+                                                    className={
+                                                        AccountDetail_ls.tablexbox2_icon
+                                                    }
+                                                >
+                                                    <QuestionCircleOutlined />
+                                                </span>
+                                            </Tooltip>
+                                        </div>
+                                    </div>
+                                    <p
+                                        className={
+                                            AccountDetail_ls.Blockrewardbox_nameboxp
+                                        }
+                                        style={{ width: '200px' }}
+                                    >
+                                        TXN Hash
+                                    </p>
+                                    <p
+                                        className={
+                                            AccountDetail_ls.Blockrewardbox_nameboxp
+                                        }
+                                        style={{ width: '170px' }}
+                                    >
+                                        TXN Type
+                                    </p>
+                                    <div
+                                        className={
+                                            AccountDetail_ls.Blockrewardbox_nameboxp
+                                        }
+                                        style={{
+                                            width: '200px',
+                                            marginLeft: '20px',
+                                        }}
+                                    >
+                                        <div
+                                            className={
+                                                AccountDetail_ls.tablexbox2
+                                            }
+                                        >
+                                            <span>Rewards</span>
+                                            <Tooltip
+                                                title={() => {
+                                                    return (
+                                                        <div
+                                                            className={
+                                                                AccountDetail_ls.tablexbox2_Period
+                                                            }
+                                                        >
+                                                            <p>
+                                                                Creators can get
+                                                                a rewards as a
+                                                                transaction
+                                                                creator.creators
+                                                                can get 10% of
+                                                                total
+                                                                tansactions
+                                                                amount as
+                                                                royalty
+                                                            </p>
+                                                        </div>
+                                                    );
+                                                }}
+                                                color="#4D4D55"
+                                            >
+                                                <span
+                                                    className={
+                                                        AccountDetail_ls.tablexbox2_icon
+                                                    }
+                                                >
+                                                    <QuestionCircleOutlined />
+                                                </span>
+                                            </Tooltip>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {this.state.tableData ? (
+                                this.state.tableData.length != 0 ? (
+                                    this.tableblocklist(this.state.tableData)
+                                ) : (
+                                    <div className={AccountDetail_ls.nodata}>
+                                        No Data
+                                    </div>
+                                )
+                            ) : (
+                                <div className={AccountDetail_ls.nodata}>
+                                    No Data
+                                </div>
+                            )}
+                            <div
+                                className={
+                                    AccountDetail_ls.BlockChainBox_Pagination
+                                }
+                                id="BlockChainBoxPagination"
+                            >
+                                <Pagination
+                                    defaultCurrent={1}
+                                    total={this.state.tableTotal}
+                                    onChange={this.ceratoronChange}
+                                    showSizeChanger={false}
+                                    current={this.state.pageOption.page}
+                                />
+                                <div
+                                    className={
+                                        AccountDetail_ls.BlockChainBox_Pagination_d
+                                    }
+                                >
+                                    10/Page
+                                </div>
+                                <span
+                                    className={
+                                        AccountDetail_ls.BlockChainBox_Pagination_span1
+                                    }
+                                >
+                                    To
+                                </span>
+                                <input
+                                    id="BlockChaininputnumber"
+                                    className={
+                                        AccountDetail_ls.BlockChainBox_Pagination_input
+                                    }
+                                    onKeyDown={
+                                        this.BlockChaininputnumberonclick
+                                    }
+                                />
+                                <span
+                                    className={
+                                        AccountDetail_ls.BlockChainBox_Pagination_span2
+                                    }
+                                >
+                                    Page
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    <div
+                        className={AccountDetail_ls.AccountDetailBox1}
+                        id="AccountDetailTableApp"
+                    >
+                        {/* <ConfigProvider */}
+                        {/* // locale={zhCN} */}
+                        {/* // > */}
                         <Table
                             dataSource={this.state.tableData}
                             id={'AccountDetailTable'}
@@ -1634,8 +2466,6 @@ class AccountDetail extends React.Component {
                                     ? this.state.nftcolumns
                                     : this.state.type == 'SNFT'
                                     ? this.state.snftcolumns
-                                    : this.state.type == 'CREATOR'
-                                    ? this.state.creatorcolumns
                                     : ''
                             }
                             // loading={this.state.loading}
@@ -1651,8 +2481,9 @@ class AccountDetail extends React.Component {
                             }}
                             scroll={{ x: 'max-content' }}
                         ></Table>
-                    </ConfigProvider>
-                </div>
+                        {/* </ConfigProvider> */}
+                    </div>
+                )}
             </>
         );
     }

@@ -441,27 +441,29 @@ class TradeDetail extends React.Component {
                                     placement="top"
                                     title={this.state.detailData.to}
                                 >
-                                    <span
-                                        style={{ paddingRight: 8 }}
-                                        onClick={this.handleRouter.bind(
-                                            this,
-                                            '/AccountDetail',
-                                            this.state.detailData.to,
-                                        )}
-                                    >
-                                        {this.state.detailData.to
-                                            ? this.state.detailData.to.slice(
-                                                  0,
-                                                  12,
-                                              ) +
-                                              '...' +
-                                              this.state.detailData.to.slice(
-                                                  -16,
-                                                  this.state.detailData.to
-                                                      .length,
-                                              )
-                                            : ''}
-                                    </span>
+                                    {this.state.detailData.to ? (
+                                        <span
+                                            style={{ paddingRight: 8 }}
+                                            onClick={this.handleRouter.bind(
+                                                this,
+                                                '/AccountDetail',
+                                                this.state.detailData.to,
+                                            )}
+                                        >
+                                            {this.state.detailData.to.slice(
+                                                0,
+                                                12,
+                                            ) +
+                                                '...' +
+                                                this.state.detailData.to.slice(
+                                                    -16,
+                                                    this.state.detailData.to
+                                                        .length,
+                                                )}
+                                        </span>
+                                    ) : (
+                                        '-'
+                                    )}
                                 </Tooltip>
                                 {this.state.detailData.to ? (
                                     <AiOutlineCopy
@@ -478,7 +480,7 @@ class TradeDetail extends React.Component {
                                 <p>TXN Type</p>
                                 <span>{this.state.transType.name} </span>
                             </div>
-                            <div>
+                            {/* <div>
                                 <p>Marketplace commission profits</p>
                                 <span>
                                     {this.state.nfttxdata.fee
@@ -490,7 +492,7 @@ class TradeDetail extends React.Component {
                                         : 0.0}{' '}
                                     ERB
                                 </span>
-                            </div>
+                            </div> */}
                             <div>
                                 <p>TXN Fee</p>{' '}
                                 <span>
@@ -577,7 +579,7 @@ class TradeDetail extends React.Component {
                             )}
                             {this.state.transType.type === 6 ? (
                                 <div>
-                                    {/*<p>S-NFT Address</p>*/}
+                                    {/*<p>SNFT Address</p>*/}
                                     {/*<Link to={{ pathname: '/SNFT/SNFTDetails', state: { snftid: this.state.newDetailData.address,snftmata:this.state.detailData } }} style={{ color: '#7AA4FF' }}>*/}
                                     {/*<span>{*/}
                                     {/*    this.state.newDetailData.address ?*/}

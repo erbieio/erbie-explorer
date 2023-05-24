@@ -209,23 +209,26 @@ class Trade extends React.Component {
                     // width: '150px',
                 },
                 {
-                    title: 'Reciever',
+                    title: 'Receiver',
                     key: 'to',
                     dataIndex: 'to',
-                    render: (text, data) => (
-                        <Link
-                            to={{
-                                pathname: `/AccountDetail/${text}`,
-                                state: text,
-                            }}
-                            style={{
-                                color: '#7AA4FF',
-                                fontFamily: 'CustomFontMedium',
-                            }}
-                        >
-                            {ellipsisfour(text)}
-                        </Link>
-                    ),
+                    render: (text, data) =>
+                        text ? (
+                            <Link
+                                to={{
+                                    pathname: `/AccountDetail/${text}`,
+                                    state: text,
+                                }}
+                                style={{
+                                    color: '#7AA4FF',
+                                    fontFamily: 'CustomFontMedium',
+                                }}
+                            >
+                                {ellipsisfour(text)}
+                            </Link>
+                        ) : (
+                            '-'
+                        ),
                     // width: '150px',
                 },
                 {
@@ -328,7 +331,7 @@ class Trade extends React.Component {
                             population: res.totalExchangerTx,
                         },
                         { year: 'NFT Trading', population: res.totalNFTTx },
-                        { year: 'S-NFT Trading', population: res.totalSNFTTx },
+                        { year: 'SNFT Trading', population: res.totalSNFTTx },
                         {
                             year: 'Wormholes Trading',
                             population: res.totalWormholesTx,
