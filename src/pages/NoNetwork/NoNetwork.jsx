@@ -19,7 +19,7 @@ export default function NoNetwork() {
                 </p>
                 <p className={NoNetwork_ls.NoNetworkBox_text2}>
                     Something went wrong. Try again later or orcontact us{' '}
-                    <span>support@wormholes.com</span>
+                    <span>support@Erbie.com</span>
                 </p>
                 <Link
                     to={{ pathname: '/', state: '' }}

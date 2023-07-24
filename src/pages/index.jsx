@@ -46,7 +46,7 @@ export default function IndexPage(props) {
         <>
             <Helmet encodeSpecialCharacters={false}>
                 <meta charSet="utf-8" />
-                <title>Wormholes Blockchain Explorer</title>
+                <title>Erbie Blockchain Explorer</title>
                 <link
                     rel="shortcut ico"
                     href="../assets/images/logo.ico"
@@ -62,14 +62,12 @@ export default function IndexPage(props) {
                     className={
                         props.location.pathname == '/'
                             ? styles.IndexPageBox
-                            : props.location.pathname ==
-                                  '/BlockChain/BlockDetails' ||
+                            : props.location.pathname == '/BlockDetails' ||
                               props.location.pathname ==
-                                  '/BlockChain/BlackholeBlockDeta' ||
-                              props.location.pathname == '/NFT/NFTDetails' ||
-                              props.location.pathname == '/SNFT/SNFTDetails' ||
-                              props.location.pathname ==
-                                  '/Exchange/ExchangeDetails' ||
+                                  '/BlackholeBlockDeta' ||
+                              props.location.pathname == '/NFTDetails' ||
+                              props.location.pathname == '/SNFTDetails' ||
+                              props.location.pathname == '/ExchangeDetails' ||
                               props.location.pathname.split('/')[1] ==
                                   'TradeDetail' ||
                               props.location.pathname.split('/')[1] ==

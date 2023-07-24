@@ -46,7 +46,7 @@ export default function Header() {
             ) {
                 //账户详情
                 history.push({
-                    pathname: `/AccountDetail/${data}`,
+                    pathname: `/AccountDetail`,
                     state: data,
                 });
             } else if (
@@ -55,7 +55,7 @@ export default function Header() {
             ) {
                 //交易hash
                 history.push({
-                    pathname: `/TradeDetail/${data}`,
+                    pathname: `/TradeDetail`,
                     state: data,
                 });
             }
@@ -75,7 +75,7 @@ export default function Header() {
                         src={require('../../assets/images/Header/whiteLogo.png')}
                     />
                     <span className={Header_ls.HeaderBox_logoBox_name}>
-                        Wormholes
+                        Erbie
                     </span>
                 </Link>
                 {/* 导航 */}
@@ -87,16 +87,22 @@ export default function Header() {
                         BLOCKCHAIN
                     </Link>
                     <Link
-                        to={{ pathname: '/Creator', state: '' }}
-                        className={Header_ls.HeaderBox_navigationBox_text}
-                    >
-                        CREATOR
-                    </Link>
-                    <Link
                         to={{ pathname: '/Validator', state: '' }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         VALIDATOR
+                    </Link>
+                    <Link
+                        to={{ pathname: '/Exchange', state: '' }}
+                        className={Header_ls.HeaderBox_navigationBox_text}
+                    >
+                        STAKER
+                    </Link>
+                    <Link
+                        to={{ pathname: '/Creator', state: '' }}
+                        className={Header_ls.HeaderBox_navigationBox_text}
+                    >
+                        CREATOR
                     </Link>
                     <Link
                         to={{ pathname: '/Account', state: '' }}
@@ -105,22 +111,16 @@ export default function Header() {
                         ACCOUNT
                     </Link>
                     <Link
-                        to={{ pathname: '/SNFT', state: '' }}
-                        className={Header_ls.HeaderBox_navigationBox_text}
-                    >
-                        SNFT
-                    </Link>
-                    {/* <Link
                         to={{ pathname: '/NFT', state: '' }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         NFT
-                    </Link>*/}
+                    </Link>
                     <Link
-                        to={{ pathname: '/Exchange', state: '' }}
+                        to={{ pathname: '/SNFT', state: '' }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
-                        STAKER
+                        SNFT
                     </Link>
                     <Link
                         to={{ pathname: '/Trade', state: '' }}
@@ -128,6 +128,7 @@ export default function Header() {
                     >
                         TRANSACT
                     </Link>
+
                     {/* <p className={Header_ls.HeaderBox_navigationBox_text}>
                         <span onClick={handleClick.bind(this, 'Ranking')}>
                             RANKINGS
@@ -139,15 +140,15 @@ export default function Header() {
                 {/* <FaRegMoon /> */}
                 {/* </div> */}
             </div>
-            {window.location.hash == '#/BlockChain' ||
-            window.location.hash == '#/NFT' ||
-            window.location.hash == '#/SNFT' ||
-            window.location.hash == '#/Exchange' ||
-            window.location.hash == '#/Trade' ||
-            window.location.hash == '#/ranking' ||
-            window.location.hash == '#/Validator' ||
-            window.location.hash == '#/Account' ||
-            window.location.hash == '#/Creator' ? (
+            {window.location.pathname == '/BlockChain' ||
+            window.location.pathname == '/NFT' ||
+            window.location.pathname == '/SNFT' ||
+            window.location.pathname == '/Exchange' ||
+            window.location.pathname == '/Trade' ||
+            window.location.pathname == '/ranking' ||
+            window.location.pathname == '/Validator' ||
+            window.location.pathname == '/Account' ||
+            window.location.pathname == '/Creator' ? (
                 <div className={Header_ls.HeaderBox_SearchBox}>
                     <img
                         src={require('../../assets/images/Header/Search.png')}

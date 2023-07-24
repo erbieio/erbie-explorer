@@ -44,7 +44,7 @@ export default function BlackholeBlockDeta(props) {
             key: 'hash',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/TradeDetail/${text}`, state: text }}
+                    to={{ pathname: `/TradeDetail`, state: text }}
                     style={{ color: '#7AA4FF' }}
                 >
                     {ellipsis(text)}
@@ -71,7 +71,7 @@ export default function BlackholeBlockDeta(props) {
             dataIndex: 'from',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF' }}
                 >
                     {ellipsis(text)}
@@ -85,7 +85,7 @@ export default function BlackholeBlockDeta(props) {
             dataIndex: 'to',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF' }}
                 >
                     {ellipsis(text)}
@@ -223,7 +223,7 @@ export default function BlackholeBlockDeta(props) {
                         </p>
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${item.address}`,
+                                pathname: `/AccountDetail`,
                                 state: item.address,
                             }}
                             style={{
@@ -262,7 +262,7 @@ export default function BlackholeBlockDeta(props) {
                     <div className={BlackholeBlockDeta_ls.nodeaddressblock}>
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${item}`,
+                                pathname: `/AccountDetail`,
                                 state: item,
                             }}
                             style={{

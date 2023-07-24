@@ -16,14 +16,14 @@ export default function NullPageApp(props) {
         if (data) {
             if (data.miner == '0x0000000000000000000000000000000000000000') {
                 history.push({
-                    pathname: '/BlockChainApp/BlackholeBlockDetaApp',
+                    pathname: '/BlackholeBlockDetaApp',
                     state: {
                         blockid: JSON.parse(localStorage.getItem('blocktext')),
                     },
                 });
             } else {
                 history.push({
-                    pathname: '/BlockChainApp/BlockDetailsApp',
+                    pathname: '/BlockDetailsApp',
                     state: {
                         blockid: JSON.parse(localStorage.getItem('blocktext')),
                     },

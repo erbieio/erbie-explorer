@@ -40,11 +40,11 @@ export default function Exchange() {
         //     title: 'Name',
         //     dataIndex: 'name',
         //     key: 'name',
-        //     // render: (text, data) => <Link to={{ pathname: '/Exchange/ExchangeDetails', state: { exchangeid: data.address } }} style={{ color: '#7AA4FF' }}> {data.block_number != 0 ? hexCharCodeToStr(text) : text}</Link>,
+        //     // render: (text, data) => <Link to={{ pathname: '/ExchangeDetails', state: { exchangeid: data.address } }} style={{ color: '#7AA4FF' }}> {data.block_number != 0 ? hexCharCodeToStr(text) : text}</Link>,
         //     render: (text, data) => (
         //         <Link
         //             to={{
-        //                 pathname: '/ExchangeApp/ExchangeDetailsApp',
+        //                 pathname: '/ExchangeDetailsApp',
         //                 state: { exchangeid: data.address },
         //             }}
         //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
@@ -54,6 +54,21 @@ export default function Exchange() {
         //     ),
         //     // ellipsis: true,
         // },
+        {
+            title: 'Staker Address',
+            dataIndex: 'address',
+            key: 'address',
+            ellipsis: true,
+            render: (text, data) => (
+                <Link
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
+                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
+                >
+                    {ellipsis(text)}
+                </Link>
+            ),
+            width: '240px',
+        },
         {
             title: 'Block Height',
             dataIndex: 'block_number',
@@ -67,20 +82,6 @@ export default function Exchange() {
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {text}
-                </Link>
-            ),
-        },
-        {
-            title: 'Owner',
-            dataIndex: 'creator',
-            key: 'creator',
-            // ellipsis: true,
-            render: (text, data) => (
-                <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
-                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
-                >
-                    {ellipsis(text)}
                 </Link>
             ),
         },
@@ -530,7 +531,7 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_data
                                 }
                             >
-                                {totaldata.totalExchanger || 0}
+                                {totaldata.totalStaker || 0}
                             </p>
                             <p
                                 className={
@@ -555,12 +556,12 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_data
                                 }
                             >
-                                {totaldata.totalExchangerPledge
-                                    ? utils.formatEther(
-                                          String(
-                                              totaldata.totalExchangerPledge,
+                                {totaldata.totalPledge
+                                    ? Number(
+                                          utils.formatEther(
+                                              String(totaldata.totalPledge),
                                           ),
-                                      )
+                                      ).toFixed(2)
                                     : 0}
                             </p>
                             <p
@@ -596,7 +597,7 @@ export default function Exchange() {
                     >
                         <Pagination
                             defaultCurrent={1}
-                            total={totaldata.totalExchanger}
+                            total={totaldata.totalStaker}
                             onChange={onChange}
                             showSizeChanger={false}
                             current={pagenumber}

@@ -33,7 +33,7 @@ export default function BlockChain() {
                     '0x0000000000000000000000000000000000000000' ? (
                         <Link
                             to={{
-                                pathname: '/BlockChain/BlackholeBlockDeta',
+                                pathname: '/BlackholeBlockDeta',
                                 state: { blockid: text },
                             }}
                             style={{
@@ -46,7 +46,7 @@ export default function BlockChain() {
                     ) : (
                         <Link
                             to={{
-                                pathname: '/BlockChain/BlockDetails',
+                                pathname: '/BlockDetails',
                                 state: { blockid: text },
                             }}
                             style={{
@@ -68,7 +68,7 @@ export default function BlockChain() {
             render: (text, data) =>
                 data.number != 0 ? (
                     <Link
-                        to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                        to={{ pathname: `/AccountDetail`, state: text }}
                         style={{
                             color: '#7AA4FF',
                             fontFamily: 'CustomFontMedium',

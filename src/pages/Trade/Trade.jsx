@@ -141,7 +141,7 @@ class Trade extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: `/TradeDetail/${text}`,
+                                pathname: `/TradeDetail`,
                                 state: text,
                             }}
                             style={{
@@ -195,7 +195,7 @@ class Trade extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${text}`,
+                                pathname: `/AccountDetail`,
                                 state: text,
                             }}
                             style={{
@@ -216,7 +216,7 @@ class Trade extends React.Component {
                         text ? (
                             <Link
                                 to={{
-                                    pathname: `/AccountDetail/${text}`,
+                                    pathname: `/AccountDetail`,
                                     state: text,
                                 }}
                                 style={{
@@ -333,7 +333,7 @@ class Trade extends React.Component {
                         { year: 'NFT Trading', population: res.totalNFTTx },
                         { year: 'SNFT Trading', population: res.totalSNFTTx },
                         {
-                            year: 'Wormholes Trading',
+                            year: 'Erbie Trading',
                             population: res.totalWormholesTx,
                         },
                         // { year: 'Transfer Trading', population: res.totalTransferTx},

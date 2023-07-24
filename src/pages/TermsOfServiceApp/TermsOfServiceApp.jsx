@@ -13,7 +13,7 @@ export default function TermsOfServiceApp() {
                     <p className={TermsOfServiceApp_ls.text}>
                         These terms of service (hereinafter, "Terms") create a
                         legally binding agreement between you, as an end user of
-                        our services and Wormholes Lab Inc. (together, the
+                        our services and Erbie Lab Inc. (together, the
                         "Company"). You will be referred to through
                         second-person pronouns such as "you", "your" and
                         "yours". If you accept or agree to the Terms on behalf
@@ -28,10 +28,10 @@ export default function TermsOfServiceApp() {
                         individually as "Party".
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
-                        These Terms govern the access and use of the Wormholes
-                        administration portal Digital Wallet 1.0, Wormholes
-                        Blockchain Explorer, and Wormholes Faucet (together, the
-                        “Services”) and the website: www.wormholes.com and
+                        These Terms govern the access and use of the Erbie
+                        administration portal Digital Wallet 1.0, Erbie
+                        Blockchain Explorer, and Erbie Faucet (together, the
+                        “Services”) and the website: www.Erbie.com and
                         associated sub-domains (together, the “Websites”) (The
                         Services and Websites together, the “Applications”).
                     </p>
@@ -72,9 +72,9 @@ export default function TermsOfServiceApp() {
                         In your use of any testnet within the Applications you
                         may accumulate “testnet tokens” or tokens with similar
                         name and nature, which are not, and shall never convert
-                        to or accrue to become "mainnet tokens" of the Wormholes
-                        Blockchain developed by Wormholes Lab Pte. Ltd. or any
-                        other tokens, virtual currency or virtual asset. Testnet
+                        to or accrue to become "mainnet tokens" of the Erbie
+                        Blockchain developed by Erbie Lab Pte. Ltd. or any other
+                        tokens, virtual currency or virtual asset. Testnet
                         tokens are virtual items with no monetary value. Testnet
                         tokens do not constitute any currency or property of any
                         type and are not redeemable, refundable or eligible for
@@ -583,10 +583,10 @@ export default function TermsOfServiceApp() {
                     <p className={TermsOfServiceApp_ls.text}>
                         NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED
                         HEREIN, IN NO EVENT SHALL THE MAXIMUM AGGREGATE
-                        LIABILITY OF WORMHOLES ARISING OUT OF OR IN ANY WAY
-                        RELATED TO THESE TERMS OF SERVICE, EXCEED THE GREATER OF
-                        (A) US$100 OR (B) THE AMOUNT RECEIVED BY WORMHOLES FOR
-                        ITS SERVICES DIRECTLY RELATING TO THE ITEMS THAT ARE THE
+                        LIABILITY OF Erbie ARISING OUT OF OR IN ANY WAY RELATED
+                        TO THESE TERMS OF SERVICE, EXCEED THE GREATER OF (A)
+                        US$100 OR (B) THE AMOUNT RECEIVED BY Erbie FOR ITS
+                        SERVICES DIRECTLY RELATING TO THE ITEMS THAT ARE THE
                         SUBJECT OF THE CLAIM. THE FOREGOING LIMITATIONS WILL
                         APPLY EVEN IF THE ABOVE STATED REMEDY FAILS OF ITS
                         ESSENTIAL PURPOSE.
@@ -693,7 +693,7 @@ export default function TermsOfServiceApp() {
                         construed in accordance with, in all respects including
                         as to validity, interpretation and effect, the laws of
                         the British Virgin Islands. Questions about the Terms
-                        should be sent to support@wormholes.com.
+                        should be sent to support@Erbie.com.
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
                         In relation to any dispute, controversy or claim arising

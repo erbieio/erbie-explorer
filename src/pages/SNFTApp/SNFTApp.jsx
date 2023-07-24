@@ -53,7 +53,7 @@ export default function SNFTApp() {
             render: (text, data) => (
                 <Link
                     to={{
-                        pathname: '/SNFTApp/SNFTDetailsApp',
+                        pathname: '/SNFTDetailsApp',
                         state: { snftid: data.address, snftmata: data },
                     }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
@@ -235,7 +235,7 @@ export default function SNFTApp() {
             ellipsis: true,
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -251,7 +251,7 @@ export default function SNFTApp() {
             render: (text, data) => (
                 <Link
                     to={{
-                        pathname: `/AccountDetailApp/${text}`,
+                        pathname: `/AccountDetailApp`,
                         state: text,
                     }}
                     style={{

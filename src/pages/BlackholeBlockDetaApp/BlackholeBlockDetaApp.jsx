@@ -35,7 +35,7 @@ export default function BlackholeBlockDetaApp(props) {
             key: 'hash',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/TradeDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/TradeDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -62,7 +62,7 @@ export default function BlackholeBlockDetaApp(props) {
             dataIndex: 'from',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -76,7 +76,7 @@ export default function BlackholeBlockDetaApp(props) {
             dataIndex: 'to',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -230,7 +230,7 @@ export default function BlackholeBlockDetaApp(props) {
                         </p>
                         <Link
                             to={{
-                                pathname: `/AccountDetailApp/${item.address}`,
+                                pathname: `/AccountDetailApp`,
                                 state: item.address,
                             }}
                             style={{
@@ -269,7 +269,7 @@ export default function BlackholeBlockDetaApp(props) {
                     <div className={BlackholeBlockDetaApp_ls.nodeaddressblock}>
                         <Link
                             to={{
-                                pathname: `/AccountDetailApp/${item}`,
+                                pathname: `/AccountDetailApp`,
                                 state: item,
                             }}
                             style={{

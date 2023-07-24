@@ -22,6 +22,7 @@ import {
     snft_nft_tx,
     metainformation,
     nftdetails,
+    snftimageaddress,
 } from '../../api/request_data/block_request';
 import { utils } from 'ethers';
 import FileViewer from 'react-file-viewer';
@@ -37,6 +38,8 @@ export default function NFTDetailsApp(props) {
     const [snfttxdata, setSnfttxdata] = useState({});
     //meta
     const [metadata, setMetadata] = useState({});
+    // nft图片
+    const [nftimage, setNftimage] = useState({});
     const columns = [
         {
             title: 'TXN Hash',
@@ -44,7 +47,7 @@ export default function NFTDetailsApp(props) {
             key: 'tx_hash',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/TradeDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/TradeDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -71,7 +74,7 @@ export default function NFTDetailsApp(props) {
             key: 'from',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -85,7 +88,7 @@ export default function NFTDetailsApp(props) {
             dataIndex: 'to',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -175,6 +178,14 @@ export default function NFTDetailsApp(props) {
             setMetadata(data);
         }
     };
+    // 图片查询
+    const snftimageaddress_q = async (item) => {
+        const data = await snftimageaddress(item);
+        if (data) {
+            console.log(data);
+            setNftimage(data);
+        }
+    };
     function NFTDetailsinputnumberonclick(e) {
         let data = document.getElementById('NFTDetailsinputnumber').value;
         if (e.keyCode == 13) {
@@ -242,6 +253,34 @@ export default function NFTDetailsApp(props) {
         }
     }
     function onChange1(newValue) {}
+    function hexToString(str) {
+        var val = '',
+            len = str.length / 2;
+        for (var i = 0; i < len; i++) {
+            val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
+        }
+        let text = 0;
+        for (
+            let i = 0;
+            i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
+            i++
+        ) {
+            if (
+                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                    'prompt' ||
+                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                    'randomNumber'
+            ) {
+                text++;
+            }
+        }
+        console.log(text);
+        if (text == 2) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
     return (
         <>
             <div className={NFTDetailsApp_ls.NFTDetailsBox}>
@@ -256,7 +295,7 @@ export default function NFTDetailsApp(props) {
                     >
                         {/* 图片 */}
                         {/* <img className={NFTDetailsApp_ls.NFTDetailsBox_titleData_imgBoximg} src={nftdata.source_url} /> */}
-                        {Object.keys(metadata).length != 0 &&
+                        {/* {Object.keys(metadata).length != 0 &&
                         metadata.fileType != 'mp3' ? (
                             <FileViewer
                                 className={
@@ -283,20 +322,21 @@ export default function NFTDetailsApp(props) {
                             </div>
                         ) : (
                             ''
-                        )}
+                        )} */}
+                        <img src={'ipfs/' + nftimage.data} />
                     </div>
                     <div
                         className={
                             NFTDetailsApp_ls.NFTDetailsBox_titleData_text
                         }
                     >
-                        <p
+                        {/* <p
                             className={
                                 NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftname
                             }
                         >
                             {nftdata.name}
-                        </p>
+                        </p> */}
                         <div
                             className={
                                 NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute
@@ -312,14 +352,14 @@ export default function NFTDetailsApp(props) {
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
-                                    Price
+                                    Address
                                 </p>
                                 <p
                                     className={
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
-                                    Collection Name
+                                    Collection Time
                                 </p>
                                 <p
                                     className={
@@ -340,13 +380,6 @@ export default function NFTDetailsApp(props) {
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
-                                    Minting Marketplace
-                                </p>
-                                <p
-                                    className={
-                                        NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
-                                    }
-                                >
                                     Royalties
                                 </p>
                                 <p
@@ -354,7 +387,7 @@ export default function NFTDetailsApp(props) {
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
-                                    NFT Properties
+                                    Type
                                 </p>
                             </div>
                             <div
@@ -367,24 +400,22 @@ export default function NFTDetailsApp(props) {
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                 >
-                                    {nftdata.last_price &&
-                                    nftdata.last_price != 0
-                                        ? utils.formatEther(
-                                              String(nftdata.last_price),
-                                          ) + ' ERB'
-                                        : 'No Bid'}
-                                    {/* ($ {nftdata.last_price ? utils.formatEther(nftdata.last_price) : 0}) */}
+                                    {nftdata.address
+                                        ? ellipsis(nftdata.address)
+                                        : '-'}
                                 </p>
                                 <p
                                     className={
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                 >
-                                    {nftdata.collectionName || '-'}
+                                    {moment(
+                                        parseInt(nftdata.timestamp) * 1000,
+                                    ).format('YYYY-MM-DD HH:mm:ss') || '-'}
                                 </p>
                                 <Link
                                     to={{
-                                        pathname: `/AccountDetailApp/${nftdata.creator}`,
+                                        pathname: `/AccountDetailApp`,
                                         state: nftdata.creator,
                                     }}
                                     className={
@@ -398,7 +429,7 @@ export default function NFTDetailsApp(props) {
                                 </Link>
                                 <Link
                                     to={{
-                                        pathname: `/AccountDetailApp/${nftdata.owner}`,
+                                        pathname: `/AccountDetailApp`,
                                         state: nftdata.owner,
                                     }}
                                     className={
@@ -410,49 +441,6 @@ export default function NFTDetailsApp(props) {
                                         ? ellipsis(nftdata.owner)
                                         : '-'}
                                 </Link>
-                                {nftdata.exchanger_addr ? (
-                                    <Link
-                                        to={{
-                                            pathname:
-                                                '/ExchangeApp/ExchangeDetailsApp',
-                                            state: {
-                                                exchangeid:
-                                                    nftdata.exchanger_addr,
-                                            },
-                                        }}
-                                        className={
-                                            NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
-                                        }
-                                        style={{ color: '#7AA4FF' }}
-                                        id="soloimg"
-                                    >
-                                        {nftdata.exchanger_addr
-                                            ? ellipsis(nftdata.exchanger_addr)
-                                            : '-'}{' '}
-                                        Marketplace
-                                        <Tooltip
-                                            title="Exclusive"
-                                            color="#3F4357"
-                                        >
-                                            <img
-                                                className={
-                                                    NFTDetailsApp_ls.NFTDetailsBox_soloimg
-                                                }
-                                                src={require('@/assets/images/NFTDetails/1.png')}
-                                            />
-                                        </Tooltip>
-                                    </Link>
-                                ) : (
-                                    <span
-                                        className={
-                                            NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
-                                        }
-                                        id="soloimg"
-                                    >
-                                        -
-                                    </span>
-                                )}
-
                                 <p
                                     className={
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
@@ -465,7 +453,11 @@ export default function NFTDetailsApp(props) {
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                 >
-                                    {nftattribute(nftdata.attributes)}
+                                    {nftdata.raw_meta_url
+                                        ? hexToString(nftdata.raw_meta_url) == 1
+                                            ? 'AI'
+                                            : 'Normal'
+                                        : '-'}
                                 </div>
                             </div>
                         </div>
@@ -595,7 +587,7 @@ export default function NFTDetailsApp(props) {
                                     NFTDetailsApp_ls.NFTDetailsBox_meta_title_url
                                 }
                             >
-                                https://hub.wormholes.com{nftdata.meta_url}
+                                https://hub.Erbie.com{nftdata.meta_url}
                             </p>
                             <Select
                                 defaultValue="ViewMetaplexMetadata"

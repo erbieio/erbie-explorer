@@ -20,6 +20,7 @@ import {
     snftdetails,
     snft_nft_tx,
     metainformation,
+    snftimageaddress,
 } from '../../api/request_data/block_request';
 import moment from 'moment';
 import { stagenumber, timestamp, ellipsis } from '../../utils/methods/Methods';
@@ -36,6 +37,8 @@ export default function SNFTDetails(props) {
     const [snfttxdata, setSnfttxdata] = useState({});
     //meta
     const [metadata, setMetadata] = useState({});
+    // nft图片
+    const [snftimage, setSnftimage] = useState({});
     const columns = [
         {
             title: 'TXN Hash',
@@ -43,7 +46,7 @@ export default function SNFTDetails(props) {
             key: 'tx_hash',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/TradeDetail/${text}`, state: text }}
+                    to={{ pathname: `/TradeDetail`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -72,7 +75,7 @@ export default function SNFTDetails(props) {
         //     render: (text, data) => (
         //         <Link
         //             to={{
-        //                 pathname: '/Exchange/ExchangeDetails',
+        //                 pathname: '/ExchangeDetails',
         //                 state: { exchangeid: text },
         //             }}
         //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
@@ -87,7 +90,7 @@ export default function SNFTDetails(props) {
             dataIndex: 'from',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -100,7 +103,7 @@ export default function SNFTDetails(props) {
             dataIndex: 'to',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -168,6 +171,7 @@ export default function SNFTDetails(props) {
     useEffect(() => {
         if (Object.keys(snftdata).length != 0) {
             metainformation_q(snftdata.meta_url);
+            snftimageaddress_q(snftdata.address);
         }
     }, [snftdata]);
     //snft详情查询
@@ -190,6 +194,14 @@ export default function SNFTDetails(props) {
         const data = await metainformation(item);
         if (data) {
             setMetadata(data);
+        }
+    };
+    // 图片查询
+    const snftimageaddress_q = async (item) => {
+        const data = await snftimageaddress(item);
+        if (data) {
+            console.log(data);
+            setSnftimage(data);
         }
     };
     function SNFTDetailsinputnumberonclick(e) {
@@ -238,7 +250,7 @@ export default function SNFTDetails(props) {
                                 className={
                                     SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox_img
                                 }
-                                src={snftdata.source_url}
+                                src={'ipfs/' + snftimage.data}
                             />
                             {/* 图片 */}
                         </div>
@@ -565,7 +577,7 @@ export default function SNFTDetails(props) {
                                     )}
                                     <Link
                                         to={{
-                                            pathname: `/AccountDetail/${snftdata.owner}`,
+                                            pathname: `/AccountDetail`,
                                             state: snftdata.owner,
                                         }}
                                         className={
@@ -578,7 +590,7 @@ export default function SNFTDetails(props) {
 
                                     <Link
                                         to={{
-                                            pathname: `/AccountDetail/${snftdata.creator}`,
+                                            pathname: `/AccountDetail`,
                                             state: snftdata.creator,
                                         }}
                                         className={
@@ -716,7 +728,7 @@ export default function SNFTDetails(props) {
                                         SNFTDetails_ls.SNFTDetailsBox_meta_title_url
                                     }
                                 >
-                                    https://hub.wormholes.com{snftdata.meta_url}
+                                    https://hub.Erbie.com{snftdata.meta_url}
                                 </a>
                             </span>
                             <Select

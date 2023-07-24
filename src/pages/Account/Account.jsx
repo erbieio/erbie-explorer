@@ -39,7 +39,7 @@ export default function Account() {
             key: 'address',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -97,7 +97,7 @@ export default function Account() {
         {
             title: () => (
                 <div className={Account_ls.tablexbox}>
-                    Validator Pledge(ERB)
+                    Total Staking
                     {totalcollectionscolor == 0 ? (
                         <div className={Account_ls.tablex}>
                             <CaretUpOutlined
@@ -130,8 +130,8 @@ export default function Account() {
                     )}
                 </div>
             ),
-            dataIndex: 'validatorAmount',
-            key: 'validatorAmount',
+            dataIndex: 'stakerAmount',
+            key: 'stakerAmount',
             render: (text, data) => (
                 <>
                     {text
@@ -143,7 +143,7 @@ export default function Account() {
         {
             title: () => (
                 <div className={Account_ls.tablexbox}>
-                    Staker Pledge(ERB)
+                    Total Staked
                     {totalnftscolor == 0 ? (
                         <div className={Account_ls.tablex}>
                             <CaretUpOutlined
@@ -176,8 +176,8 @@ export default function Account() {
                     )}
                 </div>
             ),
-            dataIndex: 'exchangerAmount',
-            key: 'exchangerAmount',
+            dataIndex: 'validatorAmount',
+            key: 'validatorAmount',
             render: (text, data) => (
                 <>
                     {text
@@ -310,7 +310,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(1);
-                setOrderdata('validator_amount ASC');
+                setOrderdata('staker_amount ASC');
             }
         } else {
             if (totalcollectionscolor == 2) {
@@ -318,7 +318,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(2);
-                setOrderdata('validator_amount DESC');
+                setOrderdata('staker_amount DESC');
             }
         }
     }
@@ -334,7 +334,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTotalnftscolor(1);
-                setOrderdata('exchanger_amount ASC');
+                setOrderdata('validator_amount ASC');
             }
         } else {
             if (totalnftscolor == 2) {
@@ -342,7 +342,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTotalnftscolor(2);
-                setOrderdata('exchanger_amount DESC');
+                setOrderdata('validator_amount DESC');
             }
         }
     }

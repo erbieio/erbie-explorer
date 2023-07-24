@@ -46,7 +46,7 @@ export default function HeaderApp(props) {
             ) {
                 //账户详情
                 history.push({
-                    pathname: `/AccountDetailApp/${data}`,
+                    pathname: `/AccountDetailApp`,
                     state: data,
                 });
             } else if (
@@ -55,7 +55,7 @@ export default function HeaderApp(props) {
             ) {
                 //交易hash
                 history.push({
-                    pathname: `/TradeDetailApp/${data}`,
+                    pathname: `/TradeDetailApp`,
                     state: data,
                 });
             }
@@ -74,7 +74,7 @@ export default function HeaderApp(props) {
                         <img
                             src={require('../../assets/images/HeaderApp/logo.png')}
                         />
-                        <span>Wormholes</span>
+                        <span>Erbie</span>
                     </Link>
                     <div className={HeaderApp_ls.HeaderAppbox_glbox}>
                         {/* <span><FaRegMoon /></span> */}
@@ -114,14 +114,6 @@ export default function HeaderApp(props) {
                     </div>
                 </Link>
                 <Link
-                    to={{ pathname: '/CreatorApp', state: '' }}
-                    className={HeaderApp_ls.Navigationbox_div}
-                >
-                    <div className={HeaderApp_ls.Navigationbox_divcenter}>
-                        <span>CREATOR</span>
-                    </div>
-                </Link>
-                <Link
                     to={{ pathname: '/ValidatorApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
@@ -130,11 +122,36 @@ export default function HeaderApp(props) {
                     </div>
                 </Link>
                 <Link
+                    to={{ pathname: '/ExchangeApp', state: '' }}
+                    className={HeaderApp_ls.Navigationbox_div}
+                >
+                    <div className={HeaderApp_ls.Navigationbox_divcenter}>
+                        <span>STAKER</span>
+                    </div>
+                </Link>
+                <Link
+                    to={{ pathname: '/CreatorApp', state: '' }}
+                    className={HeaderApp_ls.Navigationbox_div}
+                >
+                    <div className={HeaderApp_ls.Navigationbox_divcenter}>
+                        <span>CREATOR</span>
+                    </div>
+                </Link>
+
+                <Link
                     to={{ pathname: '/AccountApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
                         <span>ACCOUNT</span>
+                    </div>
+                </Link>
+                <Link
+                    to={{ pathname: '/NFTApp', state: '' }}
+                    className={HeaderApp_ls.Navigationbox_div}
+                >
+                    <div className={HeaderApp_ls.Navigationbox_divcenter}>
+                        <span>NFT</span>
                     </div>
                 </Link>
                 <Link
@@ -145,22 +162,7 @@ export default function HeaderApp(props) {
                         <span>SNFT</span>
                     </div>
                 </Link>
-                {/* <Link
-                    to={{ pathname: '/NFTApp', state: '' }}
-                    className={HeaderApp_ls.Navigationbox_div}
-                >
-                    <div className={HeaderApp_ls.Navigationbox_divcenter}>
-                        <span>NFT</span>
-                    </div>
-                </Link> */}
-                <Link
-                    to={{ pathname: '/ExchangeApp', state: '' }}
-                    className={HeaderApp_ls.Navigationbox_div}
-                >
-                    <div className={HeaderApp_ls.Navigationbox_divcenter}>
-                        <span>STAKER</span>
-                    </div>
-                </Link>
+
                 <Link
                     to={{ pathname: '/TradeApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
@@ -178,14 +180,14 @@ export default function HeaderApp(props) {
                     </div>
                 </Link> */}
             </div>
-            {window.location.hash == '#/BlockChainApp' ||
-            window.location.hash == '#/NFTApp' ||
-            window.location.hash == '#/SNFTApp' ||
-            window.location.hash == '#/ExchangeApp' ||
-            window.location.hash == '#/TradeApp' ||
-            window.location.hash == '#/rankingApp' ||
-            window.location.hash == '#/ValidatorApp' ||
-            window.location.hash == '#/AccountApp' ? (
+            {window.location.pathname == '/BlockChainApp' ||
+            window.location.pathname == '/NFTApp' ||
+            window.location.pathname == '/SNFTApp' ||
+            window.location.pathname == '/ExchangeApp' ||
+            window.location.pathname == '/TradeApp' ||
+            window.location.pathname == '/rankingApp' ||
+            window.location.pathname == '/ValidatorApp' ||
+            window.location.pathname == '/AccountApp' ? (
                 <div className={HeaderApp_ls.HeaderBox_SearchBox}>
                     <img
                         src={require('../../assets/images/Header/Search.png')}

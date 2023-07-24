@@ -134,7 +134,7 @@ export default function CreatorApp() {
             key: 'address',
             render: (text) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}

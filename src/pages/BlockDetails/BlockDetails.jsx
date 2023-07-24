@@ -41,7 +41,7 @@ export default function BlockDetails(props) {
             key: 'hash',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/TradeDetail/${text}`, state: text }}
+                    to={{ pathname: `/TradeDetail`, state: text }}
                     style={{ color: '#7AA4FF' }}
                 >
                     {ellipsis(text)}
@@ -68,7 +68,7 @@ export default function BlockDetails(props) {
             dataIndex: 'from',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF' }}
                 >
                     {ellipsis(text)}
@@ -82,7 +82,7 @@ export default function BlockDetails(props) {
             dataIndex: 'to',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF' }}
                 >
                     {ellipsis(text)}
@@ -233,7 +233,7 @@ export default function BlockDetails(props) {
                     return (
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${item.address}`,
+                                pathname: `/AccountDetail`,
                                 state: item.address,
                             }}
                             className={
@@ -256,7 +256,7 @@ export default function BlockDetails(props) {
                     return (
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${item.address}`,
+                                pathname: `/AccountDetail`,
                                 state: item.address,
                             }}
                             className={
@@ -301,7 +301,7 @@ export default function BlockDetails(props) {
                         return (
                             <Link
                                 to={{
-                                    pathname: `/AccountDetail/${item.proxy}`,
+                                    pathname: `/AccountDetail`,
                                     state: item.proxy,
                                 }}
                                 className={
@@ -351,7 +351,7 @@ export default function BlockDetails(props) {
                         return (
                             <Link
                                 to={{
-                                    pathname: `/AccountDetail/${item.proxy}`,
+                                    pathname: `/AccountDetail`,
                                     state: item.proxy,
                                 }}
                                 className={
@@ -379,7 +379,7 @@ export default function BlockDetails(props) {
                     return (
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${item.address}`,
+                                pathname: `/AccountDetail`,
                                 state: item.address,
                             }}
                             className={

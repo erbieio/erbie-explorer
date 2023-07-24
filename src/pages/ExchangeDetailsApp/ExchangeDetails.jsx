@@ -46,7 +46,7 @@ export default function ExchangeDetails(props) {
             render: (text, data) => (
                 <Link
                     to={{
-                        pathname: '/SNFTApp/SNFTDetailsApp',
+                        pathname: '/SNFTDetailsApp',
                         state: { snftid: data.address, snftmata: data },
                     }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
@@ -73,7 +73,7 @@ export default function ExchangeDetails(props) {
             key: 'owner',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -86,7 +86,7 @@ export default function ExchangeDetails(props) {
             dataIndex: 'creator',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -101,7 +101,7 @@ export default function ExchangeDetails(props) {
             key: 'tx_hash',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/TradeDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/TradeDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -138,7 +138,7 @@ export default function ExchangeDetails(props) {
             dataIndex: 'from',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -151,7 +151,7 @@ export default function ExchangeDetails(props) {
             dataIndex: 'to',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -357,7 +357,7 @@ export default function ExchangeDetails(props) {
                                     </p>
                                     <Link
                                         to={{
-                                            pathname: `/AccountDetailApp/${exchangerdata.creator}`,
+                                            pathname: `/AccountDetailApp`,
                                             state: exchangerdata.creator,
                                         }}
                                         className={

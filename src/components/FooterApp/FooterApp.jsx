@@ -3,10 +3,10 @@ import { Tooltip, Button, message, Space } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { history, Link } from 'umi';
 export default function FooterApp() {
-    function AboutWormholesBlockchain() {
+    function AboutErbieBlockchain() {
         window.open('https://www.wormholes.com/docs/Overview');
     }
-    function WormholesOfficialWebsite() {
+    function ErbieOfficialWebsite() {
         window.open('https://www.wormholes.com');
     }
     function comingsoon() {
@@ -15,7 +15,7 @@ export default function FooterApp() {
     function OneClickNFTMarketplace() {
         window.open('https://www.limino.com/#/bourse');
     }
-    function WormholesWallet() {
+    function ErbieWallet() {
         window.open('https://www.wormholes.com/docs/wallet/');
     }
     //NFTMarketplaceTutorial
@@ -64,11 +64,11 @@ export default function FooterApp() {
                 <div className={FooterApp_ls.FooterAppBox_line}></div>
                 <div className={FooterApp_ls.FooterAppBox_center}>
                     <p className={FooterApp_ls.FooterAppBox_title}>
-                        Powered by Wormholes
+                        Powered by Erbie
                     </p>
                     <p className={FooterApp_ls.FooterAppBox_text}>
-                        Wormholes Scan is a Block Explorer and Analytics
-                        Platform for Wormholes
+                        Erbie Scan is a Block Explorer and Analytics Platform
+                        for Erbie
                     </p>
                     <div className={FooterApp_ls.FooterBox_textBox_left_imgbox}>
                         <Tooltip title="Blockchain Twitter">
@@ -141,12 +141,12 @@ export default function FooterApp() {
                                 About Us
                             </li>
                             <li
-                                onClick={AboutWormholesBlockchain}
+                                onClick={AboutErbieBlockchain}
                                 className={
                                     FooterApp_ls.FooterBox_textBox_right_ul_li
                                 }
                             >
-                                About Wormholes Blockchain
+                                About Erbie Blockchain
                             </li>
                             
                         </ul> */}
@@ -156,7 +156,7 @@ export default function FooterApp() {
                                     FooterApp_ls.FooterBox_textBox_right_ul_lititle
                                 }
                             >
-                                Wormholes Applications
+                                Erbie Applications
                             </li>
                             <li
                                 onClick={NFTMarketplaceTutorial}
@@ -189,13 +189,13 @@ export default function FooterApp() {
                                     FooterApp_ls.FooterBox_textBox_right_ul_li
                                 }
                             >
-                                Wormholes Technology Wiki
+                                Erbie Technology Wiki
                             </li> */}
                             {/* <li onClick={download} className={FooterApp_ls.FooterBox_textBox_right_ul_li}>
-                            Wormholes Whitepaper
+                            Erbie Whitepaper
                             </li> */}
                             <li
-                                onClick={WormholesWallet}
+                                onClick={ErbieWallet}
                                 className={
                                     FooterApp_ls.FooterBox_textBox_right_ul_li
                                 }
@@ -203,17 +203,17 @@ export default function FooterApp() {
                                 Limino & Tutorial
                             </li>
                             <li
-                                onClick={WormholesOfficialWebsite}
+                                onClick={ErbieOfficialWebsite}
                                 className={
                                     FooterApp_ls.FooterBox_textBox_right_ul_li
                                 }
                             >
-                                Wormholes Official Website
+                                Erbie Website
                             </li>
                         </ul>
                     </div>
                     <p className={FooterApp_ls.FooterBox_bootomtext}>
-                        Copyright © 2022 - Wormholes
+                        Copyright © 2022 - Erbie
                     </p>
                     <p className={FooterApp_ls.FooterBox_bootomtext2}>
                         <Link

@@ -108,7 +108,7 @@ export const metainformation = (data) => {
 };
 //交易所查询
 export const exchanger = (data) => {
-    return request.get(`${host}/exchangers`, {
+    return request.get(`${host}/stakers`, {
         params: {
             name: data.name,
             page: data.page,
@@ -119,11 +119,11 @@ export const exchanger = (data) => {
 };
 //单个交易所查询
 export const soloexchanger = (data) => {
-    return request.get(`${host}/exchanger/${data}`);
+    return request.get(`${host}/staker/${data}`);
 };
 //交易所柱状图查询
 export const exchangermap = (data) => {
-    return request.get(`${host}/exchanger/tx_count/${data}`);
+    return request.get(`${host}/staker/tx_count/${data}`);
 };
 //首页折线图查询
 export const homepagechart = () => {
@@ -189,5 +189,14 @@ export const creatorAddress = (data) => {
         params: {
             addr: data,
         },
+    });
+};
+// snft图片查询
+export const snftimageaddress = (data) => {
+    console.log(data);
+    return request.post(`http://192.168.1.235:9006/nftscan/v1/getIpfsHash`, {
+        body: JSON.stringify({
+            nftaddr: data,
+        }),
     });
 };

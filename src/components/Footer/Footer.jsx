@@ -3,10 +3,10 @@ import { Tooltip, Button, message, Space } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { history, Link } from 'umi';
 export default function Footer() {
-    function AboutWormholesBlockchain() {
+    function AboutErbieBlockchain() {
         window.open('https://www.wormholes.com/docs/Overview');
     }
-    function WormholesOfficialWebsite() {
+    function ErbieOfficialWebsite() {
         window.open('https://www.wormholes.com');
     }
     function comingsoon() {
@@ -15,7 +15,7 @@ export default function Footer() {
     function OneClickNFTMarketplace() {
         window.open('https://www.limino.com/#/bourse');
     }
-    function WormholesWallet() {
+    function ErbieWallet() {
         window.open('https://www.wormholes.com/docs/wallet/');
     }
     //NFTMarketplaceTutorial
@@ -65,11 +65,11 @@ export default function Footer() {
                 <div className={Footer_ls.FooterBox_textBox}>
                     <div className={Footer_ls.FooterBox_textBox_left}>
                         <p className={Footer_ls.FooterBox_textBox_left_p1}>
-                            Powered by Wormholes
+                            Powered by Erbie
                         </p>
                         <p className={Footer_ls.FooterBox_textBox_left_p2}>
-                            Wormholes Scan is a Block Explorer and Analytics
-                            Platform for Wormholes
+                            Erbie Scan is a Block Explorer and Analytics
+                            Platform for Erbie
                         </p>
                         <div
                             className={Footer_ls.FooterBox_textBox_left_imgbox}
@@ -135,7 +135,7 @@ export default function Footer() {
                             </Tooltip>
                         </div>
                         <p className={Footer_ls.FooterBox_textBox_left_p3}>
-                            Copyright © 2022 - Wormholes
+                            Copyright © 2022 - Erbie
                         </p>
                     </div>
                     <div className={Footer_ls.FooterBox_textBox_right}>
@@ -148,12 +148,12 @@ export default function Footer() {
                                 About Us
                             </li>
                             <li
-                                onClick={AboutWormholesBlockchain}
+                                onClick={AboutErbieBlockchain}
                                 className={
                                     Footer_ls.FooterBox_textBox_right_ul_li
                                 }
                             >
-                                About Wormholes Blockchain
+                                About Erbie Blockchain
                             </li>
                             
                         </ul> */}
@@ -163,7 +163,7 @@ export default function Footer() {
                                     Footer_ls.FooterBox_textBox_right_ul_lititle
                                 }
                             >
-                                Wormholes Applications
+                                Erbie Applications
                             </li>
                             <li
                                 onClick={NFTMarketplaceTutorial}
@@ -196,13 +196,13 @@ export default function Footer() {
                                     Footer_ls.FooterBox_textBox_right_ul_li
                                 }
                             >
-                                Wormholes Technology Wiki
+                                Erbie Technology Wiki
                             </li> */}
                             {/* <li onClick={download} className={Footer_ls.FooterBox_textBox_right_ul_li}>
-                            Wormholes Whitepaper
+                            Erbie Whitepaper
                             </li> */}
                             <li
-                                onClick={WormholesWallet}
+                                onClick={ErbieWallet}
                                 className={
                                     Footer_ls.FooterBox_textBox_right_ul_li
                                 }
@@ -210,12 +210,12 @@ export default function Footer() {
                                 Limino & Tutorial
                             </li>
                             <li
-                                onClick={WormholesOfficialWebsite}
+                                onClick={ErbieOfficialWebsite}
                                 className={
                                     Footer_ls.FooterBox_textBox_right_ul_li
                                 }
                             >
-                                Wormholes Official Website
+                                Erbie Website
                             </li>
                         </ul>
                     </div>

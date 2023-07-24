@@ -580,7 +580,7 @@ class TradeDetail extends React.Component {
                             {this.state.transType.type === 6 ? (
                                 <div>
                                     {/*<p>SNFT Address</p>*/}
-                                    {/*<Link to={{ pathname: '/SNFT/SNFTDetails', state: { snftid: this.state.newDetailData.address,snftmata:this.state.detailData } }} style={{ color: '#7AA4FF' }}>*/}
+                                    {/*<Link to={{ pathname: '/SNFTDetails', state: { snftid: this.state.newDetailData.address,snftmata:this.state.detailData } }} style={{ color: '#7AA4FF' }}>*/}
                                     {/*<span>{*/}
                                     {/*    this.state.newDetailData.address ?*/}
                                     {/*        this.state.newDetailData.address.slice(0, 12) +*/}

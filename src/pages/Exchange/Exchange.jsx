@@ -40,11 +40,11 @@ export default function Exchange() {
         //     title: 'Name',
         //     dataIndex: 'name',
         //     key: 'name',
-        //     // render: (text, data) => <Link to={{ pathname: '/Exchange/ExchangeDetails', state: { exchangeid: data.address } }} style={{ color: '#7AA4FF' }}> {data.block_number != 0 ? hexCharCodeToStr(text) : text}</Link>,
+        //     // render: (text, data) => <Link to={{ pathname: '/ExchangeDetails', state: { exchangeid: data.address } }} style={{ color: '#7AA4FF' }}> {data.block_number != 0 ? hexCharCodeToStr(text) : text}</Link>,
         //     render: (text, data) => (
         //         <Link
         //             to={{
-        //                 pathname: '/Exchange/ExchangeDetails',
+        //                 pathname: '/ExchangeDetails',
         //                 state: { exchangeid: data.address },
         //             }}
         //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
@@ -56,12 +56,12 @@ export default function Exchange() {
         // },
         {
             title: 'Staker Address',
-            dataIndex: 'creator',
-            key: 'creator',
+            dataIndex: 'address',
+            key: 'address',
             ellipsis: true,
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -343,6 +343,7 @@ export default function Exchange() {
     const exchanger_q = async (item) => {
         const data = await exchanger(item);
         if (data) {
+            console.log(data);
             setExchangerdata(data);
         }
     };
@@ -537,7 +538,7 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_data
                                 }
                             >
-                                {totaldata.totalExchanger || 0}
+                                {totaldata.totalStaker || 0}
                             </p>
                             <p
                                 className={
@@ -562,11 +563,9 @@ export default function Exchange() {
                                     Exchange_ls.ExchangeBox_headerTitle_d_left_data
                                 }
                             >
-                                {totaldata.totalExchangerPledge
+                                {totaldata.totalPledge
                                     ? utils.formatEther(
-                                          String(
-                                              totaldata.totalExchangerPledge,
-                                          ),
+                                          String(totaldata.totalPledge),
                                       )
                                     : 0}
                             </p>
@@ -602,7 +601,7 @@ export default function Exchange() {
                     >
                         <Pagination
                             defaultCurrent={1}
-                            total={totaldata.totalExchanger}
+                            total={totaldata.totalStaker}
                             onChange={onChange}
                             showSizeChanger={false}
                             current={pagenumber}

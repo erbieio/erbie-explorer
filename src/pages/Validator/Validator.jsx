@@ -41,7 +41,7 @@ export default function Validator() {
             key: 'address',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -143,48 +143,48 @@ export default function Validator() {
                 </>
             ),
         },
-        {
-            title: () => (
-                <div className={Validator_ls.tablexbox}>
-                    Annualized Return
-                    {totalAnnualizedcolor == 0 ? (
-                        <div className={Validator_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={AnnualizedCollections.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={AnnualizedCollections.bind(this, 2)}
-                            />
-                        </div>
-                    ) : totalAnnualizedcolor == 1 ? (
-                        <div className={Validator_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={AnnualizedCollections.bind(this, 1)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                            <CaretDownOutlined
-                                onClick={AnnualizedCollections.bind(this, 2)}
-                            />
-                        </div>
-                    ) : (
-                        <div className={Validator_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={AnnualizedCollections.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={AnnualizedCollections.bind(this, 2)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                        </div>
-                    )}
-                </div>
-            ),
-            dataIndex: 'apr',
-            key: 'apr',
-            render: (text, data) => (
-                <>{text ? (text * 100).toFixed(2) : '0'} %</>
-            ),
-        },
+        // {
+        //     title: () => (
+        //         <div className={Validator_ls.tablexbox}>
+        //             Annualized Return
+        //             {totalAnnualizedcolor == 0 ? (
+        //                 <div className={Validator_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={AnnualizedCollections.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={AnnualizedCollections.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : totalAnnualizedcolor == 1 ? (
+        //                 <div className={Validator_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={AnnualizedCollections.bind(this, 1)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={AnnualizedCollections.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : (
+        //                 <div className={Validator_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={AnnualizedCollections.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={AnnualizedCollections.bind(this, 2)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                 </div>
+        //             )}
+        //         </div>
+        //     ),
+        //     dataIndex: 'apr',
+        //     key: 'apr',
+        //     render: (text, data) => (
+        //         <>{text ? (text * 100).toFixed(2) : '0'} %</>
+        //     ),
+        // },
         {
             title: () => (
                 <div className={Validator_ls.tablexbox}>
@@ -265,8 +265,8 @@ export default function Validator() {
                     )}
                 </div>
             ),
-            key: 'last_number',
-            dataIndex: 'last_number',
+            key: 'block_number',
+            dataIndex: 'block_number',
             render: (text, data) => (
                 <Link
                     to={{
@@ -641,7 +641,7 @@ export default function Validator() {
                 setOrderdata('');
             } else {
                 setFeeratecolor(1);
-                setOrderdata('last_number ASC');
+                setOrderdata('block_number ASC');
             }
         } else {
             if (feeratecolor == 2) {
@@ -649,7 +649,7 @@ export default function Validator() {
                 setOrderdata('');
             } else {
                 setFeeratecolor(2);
-                setOrderdata('last_number DESC');
+                setOrderdata('block_number DESC');
             }
         }
     }
@@ -719,12 +719,10 @@ export default function Validator() {
                                     Validator_ls.ValidatorBox_headerTitle_d_left_data
                                 }
                             >
-                                {totaldata.totalValidatorPledge
+                                {totaldata.totalPledge
                                     ? Number(
                                           utils.formatEther(
-                                              String(
-                                                  totaldata.totalValidatorPledge,
-                                              ),
+                                              String(totaldata.totalPledge),
                                           ),
                                       ).toFixed(2)
                                     : 0}

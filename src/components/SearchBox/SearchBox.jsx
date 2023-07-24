@@ -30,7 +30,7 @@ export default function SearchBox() {
             ) {
                 //账户详情
                 history.push({
-                    pathname: `/AccountDetail/${data}`,
+                    pathname: `/AccountDetail`,
                     state: data,
                 });
             } else if (
@@ -39,7 +39,7 @@ export default function SearchBox() {
             ) {
                 //交易hash
                 history.push({
-                    pathname: `/TradeDetail/${data}`,
+                    pathname: `/TradeDetail`,
                     state: data,
                 });
             }

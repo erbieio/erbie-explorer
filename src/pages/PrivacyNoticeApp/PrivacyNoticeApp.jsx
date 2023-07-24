@@ -7,8 +7,8 @@ export default function PrivacyNoticeApp() {
                 <div className={PrivacyNoticeApp_ls.PrivacyNoticeAppBox_center}>
                     <p className={PrivacyNoticeApp_ls.title}>Privacy Notice</p>
                     <p className={PrivacyNoticeApp_ls.text}>
-                        Wormholes Lab Inc. (the “Company”, “we”, ‘’us‘’, “our”),
-                        is committed to protecting and respecting your privacy.
+                        Erbie Lab Inc. (the “Company”, “we”, ‘’us‘’, “our”), is
+                        committed to protecting and respecting your privacy.
                         This notice (together with our respective Terms of
                         Service) sets out how we will process and use any
                         personal data we collect from you, or that you provide
@@ -16,16 +16,15 @@ export default function PrivacyNoticeApp() {
                         how we collect and process your personal information,
                         how we define it, and how we will handle it. By using
                         any of our services, including but not limited to our
-                        Wormholes Digital Wallet, Wormholes Blockchain Explorer,
-                        Wormholes Faucet or by purchasing Wormholes Blockchain's
-                        native ERB tokens (“Tokens”)(together “our Services”) or
-                        by accessing our Website www.wormholes.com, you accept
-                        and consent to the practices described in this notice.
-                        If you do not wish for your personal information to be
-                        used in the manner described within this Notice, you
-                        should not access our Services, Website or any
-                        subdomains or otherwise provide us with your personal
-                        information.
+                        Erbie Digital Wallet, Erbie Blockchain Explorer, Erbie
+                        Faucet or by purchasing Erbie Blockchain's native ERB
+                        tokens (“Tokens”)(together “our Services”) or by
+                        accessing our Website www.Erbie.com, you accept and
+                        consent to the practices described in this notice. If
+                        you do not wish for your personal information to be used
+                        in the manner described within this Notice, you should
+                        not access our Services, Website or any subdomains or
+                        otherwise provide us with your personal information.
                     </p>
                     <p className={PrivacyNoticeApp_ls.text}>
                         The Company is the data controller of your personal
@@ -69,7 +68,7 @@ export default function PrivacyNoticeApp() {
                     <p className={PrivacyNoticeApp_ls.text}>
                         · The Notice does not address, and we are not
                         responsible for, the privacy practices of any other
-                        parties, or data publicly available on the Wormholes
+                        parties, or data publicly available on the Erbie
                         Blockchain.
                     </p>
                     <p className={PrivacyNoticeApp_ls.text}>
@@ -122,7 +121,7 @@ export default function PrivacyNoticeApp() {
                         · your wallet address, any other cryptocurrency wallet
                         address or bank account details and any related
                         transaction details recorded by our Services and/or the
-                        Wormholes Blockchain.
+                        Erbie Blockchain.
                     </p>
                     <p className={PrivacyNoticeApp_ls.text}>
                         We may also collect information that you voluntarily
@@ -399,7 +398,7 @@ export default function PrivacyNoticeApp() {
                     </p>
                     <p className={PrivacyNoticeApp_ls.text}>
                         · Consent - To withdraw your consent to such use, you
-                        can contact dataprivacy@wormholes.com. The electronic
+                        can contact dataprivacy@Erbie.com. The electronic
                         marketing communications we send to you also contain
                         opt-out mechanisms that allow you to opt-out from
                         receiving those communications, update your contact
@@ -536,7 +535,7 @@ export default function PrivacyNoticeApp() {
                         If you would like to contact us regarding this Notice or
                         to withdraw your consent to this Notice or any aspect of
                         it, please send us an email at{' '}
-                        <span>dataprivacy@wormholes.com.</span>
+                        <span>dataprivacy@Erbie.com.</span>
                     </p>
                     <p className={PrivacyNoticeApp_ls.text}>
                         We try to respond to all legitimate enquiries within 30

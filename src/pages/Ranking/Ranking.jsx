@@ -198,7 +198,7 @@ export default function Ranking() {
                         {exchangeData.map((person, index) => (
                             <Link
                                 to={{
-                                    pathname: '/Exchange/ExchangeDetails',
+                                    pathname: '/ExchangeDetails',
                                     state: { exchangeid: person.address },
                                 }}
                                 style={{ color: 'white' }}
@@ -275,7 +275,7 @@ export default function Ranking() {
                         {SNFTData.map((person, index) => (
                             <Link
                                 to={{
-                                    pathname: '/SNFT/SNFTDetails',
+                                    pathname: '/SNFTDetails',
                                     state: {
                                         snftid: person.address,
                                         snftmata: person,
@@ -346,7 +346,7 @@ export default function Ranking() {
                         {NFTData.map((person, index) => (
                             <Link
                                 to={{
-                                    pathname: '/NFT/NFTDetails',
+                                    pathname: '/NFTDetails',
                                     state: { nftid: person },
                                 }}
                                 style={{ color: 'white' }}

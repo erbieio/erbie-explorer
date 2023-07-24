@@ -26,6 +26,7 @@ import {
     totals,
     epochpage,
     creatorAddressdetailed,
+    pledge,
 } from '../../api/request_data/AccountDetail_request';
 import {
     CaretUpOutlined,
@@ -38,6 +39,7 @@ import {
     ellipsis,
     hexCharCodeToStr,
     hexCharCodeToStrmath,
+    hexToString,
 } from '../../utils/methods/Methods';
 import Trade_ls from '../Trade/Trade.less';
 import copy from 'copy-to-clipboard';
@@ -108,7 +110,7 @@ class AccountDetail extends React.Component {
                         <Link
                             title={tags}
                             to={{
-                                pathname: `/TradeDetailApp/${tags}`,
+                                pathname: `/TradeDetailApp`,
                                 state: tags,
                             }}
                             replace={true}
@@ -133,8 +135,7 @@ class AccountDetail extends React.Component {
                             '0x0000000000000000000000000000000000000000' ? (
                                 <Link
                                     to={{
-                                        pathname:
-                                            '/BlockChainApp/BlackholeBlockDetaApp',
+                                        pathname: '/BlackholeBlockDetaApp',
                                         state: { blockid: text },
                                     }}
                                     style={{
@@ -147,8 +148,7 @@ class AccountDetail extends React.Component {
                             ) : (
                                 <Link
                                     to={{
-                                        pathname:
-                                            '/BlockChainApp/BlockDetailsApp',
+                                        pathname: '/BlockDetailsApp',
                                         state: { blockid: text },
                                     }}
                                     style={{
@@ -185,7 +185,7 @@ class AccountDetail extends React.Component {
                         <Link
                             title={tags}
                             to={{
-                                pathname: `/AccountDetailApp/${tags}`,
+                                pathname: `/AccountDetailApp`,
                                 state: tags,
                             }}
                             replace={true}
@@ -209,7 +209,7 @@ class AccountDetail extends React.Component {
                         <Link
                             title={tags}
                             to={{
-                                pathname: `/AccountDetailApp/${tags}`,
+                                pathname: `/AccountDetailApp`,
                                 state: tags,
                             }}
                             replace={true}
@@ -295,19 +295,60 @@ class AccountDetail extends React.Component {
                     width: '150px',
                 },
             ],
-            nftcolumns: [
+            stakercolumns: [
                 {
-                    title: 'Name',
-                    dataIndex: 'name',
-                    key: 'name',
-                    showSorterTooltip: true,
-
+                    title: 'Account',
+                    dataIndex: 'validator',
+                    key: 'validator',
+                    render: (tags) => (
+                        <Link
+                            title={tags}
+                            to={{
+                                pathname: `/AccountDetailAPP`,
+                                state: tags,
+                            }}
+                            replace={true}
+                            className={Trade_ls.tableName}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {tags ? ellipsis(tags) : '-'}
+                        </Link>
+                    ),
+                },
+                {
+                    title: 'TXN Hash',
+                    dataIndex: 'tx_hash',
+                    key: 'tx_hash',
+                    render: (tags) => (
+                        <Link
+                            title={tags}
+                            to={{
+                                pathname: `/TradeDetailAPP`,
+                                state: tags,
+                            }}
+                            replace={true}
+                            className={Trade_ls.tableName}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {tags ? ellipsis(tags) : '-'}
+                        </Link>
+                    ),
+                },
+                {
+                    title: 'Block Height',
+                    dataIndex: 'block_number',
+                    key: 'block_number',
                     render: (text, data) => (
                         <Link
-                            title={text}
                             to={{
-                                pathname: '/NFTApp/NFTDetailsApp',
-                                state: { nftid: data },
+                                pathname: '/BlockDetailsApp',
+                                state: { blockid: text },
                             }}
                             style={{
                                 color: '#7AA4FF',
@@ -317,12 +358,151 @@ class AccountDetail extends React.Component {
                             {text}
                         </Link>
                     ),
+                    ellipsis: true,
                 },
                 {
-                    title: 'Price(ERB)',
-                    dataIndex: 'last_price',
-                    key: 'last_price',
-                    render: (text) => <span>{text / 1000000000000000000}</span>,
+                    title: 'Stake Time',
+                    key: 'timestamp',
+                    dataIndex: 'timestamp',
+                    render: (text) => (
+                        <span>
+                            {moment(parseInt(text) * 1000).format(
+                                'YYYY-MM-DD HH:mm:ss',
+                            )}
+                        </span>
+                    ),
+                    ellipsis: true,
+                },
+                {
+                    title: 'Value',
+                    key: 'amount',
+                    dataIndex: 'amount',
+                    render: (text) => (
+                        <>
+                            {text
+                                ? Number(
+                                      utils.formatEther(String(text)),
+                                  ).toFixed(2)
+                                : 0}
+                        </>
+                    ),
+                    ellipsis: true,
+                },
+            ],
+            validatorcolumns: [
+                {
+                    title: 'Account',
+                    dataIndex: 'staker',
+                    key: 'staker',
+                    render: (tags) => (
+                        <Link
+                            title={tags}
+                            to={{
+                                pathname: `/AccountDetailAPP`,
+                                state: tags,
+                            }}
+                            replace={true}
+                            className={Trade_ls.tableName}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {tags ? ellipsis(tags) : '-'}
+                        </Link>
+                    ),
+                },
+                {
+                    title: 'TXN Hash',
+                    dataIndex: 'tx_hash',
+                    key: 'tx_hash',
+                    render: (tags) => (
+                        <Link
+                            title={tags}
+                            to={{
+                                pathname: `/TradeDetailAPP`,
+                                state: tags,
+                            }}
+                            replace={true}
+                            className={Trade_ls.tableName}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {tags ? ellipsis(tags) : '-'}
+                        </Link>
+                    ),
+                },
+                {
+                    title: 'Block Height',
+                    dataIndex: 'block_number',
+                    key: 'block_number',
+                    render: (text, data) => (
+                        <Link
+                            to={{
+                                pathname: '/BlockDetailsApp',
+                                state: { blockid: text },
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {text}
+                        </Link>
+                    ),
+                    ellipsis: true,
+                },
+                {
+                    title: 'Stake Time',
+                    key: 'timestamp',
+                    dataIndex: 'timestamp',
+                    render: (text) => (
+                        <span>
+                            {moment(parseInt(text) * 1000).format(
+                                'YYYY-MM-DD HH:mm:ss',
+                            )}
+                        </span>
+                    ),
+                    ellipsis: true,
+                },
+                {
+                    title: 'Value',
+                    key: 'amount',
+                    dataIndex: 'amount',
+                    render: (text) => (
+                        <>
+                            {text
+                                ? Number(
+                                      utils.formatEther(String(text)),
+                                  ).toFixed(2)
+                                : 0}
+                        </>
+                    ),
+                    ellipsis: true,
+                },
+            ],
+            nftcolumns: [
+                {
+                    title: 'NFT Address',
+                    dataIndex: 'address',
+                    key: 'address',
+                    render: (text, data) => (
+                        <Link
+                            to={{
+                                pathname: '/NFTDetailsApp',
+                                state: { nftid: data },
+                            }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {ellipsis(text)}
+                        </Link>
+                    ),
+                    ellipsis: true,
                 },
                 {
                     title: 'Creation Time',
@@ -335,58 +515,57 @@ class AccountDetail extends React.Component {
                             )}
                         </span>
                     ),
+                    ellipsis: true,
                 },
                 {
-                    title: 'Creator',
+                    title: 'Author',
                     key: 'creator',
                     dataIndex: 'creator',
-
-                    render: (text, data) =>
-                        text == '0x0000000000000000000000000000000000000000' ? (
-                            <span>Official SNFT</span>
-                        ) : (
-                            <Link
-                                to={{
-                                    pathname: `/AccountDetailApp/${text}`,
-                                    state: text,
-                                }}
-                                style={{
-                                    color: '#7AA4FF',
-                                    fontFamily: 'CustomFontMedium',
-                                }}
-                                title={text}
-                                replace={true}
-                            >
-                                {text ? ellipsis(text) : '-'}
-                            </Link>
-                        ),
+                    ellipsis: true,
+                    render: (text, data) => (
+                        <Link
+                            to={{ pathname: `/AccountDetailApp`, state: text }}
+                            style={{
+                                color: '#7AA4FF',
+                                fontFamily: 'CustomFontMedium',
+                            }}
+                        >
+                            {ellipsis(text)}
+                        </Link>
+                    ),
                 },
                 {
                     title: 'Owner',
                     key: 'owner',
                     dataIndex: 'owner',
-
+                    ellipsis: true,
                     render: (text, data) => (
                         <Link
-                            to={{
-                                pathname: `/AccountDetailApp/${text}`,
-                                state: text,
-                            }}
+                            to={{ pathname: `/AccountDetailApp`, state: text }}
                             style={{
                                 color: '#7AA4FF',
                                 fontFamily: 'CustomFontMedium',
                             }}
-                            title={text}
-                            replace={true}
                         >
-                            {text ? ellipsis(text) : '-'}
+                            {ellipsis(text)}
                         </Link>
                     ),
                 },
                 {
-                    title: 'Collection',
-                    key: 'collectionName',
-                    dataIndex: 'collectionName',
+                    title: 'Royalties',
+                    key: 'royalty_ratio',
+                    dataIndex: 'royalty_ratio',
+                    ellipsis: true,
+                    render: (text, data) => <span>{text / 100} %</span>,
+                },
+                {
+                    title: 'Type',
+                    key: 'raw_meta_url',
+                    dataIndex: 'raw_meta_url',
+                    ellipsis: true,
+                    render: (text) => (
+                        <span>{hexToString(text) == 1 ? 'AI' : 'Normal'}</span>
+                    ),
                 },
             ],
             snftcolumns: [
@@ -398,7 +577,7 @@ class AccountDetail extends React.Component {
                         <Link
                             title={text}
                             to={{
-                                pathname: '/SNFTApp/SNFTDetailsApp',
+                                pathname: '/SNFTDetailsApp',
                                 state: { snftid: data.address },
                             }}
                             style={{
@@ -586,7 +765,7 @@ class AccountDetail extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: `/AccountDetailApp/${text}`,
+                                pathname: `/AccountDetailApp`,
                                 state: text,
                             }}
                             style={{
@@ -608,7 +787,7 @@ class AccountDetail extends React.Component {
                     render: (text, data) => (
                         <Link
                             to={{
-                                pathname: `/AccountDetailApp/${text}`,
+                                pathname: `/AccountDetailApp`,
                                 state: text,
                             }}
                             style={{
@@ -657,6 +836,7 @@ class AccountDetail extends React.Component {
     }
     //插入DOM前的回调函数
     componentDidMount() {
+        console.log(this.props);
         if (this.props.location.state) {
             window.sessionStorage.setItem('hash', this.props.location.state);
         } else {
@@ -822,6 +1002,42 @@ class AccountDetail extends React.Component {
                         });
                         console.log(this.state.epochtableData);
                     }
+                }
+            };
+            this.pledgestaker = async () => {
+                this.setState({
+                    loading: true,
+                });
+                const res = await pledge({
+                    ...this.state.pageOption,
+                    staker: this.state.detailFrom,
+                });
+                if (res) {
+                    console.log(res);
+                    this.setState({
+                        tableData: res.data,
+                        tableTotal: res.total,
+                        loading: false,
+                    });
+                    // this.state.totalTransaction = res.totalTransaction
+                }
+            };
+            this.pledgevalidator = async () => {
+                this.setState({
+                    loading: true,
+                });
+                const res = await pledge({
+                    ...this.state.pageOption,
+                    validator: this.state.detailFrom,
+                });
+                if (res) {
+                    console.log(res);
+                    this.setState({
+                        tableData: res.data,
+                        tableTotal: res.total,
+                        loading: false,
+                    });
+                    // this.state.totalTransaction = res.totalTransaction
                 }
             };
             this.tablearrowclick = (index, data, datalenght) => {
@@ -1027,7 +1243,7 @@ class AccountDetail extends React.Component {
                                                 <Link
                                                     to={{
                                                         pathname:
-                                                            '/BlockChainApp/BlackholeBlockDetaApp',
+                                                            '/BlackholeBlockDetaApp',
                                                         state: {
                                                             blockid:
                                                                 item.startNumber,
@@ -1049,7 +1265,7 @@ class AccountDetail extends React.Component {
                                                 <Link
                                                     to={{
                                                         pathname:
-                                                            '/BlockChainApp/BlockDetailsApp',
+                                                            '/BlockDetailsApp',
                                                         state: {
                                                             blockid:
                                                                 item.startNumber,
@@ -1074,7 +1290,7 @@ class AccountDetail extends React.Component {
                                         ,
                                         <Link
                                             to={{
-                                                pathname: `/TradeDetailApp/${item.tx_hash}`,
+                                                pathname: `/TradeDetailApp`,
                                                 state: item.tx_hash,
                                             }}
                                             style={{
@@ -1244,7 +1460,7 @@ class AccountDetail extends React.Component {
                                                         <Link
                                                             to={{
                                                                 pathname:
-                                                                    '/BlockChain/BlackholeBlockDeta',
+                                                                    '/BlackholeBlockDeta',
                                                                 state: {
                                                                     blockid:
                                                                         item.startNumber,
@@ -1266,7 +1482,7 @@ class AccountDetail extends React.Component {
                                                         <Link
                                                             to={{
                                                                 pathname:
-                                                                    '/BlockChain/BlockDetails',
+                                                                    '/BlockDetails',
                                                                 state: {
                                                                     blockid:
                                                                         item.startNumber,
@@ -1291,7 +1507,7 @@ class AccountDetail extends React.Component {
                                                 ,
                                                 <Link
                                                     to={{
-                                                        pathname: `/TradeDetail/${item.tx_hash}`,
+                                                        pathname: `/TradeDetail`,
                                                         state: item.tx_hash,
                                                     }}
                                                     style={{
@@ -1415,8 +1631,7 @@ class AccountDetail extends React.Component {
                                     '0x0000000000000000000000000000000000000000' ? (
                                         <Link
                                             to={{
-                                                pathname:
-                                                    '/BlockChain/BlackholeBlockDeta',
+                                                pathname: '/BlackholeBlockDeta',
                                                 state: {
                                                     blockid: item.block_number,
                                                 },
@@ -1435,8 +1650,7 @@ class AccountDetail extends React.Component {
                                     ) : (
                                         <Link
                                             to={{
-                                                pathname:
-                                                    '/BlockChain/BlockDetails',
+                                                pathname: '/BlockDetails',
                                                 state: {
                                                     blockid: item.block_number,
                                                 },
@@ -1459,7 +1673,7 @@ class AccountDetail extends React.Component {
                                 ,
                                 <Link
                                     to={{
-                                        pathname: `/TradeDetail/${item.tx_hash}`,
+                                        pathname: `/TradeDetail`,
                                         state: item.tx_hash,
                                     }}
                                     style={{
@@ -1526,6 +1740,10 @@ class AccountDetail extends React.Component {
                     ? this.snftPage()
                     : this.state.type == 'CREATOR'
                     ? this.epochpage()
+                    : this.state.type == 'STAKER'
+                    ? this.pledgestaker()
+                    : this.state.type == 'VALIDATOR'
+                    ? this.pledgevalidator()
                     : '';
             };
         };
@@ -1616,7 +1834,17 @@ class AccountDetail extends React.Component {
                                     </span>
                                 </div>
                                 <div>
-                                    <p>Validator Staking</p>{' '}
+                                    <p>Total Staking</p>{' '}
+                                    <span>
+                                        {(
+                                            this.state.accountData
+                                                .stakerAmount /
+                                                1000000000000000000 || 0
+                                        ).toLocaleString() || 0}
+                                    </span>
+                                </div>
+                                <div>
+                                    <p>Total Staked</p>{' '}
                                     <span>
                                         {(
                                             this.state.accountData
@@ -1814,7 +2042,7 @@ class AccountDetail extends React.Component {
                                         ).toLocaleString()}
                                     </span>
                                 </div>
-                                <div>
+                                {/* <div>
                                     <p>Annualized Return</p>{' '}
                                     <span>
                                         {this.state.accountData.apr
@@ -1825,17 +2053,8 @@ class AccountDetail extends React.Component {
                                             : '0'}{' '}
                                         %
                                     </span>
-                                </div>
-                                <div>
-                                    <p>Staker Staking</p>{' '}
-                                    <span>
-                                        {(
-                                            this.state.accountData
-                                                .exchangerAmount /
-                                                1000000000000000000 || 0
-                                        ).toLocaleString() || 0}
-                                    </span>
-                                </div>
+                                </div> */}
+
                                 {/* <div>
                                     <p>SNFT Staking</p>{' '}
                                     <span>
@@ -2076,6 +2295,8 @@ class AccountDetail extends React.Component {
                         <Radio.Button defaultChecked={true} value="trade">
                             TXN
                         </Radio.Button>
+                        <Radio.Button value="STAKER">Stake</Radio.Button>
+                        <Radio.Button value="VALIDATOR">Staked</Radio.Button>
                         <Radio.Button value="SNFT">SNFT</Radio.Button>
                         <Radio.Button value="NFT">NFT</Radio.Button>
                         <Radio.Button value="CREATOR">CREATOR</Radio.Button>
@@ -2466,6 +2687,10 @@ class AccountDetail extends React.Component {
                                     ? this.state.nftcolumns
                                     : this.state.type == 'SNFT'
                                     ? this.state.snftcolumns
+                                    : this.state.type == 'STAKER'
+                                    ? this.state.stakercolumns
+                                    : this.state.type == 'VALIDATOR'
+                                    ? this.state.validatorcolumns
                                     : ''
                             }
                             // loading={this.state.loading}

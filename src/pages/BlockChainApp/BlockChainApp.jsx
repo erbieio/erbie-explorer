@@ -33,8 +33,7 @@ export default function BlockChainApp() {
                     '0x0000000000000000000000000000000000000000' ? (
                         <Link
                             to={{
-                                pathname:
-                                    '/BlockChainApp/BlackholeBlockDetaApp',
+                                pathname: '/BlackholeBlockDetaApp',
                                 state: { blockid: text },
                             }}
                             style={{
@@ -47,7 +46,7 @@ export default function BlockChainApp() {
                     ) : (
                         <Link
                             to={{
-                                pathname: '/BlockChainApp/BlockDetailsApp',
+                                pathname: '/BlockDetailsApp',
                                 state: { blockid: text },
                             }}
                             style={{
@@ -70,7 +69,7 @@ export default function BlockChainApp() {
                 data.number != 0 ? (
                     <Link
                         to={{
-                            pathname: `/AccountDetailApp/${text}`,
+                            pathname: `/AccountDetailApp`,
                             state: text,
                         }}
                         style={{

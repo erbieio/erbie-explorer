@@ -27,44 +27,44 @@ export default defineConfig({
                     component: './ExchangeApp/Exchange.jsx',
                 },
                 {
-                    path: '/BlockChain/BlockDetails',
+                    path: '/BlockDetails',
                     component: './BlockDetails/BlockDetails.jsx',
                 },
                 {
-                    path: '/BlockChain/BlackholeBlockDeta',
+                    path: '/BlackholeBlockDeta',
                     component: './BlackholeBlockDeta/BlackholeBlockDeta.jsx',
                 },
                 {
-                    path: '/BlockChainApp/BlackholeBlockDetaApp',
+                    path: '/BlackholeBlockDetaApp',
                     component:
                         './BlackholeBlockDetaApp/BlackholeBlockDetaApp.jsx',
                 },
                 {
-                    path: '/BlockChainApp/BlockDetailsApp',
+                    path: '/BlockDetailsApp',
                     component: './BlockDetailsApp/BlockDetailsApp.jsx',
                 },
                 {
-                    path: '/NFT/NFTDetails',
+                    path: '/NFTDetails',
                     component: './NFTDetails/NFTDetails.jsx',
                 },
                 {
-                    path: '/NFTApp/NFTDetailsApp',
+                    path: '/NFTDetailsApp',
                     component: './NFTDetailsApp/NFTDetailsApp.jsx',
                 },
                 {
-                    path: '/SNFT/SNFTDetails',
+                    path: '/SNFTDetails',
                     component: './SNFTDetails/SNFTDetails.jsx',
                 },
                 {
-                    path: '/SNFTApp/SNFTDetailsApp',
+                    path: '/SNFTDetailsApp',
                     component: './SNFTDetailsApp/SNFTDetailsApp.jsx',
                 },
                 {
-                    path: '/Exchange/ExchangeDetails',
+                    path: '/ExchangeDetails',
                     component: './ExchangeDetails/ExchangeDetails.jsx',
                 },
                 {
-                    path: '/ExchangeApp/ExchangeDetailsApp',
+                    path: '/ExchangeDetailsApp',
                     component: './ExchangeDetailsApp/ExchangeDetails.jsx',
                 },
                 { path: '/Validator', component: './Validator/Validator.jsx' },
@@ -99,22 +99,22 @@ export default defineConfig({
                     component: './TradeApp/Trade.jsx',
                 },
                 {
-                    path: '/TradeDetail/:id',
+                    path: '/TradeDetail',
                     exact: true,
                     component: './TradeDetail/TradeDetail.jsx',
                 },
                 {
-                    path: '/TradeDetailApp/:id',
+                    path: '/TradeDetailApp',
                     exact: true,
                     component: './TradeDetailApp/TradeDetail.jsx',
                 },
                 {
-                    path: `/AccountDetail/:id`,
+                    path: `/AccountDetail`,
                     exact: true,
                     component: './AccountDetail/AccountDetail.jsx',
                 },
                 {
-                    path: `/AccountDetailApp/:id`,
+                    path: `/AccountDetailApp`,
                     exact: true,
                     component: './AccountDetailApp/AccountDetail.jsx',
                 },
@@ -185,6 +185,9 @@ export default defineConfig({
             ],
         },
     ],
+    dva: {
+        immer: true,
+    },
     proxy: {
         '/api': {
             target: 'https://www.wormholestest.com',
@@ -195,20 +198,29 @@ export default defineConfig({
             },
         },
         '/ipfs': {
-            target: 'https://www.wormholestest.com',
+            target: 'http://192.168.1.235:9006/',
             changeOrigin: true,
             secure: false,
             pathRewrite: {
                 '^/ipfs': '/ipfs',
             },
         },
+        '/v1': {
+            target: 'http://192.168.1.235:18081',
+            changeOrigin: true,
+            secure: false,
+            pathRewrite: {
+                '^/v1': '/v1',
+            },
+        },
     },
+    fastRefresh: {},
     publicPath: './',
     runtimePublicPath: true,
-    history: {
-        type: 'hash',
-    },
-    hash: true,
+    // history: {
+    //     type: 'hash',
+    // },
+    // hash: true,
     links: [
         // href的图片你可以放在public里面，直接./图片名.png 就可以了，也可以是cdn链接
         { rel: 'ico', href: './src/assets/images/logo.ico' },

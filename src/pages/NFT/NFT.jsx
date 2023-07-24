@@ -27,15 +27,15 @@ export default function NFT() {
     const [nftchartdata, setNftchartdata] = useState([]);
     const columns = [
         {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
+            title: 'NFT Address',
+            dataIndex: 'address',
+            key: 'address',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: '/NFT/NFTDetails', state: { nftid: data } }}
+                    to={{ pathname: '/NFTDetails', state: { nftid: data } }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
-                    {Number(text) != 0 ? text : ''}
+                    {ellipsis(text)}
                 </Link>
             ),
             ellipsis: true,
@@ -54,32 +54,13 @@ export default function NFT() {
             ellipsis: true,
         },
         {
-            title: 'Price',
-            dataIndex: 'last_price',
-            key: 'last_price',
-            render: (text) => (
-                <span>
-                    {text != 0 && text != null
-                        ? text / 1000000000000000000 + ' ERB'
-                        : 'No Bid'}{' '}
-                </span>
-            ),
-            ellipsis: true,
-        },
-        {
-            title: 'Collection',
-            key: 'collectionName',
-            dataIndex: 'collectionName',
-            ellipsis: true,
-        },
-        {
             title: 'Author',
             key: 'creator',
             dataIndex: 'creator',
             ellipsis: true,
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -93,7 +74,7 @@ export default function NFT() {
             ellipsis: true,
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetail/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -101,23 +82,90 @@ export default function NFT() {
             ),
         },
         {
-            title: 'Listed Marketplaces',
-            key: 'exchanger_addr',
-            dataIndex: 'exchanger_addr',
+            title: 'Royalties',
+            key: 'royalty_ratio',
+            dataIndex: 'royalty_ratio',
             ellipsis: true,
-            render: (text, data) => (
-                <Link
-                    to={{
-                        pathname: '/Exchange/ExchangeDetails',
-                        state: { exchangeid: text },
-                    }}
-                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
-                >
-                    {ellipsis(text)}
-                </Link>
+            render: (text, data) => <span>{text / 100} %</span>,
+        },
+        {
+            title: 'Type',
+            key: 'raw_meta_url',
+            dataIndex: 'raw_meta_url',
+            ellipsis: true,
+            render: (text) => (
+                <span>{hexToString(text) == 1 ? 'AI' : 'Normal'}</span>
             ),
         },
     ];
+
+    //处理中文乱码问题
+    function utf8to16(str) {
+        var out, i, len, c;
+        var char2, char3;
+        out = '';
+        len = str.length;
+        i = 0;
+        while (i < len) {
+            c = str.charCodeAt(i++);
+            switch (c >> 4) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                    out += str.charAt(i - 1);
+                    break;
+                case 12:
+                case 13:
+                    char2 = str.charCodeAt(i++);
+                    out += String.fromCharCode(
+                        ((c & 0x1f) << 6) | (char2 & 0x3f),
+                    );
+                    break;
+                case 14:
+                    char2 = str.charCodeAt(i++);
+                    char3 = str.charCodeAt(i++);
+                    out += String.fromCharCode(
+                        ((c & 0x0f) << 12) |
+                            ((char2 & 0x3f) << 6) |
+                            ((char3 & 0x3f) << 0),
+                    );
+                    break;
+            }
+        }
+    }
+    function hexToString(str) {
+        var val = '',
+            len = str.length / 2;
+        for (var i = 0; i < len; i++) {
+            val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
+        }
+        let text = 0;
+        for (
+            let i = 0;
+            i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
+            i++
+        ) {
+            if (
+                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                    'prompt' ||
+                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                    'randomNumber'
+            ) {
+                text++;
+            }
+        }
+        console.log(text);
+        if (text == 2) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
     //nft分页
     let pagedata = {
         exchanger: '',
@@ -264,6 +312,7 @@ export default function NFT() {
     const nft_q = async (item) => {
         const data = await nft(item);
         if (data) {
+            console.log(data);
             setNftdata(data);
         }
     };

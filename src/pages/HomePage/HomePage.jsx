@@ -356,7 +356,7 @@ export default function HomePage() {
                         />
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${item.address}`,
+                                pathname: `/AccountDetail`,
                                 state: item.address,
                             }}
                             className={
@@ -391,7 +391,7 @@ export default function HomePage() {
                         />
                         <Link
                             to={{
-                                pathname: `/AccountDetail/${item.address}`,
+                                pathname: `/AccountDetail`,
                                 state: item.address,
                             }}
                             className={
@@ -466,8 +466,7 @@ export default function HomePage() {
                                             fontWeight: '400',
                                         }}
                                         to={{
-                                            pathname:
-                                                '/BlockChain/BlackholeBlockDeta',
+                                            pathname: '/BlackholeBlockDeta',
                                             state: { blockid: item.number },
                                         }}
                                     >
@@ -484,8 +483,7 @@ export default function HomePage() {
                                             fontWeight: '400',
                                         }}
                                         to={{
-                                            pathname:
-                                                '/BlockChain/BlockDetails',
+                                            pathname: '/BlockDetails',
                                             state: { blockid: item.number },
                                         }}
                                     >
@@ -503,7 +501,7 @@ export default function HomePage() {
                                         fontWeight: '400',
                                     }}
                                     to={{
-                                        pathname: `/AccountDetail/${item.miner}`,
+                                        pathname: `/AccountDetail`,
                                         state: item.miner,
                                     }}
                                 >
@@ -585,11 +583,7 @@ export default function HomePage() {
                                             HomePage_ls.tableblocklistselectbox_BlockProducer_p
                                         }
                                         to={{
-                                            pathname: `/AccountDetail/${
-                                                BlockProducer()
-                                                    ? BlockProducer().address
-                                                    : '0'
-                                            }`,
+                                            pathname: `/AccountDetail`,
                                             state: BlockProducer()
                                                 ? BlockProducer().address
                                                 : '0',
@@ -720,7 +714,7 @@ export default function HomePage() {
             ) {
                 //账户详情
                 history.push({
-                    pathname: `/AccountDetail/${data}`,
+                    pathname: `/AccountDetail`,
                     state: data,
                 });
             } else if (
@@ -729,7 +723,7 @@ export default function HomePage() {
             ) {
                 //交易hash
                 history.push({
-                    pathname: `/TradeDetail/${data}`,
+                    pathname: `/TradeDetail`,
                     state: data,
                 });
             }
@@ -844,7 +838,7 @@ export default function HomePage() {
                 </div>
                 {/* 地图 */}
                 <div className={HomePage_ls.mapbox} id="pcmap">
-                    {window.location.hash == '#/' ? <MapChart /> : ''}
+                    {window.location.pathname == '/' ? <MapChart /> : ''}
 
                     <div className={HomePage_ls.mapboxz}>
                         <div className={HomePage_ls.mapboxz_center}>
@@ -1252,7 +1246,7 @@ export default function HomePage() {
                             ) : (
                                 <Link
                                     to={{
-                                        pathname: `/AccountDetail/${epochdata.creator}`,
+                                        pathname: `/AccountDetail`,
                                         state: epochdata.creator,
                                     }}
                                     className={

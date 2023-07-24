@@ -41,7 +41,7 @@ export default function ValidatorApp() {
             key: 'address',
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -264,8 +264,8 @@ export default function ValidatorApp() {
                     )}
                 </div>
             ),
-            key: 'last_number',
-            dataIndex: 'last_number',
+            key: 'block_number',
+            dataIndex: 'block_number',
             render: (text, data) => (
                 <Link
                     to={{
@@ -640,7 +640,7 @@ export default function ValidatorApp() {
                 setOrderdata('');
             } else {
                 setFeeratecolor(1);
-                setOrderdata('last_number ASC');
+                setOrderdata('block_number ASC');
             }
         } else {
             if (feeratecolor == 2) {
@@ -648,7 +648,7 @@ export default function ValidatorApp() {
                 setOrderdata('');
             } else {
                 setFeeratecolor(2);
-                setOrderdata('last_number DESC');
+                setOrderdata('block_number DESC');
             }
         }
     }
@@ -718,12 +718,10 @@ export default function ValidatorApp() {
                                     ValidatorApp_ls.ValidatorBox_headerTitle_d_left_data
                                 }
                             >
-                                {totaldata.totalValidatorPledge
+                                {totaldata.totalPledge
                                     ? Number(
                                           utils.formatEther(
-                                              String(
-                                                  totaldata.totalValidatorPledge,
-                                              ),
+                                              String(totaldata.totalPledge),
                                           ),
                                       ).toFixed(2)
                                     : 0}

@@ -45,3 +45,14 @@ export const creatorAddressdetailed = (data) => {
         },
     });
 };
+//账户stker以及validator查询
+export const pledge = (data) => {
+    return request.get(`${host}/pledge/page`, {
+        params: {
+            page: data.page,
+            page_size: data.page_size,
+            staker: data.staker,
+            validator: data.validator,
+        },
+    });
+};

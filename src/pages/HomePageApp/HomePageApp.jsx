@@ -341,7 +341,7 @@ export default function HomePageApp() {
                         />
                         <Link
                             to={{
-                                pathname: `/AccountDetailApp/${item.address}`,
+                                pathname: `/AccountDetailApp`,
                                 state: item.address,
                             }}
                             className={
@@ -376,7 +376,7 @@ export default function HomePageApp() {
                         />
                         <Link
                             to={{
-                                pathname: `/AccountDetailApp/${item.address}`,
+                                pathname: `/AccountDetailApp`,
                                 state: item.address,
                             }}
                             className={
@@ -476,8 +476,7 @@ export default function HomePageApp() {
                                             fontWeight: '400',
                                         }}
                                         to={{
-                                            pathname:
-                                                '/BlockChainApp/BlackholeBlockDetaApp',
+                                            pathname: '/BlackholeBlockDetaApp',
                                             state: { blockid: item.number },
                                         }}
                                     >
@@ -494,8 +493,7 @@ export default function HomePageApp() {
                                             fontWeight: '400',
                                         }}
                                         to={{
-                                            pathname:
-                                                '/BlockChainApp/BlockDetailsApp',
+                                            pathname: '/BlockDetailsApp',
                                             state: { blockid: item.number },
                                         }}
                                     >
@@ -513,7 +511,7 @@ export default function HomePageApp() {
                                         fontWeight: '400',
                                     }}
                                     to={{
-                                        pathname: `/AccountDetailApp/${item.miner}`,
+                                        pathname: `/AccountDetailApp`,
                                         state: item.miner,
                                     }}
                                 >
@@ -580,11 +578,7 @@ export default function HomePageApp() {
                                             HomePageApp_ls.tableblocklistselectbox_BlockProducer_p
                                         }
                                         to={{
-                                            pathname: `/AccountDetailApp/${
-                                                BlockProducer()
-                                                    ? BlockProducer().address
-                                                    : '0'
-                                            }`,
+                                            pathname: `/AccountDetailApp`,
                                             state: BlockProducer()
                                                 ? BlockProducer().address
                                                 : '0',
@@ -781,7 +775,7 @@ export default function HomePageApp() {
             ) {
                 //账户详情
                 history.push({
-                    pathname: `/AccountDetailApp/${data}`,
+                    pathname: `/AccountDetailApp`,
                     state: data,
                 });
             } else if (
@@ -790,7 +784,7 @@ export default function HomePageApp() {
             ) {
                 //交易hash
                 history.push({
-                    pathname: `/TradeDetailApp/${data}`,
+                    pathname: `/TradeDetailApp`,
                     state: data,
                 });
             }
@@ -1200,7 +1194,7 @@ export default function HomePageApp() {
                     ) : (
                         <Link
                             to={{
-                                pathname: `/AccountDetailApp/${epochdata.creator}`,
+                                pathname: `/AccountDetailApp`,
                                 state: epochdata.creator,
                             }}
                             className={

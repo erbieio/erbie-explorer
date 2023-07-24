@@ -27,18 +27,18 @@ export default function NFTApp() {
     const [nftchartdata, setNftchartdata] = useState([]);
     const columns = [
         {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
+            title: 'NFT Address',
+            dataIndex: 'address',
+            key: 'address',
             render: (text, data) => (
                 <Link
                     to={{
-                        pathname: '/NFTApp/NFTDetailsApp',
+                        pathname: '/NFTDetailsApp',
                         state: { nftid: data },
                     }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
-                    {Number(text) != 0 ? text : ''}
+                    {ellipsis(text)}
                 </Link>
             ),
             ellipsis: true,
@@ -57,32 +57,13 @@ export default function NFTApp() {
             ellipsis: true,
         },
         {
-            title: 'Price',
-            dataIndex: 'last_price',
-            key: 'last_price',
-            render: (text) => (
-                <span>
-                    {text != 0 && text != null
-                        ? text / 1000000000000000000 + ' ERB'
-                        : 'No Bid'}{' '}
-                </span>
-            ),
-            ellipsis: true,
-        },
-        {
-            title: 'Collection',
-            key: 'collectionName',
-            dataIndex: 'collectionName',
-            ellipsis: true,
-        },
-        {
             title: 'Author',
             key: 'creator',
             dataIndex: 'creator',
             ellipsis: true,
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -96,7 +77,7 @@ export default function NFTApp() {
             ellipsis: true,
             render: (text, data) => (
                 <Link
-                    to={{ pathname: `/AccountDetailApp/${text}`, state: text }}
+                    to={{ pathname: `/AccountDetailApp`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
                     {ellipsis(text)}
@@ -104,23 +85,50 @@ export default function NFTApp() {
             ),
         },
         {
-            title: 'Listed Marketplaces',
-            key: 'exchanger_addr',
-            dataIndex: 'exchanger_addr',
+            title: 'Royalties',
+            key: 'royalty_ratio',
+            dataIndex: 'royalty_ratio',
             ellipsis: true,
-            render: (text, data) => (
-                <Link
-                    to={{
-                        pathname: '/ExchangeApp/ExchangeDetailsApp',
-                        state: { exchangeid: text },
-                    }}
-                    style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
-                >
-                    {ellipsis(text)}
-                </Link>
+            render: (text, data) => <span>{text / 100} %</span>,
+        },
+        {
+            title: 'Type',
+            key: 'raw_meta_url',
+            dataIndex: 'raw_meta_url',
+            ellipsis: true,
+            render: (text) => (
+                <span>{hexToString(text) == 1 ? 'AI' : 'Normal'}</span>
             ),
         },
     ];
+    function hexToString(str) {
+        var val = '',
+            len = str.length / 2;
+        for (var i = 0; i < len; i++) {
+            val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
+        }
+        let text = 0;
+        for (
+            let i = 0;
+            i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
+            i++
+        ) {
+            if (
+                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                    'prompt' ||
+                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                    'randomNumber'
+            ) {
+                text++;
+            }
+        }
+        console.log(text);
+        if (text == 2) {
+            return 1;
+        } else {
+            return 2;
+        }
+    }
     //nft分页
     let pagedata = {
         exchanger: '',
