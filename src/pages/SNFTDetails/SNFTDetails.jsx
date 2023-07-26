@@ -25,6 +25,7 @@ import {
 import moment from 'moment';
 import { stagenumber, timestamp, ellipsis } from '../../utils/methods/Methods';
 import { utils } from 'ethers';
+import imgmr from '../../assets/images/HomePage/mr.png';
 const { Option } = Select;
 export default function SNFTDetails(props) {
     // console.log(props.location.state.snftid);
@@ -38,7 +39,7 @@ export default function SNFTDetails(props) {
     //meta
     const [metadata, setMetadata] = useState({});
     // nft图片
-    const [snftimage, setSnftimage] = useState({});
+    const [snftimage, setSnftimage] = useState('');
     const columns = [
         {
             title: 'TXN Hash',
@@ -75,7 +76,7 @@ export default function SNFTDetails(props) {
         //     render: (text, data) => (
         //         <Link
         //             to={{
-        //                 pathname: '/ExchangeDetails',
+        //                 pathname: '/StakerDetails',
         //                 state: { exchangeid: text },
         //             }}
         //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
@@ -137,9 +138,6 @@ export default function SNFTDetails(props) {
         page_size: pagenumbersize,
     };
     useEffect(() => {
-        // console.log('传过来的地址' +props.location.state?props.location.state.snftid:JSON.parse(localStorage.getItem('snfttext')));
-        // console.log('传过来的meta' );
-        // console.log(props.location.state?props.location.state.snftmata:JSON.parse(localStorage.getItem('snftmata')));
         console.log(props.location.query);
         if (props.location.state != undefined) {
             localStorage.setItem(
@@ -170,10 +168,14 @@ export default function SNFTDetails(props) {
     }, [pagenumber]);
     useEffect(() => {
         if (Object.keys(snftdata).length != 0) {
-            metainformation_q(snftdata.meta_url);
-            snftimageaddress_q(snftdata.address);
+            hexToStringbs(snftdata.meta_url);
         }
     }, [snftdata]);
+    useEffect(() => {
+        if (snftimage) {
+            console.log(snftimage);
+        }
+    }, [snftimage]);
     //snft详情查询
     const snftdetails_q = async (item) => {
         const data = await snftdetails(item);
@@ -189,19 +191,17 @@ export default function SNFTDetails(props) {
             setSnfttxdata(data);
         }
     };
-    //meta查询
-    const metainformation_q = async (item) => {
-        const data = await metainformation(item);
-        if (data) {
-            setMetadata(data);
-        }
-    };
+
     // 图片查询
     const snftimageaddress_q = async (item) => {
         const data = await snftimageaddress(item);
         if (data) {
             console.log(data);
-            setSnftimage(data);
+            if (data.code == 200) {
+                setSnftimage('ipfs/' + data.data);
+            } else {
+                setSnftimage(imgmr);
+            }
         }
     };
     function SNFTDetailsinputnumberonclick(e) {
@@ -233,6 +233,46 @@ export default function SNFTDetails(props) {
         }
     }
     function onChange1(newValue) {}
+    function hexToStringbs(str) {
+        if (str.slice(0, 2) == '0x') {
+            var val = '',
+                len = str.length / 2;
+            for (var i = 0; i < len; i++) {
+                val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
+            }
+
+            try {
+                let text = 0;
+                for (
+                    let i = 0;
+                    i <
+                    Object.keys(JSON.parse(val.slice(1, val.length))).length;
+                    i++
+                ) {
+                    if (
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'prompt' ||
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'randomNumber'
+                    ) {
+                        text++;
+                    }
+                }
+                console.log(text);
+                if (text == 2) {
+                    // ai
+                    snftimageaddress_q(snftdata.address);
+                } else {
+                    console.log('=======' + val.meta_url);
+                    setSnftimage(JSON.parse(val.slice(1, val.length)).meta_url);
+                }
+            } catch (error) {
+                setSnftimage('');
+            }
+        } else {
+            setSnftimage('');
+        }
+    }
     return (
         <>
             <div className={SNFTDetails_ls.SNFTDetailsBox}>
@@ -246,12 +286,7 @@ export default function SNFTDetails(props) {
                                 SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox
                             }
                         >
-                            <img
-                                className={
-                                    SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox_img
-                                }
-                                src={'ipfs/' + snftimage.data}
-                            />
+                            <img src={snftimage} />
                             {/* 图片 */}
                         </div>
                         <div
@@ -637,24 +672,6 @@ export default function SNFTDetails(props) {
                             TXN History
                         </div>
                     )}
-                    {transactionmetadata == 1 ? (
-                        <div
-                            className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_buttonBox_metaData1
-                            }
-                            onClick={transactionmeta.bind(this, 1)}
-                        >
-                            Metadata
-                        </div>
-                    ) : (
-                        <div
-                            className={
-                                SNFTDetails_ls.SNFTDetailsBox_titleData_buttonBox_metaData2
-                            }
-                        >
-                            Metadata
-                        </div>
-                    )}
                 </div>
                 {transactionmetadata == 1 ? (
                     <div
@@ -708,64 +725,7 @@ export default function SNFTDetails(props) {
                         </div>
                     </div>
                 ) : (
-                    <div className={SNFTDetails_ls.SNFTDetailsBox_meta}>
-                        <p
-                            className={SNFTDetails_ls.SNFTDetailsBox_meta_title}
-                            id="SNFTDetailsBoxmetatitle"
-                        >
-                            <span
-                                className={
-                                    SNFTDetails_ls.SNFTDetailsBox_meta_title_whaturl
-                                }
-                            >
-                                Metadata retrieved from token URL: <br />
-                                <a
-                                    href={
-                                        'https://hub.wormholes.com' +
-                                        snftdata.meta_url
-                                    }
-                                    className={
-                                        SNFTDetails_ls.SNFTDetailsBox_meta_title_url
-                                    }
-                                >
-                                    https://hub.Erbie.com{snftdata.meta_url}
-                                </a>
-                            </span>
-                            <Select
-                                defaultValue="ViewMetaplexMetadata"
-                                style={{
-                                    width: 256,
-                                }}
-                                suffixIcon={
-                                    <>
-                                        <DownOutlined
-                                            style={{
-                                                color: '#ffffff',
-                                                fontSize: '12px',
-                                                lineHeight: '25px',
-                                            }}
-                                        />
-                                    </>
-                                }
-                                onChange={handleChange}
-                            >
-                                <Option value="ViewMetaplexMetadata">
-                                    View Metaplex Metadata
-                                </Option>
-                            </Select>
-                        </p>
-                        <div
-                            className={
-                                SNFTDetails_ls.SNFTDetailsBox_meta_codeBox
-                            }
-                        >
-                            <pre>
-                                <code style={{ color: '#ffffff' }}>
-                                    {JSON.stringify(metadata, null, ' ')}
-                                </code>
-                            </pre>
-                        </div>
-                    </div>
+                    ''
                 )}
             </div>
         </>

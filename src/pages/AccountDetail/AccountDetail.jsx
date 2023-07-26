@@ -88,6 +88,10 @@ class AccountDetail extends React.Component {
                 page: 1,
                 page_size: 10,
             },
+            pageOptionbs: {
+                page: 1,
+                page_size: 10,
+            },
             loading: false,
             paginationProps: {},
             type: 'trade',
@@ -1257,7 +1261,7 @@ class AccountDetail extends React.Component {
                     loading: true,
                 });
                 const res = await creatorAddressdetailed({
-                    ...this.state.pageOption,
+                    ...this.state.pageOptionbs,
                     id: data.id,
                 });
                 // console.log(res);
@@ -1456,7 +1460,8 @@ class AccountDetail extends React.Component {
                     e.target.clientHeight
                 ) {
                     // console.log('header bottom reached');
-                    this.state.pageOption.page = this.state.pageOption.page + 1;
+                    this.state.pageOptionbs.page =
+                        this.state.pageOptionbs.page + 1;
                     this.creatorAddressdetailed(this.state.addressid);
                 }
             };
@@ -2421,56 +2426,6 @@ class AccountDetail extends React.Component {
                                     {this.state.accountData.snftCount || 0}
                                 </span>
                             </ul>
-
-                            <ul>
-                                <p>Direct rewards</p>
-                                <span>
-                                    {this.state.accountData.reward
-                                        ? Number(
-                                              utils.formatEther(
-                                                  this.state.accountData.reward,
-                                              ),
-                                          ).toFixed(2)
-                                        : 0}{' '}
-                                    ERB
-                                </span>
-                            </ul>
-                            <ul>
-                                <p>Royalty profits</p>
-                                <span>
-                                    {this.state.accountData.profit
-                                        ? Number(
-                                              utils.formatEther(
-                                                  this.state.accountData.profit,
-                                              ),
-                                          ).toFixed(2)
-                                        : 0}{' '}
-                                    ERB
-                                </span>
-                            </ul>
-                            <ul>
-                                <p>Total Profits of Being a Creator</p>
-                                <span>
-                                    {this.state.accountData.profit &&
-                                    this.state.accountData.reward
-                                        ? (
-                                              Number(
-                                                  utils.formatEther(
-                                                      this.state.accountData
-                                                          .reward,
-                                                  ),
-                                              ) +
-                                              Number(
-                                                  utils.formatEther(
-                                                      this.state.accountData
-                                                          .profit,
-                                                  ),
-                                              )
-                                          ).toFixed(2)
-                                        : 0}{' '}
-                                    ERB
-                                </span>
-                            </ul>
                             <ul>
                                 <p
                                     className={
@@ -2513,83 +2468,23 @@ class AccountDetail extends React.Component {
                                 </span>
                             </ul>
                             <ul>
-                                <p
-                                    className={
-                                        AccountDetail_ls.tablexbox2_titletext
-                                    }
-                                >
-                                    Blocks Number{' '}
-                                    <Tooltip
-                                        title={() => {
-                                            return (
-                                                <div
-                                                    className={
-                                                        AccountDetail_ls.tablexbox2_Period
-                                                    }
-                                                >
-                                                    <p>
-                                                        The block height of the
-                                                        last time this account
-                                                        was nominated as a
-                                                        Creator.
-                                                    </p>
-                                                </div>
-                                            );
-                                        }}
-                                        color="#4D4D55"
-                                    >
-                                        <span>
-                                            <QuestionCircleOutlined />
-                                        </span>
-                                    </Tooltip>
-                                </p>
-                                <span>{this.state.accountData.lastNumber}</span>
-                            </ul>
-                            <ul>
-                                <p
-                                    className={
-                                        AccountDetail_ls.tablexbox2_titletext
-                                    }
-                                >
-                                    Creator Pre-nomination Weight{' '}
-                                    <Tooltip
-                                        title={() => {
-                                            return (
-                                                <div
-                                                    className={
-                                                        AccountDetail_ls.tablexbox2_Period
-                                                    }
-                                                >
-                                                    <p>
-                                                        Current block height *
-                                                        SNFT value.
-                                                    </p>
-                                                </div>
-                                            );
-                                        }}
-                                        color="#4D4D55"
-                                    >
-                                        <span>
-                                            <QuestionCircleOutlined />
-                                        </span>
-                                    </Tooltip>
-                                </p>
+                                <p>Royalty profits</p>
                                 <span>
-                                    {this.state.totaldata.totalBlock &&
-                                    this.state.accountData.lastNumber &&
-                                    this.state.accountData.snftValue
+                                    {this.state.accountData.profit
                                         ? Number(
-                                              String(
-                                                  (this.state.totaldata
-                                                      .totalBlock -
-                                                      this.state.accountData
-                                                          .lastNumber) *
-                                                      utils.formatEther(
-                                                          this.state.accountData
-                                                              .snftValue,
-                                                      ),
+                                              utils.formatEther(
+                                                  this.state.accountData.profit,
                                               ),
                                           ).toFixed(2)
+                                        : 0}{' '}
+                                    ERB
+                                </span>
+                            </ul>
+                            <ul>
+                                <p>Owned NFTs</p>
+                                <span>
+                                    {this.state.accountData.nftCount
+                                        ? this.state.accountData.nftCount
                                         : 0}
                                 </span>
                             </ul>

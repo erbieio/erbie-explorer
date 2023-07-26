@@ -67,7 +67,7 @@ export default function IndexPage(props) {
                                   '/BlackholeBlockDeta' ||
                               props.location.pathname == '/NFTDetails' ||
                               props.location.pathname == '/SNFTDetails' ||
-                              props.location.pathname == '/ExchangeDetails' ||
+                              props.location.pathname == '/StakerDetails' ||
                               props.location.pathname.split('/')[1] ==
                                   'TradeDetail' ||
                               props.location.pathname.split('/')[1] ==
@@ -82,7 +82,7 @@ export default function IndexPage(props) {
                         {props.location.pathname == '/BlockChain' ||
                         props.location.pathname == '/NFT' ||
                         props.location.pathname == '/SNFT' ||
-                        props.location.pathname == '/Exchange' ||
+                        props.location.pathname == '/Staker' ||
                         props.location.pathname == '/Trade' ||
                         props.location.pathname == '/ranking' ||
                         props.location.pathname == '/Validator' ||
@@ -113,7 +113,7 @@ export default function IndexPage(props) {
                         {props.location.pathname == '/BlockChainApp' ||
                         props.location.pathname == '/NFTApp' ||
                         props.location.pathname == '/SNFTApp' ||
-                        props.location.pathname == '/ExchangeApp' ||
+                        props.location.pathname == '/StakerApp' ||
                         props.location.pathname == '/TradeApp' ||
                         props.location.pathname == '/rankingApp' ||
                         (props.location.pathname == '/ValidatorApp' &&

@@ -9,7 +9,7 @@
         {"type" : 6,"name":"Exchange SNFTs"},
         {"type" : 7,"name":"Stake SNFTs"},
         {"type" : 8,"name":"Redeem SNFTs"},
-        {"type" : 9,"name":"Stake ERB (Validators)"},
+        {"type" : 9,"name":"Stake ERB"},
         {"type" : 10,"name":"Redeem ERB (Validators)"},
         {"type" : 11,"name":"Stake ERB (Stakers)"},
         {"type" : 12,"name":"Redeem ERB (Stakers)"},

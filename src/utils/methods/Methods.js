@@ -171,28 +171,33 @@ export function getBit(value) {
 }
 
 export function hexToString(str) {
-    var val = '',
-        len = str.length / 2;
-    for (var i = 0; i < len; i++) {
-        val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
-    }
-    let text = 0;
-    for (
-        let i = 0;
-        i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
-        i++
-    ) {
-        if (
-            Object.keys(JSON.parse(val.slice(1, val.length)))[i] == 'prompt' ||
-            Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                'randomNumber'
-        ) {
-            text++;
+    if (str.slice(0, 2) == '0x') {
+        var val = '',
+            len = str.length / 2;
+        for (var i = 0; i < len; i++) {
+            val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
         }
-    }
-    console.log(text);
-    if (text == 2) {
-        return 1;
+        let text = 0;
+        for (
+            let i = 0;
+            i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
+            i++
+        ) {
+            if (
+                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                    'prompt' ||
+                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                    'randomNumber'
+            ) {
+                text++;
+            }
+        }
+        console.log(text);
+        if (text == 2) {
+            return 1;
+        } else {
+            return 2;
+        }
     } else {
         return 2;
     }

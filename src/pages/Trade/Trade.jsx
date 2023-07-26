@@ -327,14 +327,17 @@ class Trade extends React.Component {
                     ),
                     chartData: [
                         {
-                            year: 'Exchange Trading',
-                            population: res.totalExchangerTx,
-                        },
-                        { year: 'NFT Trading', population: res.totalNFTTx },
-                        { year: 'SNFT Trading', population: res.totalSNFTTx },
-                        {
                             year: 'Erbie Trading',
                             population: res.totalWormholesTx,
+                        },
+
+                        { year: 'SNFT Trading', population: res.totalSNFTTx },
+                        { year: 'NFT Trading', population: res.totalNFTTx },
+
+                        {
+                            year: 'General Trading',
+                            population:
+                                res.totalTransaction - res.totalWormholesTx,
                         },
                         // { year: 'Transfer Trading', population: res.totalTransferTx},
                     ],

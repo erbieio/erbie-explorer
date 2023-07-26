@@ -25,6 +25,7 @@ import {
 import moment from 'moment';
 import { stagenumber, timestamp, ellipsis } from '../../utils/methods/Methods';
 import { utils } from 'ethers';
+import imgmr from '../../assets/images/HomePage/mr.png';
 const { Option } = Select;
 export default function SNFTDetailsApp(props) {
     // console.log(props.location.state.snftid);
@@ -38,7 +39,7 @@ export default function SNFTDetailsApp(props) {
     //meta
     const [metadata, setMetadata] = useState({});
     // nft图片
-    const [snftimage, setSnftimage] = useState({});
+    const [snftimage, setSnftimage] = useState('');
     const columns = [
         {
             title: 'TXN Hash',
@@ -75,7 +76,7 @@ export default function SNFTDetailsApp(props) {
         //     render: (text, data) => (
         //         <Link
         //             to={{
-        //                 pathname: '/ExchangeDetailsApp',
+        //                 pathname: '/StakerDetailsApp',
         //                 state: { exchangeid: text },
         //             }}
         //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
@@ -170,14 +171,14 @@ export default function SNFTDetailsApp(props) {
     }, [pagenumber]);
     useEffect(() => {
         if (Object.keys(snftdata).length != 0) {
-            metainformation_q(snftdata.meta_url);
-            snftimageaddress_q(snftdata.address);
+            hexToStringbs(snftdata.meta_url);
         }
     }, [snftdata]);
     //snft详情查询
     const snftdetails_q = async (item) => {
         const data = await snftdetails(item);
         if (data) {
+            console.log(data);
             setSnftdata(data);
         }
     };
@@ -188,19 +189,16 @@ export default function SNFTDetailsApp(props) {
             setSnfttxdata(data);
         }
     };
-    //meta查询
-    const metainformation_q = async (item) => {
-        const data = await metainformation(item);
-        if (data) {
-            setMetadata(data);
-        }
-    };
     // 图片查询
     const snftimageaddress_q = async (item) => {
         const data = await snftimageaddress(item);
         if (data) {
             console.log(data);
-            setSnftimage(data);
+            if (data.code == 200) {
+                setSnftimage('ipfs/' + data.data);
+            } else {
+                setSnftimage(imgmr);
+            }
         }
     };
     function SNFTDetailsinputnumberonclick(e) {
@@ -232,6 +230,46 @@ export default function SNFTDetailsApp(props) {
         }
     }
     function onChange1(newValue) {}
+    function hexToStringbs(str) {
+        if (str.slice(0, 2) == '0x') {
+            var val = '',
+                len = str.length / 2;
+            for (var i = 0; i < len; i++) {
+                val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
+            }
+
+            try {
+                let text = 0;
+                for (
+                    let i = 0;
+                    i <
+                    Object.keys(JSON.parse(val.slice(1, val.length))).length;
+                    i++
+                ) {
+                    if (
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'prompt' ||
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'randomNumber'
+                    ) {
+                        text++;
+                    }
+                }
+                console.log(text);
+                if (text == 2) {
+                    // ai
+                    snftimageaddress_q(snftdata.address);
+                } else {
+                    console.log('=======' + val.meta_url);
+                    setSnftimage(JSON.parse(val.slice(1, val.length)).meta_url);
+                }
+            } catch (error) {
+                setSnftimage('');
+            }
+        } else {
+            setSnftimage('');
+        }
+    }
     return (
         <>
             <div className={SNFTDetailsApp_ls.SNFTDetailsBox}>
@@ -248,7 +286,7 @@ export default function SNFTDetailsApp(props) {
                             className={
                                 SNFTDetailsApp_ls.SNFTDetailsBox_titleData_imgBox_img
                             }
-                            src={'ipfs/' + snftimage.data}
+                            src={snftimage}
                         />
                         {/* 图片 */}
                     </div>
@@ -508,13 +546,6 @@ export default function SNFTDetailsApp(props) {
                                             <QuestionCircleOutlined />
                                         </span>
                                     </Tooltip>
-                                    {/* <span
-                                        className={
-                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_block
-                                        }
-                                    >
-                                        #{snftdata.reward_number}
-                                    </span> */}
                                     <span
                                         className={
                                             SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftname_blocktime
@@ -568,35 +599,6 @@ export default function SNFTDetailsApp(props) {
                                         ? ellipsis(snftdata.owner)
                                         : '-'}
                                 </Link>
-                                {/* {snftdata.exchanger ==
-                                '0x0000000000000000000000000000000000000000' ? (
-                                    <p
-                                        className={
-                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                        }
-                                    >
-                                        Official Account
-                                    </p>
-                                ) : (
-                                    <Link
-                                        to={{
-                                            pathname: `/AccountDetailApp`,
-                                            state: snftdata.creator,
-                                        }}
-                                        className={
-                                            SNFTDetailsApp_ls.SNFTDetailsBox_titleData_text_nftattribute_right_name
-                                        }
-                                        style={{ color: '#7AA4FF' }}
-                                    >
-                                        {snftdata.creator
-                                            ? ellipsis(snftdata.creator)
-                                            : '-'}
-                                    </Link>
-                                )} */}
-
-                                {/* {
-                                    snftdata.exchanger
-                                } */}
                                 <Link
                                     to={{
                                         pathname: `/AccountDetailApp`,
@@ -645,24 +647,6 @@ export default function SNFTDetailsApp(props) {
                             }
                         >
                             TXN History
-                        </div>
-                    )}
-                    {transactionmetadata == 1 ? (
-                        <div
-                            className={
-                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_buttonBox_metaData1
-                            }
-                            onClick={transactionmeta.bind(this, 1)}
-                        >
-                            Metadata
-                        </div>
-                    ) : (
-                        <div
-                            className={
-                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_buttonBox_metaData2
-                            }
-                        >
-                            Metadata
                         </div>
                     )}
                 </div>
@@ -722,73 +706,7 @@ export default function SNFTDetailsApp(props) {
                         </div>
                     </div>
                 ) : (
-                    <div className={SNFTDetailsApp_ls.SNFTDetailsBox_meta}>
-                        <p
-                            className={
-                                SNFTDetailsApp_ls.SNFTDetailsBox_meta_title
-                            }
-                            id="SNFTDetailsBoxmetatitleApp"
-                        >
-                            <p
-                                className={
-                                    SNFTDetailsApp_ls.SNFTDetailsBox_meta_title_whaturl
-                                }
-                            >
-                                Metadata retrieved from token URL: <br />
-                            </p>
-                            <p
-                                onClick={() => {
-                                    window.open(
-                                        'https://hub.wormholes.com' +
-                                            snftdata.meta_url,
-                                    );
-                                }}
-                                className={
-                                    SNFTDetailsApp_ls.SNFTDetailsBox_meta_title_url
-                                }
-                            >
-                                <span>
-                                    https://hub.Erbie.com{snftdata.meta_url}
-                                </span>
-                            </p>
-                            <Select
-                                defaultValue="ViewMetaplexMetadata"
-                                style={{
-                                    width: 174,
-                                    marginLeft: '140px',
-                                }}
-                                suffixIcon={
-                                    <>
-                                        <DownOutlined
-                                            style={{
-                                                color: '#ffffff',
-                                                fontSize: '11px',
-                                                lineHeight: '11px',
-                                            }}
-                                        />
-                                    </>
-                                }
-                                onChange={handleChange}
-                            >
-                                <Option value="ViewMetaplexMetadata">
-                                    View Metaplex Metadata
-                                </Option>
-                            </Select>
-                        </p>
-                        <div className={SNFTDetailsApp_ls.tableBox2}>
-                            <div
-                                className={
-                                    SNFTDetailsApp_ls.SNFTDetailsBox_meta_codeBox
-                                }
-                            >
-                                <pre>
-                                    <code style={{ color: '#ffffff' }}>
-                                        {JSON.stringify(metadata, null, ' ')}
-                                    </code>
-                                </pre>
-                            </div>
-                        </div>
-                    </div>
+                    ''
                 )}
             </div>
         </>

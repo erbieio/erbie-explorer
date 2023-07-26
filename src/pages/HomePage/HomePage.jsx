@@ -38,8 +38,10 @@ import {
     homepagechart,
     blockrewardperson,
     onlineAddr,
+    snftimageaddress,
 } from '../../api/request_data/block_request';
 import { utils } from 'ethers';
+import imgmr from '../../assets/images/HomePage/mr.png';
 const { Option } = Select;
 export default function HomePage() {
     const handleChange = (value) => {};
@@ -63,6 +65,8 @@ export default function HomePage() {
     const [multiple, setMultiple] = useState(0.11);
     //在线验证者
     const [validatoronline, setValidatoronline] = useState(0);
+    // nft图片
+    const [nftimage, setNftimage] = useState('');
     let L0 = 0.03;
     //区块分页
     let pagedata = {
@@ -138,9 +142,21 @@ export default function HomePage() {
         console.log(data);
         if (data) {
             setEpochdata(data);
+            hexToStringbs(data.dir, data);
         }
     };
-
+    // 图片查询
+    const snftimageaddress_q = async (item) => {
+        const data = await snftimageaddress(item);
+        if (data) {
+            console.log(data);
+            if (data.code == 200) {
+                setNftimage('ipfs/' + data.data);
+            } else {
+                setNftimage(imgmr);
+            }
+        }
+    };
     //奖励人查询
     // const rewardperson_q = async () => {
     //     const data = await rewardperson();
@@ -311,6 +327,46 @@ export default function HomePage() {
                     />
                 );
             });
+        }
+    }
+    function hexToStringbs(str, item) {
+        if (str.slice(0, 2) == '0x') {
+            var val = '',
+                len = str.length / 2;
+            for (var i = 0; i < len; i++) {
+                val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
+            }
+            console.log(JSON.parse(val.slice(1, val.length)));
+            let text = 0;
+            for (
+                let i = 0;
+                i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
+                i++
+            ) {
+                if (
+                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                        'prompt' ||
+                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                        'randomNumber'
+                ) {
+                    text++;
+                }
+            }
+            console.log(text);
+            if (text == 2) {
+                // ai
+                let pth = item.id;
+                for (let i = 0; i < 42 - item.id.length; i++) {
+                    pth.concat('0');
+                }
+                console.log(pth);
+                snftimageaddress_q(pth);
+            } else {
+                console.log('=======' + val.meta_url);
+                setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
+            }
+        } else {
+            setNftimage('');
         }
     }
     //BlockProducer奖励人判断
@@ -788,19 +844,11 @@ export default function HomePage() {
                     <div className={HomePage_ls.titlebox_databox}>
                         <div className={HomePage_ls.titlebox_databox_d}>
                             <p className={HomePage_ls.titlebox_databox_d_data}>
-                                {totaldata.totalValidatorPledge &&
-                                totaldata.totalExchangerPledge
-                                    ? (
-                                          Number(
-                                              utils.formatEther(
-                                                  totaldata.totalValidatorPledge,
-                                              ),
-                                          ) +
-                                          Number(
-                                              utils.formatEther(
-                                                  totaldata.totalExchangerPledge,
-                                              ),
-                                          )
+                                {totaldata.totalPledge
+                                    ? Number(
+                                          utils.formatEther(
+                                              totaldata.totalPledge,
+                                          ),
                                       ).toFixed(2)
                                     : 0}
                             </p>
@@ -910,7 +958,7 @@ export default function HomePage() {
                                         HomePage_ls.MarketplacesBox_databox_left_data
                                     }
                                 >
-                                    {totaldata.totalExchanger || 0}
+                                    {totaldata.totalStaker || 0}
                                 </p>
                             </div>
                             <div
@@ -945,11 +993,11 @@ export default function HomePage() {
                                                     HomePage_ls.MarketplacesBox_databox_rightd1_data
                                                 }
                                             >
-                                                {totaldata.totalExchangerPledge
+                                                {totaldata.totalPledge
                                                     ? Number(
                                                           utils.formatEther(
                                                               String(
-                                                                  totaldata.totalExchangerPledge,
+                                                                  totaldata.totalPledge,
                                                               ),
                                                           ),
                                                       ).toFixed(2)
@@ -1263,7 +1311,8 @@ export default function HomePage() {
                                 HomePage_ls.BlockINFORMATIONbox_rightimgbox
                             }
                         >
-                            {homepageimg(epochdata.collections)}
+                            {/* {homepageimg(epochdata.collections)} */}
+                            <img src={nftimage} style={{ width: '314px' }} />
                         </div>
                     </div>
                 </div>

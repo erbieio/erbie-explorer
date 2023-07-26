@@ -9,13 +9,17 @@ const { Option } = Select;
 export default function Header() {
     const handleChange = (value) => {};
     // const params = window.location.search;
-    useEffect(() => {}, []);
+    useEffect(() => {
+        if (window.location.pathname) {
+            console.log(window.location.pathname);
+        }
+    }, [window.location.pathname]);
     //路由跳转
     function handleClick(e) {
         if (e == 'Ranking') {
             history.push('/ranking');
         } else if (e == 'exchangeRanking') {
-            history.push('/exchangeRanking');
+            history.push('/StakerRanking');
         } else if (e == 'SNFTRanking') {
             history.push('/SNFTRanking');
         } else if (e == 'NFTRanking') {
@@ -82,48 +86,96 @@ export default function Header() {
                 <div className={Header_ls.HeaderBox_navigationBox}>
                     <Link
                         to={{ pathname: '/BlockChain', state: '' }}
+                        style={{
+                            backgroundColor:
+                                window.location.pathname == '/BlockChain'
+                                    ? '#fe4fa7'
+                                    : '',
+                        }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         BLOCKCHAIN
                     </Link>
                     <Link
                         to={{ pathname: '/Validator', state: '' }}
+                        style={{
+                            backgroundColor:
+                                window.location.pathname == '/Validator'
+                                    ? '#fe4fa7'
+                                    : '',
+                        }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         VALIDATOR
                     </Link>
                     <Link
-                        to={{ pathname: '/Exchange', state: '' }}
+                        to={{ pathname: '/Staker', state: '' }}
+                        style={{
+                            backgroundColor:
+                                window.location.pathname == '/Staker'
+                                    ? '#fe4fa7'
+                                    : '',
+                        }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         STAKER
                     </Link>
                     <Link
                         to={{ pathname: '/Creator', state: '' }}
+                        style={{
+                            backgroundColor:
+                                window.location.pathname == '/Creator'
+                                    ? '#fe4fa7'
+                                    : '',
+                        }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         CREATOR
                     </Link>
                     <Link
                         to={{ pathname: '/Account', state: '' }}
+                        style={{
+                            backgroundColor:
+                                window.location.pathname == '/Account'
+                                    ? '#fe4fa7'
+                                    : '',
+                        }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         ACCOUNT
                     </Link>
                     <Link
                         to={{ pathname: '/NFT', state: '' }}
+                        style={{
+                            backgroundColor:
+                                window.location.pathname == '/NFT'
+                                    ? '#fe4fa7'
+                                    : '',
+                        }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         NFT
                     </Link>
                     <Link
                         to={{ pathname: '/SNFT', state: '' }}
+                        style={{
+                            backgroundColor:
+                                window.location.pathname == '/SNFT'
+                                    ? '#fe4fa7'
+                                    : '',
+                        }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         SNFT
                     </Link>
                     <Link
                         to={{ pathname: '/Trade', state: '' }}
+                        style={{
+                            backgroundColor:
+                                window.location.pathname == '/Trade'
+                                    ? '#fe4fa7'
+                                    : '',
+                        }}
                         className={Header_ls.HeaderBox_navigationBox_text}
                     >
                         TRANSACT
@@ -143,7 +195,7 @@ export default function Header() {
             {window.location.pathname == '/BlockChain' ||
             window.location.pathname == '/NFT' ||
             window.location.pathname == '/SNFT' ||
-            window.location.pathname == '/Exchange' ||
+            window.location.pathname == '/Staker' ||
             window.location.pathname == '/Trade' ||
             window.location.pathname == '/ranking' ||
             window.location.pathname == '/Validator' ||
@@ -157,25 +209,6 @@ export default function Header() {
                         className={Header_ls.HeaderBox_SearchBox_inputBox}
                         id="headerselect"
                     >
-                        {/* <Select
-                            defaultValue="AllFilters"
-                            onChange={handleChange}
-                            suffixIcon={
-                                <>
-                                    <GoTriangleDown
-                                        style={{
-                                            color: '#ffffff',
-                                            fontSize: '18px',
-                                        }}
-                                    />
-                                </>
-                            }
-                            className={
-                                Header_ls.HeaderBox_SearchBox_inputBox_select
-                            }
-                        >
-                            <Option value="AllFilters">All Filters</Option>
-                        </Select> */}
                         <input
                             placeholder="Search by Address / Txn Hash / Block / Token"
                             className={

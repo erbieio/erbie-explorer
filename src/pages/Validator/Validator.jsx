@@ -48,7 +48,7 @@ export default function Validator() {
                 </Link>
             ),
             ellipsis: true,
-            width: '140px',
+            // width: '140px',
         },
         {
             title: () => (
@@ -231,7 +231,7 @@ export default function Validator() {
                 </span>
             ),
             ellipsis: true,
-            width: '130px',
+            // width: '130px',
         },
         {
             title: () => (

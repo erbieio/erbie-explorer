@@ -191,7 +191,7 @@ export default function Ranking() {
         if (e == 'Ranking') {
             history.push('/ranking');
         } else if (e == 'exchangeRanking') {
-            history.push('/exchangeRanking');
+            history.push('/StakerRanking');
         } else if (e == 'SNFTRanking') {
             history.push('/SNFTRanking');
         } else if (e == 'NFTRanking') {
@@ -284,7 +284,7 @@ export default function Ranking() {
                         {exchangeData.map((person, index) => (
                             <Link
                                 to={{
-                                    pathname: '/ExchangeDetailsApp',
+                                    pathname: '/StakerDetailsApp',
                                     state: {
                                         exchangeid: person.address,
                                     },

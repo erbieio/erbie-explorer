@@ -26,7 +26,13 @@ import {
 } from '../../api/request_data/block_request';
 import { utils } from 'ethers';
 import FileViewer from 'react-file-viewer';
-import { stagenumber, timestamp, ellipsis } from '../../utils/methods/Methods';
+import {
+    stagenumber,
+    timestamp,
+    ellipsis,
+    hexToString,
+} from '../../utils/methods/Methods';
+import imgmr from '../../assets/images/HomePage/mr.png';
 const { Option } = Select;
 export default function NFTDetailsApp(props) {
     const [transactionmetadata, setTransactionmeta] = useState(1);
@@ -39,7 +45,7 @@ export default function NFTDetailsApp(props) {
     //meta
     const [metadata, setMetadata] = useState({});
     // nft图片
-    const [nftimage, setNftimage] = useState({});
+    const [nftimage, setNftimage] = useState('');
     const columns = [
         {
             title: 'TXN Hash',
@@ -155,6 +161,7 @@ export default function NFTDetailsApp(props) {
     useEffect(() => {
         if (Object.keys(nftdata).length != 0) {
             metainformation_q(nftdata.meta_url);
+            hexToStringbs(nftdata.raw_meta_url);
         }
     }, [nftdata]);
     //snft详情查询
@@ -183,7 +190,11 @@ export default function NFTDetailsApp(props) {
         const data = await snftimageaddress(item);
         if (data) {
             console.log(data);
-            setNftimage(data);
+            if (data.code == 200) {
+                setNftimage('ipfs/' + data.data);
+            } else {
+                setNftimage(imgmr);
+            }
         }
     };
     function NFTDetailsinputnumberonclick(e) {
@@ -253,32 +264,39 @@ export default function NFTDetailsApp(props) {
         }
     }
     function onChange1(newValue) {}
-    function hexToString(str) {
-        var val = '',
-            len = str.length / 2;
-        for (var i = 0; i < len; i++) {
-            val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
-        }
-        let text = 0;
-        for (
-            let i = 0;
-            i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
-            i++
-        ) {
-            if (
-                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                    'prompt' ||
-                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                    'randomNumber'
-            ) {
-                text++;
+    function hexToStringbs(str) {
+        if (str.slice(0, 2) == '0x') {
+            var val = '',
+                len = str.length / 2;
+            for (var i = 0; i < len; i++) {
+                val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
             }
-        }
-        console.log(text);
-        if (text == 2) {
-            return 1;
+            console.log(JSON.parse(val.slice(1, val.length)));
+            let text = 0;
+            for (
+                let i = 0;
+                i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
+                i++
+            ) {
+                if (
+                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                        'prompt' ||
+                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                        'randomNumber'
+                ) {
+                    text++;
+                }
+            }
+            console.log(text);
+            if (text == 2) {
+                // ai
+                snftimageaddress_q(nftdata.address);
+            } else {
+                console.log('=======' + val.meta_url);
+                setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
+            }
         } else {
-            return 2;
+            setNftimage('');
         }
     }
     return (
@@ -323,7 +341,13 @@ export default function NFTDetailsApp(props) {
                         ) : (
                             ''
                         )} */}
-                        <img src={'ipfs/' + nftimage.data} />
+                        {nftimage ? (
+                            <img src={nftimage} />
+                        ) : (
+                            <img
+                                src={require('../../assets/images/HomePage/mr.png')}
+                            />
+                        )}
                     </div>
                     <div
                         className={
@@ -359,7 +383,7 @@ export default function NFTDetailsApp(props) {
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_left_name
                                     }
                                 >
-                                    Collection Time
+                                    Creation Time
                                 </p>
                                 <p
                                     className={
@@ -487,24 +511,6 @@ export default function NFTDetailsApp(props) {
                             TXN History
                         </div>
                     )}
-                    {transactionmetadata == 1 ? (
-                        <div
-                            className={
-                                NFTDetailsApp_ls.NFTDetailsBox_titleData_buttonBox_metaData1
-                            }
-                            onClick={transactionmeta.bind(this, 1)}
-                        >
-                            Metadata
-                        </div>
-                    ) : (
-                        <div
-                            className={
-                                NFTDetailsApp_ls.NFTDetailsBox_titleData_buttonBox_metaData2
-                            }
-                        >
-                            Metadata
-                        </div>
-                    )}
                 </div>
                 {transactionmetadata == 1 ? (
                     <div className={NFTDetailsApp_ls.tableBox}>
@@ -562,71 +568,7 @@ export default function NFTDetailsApp(props) {
                         </div>
                     </div>
                 ) : (
-                    <div className={NFTDetailsApp_ls.NFTDetailsBox_meta}>
-                        <p
-                            className={
-                                NFTDetailsApp_ls.NFTDetailsBox_meta_title
-                            }
-                            id="NFTDetailsBoxmetatitle"
-                        >
-                            <p
-                                className={
-                                    NFTDetailsApp_ls.NFTDetailsBox_meta_title_whaturl
-                                }
-                            >
-                                Metadata retrieved from token URL: <br />
-                            </p>
-                            <p
-                                onClick={() => {
-                                    window.open(
-                                        'https://hub.wormholes.com' +
-                                            nftdata.meta_url,
-                                    );
-                                }}
-                                className={
-                                    NFTDetailsApp_ls.NFTDetailsBox_meta_title_url
-                                }
-                            >
-                                https://hub.Erbie.com{nftdata.meta_url}
-                            </p>
-                            <Select
-                                defaultValue="ViewMetaplexMetadata"
-                                style={{
-                                    width: 174,
-                                    marginLeft: '140px',
-                                }}
-                                suffixIcon={
-                                    <>
-                                        <DownOutlined
-                                            style={{
-                                                color: '#ffffff',
-                                                fontSize: '11px',
-                                                lineHeight: '11px',
-                                            }}
-                                        />
-                                    </>
-                                }
-                                onChange={handleChange}
-                            >
-                                <Option value="ViewMetaplexMetadata">
-                                    View Metaplex Metadata
-                                </Option>
-                            </Select>
-                        </p>
-                        <div className={NFTDetailsApp_ls.tableBox2}>
-                            <div
-                                className={
-                                    NFTDetailsApp_ls.NFTDetailsBox_meta_codeBox
-                                }
-                            >
-                                <pre>
-                                    <code style={{ color: '#ffffff' }}>
-                                        {JSON.stringify(metadata, null, ' ')}
-                                    </code>
-                                </pre>
-                            </div>
-                        </div>
-                    </div>
+                    ''
                 )}
             </div>
         </>

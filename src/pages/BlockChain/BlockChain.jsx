@@ -1,5 +1,5 @@
 import BlockChain_ls from './BlockChain.less';
-import { Space, Table, Tag, Pagination } from 'antd';
+import { Space, Table, Tag, Pagination, Radio } from 'antd';
 import { Link } from 'umi';
 import {
     erbprice,
@@ -85,7 +85,6 @@ export default function BlockChain() {
             dataIndex: 'totalTransaction',
             key: 'totalTransaction',
             render: (text, data) => (data.number != 0 ? <>{text}</> : '-'),
-            width: '70px',
         },
         {
             title: 'Creation Time',
@@ -102,7 +101,6 @@ export default function BlockChain() {
                     '-'
                 ),
             ellipsis: true,
-            width: '200px',
         },
         {
             title: 'Gas Used',
@@ -184,7 +182,6 @@ export default function BlockChain() {
             }
         }
     }
-
     return (
         <>
             <div className={BlockChain_ls.BlockChainBox}>

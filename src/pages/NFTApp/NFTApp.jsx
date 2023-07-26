@@ -12,7 +12,12 @@ import {
 } from '../../api/request_data/block_request';
 import moment from 'moment';
 import { utils } from 'ethers';
-import { stagenumber, timestamp, ellipsis } from '../../utils/methods/Methods';
+import {
+    stagenumber,
+    timestamp,
+    ellipsis,
+    hexToString,
+} from '../../utils/methods/Methods';
 import { Chart, LineAdvance } from 'bizcharts';
 import FileViewer from 'react-file-viewer';
 import React, { useState, useEffect } from 'react';
@@ -101,34 +106,6 @@ export default function NFTApp() {
             ),
         },
     ];
-    function hexToString(str) {
-        var val = '',
-            len = str.length / 2;
-        for (var i = 0; i < len; i++) {
-            val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
-        }
-        let text = 0;
-        for (
-            let i = 0;
-            i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
-            i++
-        ) {
-            if (
-                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                    'prompt' ||
-                Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                    'randomNumber'
-            ) {
-                text++;
-            }
-        }
-        console.log(text);
-        if (text == 2) {
-            return 1;
-        } else {
-            return 2;
-        }
-    }
     //nft分页
     let pagedata = {
         exchanger: '',

@@ -33,11 +33,13 @@ import {
     homepagechart,
     blockrewardperson,
     onlineAddr,
+    snftimageaddress,
 } from '../../api/request_data/block_request';
 import { BsSearch } from 'react-icons/bs';
 import React, { useState, useEffect } from 'react';
 import { Link, history } from 'umi';
 import { utils } from 'ethers';
+import imgmr from '../../assets/images/HomePage/mr.png';
 const { Option } = Select;
 export default function HomePageApp() {
     const handleChange = (value) => {};
@@ -61,6 +63,8 @@ export default function HomePageApp() {
     const [multiple, setMultiple] = useState(0.11);
     //在线验证者
     const [validatoronline, setValidatoronline] = useState(0);
+    // nft图片
+    const [nftimage, setNftimage] = useState('');
     //区块分页
     let L0 = 0.03;
     let pagedata = {
@@ -126,6 +130,19 @@ export default function HomePageApp() {
         const data = await epoch();
         if (data) {
             setEpochdata(data);
+            hexToStringbs(data.dir, data);
+        }
+    };
+    // 图片查询
+    const snftimageaddress_q = async (item) => {
+        const data = await snftimageaddress(item);
+        if (data) {
+            console.log(data);
+            if (data.code == 200) {
+                setNftimage('ipfs/' + data.data);
+            } else {
+                setNftimage(imgmr);
+            }
         }
     };
     //奖励人查询
@@ -167,6 +184,46 @@ export default function HomePageApp() {
             }
         }
     };
+    function hexToStringbs(str, item) {
+        if (str.slice(0, 2) == '0x') {
+            var val = '',
+                len = str.length / 2;
+            for (var i = 0; i < len; i++) {
+                val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
+            }
+            console.log(JSON.parse(val.slice(1, val.length)));
+            let text = 0;
+            for (
+                let i = 0;
+                i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
+                i++
+            ) {
+                if (
+                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                        'prompt' ||
+                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                        'randomNumber'
+                ) {
+                    text++;
+                }
+            }
+            console.log(text);
+            if (text == 2) {
+                // ai
+                let pth = item.id;
+                for (let i = 0; i < 42 - item.id.length; i++) {
+                    pth.concat('0');
+                }
+                console.log(pth);
+                snftimageaddress_q(pth);
+            } else {
+                console.log('=======' + val.meta_url);
+                setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
+            }
+        } else {
+            setNftimage('');
+        }
+    }
     //折线图查询
     const homepagechart_q = async () => {
         const data = await homepagechart();
@@ -857,19 +914,11 @@ export default function HomePageApp() {
                                             HomePageApp_ls.titlebox_databox_d_data
                                         }
                                     >
-                                        {totaldata.totalValidatorPledge &&
-                                        totaldata.totalExchangerPledge
-                                            ? (
-                                                  Number(
-                                                      utils.formatEther(
-                                                          totaldata.totalValidatorPledge,
-                                                      ),
-                                                  ) +
-                                                  Number(
-                                                      utils.formatEther(
-                                                          totaldata.totalExchangerPledge,
-                                                      ),
-                                                  )
+                                        {totaldata.totalPledge
+                                            ? Number(
+                                                  utils.formatEther(
+                                                      totaldata.totalPledge,
+                                                  ),
                                               ).toFixed(2)
                                             : 0}
                                     </p>
@@ -1021,7 +1070,7 @@ export default function HomePageApp() {
                                 HomePageApp_ls.MarketplacesBox_databox_left_data
                             }
                         >
-                            {totaldata.totalExchanger || 0}
+                            {totaldata.totalStaker || 0}
                         </p>
                     </div>
                     <div className={HomePageApp_ls.HomePageAppbox_Mdatabox_d2}>
@@ -1037,12 +1086,10 @@ export default function HomePageApp() {
                                 HomePageApp_ls.MarketplacesBox_databox_rightd1_data
                             }
                         >
-                            {totaldata.totalExchangerPledge
+                            {totaldata.totalPledge
                                 ? Number(
                                       utils.formatEther(
-                                          String(
-                                              totaldata.totalExchangerPledge,
-                                          ),
+                                          String(totaldata.totalPledge),
                                       ),
                                   ).toFixed(2)
                                 : 0}
@@ -1214,7 +1261,8 @@ export default function HomePageApp() {
                             HomePageApp_ls.BlockINFORMATIONbox_rightimgbox
                         }
                     >
-                        {homepageimg(epochdata.collections)}
+                        {/* {homepageimg(epochdata.collections)} */}
+                        <img src={nftimage} style={{ width: '116px' }} />
                     </div>
                 </div>
                 <div className={HomePageApp_ls.HomePageAppbox_tablebigbox}>

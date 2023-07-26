@@ -140,7 +140,6 @@ export default function Creator() {
                     {ellipsis(text)}
                 </Link>
             ),
-            width: '140px',
         },
         {
             title: () => (
@@ -204,7 +203,6 @@ export default function Creator() {
                     {parseInt('0x' + text.slice(4, text.length))}
                 </span>
             ),
-            width: '120px',
         },
         {
             title: () => (
@@ -233,7 +231,6 @@ export default function Creator() {
             dataIndex: 'lastNumber',
             key: 'lastNumber',
             render: (text) => <span>{text}</span>,
-            width: '140px',
         },
         {
             title: () => (
@@ -307,85 +304,6 @@ export default function Creator() {
             dataIndex: 'count',
             key: 'count',
             render: (text) => <span>{text}</span>,
-            width: '180px',
-        },
-        {
-            title: () => (
-                <div className={Creator_ls.tablexbox2}>
-                    <span>Total direct rewards</span>
-                    <Tooltip
-                        title={() => {
-                            return (
-                                <div className={Creator_ls.tablexbox2_Period}>
-                                    <p>
-                                        The direct rewards creator got by being
-                                        creator.
-                                    </p>
-                                </div>
-                            );
-                        }}
-                        color="#4D4D55"
-                    >
-                        <span className={Creator_ls.tablexbox2_icon}>
-                            <QuestionCircleOutlined />
-                        </span>
-                    </Tooltip>
-                </div>
-            ),
-            dataIndex: 'reward',
-            key: 'reward',
-            render: (text, data) => (
-                <span>
-                    {text ? Number(utils.formatEther(text)).toFixed(4) : 0}{' '}
-                    {data.address ==
-                    '0x0000000000000000000000000000000000000000'
-                        ? '(Burned)'
-                        : ''}
-                </span>
-            ),
-            width: '180px',
-            ellipsis: true,
-        },
-        {
-            title: () => (
-                <div className={Creator_ls.tablexbox}>
-                    Period created times
-                    {totalcollectionscolor == 0 ? (
-                        <div className={Creator_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalCollections.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalCollections.bind(this, 2)}
-                            />
-                        </div>
-                    ) : totalcollectionscolor == 1 ? (
-                        <div className={Creator_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalCollections.bind(this, 1)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalCollections.bind(this, 2)}
-                            />
-                        </div>
-                    ) : (
-                        <div className={Creator_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalCollections.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalCollections.bind(this, 2)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                        </div>
-                    )}
-                </div>
-            ),
-            dataIndex: 'count',
-            key: 'count',
-            render: (text) => <span>{text}</span>,
-            width: '190px',
         },
         {
             title: () => (
@@ -421,7 +339,6 @@ export default function Creator() {
                         : ''}
                 </span>
             ),
-            width: '170px',
             ellipsis: true,
         },
     ];
@@ -443,27 +360,6 @@ export default function Creator() {
             } else {
                 setStakevaluecolor(2);
                 setOrderdata('last_time DESC');
-            }
-        }
-    }
-    //Total Collections 排序
-    function TotalCollections(text) {
-        setStakevaluecolor(0);
-        if (text == 1) {
-            if (totalcollectionscolor == 1) {
-                setTotalcollectionscolor(0);
-                setOrderdata('');
-            } else {
-                setTotalcollectionscolor(1);
-                setOrderdata('count ASC');
-            }
-        } else {
-            if (totalcollectionscolor == 2) {
-                setTotalcollectionscolor(0);
-                setOrderdata('');
-            } else {
-                setTotalcollectionscolor(2);
-                setOrderdata('count DESC');
             }
         }
     }
@@ -492,17 +388,15 @@ export default function Creator() {
                                 }
                             >
                                 <p>
-                                    {epochdata.weightAmount &&
-                                    epochdata.weightValue
+                                    {totaldata.totalProfit
                                         ? Number(
-                                              epochdata.weightAmount *
-                                                  utils.formatEther(
-                                                      epochdata.weightValue,
-                                                  ),
+                                              utils.formatEther(
+                                                  totaldata.totalProfit,
+                                              ),
                                           ).toFixed(2)
                                         : 0}
                                 </p>
-                                <span>Creator weight of current period</span>
+                                <span>Total profits</span>
                                 <img
                                     src={require('../../assets/images/Creator/Slice 834.png')}
                                 />

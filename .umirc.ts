@@ -21,10 +21,10 @@ export default defineConfig({
                 { path: '/NFTApp', component: './NFTApp/NFTApp.jsx' },
                 { path: '/SNFT', component: './SNFT/SNFT.jsx' },
                 { path: '/SNFTApp', component: './SNFTApp/SNFTApp.jsx' },
-                { path: '/Exchange', component: './Exchange/Exchange.jsx' },
+                { path: '/Staker', component: './Staker/Staker.jsx' },
                 {
-                    path: '/ExchangeApp',
-                    component: './ExchangeApp/Exchange.jsx',
+                    path: '/StakerApp',
+                    component: './StakerApp/Staker.jsx',
                 },
                 {
                     path: '/BlockDetails',
@@ -60,12 +60,12 @@ export default defineConfig({
                     component: './SNFTDetailsApp/SNFTDetailsApp.jsx',
                 },
                 {
-                    path: '/ExchangeDetails',
-                    component: './ExchangeDetails/ExchangeDetails.jsx',
+                    path: '/StakerDetails',
+                    component: './StakerDetails/StakerDetails.jsx',
                 },
                 {
-                    path: '/ExchangeDetailsApp',
-                    component: './ExchangeDetailsApp/ExchangeDetails.jsx',
+                    path: '/StakerDetailsApp',
+                    component: './StakerDetailsApp/StakerDetails.jsx',
                 },
                 { path: '/Validator', component: './Validator/Validator.jsx' },
                 {
@@ -79,8 +79,8 @@ export default defineConfig({
                     component: './RankingApp/RankingApp.jsx',
                 },
                 {
-                    path: '/exchangeRanking',
-                    component: './ExchangeRanking/ExchangeRanking.jsx',
+                    path: '/StakerRanking',
+                    component: './StakerRanking/StakerRanking.jsx',
                 },
                 {
                     path: '/SNFTRanking',

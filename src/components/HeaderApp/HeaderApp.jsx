@@ -122,7 +122,7 @@ export default function HeaderApp(props) {
                     </div>
                 </Link>
                 <Link
-                    to={{ pathname: '/ExchangeApp', state: '' }}
+                    to={{ pathname: '/StakerApp', state: '' }}
                     className={HeaderApp_ls.Navigationbox_div}
                 >
                     <div className={HeaderApp_ls.Navigationbox_divcenter}>
@@ -183,7 +183,7 @@ export default function HeaderApp(props) {
             {window.location.pathname == '/BlockChainApp' ||
             window.location.pathname == '/NFTApp' ||
             window.location.pathname == '/SNFTApp' ||
-            window.location.pathname == '/ExchangeApp' ||
+            window.location.pathname == '/StakerApp' ||
             window.location.pathname == '/TradeApp' ||
             window.location.pathname == '/rankingApp' ||
             window.location.pathname == '/ValidatorApp' ||
@@ -218,7 +218,7 @@ export default function HeaderApp(props) {
             {/* {window.location.hash != '#/BlockChainApp' &&
             window.location.hash != '#/NFTApp' &&
             window.location.hash != '#/SNFTApp' &&
-            window.location.hash != '#/ExchangeApp' &&
+            window.location.hash != '#/StakerApp' &&
             window.location.hash != '#/TradeApp' &&
             window.location.hash != '#/rankingApp' &&
             window.location.hash != '#/ValidatorApp' &&
