@@ -59,7 +59,6 @@ function batchTime(baseTime) {
     return batchTime;
 }
 function hexCharCodeToStr(hexCharCodeStr) {
-    // console.log(hexCharCodeStr)
     var trimedStr = hexCharCodeStr.trim();
     if (trimedStr === '0x') {
         return 'Transfer';
@@ -80,10 +79,12 @@ function hexCharCodeToStr(hexCharCodeStr) {
         resultStr.push(String.fromCharCode(curCharCode));
     }
     let StrTran = resultStr.join('');
-    if (StrTran.substring(0, StrTran.indexOf(':')) !== 'wormholes') {
+    console.log(StrTran.substring(0, StrTran.indexOf(':')));
+    if (StrTran.substring(0, StrTran.indexOf(':')) !== 'erbie') {
         return 'Contract Based Transaction';
     } else {
-        let obj = JSON.parse(StrTran.substring(10));
+        console.log(StrTran);
+        let obj = JSON.parse(StrTran.substring(6));
         dealType.forEach((item) => {
             obj.type === item.type ? (obj.name = item.name) : '';
         });
@@ -327,17 +328,19 @@ class Trade extends React.Component {
                     ),
                     chartData: [
                         {
-                            year: 'Erbie Trading',
+                            year: 'Erbie Transactions',
                             population: res.totalWormholesTx,
                         },
-
-                        { year: 'SNFT Trading', population: res.totalSNFTTx },
-                        { year: 'NFT Trading', population: res.totalNFTTx },
-
                         {
-                            year: 'General Trading',
+                            year: 'Contract Transactions',
                             population:
-                                res.totalTransaction - res.totalWormholesTx,
+                                res.totalTransaction -
+                                res.totalWormholesTx -
+                                res.totalTransferTx,
+                        },
+                        {
+                            year: 'Regular Way',
+                            population: res.totalTransferTx,
                         },
                         // { year: 'Transfer Trading', population: res.totalTransferTx},
                     ],

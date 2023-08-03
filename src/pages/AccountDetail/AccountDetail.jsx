@@ -38,16 +38,17 @@ import {
 } from '../../api/request_data/AccountDetail_request';
 import Trade_ls from '../Trade/Trade.less';
 import copy from 'copy-to-clipboard';
-import { history } from '../../.umi/core/history';
 import {
     timestamp,
     ellipsis,
     hexCharCodeToStr,
     hexCharCodeToStrmath,
     hexToString,
+    parseUrlParams,
+    getDevice,
 } from '../../utils/methods/Methods';
 import { utils } from 'ethers';
-import { Link } from 'umi';
+import { Link, history } from 'umi';
 import moment from 'moment';
 const handleCopy = (value) => {
     copy(value);
@@ -1111,18 +1112,23 @@ class AccountDetail extends React.Component {
     }
     //插入DOM前的回调函数
     componentDidMount() {
+        if (getDevice().device != 'pc' && window.location.search) {
+            sessionStorage.setItem(
+                'hash',
+                parseUrlParams(window.location.search).addr,
+            );
+            history.push('/AccountDetailApp');
+        }
+        if (window.location.search) {
+            sessionStorage.setItem(
+                'hash',
+                parseUrlParams(window.location.search).addr,
+            );
+        }
+
         console.log(this.props);
         if (this.props.location.state) {
             window.sessionStorage.setItem('hash', this.props.location.state);
-        } else {
-            console.log(111);
-            let pathhash = this.props.location.pathname.split('/');
-            pathhash
-                ? window.sessionStorage.setItem(
-                      'hash',
-                      pathhash[pathhash.length - 1],
-                  )
-                : '';
         }
         this.state.stateHash = window.sessionStorage.getItem('hash');
         this.setState({
@@ -2426,47 +2432,7 @@ class AccountDetail extends React.Component {
                                     {this.state.accountData.snftCount || 0}
                                 </span>
                             </ul>
-                            <ul>
-                                <p
-                                    className={
-                                        AccountDetail_ls.tablexbox2_titletext
-                                    }
-                                >
-                                    SNFT Value{' '}
-                                    <Tooltip
-                                        title={() => {
-                                            return (
-                                                <div
-                                                    className={
-                                                        AccountDetail_ls.tablexbox2_Period
-                                                    }
-                                                >
-                                                    <p>
-                                                        Go to marketplace to
-                                                        check the details.
-                                                    </p>
-                                                </div>
-                                            );
-                                        }}
-                                        color="#4D4D55"
-                                    >
-                                        <span>
-                                            <QuestionCircleOutlined />
-                                        </span>
-                                    </Tooltip>
-                                </p>
-                                <span>
-                                    {' '}
-                                    {this.state.accountData.snftValue
-                                        ? Number(
-                                              utils.formatEther(
-                                                  this.state.accountData
-                                                      .snftValue,
-                                              ),
-                                          ).toFixed(2)
-                                        : 0}
-                                </span>
-                            </ul>
+
                             <ul>
                                 <p>Royalty profits</p>
                                 <span>

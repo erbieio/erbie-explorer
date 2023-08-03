@@ -189,7 +189,7 @@ export default function AccountApp() {
         {
             title: () => (
                 <div className={AccountApp_ls.tablexbox}>
-                    SNFT Weight
+                    Owned SNFTs
                     {feeratecolor == 0 ? (
                         <div className={AccountApp_ls.tablex}>
                             <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
@@ -218,8 +218,8 @@ export default function AccountApp() {
                     )}
                 </div>
             ),
-            key: 'snftValue',
-            dataIndex: 'snftValue',
+            key: 'snftCount',
+            dataIndex: 'snftCount',
             render: (text, data) => (
                 <>
                     {text
@@ -358,7 +358,7 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setFeeratecolor(1);
-                setOrderdata('snft_value ASC');
+                setOrderdata('snft_count ASC');
             }
         } else {
             if (feeratecolor == 2) {
@@ -366,7 +366,7 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setFeeratecolor(2);
-                setOrderdata('snft_value DESC');
+                setOrderdata('snft_count DESC');
             }
         }
     }

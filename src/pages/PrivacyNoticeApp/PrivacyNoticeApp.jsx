@@ -7,7 +7,7 @@ export default function PrivacyNoticeApp() {
                 <div className={PrivacyNoticeApp_ls.PrivacyNoticeAppBox_center}>
                     <p className={PrivacyNoticeApp_ls.title}>Privacy Notice</p>
                     <p className={PrivacyNoticeApp_ls.text}>
-                        Erbie Lab Inc. (the “Company”, “we”, ‘’us‘’, “our”), is
+                        Wormholes Inc. (the “Company”, “we”, ‘’us‘’, “our”), is
                         committed to protecting and respecting your privacy.
                         This notice (together with our respective Terms of
                         Service) sets out how we will process and use any
@@ -16,10 +16,10 @@ export default function PrivacyNoticeApp() {
                         how we collect and process your personal information,
                         how we define it, and how we will handle it. By using
                         any of our services, including but not limited to our
-                        Erbie Digital Wallet, Erbie Blockchain Explorer, Erbie
+                        Limino Digital Wallet, Erbie Blockchain Explorer, Erbie
                         Faucet or by purchasing Erbie Blockchain's native ERB
                         tokens (“Tokens”)(together “our Services”) or by
-                        accessing our Website www.Erbie.com, you accept and
+                        accessing our Website www.erbie.io, you accept and
                         consent to the practices described in this notice. If
                         you do not wish for your personal information to be used
                         in the manner described within this Notice, you should
@@ -398,7 +398,7 @@ export default function PrivacyNoticeApp() {
                     </p>
                     <p className={PrivacyNoticeApp_ls.text}>
                         · Consent - To withdraw your consent to such use, you
-                        can contact dataprivacy@Erbie.com. The electronic
+                        can contact dataprivacy@erbie.io. The electronic
                         marketing communications we send to you also contain
                         opt-out mechanisms that allow you to opt-out from
                         receiving those communications, update your contact
@@ -534,8 +534,7 @@ export default function PrivacyNoticeApp() {
                     <p className={PrivacyNoticeApp_ls.text}>
                         If you would like to contact us regarding this Notice or
                         to withdraw your consent to this Notice or any aspect of
-                        it, please send us an email at{' '}
-                        <span>dataprivacy@Erbie.com.</span>
+                        it, please send us an email at dataprivacy@erbie.io.
                     </p>
                     <p className={PrivacyNoticeApp_ls.text}>
                         We try to respond to all legitimate enquiries within 30
@@ -583,16 +582,16 @@ export default function PrivacyNoticeApp() {
                     </p>
                     <p className={PrivacyNoticeApp_ls.text}>
                         This Notice shall be governed by, and construed, in
-                        accordance with the laws of British Virgin Islands,
-                        without regard to any conflict of law’s provisions. In
-                        the event of any disputes, controversies, or differences
-                        arising out of or in connection with this Notice
-                        (hereinafter, "Dispute"), the Dispute shall be submitted
-                        to the non-exclusive jurisdiction of the courts of
-                        British Virgin Islands.
+                        accordance with the laws of Cayman Islands, without
+                        regard to any conflict of law’s provisions. In the event
+                        of any disputes, controversies, or differences arising
+                        out of or in connection with this Notice (hereinafter,
+                        "Dispute"), the Dispute shall be submitted to the
+                        non-exclusive jurisdiction of the courts of Cayman
+                        Islands.
                     </p>
                     <p className={PrivacyNoticeApp_ls.text}>
-                        Last Updated: 16 August 2022
+                        Last Updated: 12 July 2023
                     </p>
                 </div>
             </div>

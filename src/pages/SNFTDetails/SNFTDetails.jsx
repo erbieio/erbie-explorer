@@ -8,7 +8,7 @@ import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
 import { Space, Table, Tag, Pagination, Tooltip, Select } from 'antd';
-import { Link } from 'umi';
+import { Link, history } from 'umi';
 import {
     erbprice,
     total,
@@ -23,7 +23,13 @@ import {
     snftimageaddress,
 } from '../../api/request_data/block_request';
 import moment from 'moment';
-import { stagenumber, timestamp, ellipsis } from '../../utils/methods/Methods';
+import {
+    stagenumber,
+    timestamp,
+    ellipsis,
+    parseUrlParams,
+    getDevice,
+} from '../../utils/methods/Methods';
 import { utils } from 'ethers';
 import imgmr from '../../assets/images/HomePage/mr.png';
 const { Option } = Select;
@@ -68,23 +74,6 @@ export default function SNFTDetails(props) {
             ),
             ellipsis: true,
         },
-        // {
-        //     title: 'Transaction Marketplace',
-        //     dataIndex: 'exchanger_addr',
-        //     key: 'exchanger_addr',
-        //     ellipsis: true,
-        //     render: (text, data) => (
-        //         <Link
-        //             to={{
-        //                 pathname: '/StakerDetails',
-        //                 state: { exchangeid: text },
-        //             }}
-        //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
-        //         >
-        //             {ellipsis(text)}
-        //         </Link>
-        //     ),
-        // },
         {
             title: 'Sender',
             key: 'from',
@@ -131,35 +120,36 @@ export default function SNFTDetails(props) {
         address:
             props.location.state != undefined
                 ? props.location.state.snftid
-                : JSON.parse(localStorage.getItem('snfttext')),
+                : localStorage.getItem('snfttext'),
         exchanger: '',
         account: '',
         page: pagenumber,
         page_size: pagenumbersize,
     };
     useEffect(() => {
-        console.log(props.location.query);
-        if (props.location.state != undefined) {
+        console.log(parseUrlParams(window.location.search).addr);
+        if (getDevice().device != 'pc' && window.location.search) {
             localStorage.setItem(
                 'snfttext',
-                JSON.stringify(props.location.state.snftid),
+                parseUrlParams(window.location.search).addr,
             );
+            history.push('/SNFTDetailsApp');
+        }
+        if (window.location.search) {
+            localStorage.setItem(
+                'snfttext',
+                parseUrlParams(window.location.search).addr,
+            );
+        }
+        if (props.location.state != undefined) {
+            localStorage.setItem('snfttext', props.location.state.snftid);
             localStorage.setItem(
                 'snftmata',
                 JSON.stringify(props.location.state.snftmata),
             );
-        } else if (
-            props.location.state == undefined &&
-            Object.keys(props.location.query).length != 0
-        ) {
-            localStorage.setItem(
-                'snfttext',
-                JSON.stringify(props.location.query.snftid),
-            );
         }
         snftdetails_q(
-            JSON.parse(localStorage.getItem('snfttext')) ||
-                props.location.state.snftid,
+            localStorage.getItem('snfttext') || props.location.state.snftid,
         );
         snft_nft_tx_q(pagedata);
     }, []);

@@ -8,7 +8,7 @@ import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
 import { Space, Table, Tag, Pagination, Tooltip, Select } from 'antd';
-import { Link } from 'umi';
+import { Link, history } from 'umi';
 import moment from 'moment';
 import {
     erbprice,
@@ -31,6 +31,8 @@ import {
     timestamp,
     ellipsis,
     hexToString,
+    parseUrlParams,
+    getDevice,
 } from '../../utils/methods/Methods';
 import imgmr from '../../assets/images/HomePage/mr.png';
 const { Option } = Select;
@@ -132,7 +134,7 @@ export default function NFTDetails(props) {
         address:
             props.location.state != undefined
                 ? props.location.state.nftid.address
-                : JSON.parse(localStorage.getItem('nfttext')).address,
+                : localStorage.getItem('nfttext'),
         exchanger: '',
         account: '',
         page: pagenumber,
@@ -143,14 +145,25 @@ export default function NFTDetails(props) {
     };
     const handleChange = (value) => {};
     useEffect(() => {
-        if (props.location.state != undefined) {
+        if (getDevice().device != 'pc' && window.location.search) {
             localStorage.setItem(
                 'nfttext',
-                JSON.stringify(props.location.state.nftid),
+                parseUrlParams(window.location.search).addr,
+            );
+            history.push('/NFTDetailsApp');
+        }
+        if (window.location.search) {
+            localStorage.setItem(
+                'nfttext',
+                parseUrlParams(window.location.search).addr,
             );
         }
+
+        if (props.location.state != undefined) {
+            localStorage.setItem('nfttext', props.location.state.nftid.address);
+        }
         nftdetails_q(
-            JSON.parse(localStorage.getItem('nfttext')).address ||
+            localStorage.getItem('nfttext') ||
                 props.location.state.nftid.address,
         );
         snft_nft_tx_q(pagedata);

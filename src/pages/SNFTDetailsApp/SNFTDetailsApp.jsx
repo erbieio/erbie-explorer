@@ -132,7 +132,7 @@ export default function SNFTDetailsApp(props) {
         address:
             props.location.state != undefined
                 ? props.location.state.snftid
-                : JSON.parse(localStorage.getItem('snfttext')),
+                : localStorage.getItem('snfttext'),
         exchanger: '',
         account: '',
         page: pagenumber,
@@ -143,26 +143,14 @@ export default function SNFTDetailsApp(props) {
         // console.log('传过来的meta' );
         // console.log(props.location.state?props.location.state.snftmata:JSON.parse(localStorage.getItem('snftmata')));
         if (props.location.state != undefined) {
-            localStorage.setItem(
-                'snfttext',
-                JSON.stringify(props.location.state.snftid),
-            );
+            localStorage.setItem('snfttext', props.location.state.snftid);
             localStorage.setItem(
                 'snftmata',
                 JSON.stringify(props.location.state.snftmata),
             );
-        } else if (
-            props.location.state == undefined &&
-            Object.keys(props.location.query).length != 0
-        ) {
-            localStorage.setItem(
-                'snfttext',
-                JSON.stringify(props.location.query.snftid),
-            );
         }
         snftdetails_q(
-            JSON.parse(localStorage.getItem('snfttext')) ||
-                props.location.state.snftid,
+            localStorage.getItem('snfttext') || props.location.state.snftid,
         );
         snft_nft_tx_q(pagedata);
     }, []);

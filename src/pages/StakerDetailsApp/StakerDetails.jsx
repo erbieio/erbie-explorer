@@ -20,7 +20,7 @@ import {
 } from '../../api/request_data/block_request';
 import { timestamp, ellipsis } from '../../utils/methods/Methods';
 import { utils } from 'ethers';
-export default function ExchangeDetails(props) {
+export default function StakerDetails(props) {
     const [transactionmetadata, setTransactionmeta] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(10);
     const [pagenumber, setPagenumber] = useState(1);

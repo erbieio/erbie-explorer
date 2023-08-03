@@ -40,6 +40,8 @@ import {
     hexCharCodeToStr,
     hexCharCodeToStrmath,
     hexToString,
+    parseUrlParams,
+    getDevice,
 } from '../../utils/methods/Methods';
 import Trade_ls from '../Trade/Trade.less';
 import copy from 'copy-to-clipboard';
@@ -843,14 +845,6 @@ class AccountDetail extends React.Component {
         console.log(this.props);
         if (this.props.location.state) {
             window.sessionStorage.setItem('hash', this.props.location.state);
-        } else {
-            let pathhash = this.props.location.pathname.split('/');
-            pathhash
-                ? window.sessionStorage.setItem(
-                      'hash',
-                      pathhash[pathhash.length - 1],
-                  )
-                : '';
         }
         this.state.stateHash = window.sessionStorage.getItem('hash');
         this.setState({
@@ -2103,47 +2097,7 @@ class AccountDetail extends React.Component {
                                         {this.state.accountData.snftCount || 0}
                                     </span>
                                 </ul>
-                                <ul>
-                                    <p
-                                        className={
-                                            AccountDetail_ls.tablexbox2_titletext
-                                        }
-                                    >
-                                        SNFT Value &nbsp;
-                                        <Tooltip
-                                            title={() => {
-                                                return (
-                                                    <div
-                                                        className={
-                                                            AccountDetail_ls.tablexbox2_Period
-                                                        }
-                                                    >
-                                                        <p>
-                                                            Go to marketplace to
-                                                            check the details.
-                                                        </p>
-                                                    </div>
-                                                );
-                                            }}
-                                            color="#4D4D55"
-                                        >
-                                            <span>
-                                                <QuestionCircleOutlined />
-                                            </span>
-                                        </Tooltip>
-                                    </p>
-                                    <span>
-                                        {' '}
-                                        {this.state.accountData.snftValue
-                                            ? Number(
-                                                  utils.formatEther(
-                                                      this.state.accountData
-                                                          .snftValue,
-                                                  ),
-                                              ).toFixed(2)
-                                            : 0}
-                                    </span>
-                                </ul>
+
                                 <ul>
                                     <p>Royalty profits</p>
                                     <span>

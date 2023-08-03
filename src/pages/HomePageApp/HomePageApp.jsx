@@ -23,6 +23,7 @@ import {
     timestamp,
     stagenumber,
     getBit,
+    stagenumberbs,
 } from '../../utils/methods/Methods';
 import {
     erbprice,
@@ -1217,13 +1218,7 @@ export default function HomePageApp() {
                         SNFT Weight
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_data}>
-                        {epochdata.weightValue
-                            ? getBit(
-                                  Number(
-                                      utils.formatEther(epochdata.weightValue),
-                                  ).toFixed(2) * epochdata.weightAmount,
-                              )
-                            : 0}
+                        {epochdata.id ? stagenumberbs(epochdata.id) : 0}
                     </p>
                     <p className={HomePageApp_ls.HomePageAppbox_nft_name}>
                         SNFT Creator

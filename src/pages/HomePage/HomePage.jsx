@@ -28,6 +28,7 @@ import {
     timestamp,
     stagenumber,
     getBit,
+    stagenumberbs,
 } from '../../utils/methods/Methods';
 import {
     erbprice,
@@ -1250,22 +1251,14 @@ export default function HomePage() {
                                     HomePage_ls.BlockINFORMATIONbox_right_title
                                 }
                             >
-                                SNFT Weight
+                                SNFT Period
                             </p>
                             <p
                                 className={
                                     HomePage_ls.BlockINFORMATIONbox_right_data
                                 }
                             >
-                                {epochdata.weightValue
-                                    ? getBit(
-                                          Number(
-                                              utils.formatEther(
-                                                  epochdata.weightValue,
-                                              ),
-                                          ).toFixed(2) * epochdata.weightAmount,
-                                      )
-                                    : 0}
+                                {epochdata.id ? stagenumberbs(epochdata.id) : 0}
                             </p>
                         </div>
                         <div

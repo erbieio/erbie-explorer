@@ -96,6 +96,19 @@ export function stagenumber(data) {
         }
     }
 }
+export function stagenumberbs(data) {
+    if (data) {
+        for (let i = 0; i < data.length; i++) {
+            if (data[i] == 0) {
+                if (i == data.length - 1) {
+                    return 0;
+                }
+            } else {
+                return Number(parseInt(data.slice(3, 39), 16));
+            }
+        }
+    }
+}
 export function ellipsis(data) {
     if (data) {
         return (
@@ -141,10 +154,10 @@ export function hexCharCodeToStr(hexCharCodeStr) {
             resultStr.push(String.fromCharCode(curCharCode));
         }
         let StrTran = resultStr.join('');
-        if (StrTran.substring(0, StrTran.indexOf(':')) !== 'wormholes') {
+        if (StrTran.substring(0, StrTran.indexOf(':')) !== 'erbie') {
             return 'Contract Based Transaction';
         } else {
-            let obj = JSON.parse(StrTran.substring(10));
+            let obj = JSON.parse(StrTran.substring(6));
             dealType.forEach((item) => {
                 obj.type === item.type ? (obj.name = item.name) : '';
             });
@@ -201,4 +214,50 @@ export function hexToString(str) {
     } else {
         return 2;
     }
+}
+
+//url参数获取
+export function parseUrlParams(url) {
+    const params = {};
+    if (!url || url === '' || typeof url !== 'string') {
+        return params;
+    }
+    const paramsStr = url.split('?')[1];
+    if (!paramsStr) {
+        return params;
+    }
+    let str = paramsStr;
+    const paramsArr = str.replace(/&|=/g, ' ').split(' ');
+    for (let i = 0; i < paramsArr.length / 2; i++) {
+        const value = paramsArr[i * 2 + 1];
+        params[paramsArr[i * 2]] =
+            value === 'true' ? true : value === 'false' ? false : value;
+    }
+    console.log(params);
+    return params;
+}
+
+export function getDevice() {
+    let agent = navigator.userAgent.toLowerCase();
+    // message.error(agent);
+    let result = {
+        device: (function () {
+            if (/windows/.test(agent)) {
+                return 'pc';
+            } else if (/iphone|ipod/.test(agent) && /mobile/.test(agent)) {
+                return 'mobilemove';
+            } else if (/ipad/.test(agent) && /mobile/.test(agent)) {
+                return 'mobilemove';
+            } else if (/android/.test(agent)) {
+                return 'mobile';
+            } else if (/linux/.test(agent)) {
+                return 'pc';
+            } else if (/mac/.test(agent)) {
+                return 'pc';
+            } else {
+                return 'pc';
+            }
+        })(),
+    };
+    return result;
 }

@@ -66,10 +66,10 @@ function hexCharCodeToStr(hexCharCodeStr) {
         resultStr.push(String.fromCharCode(curCharCode));
     }
     let StrTran = resultStr.join('');
-    if (StrTran.substring(0, StrTran.indexOf(':')) !== 'wormholes') {
+    if (StrTran.substring(0, StrTran.indexOf(':')) !== 'erbie') {
         return { name: 'contract based transaction', type: 999 };
     } else {
-        let obj = JSON.parse(StrTran.substring(10));
+        let obj = JSON.parse(StrTran.substring(6));
         dealType.forEach((item) => {
             obj.type === item.type ? (obj.name = item.name) : '';
         });
@@ -124,8 +124,6 @@ class TradeDetail extends React.Component {
                 'Trastate',
                 this.props.location.state,
             );
-        } else if (subArr.lastItem) {
-            window.sessionStorage.setItem('Trastate', subArr.lastItem);
         }
         this.state.Trastate = window.sessionStorage.getItem('Trastate');
         this.commonFunc = () => {

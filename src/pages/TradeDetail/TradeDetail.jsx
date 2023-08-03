@@ -29,6 +29,7 @@ import { history } from '../../.umi/core/history';
 import { Link } from 'umi';
 import AccountDetail_ls from '../AccountDetail/AccountDetail.less';
 import { knownHashes } from './inputData';
+import { parseUrlParams, getDevice } from '../../utils/methods/Methods';
 const deal = require('../../assets/json/dealType.json');
 const { dealType } = deal;
 const handleCopy = (value) => {
@@ -67,10 +68,10 @@ function hexCharCodeToStr(hexCharCodeStr) {
     }
 
     let StrTran = resultStr.join('');
-    if (StrTran.substring(0, StrTran.indexOf(':')) !== 'wormholes') {
+    if (StrTran.substring(0, StrTran.indexOf(':')) !== 'erbie') {
         return { name: 'contract based transaction', type: 999 };
     } else {
-        let obj = JSON.parse(StrTran.substring(10));
+        let obj = JSON.parse(StrTran.substring(6));
         dealType.forEach((item) => {
             obj.type === item.type ? (obj.name = item.name) : '';
         });
@@ -116,13 +117,24 @@ class TradeDetail extends React.Component {
     //插入DOM前的回调函数
     componentDidMount() {
         let subArr = this.props.location.pathname.split('/');
+        if (getDevice().device != 'pc' && window.location.search) {
+            window.sessionStorage.setItem(
+                'Trastate',
+                parseUrlParams(window.location.search).addr,
+            );
+            history.push('/TradeDetailApp');
+        }
+        if (window.location.search) {
+            window.sessionStorage.setItem(
+                'Trastate',
+                parseUrlParams(window.location.search).addr,
+            );
+        }
         if (this.props.location.state) {
             window.sessionStorage.setItem(
                 'Trastate',
                 this.props.location.state,
             );
-        } else if (subArr.lastItem) {
-            window.sessionStorage.setItem('Trastate', subArr.lastItem);
         }
         this.state.Trastate = window.sessionStorage.getItem('Trastate');
         this.commonFunc = () => {

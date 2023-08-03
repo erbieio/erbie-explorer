@@ -52,7 +52,7 @@ export default function ValidatorApp() {
         {
             title: () => (
                 <div className={ValidatorApp_ls.tablexbox}>
-                    Staking Numbers(ERB)
+                    Total Staking
                     {stakevaluecolor == 0 ? (
                         <div className={ValidatorApp_ls.tablex}>
                             <CaretUpOutlined
@@ -731,7 +731,7 @@ export default function ValidatorApp() {
                                     ValidatorApp_ls.ValidatorBox_headerTitle_d_left_name
                                 }
                             >
-                                Total Staking ERBs
+                                Total Staking in the Erbie network
                             </p>
                         </div>
                         <img

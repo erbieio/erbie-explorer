@@ -31,6 +31,7 @@ import {
     timestamp,
     ellipsis,
     hexToString,
+    parseUrlParams,
 } from '../../utils/methods/Methods';
 import imgmr from '../../assets/images/HomePage/mr.png';
 const { Option } = Select;
@@ -132,7 +133,7 @@ export default function NFTDetailsApp(props) {
         address:
             props.location.state != undefined
                 ? props.location.state.nftid.address
-                : JSON.parse(localStorage.getItem('nfttext')).address,
+                : localStorage.getItem('nfttext'),
         exchanger: '',
         account: '',
         page: pagenumber,
@@ -143,14 +144,17 @@ export default function NFTDetailsApp(props) {
     };
     const handleChange = (value) => {};
     useEffect(() => {
-        if (props.location.state != undefined) {
+        if (window.location.search) {
             localStorage.setItem(
                 'nfttext',
-                JSON.stringify(props.location.state.nftid),
+                parseUrlParams(window.location.search).addr,
             );
         }
+        if (props.location.state != undefined) {
+            localStorage.setItem('nfttext', props.location.state.nftid.address);
+        }
         nftdetails_q(
-            JSON.parse(localStorage.getItem('nfttext')).address ||
+            localStorage.getItem('nfttext') ||
                 props.location.state.nftid.address,
         );
         snft_nft_tx_q(pagedata);

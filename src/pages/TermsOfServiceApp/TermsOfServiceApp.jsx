@@ -13,7 +13,7 @@ export default function TermsOfServiceApp() {
                     <p className={TermsOfServiceApp_ls.text}>
                         These terms of service (hereinafter, "Terms") create a
                         legally binding agreement between you, as an end user of
-                        our services and Erbie Lab Inc. (together, the
+                        our services and Wormholes Inc. (together, the
                         "Company"). You will be referred to through
                         second-person pronouns such as "you", "your" and
                         "yours". If you accept or agree to the Terms on behalf
@@ -31,9 +31,9 @@ export default function TermsOfServiceApp() {
                         These Terms govern the access and use of the Erbie
                         administration portal Digital Wallet 1.0, Erbie
                         Blockchain Explorer, and Erbie Faucet (together, the
-                        “Services”) and the website: www.Erbie.com and
-                        associated sub-domains (together, the “Websites”) (The
-                        Services and Websites together, the “Applications”).
+                        “Services”) and the website: www.erbie.io and associated
+                        sub-domains (together, the “Websites”) (The Services and
+                        Websites together, the “Applications”).
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
                         Upon accessing, downloading, installing, or otherwise
@@ -73,7 +73,7 @@ export default function TermsOfServiceApp() {
                         may accumulate “testnet tokens” or tokens with similar
                         name and nature, which are not, and shall never convert
                         to or accrue to become "mainnet tokens" of the Erbie
-                        Blockchain developed by Erbie Lab Pte. Ltd. or any other
+                        Blockchain developed by ERBIE Pte. Ltd. or any other
                         tokens, virtual currency or virtual asset. Testnet
                         tokens are virtual items with no monetary value. Testnet
                         tokens do not constitute any currency or property of any
@@ -583,9 +583,9 @@ export default function TermsOfServiceApp() {
                     <p className={TermsOfServiceApp_ls.text}>
                         NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED
                         HEREIN, IN NO EVENT SHALL THE MAXIMUM AGGREGATE
-                        LIABILITY OF Erbie ARISING OUT OF OR IN ANY WAY RELATED
+                        LIABILITY OF ERBIE ARISING OUT OF OR IN ANY WAY RELATED
                         TO THESE TERMS OF SERVICE, EXCEED THE GREATER OF (A)
-                        US$100 OR (B) THE AMOUNT RECEIVED BY Erbie FOR ITS
+                        US$100 OR (B) THE AMOUNT RECEIVED BY ERBIE FOR ITS
                         SERVICES DIRECTLY RELATING TO THE ITEMS THAT ARE THE
                         SUBJECT OF THE CLAIM. THE FOREGOING LIMITATIONS WILL
                         APPLY EVEN IF THE ABOVE STATED REMEDY FAILS OF ITS
@@ -692,8 +692,8 @@ export default function TermsOfServiceApp() {
                         These Terms (and any Dispute) shall be governed by and
                         construed in accordance with, in all respects including
                         as to validity, interpretation and effect, the laws of
-                        the British Virgin Islands. Questions about the Terms
-                        should be sent to support@Erbie.com.
+                        the Cayman Islands. Questions about the Terms should be
+                        sent to support@erbie.io.
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
                         In relation to any dispute, controversy or claim arising
@@ -702,13 +702,13 @@ export default function TermsOfServiceApp() {
                         applicability, breach, termination, validity or
                         enforceability thereof (each a Dispute) the parties
                         irrevocably submit to the exclusive jurisdiction of the
-                        courts of the British Virgin Islands and waive any
-                        objections to such Dispute being heard in such courts on
-                        the grounds of venue or on the grounds that the Dispute
-                        has been brought in an inconvenient forum.
+                        courts of the Cayman Islands and waive any objections to
+                        such Dispute being heard in such courts on the grounds
+                        of venue or on the grounds that the Dispute has been
+                        brought in an inconvenient forum.
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
-                        Last Updated: 16 August 2022
+                        Last Updated: 12 July 2023
                     </p>
                 </div>
             </div>
