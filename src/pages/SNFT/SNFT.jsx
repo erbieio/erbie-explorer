@@ -270,43 +270,8 @@ export default function SNFT() {
                 </span>
             ),
             ellipsis: true,
-            width: '250px',
+            width: '200px',
         },
-        // {
-        //     title: 'L1',
-        //     key: 'address',
-        //     dataIndex: 'address',
-        //     render: (text, data) => (
-        //         <span>
-        //             {parseInt(
-        //                 '0x' + text.slice(text.length - 2, text.length - 1),
-        //             ) + 1}
-        //         </span>
-        //     ),
-        //     ellipsis: true,
-        // },
-        // {
-        //     title: 'L2',
-        //     key: 'address',
-        //     dataIndex: 'address',
-        //     render: (text, data) => (
-        //         <span>
-        //             {parseInt(
-        //                 '0x' + text.slice(text.length - 3, text.length - 2),
-        //             ) + 1}
-        //         </span>
-        //     ),
-        //     ellipsis: true,
-        // },
-        // {
-        //     title: 'L3',
-        //     key: 'address',
-        //     dataIndex: 'address',
-        //     render: (text, data) => (
-        //         <span>{parseInt('0x' + text.slice(4, text.length - 3))}</span>
-        //     ),
-        //     ellipsis: true,
-        // },
     ];
     const onChange = (data) => {
         setPagenumber(data);

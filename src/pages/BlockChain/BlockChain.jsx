@@ -130,6 +130,7 @@ export default function BlockChain() {
             dataIndex: 'size',
             render: (text, data) =>
                 data.number != 0 ? <span>{text} Bytes</span> : '-',
+            width: '130px',
         },
     ];
 

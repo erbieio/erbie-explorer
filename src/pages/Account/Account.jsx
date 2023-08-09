@@ -222,6 +222,7 @@ export default function Account() {
             dataIndex: 'snftCount',
             render: (text, data) => <>{text}</>,
             ellipsis: true,
+            width: '170px',
         },
     ];
 

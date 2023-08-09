@@ -101,6 +101,7 @@ export default function NFT() {
             render: (text) => (
                 <span>{hexToString(text) == 1 ? 'AI' : 'Normal'}</span>
             ),
+            width: '130px',
         },
     ];
 

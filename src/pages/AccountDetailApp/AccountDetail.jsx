@@ -2515,43 +2515,44 @@ class AccountDetail extends React.Component {
                         </div>
                     </div>
                 ) : (
-                    <div
-                        className={AccountDetail_ls.AccountDetailBox1}
-                        id="AccountDetailTableApp"
-                    >
-                        {/* <ConfigProvider */}
-                        {/* // locale={zhCN} */}
-                        {/* // > */}
-                        <Table
-                            dataSource={this.state.tableData}
-                            id={'AccountDetailTable'}
-                            columns={
-                                this.state.type == 'trade'
-                                    ? this.state.transcolumns
-                                    : this.state.type == 'NFT'
-                                    ? this.state.nftcolumns
-                                    : this.state.type == 'SNFT'
-                                    ? this.state.snftcolumns
-                                    : this.state.type == 'STAKER'
-                                    ? this.state.stakercolumns
-                                    : this.state.type == 'VALIDATOR'
-                                    ? this.state.validatorcolumns
-                                    : ''
-                            }
-                            // loading={this.state.loading}
-                            pagination={{
-                                position: ['bottomCenter'],
-                                current: this.state.pageOption.page,
-                                pageSize: this.state.pageOption.pageSize,
-                                showQuickJumper: false,
-                                defaultCurrent: 1,
-                                total: this.state.tableTotal,
-                                onChange: (current, size) =>
-                                    this.paginationChange(current, size),
-                            }}
-                            scroll={{ x: 'max-content' }}
-                        ></Table>
-                        {/* </ConfigProvider> */}
+                    <div className={AccountDetail_ls.tablebox}>
+                        <div
+                            className={AccountDetail_ls.AccountDetailBox1}
+                            id="AccountDetailTableApp"
+                        >
+                            {/* <ConfigProvider */}
+                            {/* // locale={zhCN} */}
+                            {/* // > */}
+                            <Table
+                                dataSource={this.state.tableData}
+                                id={'AccountDetailTable'}
+                                columns={
+                                    this.state.type == 'trade'
+                                        ? this.state.transcolumns
+                                        : this.state.type == 'NFT'
+                                        ? this.state.nftcolumns
+                                        : this.state.type == 'SNFT'
+                                        ? this.state.snftcolumns
+                                        : this.state.type == 'STAKER'
+                                        ? this.state.stakercolumns
+                                        : this.state.type == 'VALIDATOR'
+                                        ? this.state.validatorcolumns
+                                        : ''
+                                }
+                                // loading={this.state.loading}
+                                pagination={{
+                                    position: ['bottomCenter'],
+                                    current: this.state.pageOption.page,
+                                    pageSize: this.state.pageOption.pageSize,
+                                    showQuickJumper: false,
+                                    defaultCurrent: 1,
+                                    total: this.state.tableTotal,
+                                    onChange: (current, size) =>
+                                        this.paginationChange(current, size),
+                                }}
+                            ></Table>
+                            {/* </ConfigProvider> */}
+                        </div>
                     </div>
                 )}
             </>

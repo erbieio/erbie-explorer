@@ -36,24 +36,6 @@ export default function Exchange() {
     //分页排序order参数
     const [orderdata, setOrderdata] = useState('');
     const columns = [
-        // {
-        //     title: 'Name',
-        //     dataIndex: 'name',
-        //     key: 'name',
-        //     // render: (text, data) => <Link to={{ pathname: '/StakerDetails', state: { exchangeid: data.address } }} style={{ color: '#7AA4FF' }}> {data.block_number != 0 ? hexCharCodeToStr(text) : text}</Link>,
-        //     render: (text, data) => (
-        //         <Link
-        //             to={{
-        //                 pathname: '/StakerDetailsApp',
-        //                 state: { exchangeid: data.address },
-        //             }}
-        //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
-        //         >
-        //             {text}
-        //         </Link>
-        //     ),
-        //     // ellipsis: true,
-        // },
         {
             title: 'Staker Address',
             dataIndex: 'address',
@@ -67,7 +49,7 @@ export default function Exchange() {
                     {ellipsis(text)}
                 </Link>
             ),
-            width: '240px',
+            // width: '240px',
         },
         {
             title: 'Block Height',
@@ -125,7 +107,7 @@ export default function Exchange() {
             dataIndex: 'amount',
             // ellipsis: true,
             render: (text) => <span>{utils.formatEther(String(text))}</span>,
-            width: '140px',
+            // width: '140px',
         },
         {
             title: 'SNFT Income',
@@ -150,166 +132,6 @@ export default function Exchange() {
                 ),
             ellipsis: true,
         },
-        // {
-        //     title: () => (
-        //         <div className={Exchange_ls.tablexbox}>
-        //             Collections
-        //             {totalcollectionscolor == 0 ? (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TotalCollections.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TotalCollections.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : totalcollectionscolor == 1 ? (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TotalCollections.bind(this, 1)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TotalCollections.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TotalCollections.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TotalCollections.bind(this, 2)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                 </div>
-        //             )}
-        //         </div>
-        //     ),
-        //     key: 'collectionCount',
-        //     dataIndex: 'collectionCount',
-        //     width: '140px',
-        //     // ellipsis: true,
-        // },
-        // {
-        //     title: () => (
-        //         <div className={Exchange_ls.tablexbox}>
-        //             NFTs
-        //             {totalnftscolor == 0 ? (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TotalNFTs.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TotalNFTs.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : totalnftscolor == 1 ? (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TotalNFTs.bind(this, 1)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TotalNFTs.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TotalNFTs.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TotalNFTs.bind(this, 2)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                 </div>
-        //             )}
-        //         </div>
-        //     ),
-        //     key: 'nft_count',
-        //     dataIndex: 'nft_count',
-        //     width: '100px',
-        // },
-        // {
-        //     title: () => (
-        //         <div className={Exchange_ls.tablexbox}>
-        //             Fee Rate
-        //             {feeratecolor == 0 ? (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
-        //                     <CaretDownOutlined
-        //                         onClick={FeeRate.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : feeratecolor == 1 ? (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={FeeRate.bind(this, 1)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={FeeRate.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
-        //                     <CaretDownOutlined
-        //                         onClick={FeeRate.bind(this, 2)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                 </div>
-        //             )}
-        //         </div>
-        //     ),
-        //     key: 'fee_ratio',
-        //     dataIndex: 'fee_ratio',
-        //     render: (text) => <span>{text / 100} %</span>,
-        //     width: '130px',
-        // },
-        // {
-        //     title: () => (
-        //         <div className={Exchange_ls.tablexbox}>
-        //             Transaction Value
-        //             {transactionvaluecolor == 0 ? (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TransactionValue.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TransactionValue.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : transactionvaluecolor == 1 ? (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TransactionValue.bind(this, 1)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TransactionValue.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : (
-        //                 <div className={Exchange_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TransactionValue.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TransactionValue.bind(this, 2)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                 </div>
-        //             )}
-        //         </div>
-        //     ),
-        //     key: 'tx_amount',
-        //     dataIndex: 'tx_amount',
-        //     render: (text) => <span>{utils.formatEther(text || 0)}</span>,
-        //     width: '185px',
-        //     // ellipsis: true,
-        // },
     ];
     const onChange = (data) => {
         setPagenumber(data);
@@ -339,7 +161,9 @@ export default function Exchange() {
     const exchanger_q = async (item) => {
         const data = await exchanger(item);
         if (data) {
-            setExchangerdata(data);
+            if (data[0]) {
+                setExchangerdata(data);
+            }
         }
     };
     useEffect(() => {
@@ -387,139 +211,11 @@ export default function Exchange() {
             }
         }
     }
-    //Total Collections 排序
-    function TotalCollections(text) {
-        setStakevaluecolor(0);
-        setTotalnftscolor(0);
-        setFeeratecolor(0);
-        setTransactionvaluecolor(0);
-        if (text == 1) {
-            if (totalcollectionscolor == 1) {
-                setTotalcollectionscolor(0);
-                setOrderdata('');
-            } else {
-                setTotalcollectionscolor(1);
-                setOrderdata('collection_count asc');
-            }
-        } else {
-            if (totalcollectionscolor == 2) {
-                setTotalcollectionscolor(0);
-                setOrderdata('');
-            } else {
-                setTotalcollectionscolor(2);
-                setOrderdata('collection_count desc');
-            }
-        }
-    }
-    //Total NFTs 排序
-    function TotalNFTs(text) {
-        setStakevaluecolor(0);
-        setTotalcollectionscolor(0);
-        setFeeratecolor(0);
-        setTransactionvaluecolor(0);
-        if (text == 1) {
-            if (totalnftscolor == 1) {
-                setTotalnftscolor(0);
-                setOrderdata('');
-            } else {
-                setTotalnftscolor(1);
-                setOrderdata('nft_count asc');
-            }
-        } else {
-            if (totalnftscolor == 2) {
-                setTotalnftscolor(0);
-                setOrderdata('');
-            } else {
-                setTotalnftscolor(2);
-                setOrderdata('nft_count desc');
-            }
-        }
-    }
-    //Fee Rate 排序
-    function FeeRate(text) {
-        setStakevaluecolor(0);
-        setTotalcollectionscolor(0);
-        setTotalnftscolor(0);
-        setTransactionvaluecolor(0);
-        if (text == 1) {
-            if (feeratecolor == 1) {
-                setFeeratecolor(0);
-                setOrderdata('');
-            } else {
-                setFeeratecolor(1);
-                setOrderdata('fee_ratio asc');
-            }
-        } else {
-            if (feeratecolor == 2) {
-                setFeeratecolor(0);
-                setOrderdata('');
-            } else {
-                setFeeratecolor(2);
-                setOrderdata('fee_ratio desc');
-            }
-        }
-    }
-    //Transaction Value 排序
-    function TransactionValue(text) {
-        setStakevaluecolor(0);
-        setTotalcollectionscolor(0);
-        setTotalnftscolor(0);
-        setFeeratecolor(0);
-        if (text == 1) {
-            if (transactionvaluecolor == 1) {
-                setTransactionvaluecolor(0);
-                setOrderdata('');
-            } else {
-                setTransactionvaluecolor(1);
-                setOrderdata('tx_amount asc');
-            }
-        } else {
-            if (transactionvaluecolor == 2) {
-                setTransactionvaluecolor(0);
-                setOrderdata('');
-            } else {
-                setTransactionvaluecolor(2);
-                setOrderdata('tx_amount desc');
-            }
-        }
-    }
     return (
         <>
             <div className={Exchange_ls.ExchangeBox}>
                 {/* 头部三块数据 */}
                 <div className={Exchange_ls.ExchangeBox_headerTitle}>
-                    {/* <div className={Exchange_ls.ExchangeBox_headerTitle_d}>
-                        <div
-                            className={
-                                Exchange_ls.ExchangeBox_headerTitle_d_left
-                            }
-                        >
-                            <p
-                                className={
-                                    Exchange_ls.ExchangeBox_headerTitle_d_left_data
-                                }
-                            >
-                                {totaldata.totalExchangerPledge
-                                    ? Number(
-                                          utils.formatEther(
-                                              totaldata.totalExchangerPledge,
-                                          ),
-                                      )
-                                    : 0}{' '}
-                                ERB
-                            </p>
-                            <p
-                                className={
-                                    Exchange_ls.ExchangeBox_headerTitle_d_left_name
-                                }
-                            >
-                                Total Staker Pledge Amount
-                            </p>
-                        </div>
-                        <img
-                            src={require('../../assets/images/StakerApp/1.png')}
-                        />
-                    </div> */}
                     <div className={Exchange_ls.ExchangeBox_headerTitle_d}>
                         <div
                             className={
@@ -578,57 +274,61 @@ export default function Exchange() {
                     </div>
                 </div>
                 {/* 表格 */}
-                <div
-                    className={Exchange_ls.ExchangeBox_table}
-                    id="ExchangeTableApp"
-                >
-                    <p className={Exchange_ls.ExchangeBox_table_title}>
-                        STAKER INFORMATION
-                    </p>
-                    <Table
-                        columns={columns}
-                        dataSource={exchangerdata}
-                        pagination={false}
-                        scroll={{ x: 'max-content' }}
-                    />
+                <div className={Exchange_ls.tablebox}>
                     <div
-                        className={Exchange_ls.ExchangeBox_Pagination}
-                        id="ExchangeBoxPagination"
+                        className={Exchange_ls.ExchangeBox_table}
+                        id="ExchangeTableApp"
                     >
-                        <Pagination
-                            defaultCurrent={1}
-                            total={totaldata.totalStaker}
-                            onChange={onChange}
-                            showSizeChanger={false}
-                            current={pagenumber}
+                        <p className={Exchange_ls.ExchangeBox_table_title}>
+                            STAKER INFORMATION
+                        </p>
+                        <Table
+                            columns={columns}
+                            dataSource={exchangerdata}
+                            pagination={false}
+                            // scroll={{ x: 'max-content' }}
                         />
-                        <div className={Exchange_ls.flexBox}>
-                            <div
-                                className={Exchange_ls.ExchangeBox_Pagination_d}
-                            >
-                                10/Page
-                            </div>
-                            <span
-                                className={
-                                    Exchange_ls.ExchangeBox_Pagination_span1
-                                }
-                            >
-                                To
-                            </span>
-                            <input
-                                id="Exchangeinputnumber"
-                                className={
-                                    Exchange_ls.ExchangeBox_Pagination_input
-                                }
-                                onKeyDown={Exchangeinputnumberonclick}
+                        <div
+                            className={Exchange_ls.ExchangeBox_Pagination}
+                            id="ExchangeBoxPagination"
+                        >
+                            <Pagination
+                                defaultCurrent={1}
+                                total={totaldata.totalStaker}
+                                onChange={onChange}
+                                showSizeChanger={false}
+                                current={pagenumber}
                             />
-                            <span
-                                className={
-                                    Exchange_ls.ExchangeBox_Pagination_span2
-                                }
-                            >
-                                Page
-                            </span>
+                            <div className={Exchange_ls.flexBox}>
+                                <div
+                                    className={
+                                        Exchange_ls.ExchangeBox_Pagination_d
+                                    }
+                                >
+                                    10/Page
+                                </div>
+                                <span
+                                    className={
+                                        Exchange_ls.ExchangeBox_Pagination_span1
+                                    }
+                                >
+                                    To
+                                </span>
+                                <input
+                                    id="Exchangeinputnumber"
+                                    className={
+                                        Exchange_ls.ExchangeBox_Pagination_input
+                                    }
+                                    onKeyDown={Exchangeinputnumberonclick}
+                                />
+                                <span
+                                    className={
+                                        Exchange_ls.ExchangeBox_Pagination_span2
+                                    }
+                                >
+                                    Page
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -37,6 +37,10 @@ export default function Footer() {
     function Telegram() {
         window.open('https://t.me/erbieofficial');
     }
+    //ins
+    function ins() {
+        window.open('https://www.instagram.com/erbiechain/');
+    }
     return (
         <>
             <div className={Footer_ls.FooterBox}>
@@ -58,6 +62,14 @@ export default function Footer() {
                                     onClick={twitter}
                                     className={
                                         Footer_ls.FooterBox_textBox_left_img1
+                                    }
+                                />
+                            </Tooltip>
+                            <Tooltip title="Instagram">
+                                <div
+                                    onClick={ins}
+                                    className={
+                                        Footer_ls.FooterBox_textBox_left_img3
                                     }
                                 />
                             </Tooltip>

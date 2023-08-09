@@ -143,48 +143,6 @@ export default function Validator() {
                 </>
             ),
         },
-        // {
-        //     title: () => (
-        //         <div className={Validator_ls.tablexbox}>
-        //             Annualized Return
-        //             {totalAnnualizedcolor == 0 ? (
-        //                 <div className={Validator_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={AnnualizedCollections.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={AnnualizedCollections.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : totalAnnualizedcolor == 1 ? (
-        //                 <div className={Validator_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={AnnualizedCollections.bind(this, 1)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={AnnualizedCollections.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : (
-        //                 <div className={Validator_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={AnnualizedCollections.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={AnnualizedCollections.bind(this, 2)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                 </div>
-        //             )}
-        //         </div>
-        //     ),
-        //     dataIndex: 'apr',
-        //     key: 'apr',
-        //     render: (text, data) => (
-        //         <>{text ? (text * 100).toFixed(2) : '0'} %</>
-        //     ),
-        // },
         {
             title: () => (
                 <div className={Validator_ls.tablexbox}>
@@ -481,6 +439,7 @@ export default function Validator() {
                     )}
                 </span>
             ),
+            width: '155px',
         },
     ];
 
