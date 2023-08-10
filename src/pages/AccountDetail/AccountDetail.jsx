@@ -1126,7 +1126,7 @@ class AccountDetail extends React.Component {
             );
         }
 
-        console.log(this.props);
+        // console.log(this.props);
         if (this.props.location.state) {
             window.sessionStorage.setItem('hash', this.props.location.state);
         }
@@ -1223,7 +1223,7 @@ class AccountDetail extends React.Component {
                     ...this.state.pageOption,
                 });
                 if (res) {
-                    console.log(res);
+                    // console.log(res);
                     this.setState({
                         tableData: res.nfts,
                         tableTotal: res.total,
@@ -1246,7 +1246,7 @@ class AccountDetail extends React.Component {
                         for (let i = 0; i < res.epochs.length; i++) {
                             res.epochs[i].key = i;
                         }
-                        console.log('===' + res.epochs);
+                        // console.log('===' + res.epochs);
                         this.setState({
                             tableData: res.epochs,
                             tableTotal: res.total,
@@ -1309,7 +1309,7 @@ class AccountDetail extends React.Component {
                     staker: this.state.detailFrom,
                 });
                 if (res) {
-                    console.log(res);
+                    // console.log(res);
                     this.setState({
                         tableData: res.data,
                         tableTotal: res.total,
@@ -1327,7 +1327,7 @@ class AccountDetail extends React.Component {
                     validator: this.state.detailFrom,
                 });
                 if (res) {
-                    console.log(res);
+                    // console.log(res);
                     this.setState({
                         tableData: res.data,
                         tableTotal: res.total,
@@ -1474,7 +1474,7 @@ class AccountDetail extends React.Component {
 
             //BLOCK LIST 表格组件
             this.tableblocklist = (data) => {
-                console.log(data);
+                // console.log(data);
                 if (data) {
                     return data.map((item, index) => {
                         return (

@@ -46,7 +46,7 @@ function ex16hex(value) {
     return parseInt(value, 16) || 0;
 }
 function hexCharCodeToStr(hexCharCodeStr) {
-    // console.log(hexCharCodeStr)
+    // //console.log(hexCharCodeStr)
     var trimedStr = hexCharCodeStr.trim();
     if (trimedStr === '0x') {
         return { name: 'Transfer', type: 999 };
@@ -105,11 +105,11 @@ class TradeDetail extends React.Component {
     }
     componentWillReceiveProps(nextProps) {
         const id = nextProps.location.state;
-        console.log(nextProps);
+        //console.log(nextProps);
         if (id) {
             window.sessionStorage.setItem('Trastate', id);
         }
-        console.log(id);
+        //console.log(id);
         this.state.Trastate = window.sessionStorage.getItem('Trastate');
         this.commonFunc();
         // history.replace({ pathname: nextProps.location.pathname, state: id })
@@ -117,7 +117,7 @@ class TradeDetail extends React.Component {
 
     //插入DOM前的回调函数
     componentDidMount() {
-        console.log(this.props.location);
+        //console.log(this.props.location);
         let subArr = this.props.location.pathname.split('/');
         if (this.props.location.state) {
             window.sessionStorage.setItem(
@@ -177,7 +177,7 @@ class TradeDetail extends React.Component {
                     });
                     // rea.topics = detail;
 
-                    console.log(rea);
+                    //console.log(rea);
                     // val = JSON.stringify(JSON.parse(this.state.dataLog[index].topics[index1]).type = false)
                 }
                 // switch (value) {
@@ -191,11 +191,11 @@ class TradeDetail extends React.Component {
                 });
             };
             this.onChangeExchange = (e) => {
-                console.log(e);
+                //console.log(e);
                 this.setState({ type: e.target.value });
             };
             this.onChangeinput = (e) => {
-                console.log(e);
+                //console.log(e);
                 this.setState({ typeGroup: e.target.value });
             };
 
@@ -222,16 +222,16 @@ class TradeDetail extends React.Component {
                 const transactionres = await transaction(this.state.Trastate);
                 let state = JSON.stringify(transactionres);
                 if (transactionres) {
-                    console.log(transactionres);
+                    //console.log(transactionres);
                     const res = await nfttx(transactionres.hash);
-                    console.log(res);
+                    //console.log(res);
                     if (res) {
                         this.setState({
                             nfttxdata: res,
                         });
                     }
                 }
-                console.log(state === 'null');
+                //console.log(state === 'null');
                 if (state === 'null') {
                     return this.comingsoon404();
                 }
@@ -241,7 +241,7 @@ class TradeDetail extends React.Component {
                 ) {
                     this.comingsoon404();
                 } else {
-                    // console.log(transactionres)
+                    // //console.log(transactionres)
                     let arr = transactionres.input.substring(10);
                     let num = Math.floor(arr.length / 64);
                     let arr1 = [];
@@ -274,7 +274,7 @@ class TradeDetail extends React.Component {
                             this.setState({
                                 newDetailData: recycle_tx1,
                             });
-                            // console.log(obj);
+                            // //console.log(obj);
                         }
                     }
                 }

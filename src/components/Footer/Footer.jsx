@@ -39,7 +39,7 @@ export default function Footer() {
     }
     //ins
     function ins() {
-        window.open('https://www.instagram.com/erbiechain/');
+        window.open('https://www.instagram.com/erbie.io/');
     }
     return (
         <>

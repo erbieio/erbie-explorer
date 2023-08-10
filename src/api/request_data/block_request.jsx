@@ -193,8 +193,8 @@ export const creatorAddress = (data) => {
 };
 // snft图片查询
 export const snftimageaddress = (data) => {
-    console.log(data);
-    return request.post(`http://192.168.1.235:9006/nftscan/v1/getIpfsHash`, {
+    // console.log(data);
+    return request.post(`https://snft.erbie.io/nftscan/v1/getIpfsHash`, {
         body: JSON.stringify({
             nftaddr: data,
         }),

@@ -467,7 +467,7 @@ export default function Validator() {
     //Validator查询
     const validators_q = async (item) => {
         const data = await validators(item);
-        console.log(data);
+        //console.log(data);
         if (data) {
             setValidatordata(data);
         }

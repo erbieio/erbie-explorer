@@ -291,7 +291,7 @@ export default function NFT() {
     const nft_q = async (item) => {
         const data = await nft(item);
         if (data) {
-            console.log(data);
+            //console.log(data);
             setNftdata(data);
         }
     };

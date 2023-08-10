@@ -47,7 +47,7 @@ function ex16hex(value) {
     return parseInt(value, 16) || 0;
 }
 function hexCharCodeToStr(hexCharCodeStr) {
-    // console.log(hexCharCodeStr)
+    // //console.log(hexCharCodeStr)
     var trimedStr = hexCharCodeStr.trim();
     if (trimedStr === '0x') {
         return { name: 'Transfer', type: 999 };
@@ -208,7 +208,7 @@ class TradeDetail extends React.Component {
             };
             // (async () => {
             //     const res = await nfttx(transactionres.hash);
-            //     console.log(res);
+            //     //console.log(res);
             //     if (res) {
             //         this.setState({
             //             nfttxdata: res,
@@ -221,7 +221,7 @@ class TradeDetail extends React.Component {
             (async () => {
                 const res = await transactionDetail(this.state.Trastate);
                 if (res) {
-                    console.log(res);
+                    //console.log(res);
                     res.forEach((item) => {
                         let val = [];
                         item.topics.forEach((value) => {
@@ -237,11 +237,11 @@ class TradeDetail extends React.Component {
                     });
                 }
                 const transactionres = await transaction(this.state.Trastate);
-                console.log(transactionres);
+                //console.log(transactionres);
                 if (transactionres) {
-                    console.log(transactionres);
+                    //console.log(transactionres);
                     const res = await nfttx(transactionres.hash);
-                    console.log(res);
+                    //console.log(res);
                     if (res) {
                         this.setState({
                             nfttxdata: res,
@@ -258,7 +258,7 @@ class TradeDetail extends React.Component {
                 ) {
                     this.comingsoon404();
                 } else {
-                    // console.log(transactionres)
+                    // //console.log(transactionres)
                     let arr = transactionres.input.substring(10);
                     let num = Math.floor(arr.length / 64);
                     let arr1 = [];
@@ -291,7 +291,7 @@ class TradeDetail extends React.Component {
                             this.setState({
                                 newDetailData: recycle_tx1,
                             });
-                            // console.log(obj);
+                            // //console.log(obj);
                         }
                     }
                 }

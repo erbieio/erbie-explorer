@@ -842,7 +842,7 @@ class AccountDetail extends React.Component {
     }
     //插入DOM前的回调函数
     componentDidMount() {
-        console.log(this.props);
+        // console.log(this.props);
         if (this.props.location.state) {
             window.sessionStorage.setItem('hash', this.props.location.state);
         }
@@ -879,7 +879,7 @@ class AccountDetail extends React.Component {
             })();
             (async () => {
                 const res = await totals();
-                console.log(res);
+                // console.log(res);
                 if (res) {
                     this.setState({
                         totaldata: res,
@@ -952,7 +952,7 @@ class AccountDetail extends React.Component {
                     ...this.state.pageOption,
                     order: this.state.orderdata,
                 });
-                console.log(res);
+                // console.log(res);
                 if (res) {
                     this.setState({
                         tableData: res.epochs ? res.epochs : [],
@@ -998,7 +998,7 @@ class AccountDetail extends React.Component {
                             },
                             loading: false,
                         });
-                        console.log(this.state.epochtableData);
+                        // console.log(this.state.epochtableData);
                     }
                 }
             };
@@ -1011,7 +1011,7 @@ class AccountDetail extends React.Component {
                     staker: this.state.detailFrom,
                 });
                 if (res) {
-                    console.log(res);
+                    // console.log(res);
                     this.setState({
                         tableData: res.data,
                         tableTotal: res.total,
@@ -1029,7 +1029,7 @@ class AccountDetail extends React.Component {
                     validator: this.state.detailFrom,
                 });
                 if (res) {
-                    console.log(res);
+                    // console.log(res);
                     this.setState({
                         tableData: res.data,
                         tableTotal: res.total,
@@ -1171,7 +1171,7 @@ class AccountDetail extends React.Component {
             };
             //BLOCK LIST 表格组件
             this.tableblocklist = (data) => {
-                console.log(data);
+                // console.log(data);
                 if (data) {
                     return data.map((item, index) => {
                         return (

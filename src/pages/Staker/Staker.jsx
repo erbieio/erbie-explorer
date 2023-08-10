@@ -165,7 +165,7 @@ export default function Exchange() {
     const exchanger_q = async (item) => {
         const data = await exchanger(item);
         if (data) {
-            console.log(data);
+            //console.log(data);
             setExchangerdata(data);
         }
     };

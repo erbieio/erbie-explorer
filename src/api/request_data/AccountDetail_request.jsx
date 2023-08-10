@@ -38,7 +38,7 @@ export const epochpage = (data) => {
 };
 //creator详细账户查询
 export const creatorAddressdetailed = (data) => {
-    console.log(data);
+    // console.log(data);
     return request.get(`${host}/nft/tx/epoch`, {
         params: {
             ...data,

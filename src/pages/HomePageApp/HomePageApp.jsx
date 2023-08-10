@@ -138,7 +138,7 @@ export default function HomePageApp() {
     const snftimageaddress_q = async (item) => {
         const data = await snftimageaddress(item);
         if (data) {
-            console.log(data);
+            //console.log(data);
             if (data.code == 200) {
                 setNftimage('ipfs/' + data.data);
             } else {
@@ -192,7 +192,7 @@ export default function HomePageApp() {
             for (var i = 0; i < len; i++) {
                 val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
             }
-            console.log(JSON.parse(val.slice(1, val.length)));
+            //console.log(JSON.parse(val.slice(1, val.length)));
             let text = 0;
             for (
                 let i = 0;
@@ -208,17 +208,17 @@ export default function HomePageApp() {
                     text++;
                 }
             }
-            console.log(text);
+            //console.log(text);
             if (text == 2) {
                 // ai
                 let pth = item.id;
                 for (let i = 0; i < 42 - item.id.length; i++) {
                     pth.concat('0');
                 }
-                console.log(pth);
+                //console.log(pth);
                 snftimageaddress_q(pth);
             } else {
-                console.log('=======' + val.meta_url);
+                //console.log('=======' + val.meta_url);
                 setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
             }
         } else {

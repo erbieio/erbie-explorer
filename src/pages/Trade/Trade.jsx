@@ -79,11 +79,11 @@ function hexCharCodeToStr(hexCharCodeStr) {
         resultStr.push(String.fromCharCode(curCharCode));
     }
     let StrTran = resultStr.join('');
-    console.log(StrTran.substring(0, StrTran.indexOf(':')));
+    //console.log(StrTran.substring(0, StrTran.indexOf(':')));
     if (StrTran.substring(0, StrTran.indexOf(':')) !== 'erbie') {
         return 'Contract Based Transaction';
     } else {
-        console.log(StrTran);
+        //console.log(StrTran);
         let obj = JSON.parse(StrTran.substring(6));
         dealType.forEach((item) => {
             obj.type === item.type ? (obj.name = item.name) : '';
@@ -96,7 +96,7 @@ function hexCharCodeToStr(hexCharCodeStr) {
 //     if (e.keyCode == 13) {
 //         if (Number(data) != NaN) {
 //             // this.state.pagenumber = Number(data);
-//             console.log(Number(data));
+//             //console.log(Number(data));
 //             // this.state.pageOption.page = Number(data);
 //             //     this.paginationChange(this.state.pageOption.page, 16)
 //         }
@@ -316,7 +316,7 @@ class Trade extends React.Component {
         (async () => {
             const res = await totals();
             if (res) {
-                console.log(res);
+                //console.log(res);
                 this.setState({
                     totalAll: res,
                     totalTransaction: Number(
@@ -358,7 +358,7 @@ class Trade extends React.Component {
         this.transactionPage = async () => {
             const res = await transactionPage(this.state.pageOption);
             if (res) {
-                console.log(res);
+                //console.log(res);
                 this.setState({
                     tableData: res.transactions,
                     tableTotal: res.total,

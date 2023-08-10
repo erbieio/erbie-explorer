@@ -172,17 +172,16 @@ export default function NFTDetails(props) {
         snft_nft_tx_q(pagedata);
     }, [pagenumber]);
     useEffect(() => {
-        console.log(nftdata);
+        //console.log(nftdata);
         if (Object.keys(nftdata).length != 0) {
             metainformation_q(nftdata.meta_url);
-
-            console.log(hexToString(nftdata.raw_meta_url));
+            //console.log(hexToString(nftdata.raw_meta_url));
             hexToStringbs(nftdata.raw_meta_url);
         }
     }, [nftdata]);
     useEffect(() => {
         if (nftimage) {
-            console.log(nftimage);
+            //console.log(nftimage);
         }
     }, [nftimage]);
     //snft详情查询
@@ -203,7 +202,7 @@ export default function NFTDetails(props) {
     const metainformation_q = async (item) => {
         if (item != '') {
             const data = await metainformation(item);
-            console.log(data);
+            //console.log(data);
             if (data) {
                 setMetadata(data);
             }
@@ -213,7 +212,7 @@ export default function NFTDetails(props) {
     const snftimageaddress_q = async (item) => {
         const data = await snftimageaddress(item);
         if (data) {
-            console.log(data);
+            //console.log(data);
             if (data.code == 200) {
                 setNftimage('ipfs/' + data.data);
             } else {
@@ -295,7 +294,7 @@ export default function NFTDetails(props) {
             for (var i = 0; i < len; i++) {
                 val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
             }
-            console.log(JSON.parse(val.slice(1, val.length)));
+            //console.log(JSON.parse(val.slice(1, val.length)));
             let text = 0;
             for (
                 let i = 0;
@@ -311,12 +310,12 @@ export default function NFTDetails(props) {
                     text++;
                 }
             }
-            console.log(text);
+            //console.log(text);
             if (text == 2) {
                 // ai
                 snftimageaddress_q(nftdata.address);
             } else {
-                console.log('=======' + val.meta_url);
+                //console.log(JSON.parse(val.slice(1, val.length)));
                 setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
             }
         } else {

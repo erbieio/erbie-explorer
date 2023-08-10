@@ -3,7 +3,7 @@ const deal = require('../../assets/json/dealType.json');
 const { dealType } = deal;
 // 数字缩减
 export function digitalreduction(data) {
-    console.log(data);
+    //console.log(data);
     if (String(data).length < 4) {
         return String(data);
     } else if (String(data).length >= 4 && String(data).length < 7) {
@@ -42,7 +42,7 @@ export function digitalreduction(data) {
 //多久之前
 export function timestamp(data) {
     let t = new Date(moment().format('YYYY-MM-DD HH:mm:ss')).getTime() / 1000;
-    // console.log(t);
+    // //console.log(t);
     let difference = 0;
     if (data) {
         if (t < data) {
@@ -133,7 +133,7 @@ export function ellipsisthree(data) {
 //交易类型
 export function hexCharCodeToStr(hexCharCodeStr) {
     if (hexCharCodeStr) {
-        // console.log(hexCharCodeStr)
+        // //console.log(hexCharCodeStr)
         var trimedStr = hexCharCodeStr.trim();
         if (trimedStr === '0x') {
             return 'Transfer';
@@ -179,7 +179,7 @@ export function getBit(value) {
     const reg = /([0-9]+\.[0-9]{2})[0-9]*/;
     let str = value.toString();
     str = str.replace(reg, '$1');
-    console.log(str);
+    //console.log(str);
     return str;
 }
 
@@ -205,7 +205,7 @@ export function hexToString(str) {
                 text++;
             }
         }
-        console.log(text);
+        //console.log(text);
         if (text == 2) {
             return 1;
         } else {
@@ -233,7 +233,7 @@ export function parseUrlParams(url) {
         params[paramsArr[i * 2]] =
             value === 'true' ? true : value === 'false' ? false : value;
     }
-    console.log(params);
+    //console.log(params);
     return params;
 }
 

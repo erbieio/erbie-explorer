@@ -31,8 +31,8 @@ export default function MapBs2() {
     //地图数据查询
     const locations_q = async () => {
         const data = await locations();
-        console.log('地图数据查询');
-        console.log(data);
+        //console.log('地图数据查询');
+        //console.log(data);
         if (data) {
             setMapdatadetailed(data);
         }
@@ -42,15 +42,15 @@ export default function MapBs2() {
         if (data) {
             setValidatoronline(data.addrs);
         }
-        console.log('验证者在线查询');
-        console.log(data);
+        //console.log('验证者在线查询');
+        //console.log(data);
     };
     //地图fromto数据查询
     const lastmsg_q = async () => {
         const data = await lastmsg();
-        console.log('地图fromto数据查询');
-        console.log(data);
-        console.log(mapdatadetailed);
+        //console.log('地图fromto数据查询');
+        //console.log(data);
+        //console.log(mapdatadetailed);
         // let text = []
         if (mapdatadetailed && data) {
             let text = data;
@@ -92,7 +92,7 @@ export default function MapBs2() {
                     linedata.push(text[b]);
                 }
             }
-            console.log(linedata);
+            //console.log(linedata);
             setLinedata(linedata);
         }
         if (data == null) {
@@ -108,8 +108,8 @@ export default function MapBs2() {
     }, []);
     useEffect(() => {
         if (validatoronline.length != 0 && mapdatadetailed.length != 0) {
-            console.log(validatoronline);
-            console.log(mapdatadetailed);
+            //console.log(validatoronline);
+            //console.log(mapdatadetailed);
             let text1 = [];
             for (let i = 0; i < validatoronline.length; i++) {
                 for (let k = 0; k < mapdatadetailed.length; k++) {
@@ -118,7 +118,7 @@ export default function MapBs2() {
                     }
                 }
             }
-            console.log(text1);
+            //console.log(text1);
             let text = [];
             let mapdzx = [];
             let mapdbzx = [];
@@ -174,10 +174,10 @@ export default function MapBs2() {
                 mathjs = 0;
             }
 
-            console.log(mapdzx);
-            console.log(mapdbzx);
-            console.log(mapdbzxBS);
-            console.log(text);
+            //console.log(mapdzx);
+            //console.log(mapdbzx);
+            //console.log(mapdbzxBS);
+            //console.log(text);
             setMapdata(text);
             setSubscript(mapdzx);
             setNosubscript(mapdbzxBS);

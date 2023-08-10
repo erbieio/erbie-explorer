@@ -42,9 +42,9 @@ export default function SNFTApp() {
     const [optionborderdis, setOptionborderdis] = useState('none');
     const [magnificationdata, setMagnificationdata] = useState(0);
     let L0 = 0.03;
-    let L1 = 0.143;
-    let L2 = 0.271;
-    let L3 = 0.65;
+    let L1 = 0.06;
+    let L2 = 0.18;
+    let L3 = 1;
     const columns = [
         {
             title: 'Name',

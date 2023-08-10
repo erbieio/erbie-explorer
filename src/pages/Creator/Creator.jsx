@@ -54,7 +54,7 @@ export default function Creator() {
     //creator查询
     const creator_q = async (item) => {
         const data = await creator(item);
-        console.log(data);
+        //console.log(data);
         if (data) {
             setCreatordata(data);
         }
@@ -62,7 +62,7 @@ export default function Creator() {
     //总数查询
     const total_q = async () => {
         const data = await total();
-        console.log(data);
+        //console.log(data);
         if (data) {
             setTotaldata(data);
         }
@@ -70,7 +70,7 @@ export default function Creator() {
     //系统NFT周期查询
     const epoch_q = async () => {
         const data = await epoch();
-        console.log(data);
+        //console.log(data);
         if (data) {
             setEpochdata(data);
         }
@@ -79,13 +79,13 @@ export default function Creator() {
         const reg = /([0-9]+\.[0-9]{2})[0-9]*/;
         let str = value.toString();
         str = str.replace(reg, '$1');
-        console.log(str);
+        //console.log(str);
         return str;
     }
     //柱状图查询
     const creatorHistogram_q = async () => {
         const data = await creatorHistogram();
-        console.log(data);
+        //console.log(data);
         if (data) {
             let text = [];
             for (let i = 0; i < 7; i++) {
@@ -103,7 +103,7 @@ export default function Creator() {
                     });
                 }
             }
-            console.log(text);
+            //console.log(text);
             setHistogramdata(text);
         }
     };

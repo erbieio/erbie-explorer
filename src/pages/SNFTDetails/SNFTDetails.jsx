@@ -34,7 +34,7 @@ import { utils } from 'ethers';
 import imgmr from '../../assets/images/HomePage/mr.png';
 const { Option } = Select;
 export default function SNFTDetails(props) {
-    // console.log(props.location.state.snftid);
+    // //console.log(props.location.state.snftid);
     const [transactionmetadata, setTransactionmeta] = useState(1);
     const [pagenumber, setPagenumber] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(10);
@@ -127,7 +127,7 @@ export default function SNFTDetails(props) {
         page_size: pagenumbersize,
     };
     useEffect(() => {
-        console.log(parseUrlParams(window.location.search).addr);
+        //console.log(parseUrlParams(window.location.search).addr);
         if (getDevice().device != 'pc' && window.location.search) {
             localStorage.setItem(
                 'snfttext',
@@ -163,13 +163,13 @@ export default function SNFTDetails(props) {
     }, [snftdata]);
     useEffect(() => {
         if (snftimage) {
-            console.log(snftimage);
+            //console.log(snftimage);
         }
     }, [snftimage]);
     //snft详情查询
     const snftdetails_q = async (item) => {
         const data = await snftdetails(item);
-        console.log(data);
+        //console.log(data);
         if (data) {
             setSnftdata(data);
         }
@@ -186,7 +186,7 @@ export default function SNFTDetails(props) {
     const snftimageaddress_q = async (item) => {
         const data = await snftimageaddress(item);
         if (data) {
-            console.log(data);
+            //console.log(data);
             if (data.code == 200) {
                 setSnftimage('ipfs/' + data.data);
             } else {
@@ -248,12 +248,12 @@ export default function SNFTDetails(props) {
                         text++;
                     }
                 }
-                console.log(text);
+                //console.log(text);
                 if (text == 2) {
                     // ai
                     snftimageaddress_q(snftdata.address);
                 } else {
-                    console.log('=======' + val.meta_url);
+                    //console.log('=======' + val.meta_url);
                     setSnftimage(JSON.parse(val.slice(1, val.length)).meta_url);
                 }
             } catch (error) {
