@@ -112,7 +112,7 @@ export default function Exchange() {
             width: '240px',
         },
         {
-            title: 'SNFT Income',
+            title: 'SNFT Value',
             dataIndex: 'reward',
             key: 'reward',
             render: (text) => <span>{utils.formatEther(String(text))}</span>,
