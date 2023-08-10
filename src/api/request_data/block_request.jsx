@@ -1,5 +1,5 @@
 import request from '../request';
-let host = 'https://api.wormholesscan.com';
+let host = 'https://api.erbiescan.io';
 // let host = 'http://43.132.176.185:3001'
 // export const erbprice = (data) =>{
 //     return request.get(`${host}/erb_price`,
