@@ -230,7 +230,6 @@ export default function SNFTDetails(props) {
             for (var i = 0; i < len; i++) {
                 val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
             }
-
             try {
                 let text = 0;
                 for (
@@ -248,15 +247,15 @@ export default function SNFTDetails(props) {
                         text++;
                     }
                 }
-                //console.log(text);
+                console.log(text);
                 if (text == 2) {
                     // ai
                     snftimageaddress_q(snftdata.address);
                 } else {
-                    //console.log('=======' + val.meta_url);
                     setSnftimage(JSON.parse(val.slice(1, val.length)).meta_url);
                 }
             } catch (error) {
+                console.log(error);
                 setSnftimage('');
             }
         } else {
