@@ -408,8 +408,8 @@ export default function SNFT() {
                             >
                                 ERB Exchange Rate Increases{' '}
                                 <span>
-                                    {(((0.143 - 0.03) / 0.03) * 100).toFixed(2)}
-                                    %
+                                    {/* {(((0.143 - 0.03) / 0.03) * 100).toFixed(2)} */}
+                                    100 %
                                 </span>{' '}
                                 from Level 0 to 1
                             </span>
@@ -418,14 +418,14 @@ export default function SNFT() {
                                     SNFT_ls.SNFTBox_center_title_left_span
                                 }
                             >
-                                <span>903%</span> from Level 0 to 2
+                                <span>500%</span> from Level 0 to 2
                             </span>
                             <span
                                 className={
                                     SNFT_ls.SNFTBox_center_title_left_span
                                 }
                             >
-                                <span>2166%</span> from Level 0 to 3
+                                <span>3233%</span> from Level 0 to 3
                             </span>
                         </div>
                     </div>

@@ -165,7 +165,7 @@ export default function NFTDetailsApp(props) {
     useEffect(() => {
         if (Object.keys(nftdata).length != 0) {
             metainformation_q(nftdata.meta_url);
-            hexToStringbs(nftdata.raw_meta_url);
+            hexToStringbs(nftdata.meta_url);
         }
     }, [nftdata]);
     //snft详情查询
@@ -481,8 +481,8 @@ export default function NFTDetailsApp(props) {
                                         NFTDetailsApp_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
                                     }
                                 >
-                                    {nftdata.raw_meta_url
-                                        ? hexToString(nftdata.raw_meta_url) == 1
+                                    {nftdata.meta_url
+                                        ? hexToString(nftdata.meta_url) == 1
                                             ? 'AI'
                                             : 'Normal'
                                         : '-'}

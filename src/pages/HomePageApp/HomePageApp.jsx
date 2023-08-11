@@ -131,7 +131,7 @@ export default function HomePageApp() {
         const data = await epoch();
         if (data) {
             setEpochdata(data);
-            hexToStringbs(data.dir, data);
+            hexToStringbs(data.meta_url, data);
         }
     };
     // 图片查询

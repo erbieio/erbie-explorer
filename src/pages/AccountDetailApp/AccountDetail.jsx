@@ -566,8 +566,8 @@ class AccountDetail extends React.Component {
                 },
                 {
                     title: 'Type',
-                    key: 'raw_meta_url',
-                    dataIndex: 'raw_meta_url',
+                    key: 'meta_url',
+                    dataIndex: 'meta_url',
                     ellipsis: true,
                     render: (text) => (
                         <span>{hexToString(text) == 1 ? 'AI' : 'Normal'}</span>

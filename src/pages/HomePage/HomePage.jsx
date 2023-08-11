@@ -143,7 +143,7 @@ export default function HomePage() {
         //console.log(data);
         if (data) {
             setEpochdata(data);
-            hexToStringbs(data.dir, data);
+            hexToStringbs(data.meta_url, data);
         }
     };
     // 图片查询

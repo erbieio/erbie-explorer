@@ -175,8 +175,8 @@ export default function NFTDetails(props) {
         //console.log(nftdata);
         if (Object.keys(nftdata).length != 0) {
             metainformation_q(nftdata.meta_url);
-            //console.log(hexToString(nftdata.raw_meta_url));
-            hexToStringbs(nftdata.raw_meta_url);
+            //console.log(hexToString(nftdata.meta_url));
+            hexToStringbs(nftdata.meta_url);
         }
     }, [nftdata]);
     useEffect(() => {
@@ -491,10 +491,8 @@ export default function NFTDetails(props) {
                                             NFTDetails_ls.NFTDetailsBox_titleData_text_nftattribute_right_name
                                         }
                                     >
-                                        {nftdata.raw_meta_url
-                                            ? hexToString(
-                                                  nftdata.raw_meta_url,
-                                              ) == 1
+                                        {nftdata.meta_url
+                                            ? hexToString(nftdata.meta_url) == 1
                                                 ? 'AI'
                                                 : 'Normal'
                                             : '-'}

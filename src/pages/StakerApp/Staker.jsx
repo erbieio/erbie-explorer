@@ -162,7 +162,7 @@ export default function Exchange() {
         const data = await exchanger(item);
         if (data) {
             if (data[0]) {
-                setExchangerdata(data);
+                setExchangerdata(data.data);
             }
         }
     };

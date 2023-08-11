@@ -1,5 +1,8 @@
 import request from '../request';
-let host = 'https://api.erbiescan.io';
+let host =
+    window.location.origin == 'https://www.erbiescan.io/'
+        ? 'https://api.erbiescan.io'
+        : 'http://43.129.181.130:3001';
 // let host = 'http://43.132.176.185:3001'
 //totals
 export const totals = (data) => {

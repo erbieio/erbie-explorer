@@ -477,11 +477,11 @@ export default function SNFTApp() {
                                         style={{ marginLeft: '15px' }}
                                     >
                                         <span>
-                                            {(
+                                            {/* {(
                                                 ((0.143 - 0.03) / 0.03) *
                                                 100
-                                            ).toFixed(2)}
-                                            %
+                                            ).toFixed(2)} */}
+                                            100 %
                                         </span>{' '}
                                         from Level 0 to 1
                                     </p>
@@ -491,7 +491,7 @@ export default function SNFTApp() {
                                         }
                                         style={{ marginLeft: '15px' }}
                                     >
-                                        <span>903%</span> from Level 0 to 2
+                                        <span>500%</span> from Level 0 to 2
                                     </p>
                                     <p
                                         className={
@@ -499,7 +499,7 @@ export default function SNFTApp() {
                                         }
                                         style={{ marginLeft: '15px' }}
                                     >
-                                        <span>2166%</span> from Level 0 to 3
+                                        <span>3233%</span> from Level 0 to 3
                                     </p>
                                 </div>
                             </div>

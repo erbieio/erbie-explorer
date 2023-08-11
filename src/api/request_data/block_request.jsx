@@ -1,6 +1,8 @@
 import request from '../request';
-let host = 'https://api.erbiescan.io';
-// let host = 'http://43.132.176.185:3001'
+// let host = 'https://api.erbiescan.io';
+let host = window.location.origin == 'https://www.erbiescan.io/' ? 'https://api.erbiescan.io':'http://43.129.181.130:3001';
+
+console.log(window.location);
 // export const erbprice = (data) =>{
 //     return request.get(`${host}/erb_price`,
 //         {params:{
@@ -108,7 +110,7 @@ export const metainformation = (data) => {
 };
 //交易所查询
 export const exchanger = (data) => {
-    return request.get(`${host}/stakers`, {
+    return request.get(`${host}/staker/page`, {
         params: {
             name: data.name,
             page: data.page,
