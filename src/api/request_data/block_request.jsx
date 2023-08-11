@@ -1,6 +1,9 @@
 import request from '../request';
 // let host = 'https://api.erbiescan.io';
-let host = window.location.origin == 'https://www.erbiescan.io/' ? 'https://api.erbiescan.io':'http://43.129.181.130:3001';
+let host =
+    window.location.origin == 'https://www.erbiescan.io'
+        ? 'https://api.erbiescan.io'
+        : 'http://43.129.181.130:3001';
 
 console.log(window.location);
 // export const erbprice = (data) =>{
