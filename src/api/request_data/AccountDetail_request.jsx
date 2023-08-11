@@ -12,7 +12,7 @@ export const accountDetail = (data) => {
     return request.get(`${host}/account/${data}`);
 };
 export const nftPage = (data) => {
-    return request.get(`${host}/nft_meta/page`, {
+    return request.get(`${host}/nft/page`, {
         params: {
             ...data,
         },
