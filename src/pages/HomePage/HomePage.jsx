@@ -63,7 +63,7 @@ export default function HomePage() {
     //最高区块
     const [bigheightblock, setBigheightblock] = useState(0);
     //倍数
-    const [multiple, setMultiple] = useState(0.11);
+    const [multiple, setMultiple] = useState(0.16);
     //在线验证者
     const [validatoronline, setValidatoronline] = useState(0);
     // nft图片

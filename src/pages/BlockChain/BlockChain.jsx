@@ -21,7 +21,7 @@ export default function BlockChain() {
     //最高区块
     const [bigheightblock, setBigheightblock] = useState(0);
     //倍数
-    const [multiple, setMultiple] = useState(0.11);
+    const [multiple, setMultiple] = useState(0.16);
     const columns = [
         {
             title: 'Block Height',

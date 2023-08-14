@@ -2037,7 +2037,7 @@ class AccountDetail extends React.Component {
                                     <span>
                                         {(
                                             this.state.accountData
-                                                .rewardCoinCount * 0.11
+                                                .rewardCoinCount * 0.16
                                         ).toLocaleString()}
                                     </span>
                                 </div>
