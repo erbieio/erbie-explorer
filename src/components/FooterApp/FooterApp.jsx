@@ -50,8 +50,8 @@ export default function FooterApp() {
                         Powered by Erbie
                     </p>
                     <p className={FooterApp_ls.FooterAppBox_text}>
-                        Erbie Scan is a Block Explorer and Analytics Platform
-                        for Erbie
+                        The Scan is a Block Explorer and Analytics Platform for
+                        Erbie
                     </p>
                     <div className={FooterApp_ls.FooterBox_textBox_left_imgbox}>
                         <Tooltip title="Blockchain Twitter">
@@ -122,20 +122,20 @@ export default function FooterApp() {
                             </li>
 
                             <li
-                                onClick={ErbieWallet}
-                                className={
-                                    FooterApp_ls.FooterBox_textBox_right_ul_li
-                                }
-                            >
-                                Limino & Tutorial
-                            </li>
-                            <li
                                 onClick={ErbieOfficialWebsite}
                                 className={
                                     FooterApp_ls.FooterBox_textBox_right_ul_li
                                 }
                             >
                                 Erbie Website
+                            </li>
+                            <li
+                                onClick={ErbieWallet}
+                                className={
+                                    FooterApp_ls.FooterBox_textBox_right_ul_li
+                                }
+                            >
+                                Limino & Tutorial
                             </li>
                         </ul>
                     </div>

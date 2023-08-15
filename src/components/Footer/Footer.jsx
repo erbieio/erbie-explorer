@@ -51,8 +51,8 @@ export default function Footer() {
                             Powered by Erbie
                         </p>
                         <p className={Footer_ls.FooterBox_textBox_left_p2}>
-                            Erbie Scan is a Block Explorer and Analytics
-                            Platform for Erbie
+                            The Scan is a Block Explorer and Analytics Platform
+                            for Erbie
                         </p>
                         <div
                             className={Footer_ls.FooterBox_textBox_left_imgbox}
@@ -129,20 +129,20 @@ export default function Footer() {
                             </li>
 
                             <li
-                                onClick={ErbieWallet}
-                                className={
-                                    Footer_ls.FooterBox_textBox_right_ul_li
-                                }
-                            >
-                                Limino & Tutorial
-                            </li>
-                            <li
                                 onClick={ErbieOfficialWebsite}
                                 className={
                                     Footer_ls.FooterBox_textBox_right_ul_li
                                 }
                             >
                                 Erbie Website
+                            </li>
+                            <li
+                                onClick={ErbieWallet}
+                                className={
+                                    Footer_ls.FooterBox_textBox_right_ul_li
+                                }
+                            >
+                                Limino & Tutorial
                             </li>
                         </ul>
                     </div>
