@@ -211,40 +211,6 @@ export default function Exchange() {
             <div className={Exchange_ls.ExchangeBox}>
                 {/* 头部三块数据 */}
                 <div className={Exchange_ls.ExchangeBox_headerTitle}>
-                    {/* 
-                    <div className={Exchange_ls.ExchangeBox_headerTitle_d}>
-                        <div
-                            className={
-                                Exchange_ls.ExchangeBox_headerTitle_d_left
-                            }
-                        >
-                            <p
-                                className={
-                                    Exchange_ls.ExchangeBox_headerTitle_d_left_data
-                                }
-                            >
-                                {totaldata.totalExchangerPledge
-                                    ? Number(
-                                          utils.formatEther(
-                                              totaldata.totalExchangerPledge,
-                                          ),
-                                      )
-                                    : 0}{' '}
-                                ERB
-                            </p>
-                            <p
-                                className={
-                                    Exchange_ls.ExchangeBox_headerTitle_d_left_name
-                                }
-                            >
-                                Total Staker Pledge Amount
-                            </p>
-                        </div>
-                        {/* <img
-                            src={require('../../assets/images/Staker/Staker1.png')}
-                        /> 
-                </div> 
-                    */}
                     <div className={Exchange_ls.ExchangeBox_headerTitle_d}>
                         <div
                             className={

@@ -295,31 +295,38 @@ export default function NFTDetails(props) {
                 val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
             }
             //console.log(JSON.parse(val.slice(1, val.length)));
-            let text = 0;
-            for (
-                let i = 0;
-                i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
-                i++
-            ) {
-                if (
-                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                        'prompt' ||
-                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                        'randomNumber'
+            try {
+                let text = 0;
+                for (
+                    let i = 0;
+                    i <
+                    Object.keys(JSON.parse(val.slice(1, val.length))).length;
+                    i++
                 ) {
-                    text++;
+                    if (
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'prompt' ||
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'randomNumber'
+                    ) {
+                        text++;
+                    }
                 }
+                //console.log(text);
+                if (text == 2) {
+                    // ai
+                    snftimageaddress_q(nftdata.address);
+                } else {
+                    //console.log(JSON.parse(val.slice(1, val.length)));
+                    setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
+                }
+            } catch (error) {
+                setNftimage(imgmr);
             }
-            //console.log(text);
-            if (text == 2) {
-                // ai
-                snftimageaddress_q(nftdata.address);
-            } else {
-                //console.log(JSON.parse(val.slice(1, val.length)));
-                setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
-            }
+        } else if (str.slice(0, 6) == '/ipfs/') {
+            setNftimage(str);
         } else {
-            setNftimage('');
+            setNftimage(imgmr);
         }
     }
     return (

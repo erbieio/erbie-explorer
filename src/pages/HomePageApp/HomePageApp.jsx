@@ -100,11 +100,6 @@ export default function HomePageApp() {
             setBigheightblock(data.blocks[0].number);
         }
     };
-    // useEffect(() => {
-    //     if (blockdata.blocks) {
-    //         blockrewardperson_q(blockdata.blocks[0].number)
-    //     }
-    // },[blockdata])
     //查询erb价格
     const erbprice_q = async () => {
         const data = await erbprice();
@@ -146,18 +141,6 @@ export default function HomePageApp() {
             }
         }
     };
-    //奖励人查询
-    // const rewardperson_q = async () => {
-    //     const data = await rewardperson();
-    //     if (data) {
-    //         if (data.rewards != null) {
-    //             setRewardpersondata(data.rewards)
-    //         } else {
-    //             setRewardpersondata('')
-    //         }
-
-    //     }
-    // }
     //最新区块奖励人查询
     const blockrewardperson_q = async (item) => {
         const data = await blockrewardperson(item);
@@ -193,36 +176,43 @@ export default function HomePageApp() {
                 val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
             }
             //console.log(JSON.parse(val.slice(1, val.length)));
-            let text = 0;
-            for (
-                let i = 0;
-                i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
-                i++
-            ) {
-                if (
-                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                        'prompt' ||
-                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                        'randomNumber'
+            try {
+                let text = 0;
+                for (
+                    let i = 0;
+                    i <
+                    Object.keys(JSON.parse(val.slice(1, val.length))).length;
+                    i++
                 ) {
-                    text++;
+                    if (
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'prompt' ||
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'randomNumber'
+                    ) {
+                        text++;
+                    }
                 }
-            }
-            //console.log(text);
-            if (text == 2) {
-                // ai
-                let pth = item.id;
-                for (let i = 0; i < 42 - item.id.length; i++) {
-                    pth.concat('0');
+                //console.log(text);
+                if (text == 2) {
+                    // ai
+                    let pth = item.id;
+                    for (let i = 0; i < 42 - item.id.length; i++) {
+                        pth.concat('0');
+                    }
+                    //console.log(pth);
+                    snftimageaddress_q(pth);
+                } else {
+                    //console.log('=======' + val.meta_url);
+                    setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
                 }
-                //console.log(pth);
-                snftimageaddress_q(pth);
-            } else {
-                //console.log('=======' + val.meta_url);
-                setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
+            } catch (error) {
+                setNftimage(imgmr);
             }
+        } else if (str.slice(0, 6) == '/ipfs/') {
+            setNftimage(str);
         } else {
-            setNftimage('');
+            setNftimage(imgmr);
         }
     }
     //折线图查询
@@ -677,11 +667,6 @@ export default function HomePageApp() {
                                 >
                                     {Exchangezj(Exchange())}
                                 </div>
-                                {/* <div className={HomePageApp_ls.tableblocklistselectbox_Exchangesnft}>
-                                {
-                                    Exchangesnftzj(Exchange())
-                                }
-                            </div> */}
                             </div>
                         </div>
                     </div>

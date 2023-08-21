@@ -79,9 +79,7 @@ export default function HomePage() {
         total_q();
         epoch_q();
         block_q(pagedata);
-        // homepagechart_q();
         onlineAddr_q();
-        // rewardperson_q()
     }, []);
     useEffect(() => {
         let time = new Date();
@@ -97,8 +95,6 @@ export default function HomePage() {
     //区块查询
     const block_q = async (item) => {
         const data = await block(item);
-        //console.log('区块查询');
-        //console.log(data);
         if (data) {
             setBlockdata(data);
             setBigheightblock(data.blocks[0].number);
@@ -107,22 +103,13 @@ export default function HomePage() {
     //验证者在线查询
     const onlineAddr_q = async (item) => {
         const data = await onlineAddr(item);
-        //console.log('验证者在线查询');
-        //console.log(data);
         if (data) {
             setValidatoronline(data);
         }
     };
-    // useEffect(() => {
-    //     if (blockdata.blocks) {
-    //         blockrewardperson_q(blockdata.blocks[0].number)
-    //     }
-    // },[blockdata])
     //查询erb价格
     const erbprice_q = async () => {
         const data = await erbprice();
-        //console.log('查询erb价格');
-        //console.log(data);
         if (data) {
             setErbpricedata(data);
         }
@@ -130,8 +117,6 @@ export default function HomePage() {
     //总数查询
     const total_q = async () => {
         const data = await total();
-        //console.log('总数查询');
-        //console.log(data);
         if (data) {
             setTotaldata(data);
         }
@@ -139,8 +124,6 @@ export default function HomePage() {
     //系统NFT周期查询
     const epoch_q = async () => {
         const data = await epoch();
-        //console.log('系统NFT周期查询');
-        //console.log(data);
         if (data) {
             setEpochdata(data);
             hexToStringbs(data.meta_url, data);
@@ -150,7 +133,6 @@ export default function HomePage() {
     const snftimageaddress_q = async (item) => {
         const data = await snftimageaddress(item);
         if (data) {
-            //console.log(data);
             if (data.code == 200) {
                 setNftimage('ipfs/' + data.data);
             } else {
@@ -158,23 +140,9 @@ export default function HomePage() {
             }
         }
     };
-    //奖励人查询
-    // const rewardperson_q = async () => {
-    //     const data = await rewardperson();
-    //     if (data) {
-    //         if (data.rewards != null) {
-    //             setRewardpersondata(data.rewards)
-    //         } else {
-    //             setRewardpersondata('')
-    //         }
-
-    //     }
-    // }
     //最新区块奖励人查询
     const blockrewardperson_q = async (item) => {
         const data = await blockrewardperson(item);
-        //console.log('最新区块奖励人查询');
-        //console.log(data);
         let text = [];
         if (data) {
             for (let i = 0; i < data.length; i++) {
@@ -337,37 +305,43 @@ export default function HomePage() {
             for (var i = 0; i < len; i++) {
                 val += String.fromCharCode(parseInt(str.substr(i * 2, 2), 16));
             }
-            //console.log(JSON.parse(val.slice(1, val.length)));
-            let text = 0;
-            for (
-                let i = 0;
-                i < Object.keys(JSON.parse(val.slice(1, val.length))).length;
-                i++
-            ) {
-                if (
-                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                        'prompt' ||
-                    Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
-                        'randomNumber'
+            try {
+                let text = 0;
+                for (
+                    let i = 0;
+                    i <
+                    Object.keys(JSON.parse(val.slice(1, val.length))).length;
+                    i++
                 ) {
-                    text++;
+                    if (
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'prompt' ||
+                        Object.keys(JSON.parse(val.slice(1, val.length)))[i] ==
+                            'randomNumber'
+                    ) {
+                        text++;
+                    }
                 }
-            }
-            //console.log(text);
-            if (text == 2) {
-                // ai
-                let pth = item.id;
-                for (let i = 0; i < 42 - item.id.length; i++) {
-                    pth.concat('0');
+                //console.log(text);
+                if (text == 2) {
+                    // ai
+                    let pth = item.id;
+                    for (let i = 0; i < 42 - item.id.length; i++) {
+                        pth.concat('0');
+                    }
+                    //console.log(pth);
+                    snftimageaddress_q(pth);
+                } else {
+                    //console.log('=======' + val.meta_url);
+                    setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
                 }
-                //console.log(pth);
-                snftimageaddress_q(pth);
-            } else {
-                //console.log('=======' + val.meta_url);
-                setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
+            } catch (error) {
+                setNftimage(imgmr);
             }
+        } else if (str.slice(0, 6) == '/ipfs/') {
+            setNftimage(str);
         } else {
-            setNftimage('');
+            setNftimage(imgmr);
         }
     }
     //BlockProducer奖励人判断
@@ -802,22 +776,6 @@ export default function HomePage() {
                         }
                         id="HomePageselect"
                     >
-                        {/* <Select
-                            defaultValue="AllFilters"
-                            onChange={handleChange}
-                            suffixIcon={
-                                <>
-                                    <GoTriangleDown
-                                        style={{
-                                            color: '#000000',
-                                            fontSize: '18px',
-                                        }}
-                                    />
-                                </>
-                            }
-                        >
-                            <Option value="AllFilters">All Filters</Option>
-                        </Select> */}
                         <input
                             className={
                                 HomePage_ls.HomePageBox_SearchBox_search_bottomBox_input

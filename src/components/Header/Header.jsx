@@ -14,20 +14,6 @@ export default function Header() {
             console.log(window.location.pathname);
         }
     }, [window.location.pathname]);
-    //路由跳转
-    function handleClick(e) {
-        if (e == 'Ranking') {
-            history.push('/ranking');
-        } else if (e == 'exchangeRanking') {
-            history.push('/StakerRanking');
-        } else if (e == 'SNFTRanking') {
-            history.push('/SNFTRanking');
-        } else if (e == 'NFTRanking') {
-            history.push('/NFTRanking');
-        } else if (e == 'Trade') {
-            history.push('/Trade');
-        }
-    }
     //搜索按钮
     function homepageinputclick() {
         let data = document.getElementById('homepageinput').value;
@@ -180,17 +166,7 @@ export default function Header() {
                     >
                         TRANSACT
                     </Link>
-
-                    {/* <p className={Header_ls.HeaderBox_navigationBox_text}>
-                        <span onClick={handleClick.bind(this, 'Ranking')}>
-                            RANKINGS
-                        </span>
-                    </p> */}
                 </div>
-                {/* 模式切换 */}
-                {/* <div className={Header_ls.HeaderBox_patternBox}> */}
-                {/* <FaRegMoon /> */}
-                {/* </div> */}
             </div>
             {window.location.pathname == '/BlockChain' ||
             window.location.pathname == '/NFT' ||

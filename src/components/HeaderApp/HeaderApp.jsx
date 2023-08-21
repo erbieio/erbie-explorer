@@ -171,14 +171,6 @@ export default function HeaderApp(props) {
                         <span>TRANSACT</span>
                     </div>
                 </Link>
-                {/* <Link
-                    to={{ pathname: '/rankingApp', state: '' }}
-                    className={HeaderApp_ls.Navigationbox_div}
-                >
-                    <div className={HeaderApp_ls.Navigationbox_divcenter}>
-                        <span>RANKINGS</span>
-                    </div>
-                </Link> */}
             </div>
             {window.location.pathname == '/BlockChainApp' ||
             window.location.pathname == '/NFTApp' ||
@@ -215,41 +207,6 @@ export default function HeaderApp(props) {
             ) : (
                 ''
             )}
-            {/* {window.location.hash != '#/BlockChainApp' &&
-            window.location.hash != '#/NFTApp' &&
-            window.location.hash != '#/SNFTApp' &&
-            window.location.hash != '#/StakerApp' &&
-            window.location.hash != '#/TradeApp' &&
-            window.location.hash != '#/rankingApp' &&
-            window.location.hash != '#/ValidatorApp' &&
-            window.location.hash != '#/' &&
-            window.location.hash != '#/AccountApp' ? (
-                <div className={HeaderApp_ls.HeaderBox_SearchBox}>
-                    <div
-                        className={HeaderApp_ls.HeaderBox_SearchBox_inputBox}
-                        id="headerselect"
-                        style={{ width: '293px' }}
-                    >
-                        <input
-                            placeholder="Search by Address/Txn Hash/Block/Token"
-                            className={
-                                HeaderApp_ls.HeaderBox_SearchBox_inputBox_input
-                            }
-                            id="homepageinput"
-                            style={{ width: '291px' }}
-                            autocomplete="off"
-                        />
-                    </div>
-                    <div
-                        className={HeaderApp_ls.HeaderBox_Search}
-                        onClick={homepageinputclick}
-                    >
-                        <BsSearch />
-                    </div>
-                </div>
-            ) : (
-                ''
-            )} */}
         </>
     );
 }

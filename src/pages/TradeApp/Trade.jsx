@@ -307,9 +307,6 @@ class Trade extends React.Component {
 
     //插入DOM前的回调函数
     componentDidMount() {
-        // this.timerID=setInterval(()=>{
-        //     this.tick()
-        // },1000)
         (async () => {
             const res = await totals();
             if (res) {
@@ -325,30 +322,21 @@ class Trade extends React.Component {
                     chartData: [
                         {
                             year: 'Erbie Transactions',
-                            population: res.totalWormholesTx,
+                            population: res.totalErbieTx,
                         },
                         {
                             year: 'Contract Transactions',
                             population:
                                 res.totalTransaction -
-                                res.totalWormholesTx -
+                                res.totalErbieTx -
                                 res.totalTransferTx,
                         },
                         {
                             year: 'Regular Way',
                             population: res.totalTransferTx,
                         },
-                        // { year: 'Transfer Trading', population: res.totalTransferTx},
                     ],
                 });
-                // const upline = this.state.lineData.forEach(item=> {
-                //      item.value = this.state.proportion
-                //     return item
-                //  })
-                // this.setState({
-                //     lineData: upline
-                // })
-                // this.state.totalTransaction = res.totalTransaction
             }
         })();
         this.transactionPage = async () => {

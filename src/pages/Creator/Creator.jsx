@@ -36,15 +36,6 @@ export default function Creator() {
     const onChange = (data) => {
         setPagenumber(data);
     };
-    const data = [
-        { year: '23', sales: 12323 },
-        { year: '24', sales: 51232 },
-        { year: '25', sales: 6131 },
-        { year: '26', sales: 36235 },
-        { year: '27', sales: 41238 },
-        { year: '28', sales: 3238 },
-        { year: '29', sales: 6238 },
-    ];
     //creator分页
     let pagedata = {
         page: pagenumber,

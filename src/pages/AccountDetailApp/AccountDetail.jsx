@@ -2041,31 +2041,6 @@ class AccountDetail extends React.Component {
                                         ).toLocaleString()}
                                     </span>
                                 </div>
-                                {/* <div>
-                                    <p>Annualized Return</p>{' '}
-                                    <span>
-                                        {this.state.accountData.apr
-                                            ? (
-                                                  this.state.accountData.apr *
-                                                  100
-                                              ).toFixed(2)
-                                            : '0'}{' '}
-                                        %
-                                    </span>
-                                </div> */}
-
-                                {/* <div>
-                                    <p>SNFT Staking</p>{' '}
-                                    <span>
-                                        {(
-                                            this.state.accountData
-                                                .snftAmount /
-                                            1000000000000000000
-                                            || 0
-                                        ).toLocaleString() }
-                                    </span>
-                                </div> */}
-
                                 <div>
                                     <p>SNFT Income</p>{' '}
                                     <span>
@@ -2081,14 +2056,7 @@ class AccountDetail extends React.Component {
                         <div className={AccountDetail_ls.other}>
                             <div>
                                 <h3>Other Information</h3>
-                                {/* <ul>
-                                    <p>Owned NFTs</p>
-                                    <span
-                                        title={this.state.accountData.totalNFT}
-                                    >
-                                        {this.state.accountData.nftCount || 0}
-                                    </span>
-                                </ul> */}
+
                                 <ul>
                                     <p>Owned SNFTs</p>
                                     <span

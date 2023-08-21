@@ -54,30 +54,6 @@ const handleCopy = (value) => {
     copy(value);
     message.success('copy Success');
 };
-const fakeDataUrl =
-    'https://randomuser.me/api/?results=20&inc=name,gender,email,nat,picture&noinfo';
-const ContainerHeight = 400;
-function batchTime(baseTime) {
-    // let time = moment(baseTime).format()
-    let d = new Date(baseTime * 1000);
-    let batchTime =
-        d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-    return batchTime;
-}
-//期数判断
-function stagenumber(data) {
-    if (data) {
-        for (let i = 0; i < data.length; i++) {
-            if (data[i] == 0) {
-                if (i == data.length - 1) {
-                    return 1;
-                }
-            } else {
-                return data.slice(i, 37);
-            }
-        }
-    }
-}
 class AccountDetail extends React.Component {
     //Clock构造函数
     constructor(props) {
@@ -1125,8 +1101,6 @@ class AccountDetail extends React.Component {
                 parseUrlParams(window.location.search).addr,
             );
         }
-
-        // console.log(this.props);
         if (this.props.location.state) {
             window.sessionStorage.setItem('hash', this.props.location.state);
         }
@@ -2382,30 +2356,6 @@ class AccountDetail extends React.Component {
                                         ).toLocaleString()}
                                     </span>
                                 </div>
-                                {/* <div>
-                                    <p>Annualized Return</p>{' '}
-                                    <span>
-                                        {this.state.accountData.apr
-                                            ? (
-                                                  this.state.accountData.apr *
-                                                  100
-                                              ).toFixed(2)
-                                            : '0'}{' '}
-                                        %
-                                    </span>
-                                </div> */}
-
-                                {/* <div>
-                                    <p>SNFT Staking</p>{' '}
-                                    <span>
-                                        {(
-                                            this.state.accountData
-                                                .snftAmount /
-                                            1000000000000000000
-                                            || 0
-                                        ).toLocaleString() }
-                                    </span>
-                                </div> */}
                                 <div>
                                     <p>SNFT Income</p>{' '}
                                     <span>
@@ -2420,12 +2370,6 @@ class AccountDetail extends React.Component {
                         </div>
                         <div className={AccountDetail_ls.other}>
                             <h3>Other Information</h3>
-                            {/* <ul>
-                                <p>Owned NFTs</p>
-                                <span title={this.state.accountData.totalNFT}>
-                                    {this.state.accountData.nftCount || 0}
-                                </span>
-                            </ul> */}
                             <ul>
                                 <p>Owned SNFTs</p>
                                 <span title={this.state.accountData.totalSNFT}>
@@ -2479,6 +2423,7 @@ class AccountDetail extends React.Component {
                         <Radio.Button value="CREATOR">CREATOR</Radio.Button>
                     </Radio.Group>
                 </div>
+                {/* {this.state.type == 'trade' ? <div>111</div> : ''} */}
                 {this.state.type == 'CREATOR' ? (
                     <div className={AccountDetail_ls.Blockrewardbox_center}>
                         <div

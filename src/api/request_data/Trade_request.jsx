@@ -6,7 +6,7 @@ let host =
 // let host = 'http://43.132.176.185:3001'
 //totals
 export const totals = (data) => {
-    return request.get(`${host}/totals`);
+    return request.get(`${host}/stats`);
 };
 export const transactionPage = (data) => {
     return request.get(`${host}/transaction/page`, {

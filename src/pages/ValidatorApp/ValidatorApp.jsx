@@ -1,5 +1,5 @@
 import ValidatorApp_ls from './ValidatorApp.less';
-import { Space, Table, Tag, Pagination } from 'antd';
+import { Space, Table, Tag, Pagination, Tooltip } from 'antd';
 import { Link } from 'umi';
 import {
     erbprice,
@@ -8,7 +8,11 @@ import {
     validators,
     rewardperson,
 } from '../../api/request_data/block_request';
-import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
+import {
+    CaretUpOutlined,
+    CaretDownOutlined,
+    QuestionCircleOutlined,
+} from '@ant-design/icons';
 import { timestamp, ellipsis } from '../../utils/methods/Methods';
 import moment from 'moment';
 import { utils } from 'ethers';
@@ -48,6 +52,7 @@ export default function ValidatorApp() {
                 </Link>
             ),
             ellipsis: true,
+            width: '140px',
         },
         {
             title: () => (
@@ -94,7 +99,7 @@ export default function ValidatorApp() {
                         : 0}
                 </span>
             ),
-            width: '200px',
+            width: '140px',
         },
         {
             title: () => (
@@ -141,7 +146,7 @@ export default function ValidatorApp() {
                         : 0}
                 </>
             ),
-            width: '180px',
+            width: '175px',
         },
         {
             title: () => (
@@ -231,6 +236,7 @@ export default function ValidatorApp() {
                 </span>
             ),
             ellipsis: true,
+            width: '140px',
         },
         {
             title: () => (
@@ -480,7 +486,74 @@ export default function ValidatorApp() {
                     )}
                 </span>
             ),
-            width: '150px',
+            width: '145px',
+        },
+        {
+            title: (
+                <p>
+                    Reputation Score&nbsp;&nbsp;
+                    <Tooltip
+                        placement="left"
+                        color="#4D4D55"
+                        overlayStyle={{ maxWidth: 350, fontSize: 12 }}
+                        title=<p>
+                            The Validator Reputation Score rules are as follows
+                            (scored on a 100-point scale):
+                            <br />
+                            <br />
+                            Reputation Score = Online Weight (50%) + ERB
+                            Earnings (20%) + Difference between the most recent
+                            ERB earnings and the latest height (30%)
+                            <br />
+                            <br />
+                            - Online Weight Scoring Method:
+                            <br />
+                            Online Weight &nbsp;&nbsp;&nbsp;&nbsp;Points
+                            <br />
+                            70
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;50
+                            <br />
+                            50
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;40
+                            <br />
+                            30
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+                            <br />
+                            10
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0
+                            <br />
+                            1
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-50
+                            <br />
+                            <br />
+                            - ERB Earnings are scored based on an individual’s
+                            proportionate earnings:
+                            <br />
+                            ERB Earnings Score = Individual ERB Earnings *
+                            Number of Validators / Validator Total ERB Earnings
+                            * 20, Score range: 0-20.
+                            <br />
+                            <br />v - Height Difference is scored based on the
+                            multiple of the number of Validators:
+                            <br />
+                            For every difference in height equivalent to the
+                            number of Validators, the score is decreased by one,
+                            until it reaches a height difference of 30 times the
+                            number of Validators, at which point it is reduced
+                            to 0. Score range: 0-30.
+                        </p>
+                    >
+                        <span style={{ cursor: 'pointer' }}>
+                            <QuestionCircleOutlined />
+                        </span>
+                    </Tooltip>
+                </p>
+            ),
+            dataIndex: 'score',
+            key: 'score',
+            render: (text) => <span>{text}</span>,
+            ellipsis: true,
+            width: '140px',
         },
     ];
 

@@ -14,12 +14,12 @@ request.interceptors.request.use(async (url, options) => {
         options.method === 'get'
     ) {
         let headers;
-        if (url === 'http://192.168.1.235:18081/v1/getIpfsHash') {
-            // headers = {
-            //     'Access-Control-Allow-Origin': '*',
-            //     'Access-Control-Allow-Credentials': true,
-            //     'Access-Control-Allow-Headers': '*',
-            // };
+        if (url === 'http://192.168.1.235:8081/v1/getIpfsHash') {
+            headers = {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
+                'Access-Control-Allow-Headers': '*',
+            };
         }
         return {
             url,

@@ -256,10 +256,12 @@ export default function SNFTDetails(props) {
                 }
             } catch (error) {
                 console.log(error);
-                setSnftimage('');
+                setSnftimage(imgmr);
             }
+        } else if (str.slice(0, 6) == '/ipfs/') {
+            setSnftimage(str);
         } else {
-            setSnftimage('');
+            setSnftimage(imgmr);
         }
     }
     return (
@@ -485,13 +487,6 @@ export default function SNFTDetails(props) {
                                         ) : (
                                             ''
                                         )}
-                                        {/* <span
-                                        className={
-                                            SNFTDetails_ls.SNFTDetailsBox_titleData_text_nftname_block
-                                        }
-                                    >
-                                        #{snftdata.reward_number}
-                                    </span> */}
                                         <Tooltip
                                             placement="bottom"
                                             title={() => {

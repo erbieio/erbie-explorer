@@ -68,23 +68,6 @@ export default function SNFTDetailsApp(props) {
             ),
             ellipsis: true,
         },
-        // {
-        //     title: 'Transaction Marketplace',
-        //     dataIndex: 'exchanger_addr',
-        //     key: 'exchanger_addr',
-        //     ellipsis: true,
-        //     render: (text, data) => (
-        //         <Link
-        //             to={{
-        //                 pathname: '/StakerDetailsApp',
-        //                 state: { exchangeid: text },
-        //             }}
-        //             style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
-        //         >
-        //             {ellipsis(text)}
-        //         </Link>
-        //     ),
-        // },
         {
             title: 'Sender',
             key: 'from',
@@ -252,10 +235,12 @@ export default function SNFTDetailsApp(props) {
                     setSnftimage(JSON.parse(val.slice(1, val.length)).meta_url);
                 }
             } catch (error) {
-                setSnftimage('');
+                setSnftimage(imgmr);
             }
+        } else if (str.slice(0, 6) == '/ipfs/') {
+            setSnftimage(str);
         } else {
-            setSnftimage('');
+            setSnftimage(imgmr);
         }
     }
     return (

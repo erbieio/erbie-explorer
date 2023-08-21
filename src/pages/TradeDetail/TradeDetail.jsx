@@ -111,7 +111,6 @@ class TradeDetail extends React.Component {
         }
         this.state.Trastate = window.sessionStorage.getItem('Trastate');
         this.commonFunc();
-        // history.replace({ pathname: nextProps.location.pathname, state: id })
     }
 
     //插入DOM前的回调函数
@@ -166,7 +165,6 @@ class TradeDetail extends React.Component {
                             return (reaitem.topics = detail);
                         });
                     });
-                    // val = JSON.stringify(JSON.parse(this.state.dataLog[index].topics[index1]).type = true)
                 } else {
                     this.state.dataLog.forEach((item, ind) => {
                         let detail = [];
@@ -186,16 +184,8 @@ class TradeDetail extends React.Component {
                             return (reaitem.topics = detail);
                         });
                     });
-                    // rea.topics = detail;
-
-                    // val = JSON.stringify(JSON.parse(this.state.dataLog[index].topics[index1]).type = false)
                 }
-                // switch (value) {
-                // case `Hex${}` :
-                // this.state.topicsType = "Hex"
-                // case "Dec" :
-                //     this.state.topicsType = value
-                // }
+
                 this.setState({
                     dataLog: rea,
                 });
@@ -206,18 +196,6 @@ class TradeDetail extends React.Component {
             this.onChangeinput = (e) => {
                 this.setState({ typeGroup: e.target.value });
             };
-            // (async () => {
-            //     const res = await nfttx(transactionres.hash);
-            //     //console.log(res);
-            //     if (res) {
-            //         this.setState({
-            //             nfttxdata: res,
-            //         });
-            //     }
-            // })();
-            // this.setState( {
-            //     Trastate: window.sessionStorage.getItem("Trastate")
-            // })
             (async () => {
                 const res = await transactionDetail(this.state.Trastate);
                 if (res) {
@@ -283,15 +261,9 @@ class TradeDetail extends React.Component {
                             addr: '',
                         });
                         if (recycle_tx1) {
-                            // let got = recycle_tx1.count
-                            // recycle_tx1.address.length === 42 ? got = got * 0.095 : recycle_tx1.address.length === 41 ?got= got * 0.143 :recycle_tx1.address.length === 40 ?got= got * 0.271 : recycle_tx1.address.length === 39 ? got * 0.65 :got * 0
-                            // let obj = recycle_tx1
-                            // obj.got = got;
-
                             this.setState({
                                 newDetailData: recycle_tx1,
                             });
-                            // //console.log(obj);
                         }
                     }
                 }
@@ -303,7 +275,7 @@ class TradeDetail extends React.Component {
         history.push('/NoSearchResults');
     }
     handleRouter = (e, query) => {
-        history.push({ pathname: e + '/' + query, state: query });
+        history.push({ pathname: e, state: query });
     };
     componentDidUpdate() {}
     //组件销毁前的回调
@@ -346,14 +318,8 @@ class TradeDetail extends React.Component {
                                         : 'Defeat'}
                                 </Tag>
                             </div>
-                            {/*<div className={TradeDetail_ls.TradeDetailButton}>*/}
-                            {/*    <Button>View Transaction Details</Button>*/}
-                            {/*</div>*/}
                         </div>
                         <div className={TradeDetail_ls.TradeDetailBoxBottom}>
-                            {/*<div className={TradeDetail_ls.common} style={{visibility: "hidden"}}>*/}
-                            {/*    <p>Marketplace</p> <span >{hexCharCodeToStr(this.state.detailData.input)}</span>*/}
-                            {/*</div>*/}
                             <div className={TradeDetail_ls.common}>
                                 <p>Transaction Block</p>{' '}
                                 <span>
@@ -492,19 +458,7 @@ class TradeDetail extends React.Component {
                                 <p>TXN Type</p>
                                 <span>{this.state.transType.name} </span>
                             </div>
-                            {/* <div>
-                                <p>Marketplace commission profits</p>
-                                <span>
-                                    {this.state.nfttxdata.fee
-                                        ? Number(
-                                              utils.formatEther(
-                                                  this.state.nfttxdata.fee,
-                                              ),
-                                          ).toFixed(2)
-                                        : 0.0}{' '}
-                                    ERB
-                                </span>
-                            </div> */}
+
                             <div>
                                 <p>TXN Fee</p>{' '}
                                 <span>
@@ -589,23 +543,7 @@ class TradeDetail extends React.Component {
                             ) : (
                                 ''
                             )}
-                            {this.state.transType.type === 6 ? (
-                                <div>
-                                    {/*<p>SNFT Address</p>*/}
-                                    {/*<Link to={{ pathname: '/SNFTDetails', state: { snftid: this.state.newDetailData.address,snftmata:this.state.detailData } }} style={{ color: '#7AA4FF' }}>*/}
-                                    {/*<span>{*/}
-                                    {/*    this.state.newDetailData.address ?*/}
-                                    {/*        this.state.newDetailData.address.slice(0, 12) +*/}
-                                    {/*    '...' +*/}
-                                    {/*        this.state.newDetailData.address.slice(*/}
-                                    {/*    -16, this.state.newDetailData.address.length,*/}
-                                    {/*    ):""*/}
-                                    {/*}</span>*/}
-                                    {/*</Link>*/}
-                                </div>
-                            ) : (
-                                ''
-                            )}
+                            {this.state.transType.type === 6 ? <div></div> : ''}
                         </div>
                     </div>
                 </div>
@@ -686,42 +624,9 @@ class TradeDetail extends React.Component {
                                                             )}
                                                         />
                                                     </ul>
-                                                    <ul style={{ margin: '0' }}>
-                                                        {/*<p>Name</p>*/}
-                                                        {/*<li style={{ display: 'flex' }}>*/}
-                                                        {/*    Deposit (index_topic_1*/}
-                                                        {/*    {this.state.detailDataLog.map(*/}
-                                                        {/*        (item) => (*/}
-                                                        {/*            <div>*/}
-                                                        {/*                &nbsp;*/}
-                                                        {/*                <p*/}
-                                                        {/*                    style={{*/}
-                                                        {/*                        color: 'RGBA(28, 184, 168, 1)',*/}
-                                                        {/*                    }}*/}
-                                                        {/*                >*/}
-                                                        {/*                    address*/}
-                                                        {/*                </p>*/}
-                                                        {/*                &nbsp;*/}
-                                                        {/*                <span*/}
-                                                        {/*                    style={{*/}
-                                                        {/*                        color: 'RGBA(254, 76, 165, 1)',*/}
-                                                        {/*                    }}*/}
-                                                        {/*                >*/}
-                                                        {/*            dist*/}
-                                                        {/*        </span>*/}
-                                                        {/*                {item ==*/}
-                                                        {/*                this.state.dataLog[*/}
-                                                        {/*                this.state.dataLog*/}
-                                                        {/*                    .length - 1*/}
-                                                        {/*                    ]*/}
-                                                        {/*                    ? ''*/}
-                                                        {/*                    : ','}*/}
-                                                        {/*            </div>*/}
-                                                        {/*        ),*/}
-                                                        {/*    )}*/}
-                                                        {/*    )*/}
-                                                        {/*</li>*/}
-                                                    </ul>
+                                                    <ul
+                                                        style={{ margin: '0' }}
+                                                    ></ul>
                                                     <ul>
                                                         <p>Topics</p>
                                                         <li>

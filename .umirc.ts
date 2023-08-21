@@ -2,6 +2,22 @@ import { defineConfig } from 'umi';
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
 let prodGzipList = ['js', 'css'];
 export default defineConfig({
+    chainWebpack: (config) => {
+        // if (process.env.NODE_ENV === 'production') {
+        // 生产模式开启
+        config.plugin('compression-webpack-plugin').use(
+            new CompressionWebpackPlugin({
+                // 文件名称，这里我们不设置，让它保持和未压缩的文件同一个名称
+                // filename: 'umi.js',
+                algorithm: 'gzip', // 指定生成gzip格式
+                test: new RegExp('\\.(' + prodGzipList.join('|') + ')$'), // 匹配哪些格式文件需要压缩
+                threshold: 10240, //对超过10k的数据进行压缩
+                minRatio: 0.4, // 压缩比例，值为0 ~ 1
+                deleteOriginalAssets: false,
+            }),
+        );
+        // }
+    },
     nodeModulesTransform: {
         type: 'none',
     },
@@ -60,37 +76,12 @@ export default defineConfig({
                     path: '/SNFTDetailsApp',
                     component: './SNFTDetailsApp/SNFTDetailsApp.jsx',
                 },
-                {
-                    path: '/StakerDetails',
-                    component: './StakerDetails/StakerDetails.jsx',
-                },
-                {
-                    path: '/StakerDetailsApp',
-                    component: './StakerDetailsApp/StakerDetails.jsx',
-                },
                 { path: '/Validator', component: './Validator/Validator.jsx' },
                 {
                     path: '/ValidatorApp',
                     component: './ValidatorApp/ValidatorApp.jsx',
                 },
                 { path: '/TestPage', component: './TestPage/TestPage.jsx' },
-                { path: '/ranking', component: './Ranking/Ranking.jsx' },
-                {
-                    path: '/rankingApp',
-                    component: './RankingApp/RankingApp.jsx',
-                },
-                {
-                    path: '/StakerRanking',
-                    component: './StakerRanking/StakerRanking.jsx',
-                },
-                {
-                    path: '/SNFTRanking',
-                    component: './SNFTRanking/SNFTRanking.jsx',
-                },
-                {
-                    path: '/NFTRanking',
-                    component: './NFTRanking/NFTRanking.jsx',
-                },
                 {
                     path: '/Trade',
                     component: './Trade/Trade.jsx',
@@ -144,14 +135,6 @@ export default defineConfig({
                     component: './NullPageApp/NullPageApp.jsx',
                 },
                 {
-                    path: '/MapBs',
-                    component: './MapBs/MapBs.jsx',
-                },
-                {
-                    path: '/MapBs2',
-                    component: './MapBs2/MapBs2.jsx',
-                },
-                {
                     path: '/Creator',
                     component: './Creator/Creator.jsx',
                 },
@@ -189,6 +172,12 @@ export default defineConfig({
     dva: {
         immer: true,
     },
+    fastRefresh: {},
+    publicPath: './',
+    runtimePublicPath: true,
+    hash: true,
+    links: [{ rel: 'ico', href: './src/assets/images/logo.ico' }],
+    title: false,
     proxy: {
         '/api': {
             target: 'https://www.wormholestest.com',
@@ -214,26 +203,5 @@ export default defineConfig({
                 '^/v1': '/v1',
             },
         },
-    },
-    fastRefresh: {},
-    publicPath: './',
-    runtimePublicPath: true,
-    hash: true,
-    links: [{ rel: 'ico', href: './src/assets/images/logo.ico' }],
-    title: false,
-    chainWebpack: (config) => {
-        // if (process.env.NODE_ENV === 'production') {
-        // 生产模式开启
-        config.plugin('compression-webpack-plugin').use(
-            new CompressionWebpackPlugin({
-                // filename: 文件名称，这里我们不设置，让它保持和未压缩的文件同一个名称
-                algorithm: 'gzip', // 指定生成gzip格式
-                test: new RegExp('\\.(' + prodGzipList.join('|') + ')$'), // 匹配哪些格式文件需要压缩
-                threshold: 10240, //对超过10k的数据进行压缩
-                minRatio: 0.01, // 压缩比例，值为0 ~ 1
-                deleteOriginalAssets: false,
-            }),
-        );
-        // }
     },
 });

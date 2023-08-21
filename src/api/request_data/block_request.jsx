@@ -4,22 +4,18 @@ let host =
     window.location.origin == 'https://www.erbiescan.io'
         ? 'https://api.erbiescan.io'
         : 'http://43.129.181.130:3001';
-
+let host2 =
+    window.location.origin == 'https://www.erbiescan.io'
+        ? 'https://snft.erbie.io/nftscan'
+        : 'http://192.168.1.235:9006/nftscan';
 console.log(window.location);
-// export const erbprice = (data) =>{
-//     return request.get(`${host}/erb_price`,
-//         {params:{
-//             block_number:data
-//         }}
-//     )
-// }
 //erb价格查询
 export const erbprice = () => {
     return request.get(`${host}/erb_price`);
 };
 //总数查询
 export const total = () => {
-    return request.get(`${host}/totals`);
+    return request.get(`${host}/stats`);
 };
 //查询系统NFT周期
 export const epoch = () => {
@@ -199,7 +195,7 @@ export const creatorAddress = (data) => {
 // snft图片查询
 export const snftimageaddress = (data) => {
     // console.log(data);
-    return request.post(`https://snft.erbie.io/nftscan/v1/getIpfsHash`, {
+    return request.post(`${host2}/v1/getIpfsHash`, {
         body: JSON.stringify({
             nftaddr: data,
         }),
