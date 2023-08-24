@@ -11,16 +11,17 @@ import {
     message,
     List,
     Pagination,
+    Dropdown,
+    Space,
 } from 'antd';
 import {
     CaretUpOutlined,
     CaretDownOutlined,
     QuestionCircleOutlined,
     DownOutlined,
+    SmileOutlined,
 } from '@ant-design/icons';
 import VirtualList from 'rc-virtual-list';
-const { Option } = Select;
-const { Column, ColumnGroup } = Table;
 import zhCN from 'antd/es/locale/zh_CN';
 import { AiOutlineCopy } from 'react-icons/ai';
 import AccountDetail_ls from '../AccountDetail/AccountDetail.less';
@@ -50,6 +51,8 @@ import {
 import { utils } from 'ethers';
 import { Link, history } from 'umi';
 import moment from 'moment';
+const { Option } = Select;
+const { Column, ColumnGroup } = Table;
 const handleCopy = (value) => {
     copy(value);
     message.success('copy Success');
@@ -64,6 +67,7 @@ class AccountDetail extends React.Component {
             pageOption: {
                 page: 1,
                 page_size: 10,
+                types: '',
             },
             pageOptionbs: {
                 page: 1,
@@ -1034,39 +1038,6 @@ class AccountDetail extends React.Component {
                     key: 'reward',
                     render: (text) => <span>{text}</span>,
                 },
-                // {
-                //     title: () => (
-                //         <div className={AccountDetail_ls.tablexbox2}>
-                //             <span>Action</span>
-                //             <Tooltip
-                //                 title={() => {
-                //                     return (
-                //                         <div
-                //                             className={
-                //                                 AccountDetail_ls.tablexbox2_Period
-                //                             }
-                //                         >
-                //                             <p>
-                //                                 Go to marketplace to check the
-                //                                 details.
-                //                             </p>
-                //                         </div>
-                //                     );
-                //                 }}
-                //                 color="#4D4D55"
-                //             >
-                //                 <span
-                //                     className={AccountDetail_ls.tablexbox2_icon}
-                //                 >
-                //                     <QuestionCircleOutlined />
-                //                 </span>
-                //             </Tooltip>
-                //         </div>
-                //     ),
-                //     dataIndex: 'aaaa',
-                //     key: 'aaaa',
-                //     render: (text) => <span>Go it</span>,
-                // },
             ],
         };
     }
@@ -1563,7 +1534,7 @@ class AccountDetail extends React.Component {
                                         ) : (
                                             '-'
                                         )}
-                                        ,
+
                                         <Link
                                             to={{
                                                 pathname: `/TradeDetail`,
@@ -1780,7 +1751,6 @@ class AccountDetail extends React.Component {
                                                 ) : (
                                                     '-'
                                                 )}
-                                                ,
                                                 <Link
                                                     to={{
                                                         pathname: `/TradeDetail`,
@@ -1957,7 +1927,7 @@ class AccountDetail extends React.Component {
                                 ) : (
                                     '-'
                                 )}
-                                ,
+
                                 <Link
                                     to={{
                                         pathname: `/TradeDetail`,
@@ -2012,7 +1982,17 @@ class AccountDetail extends React.Component {
                     });
                 }
             };
+            this.handleChange = (value) => {
+                if (value == 'stake') {
+                    this.state.pageOption.types = '9,10';
+                    this.transPage();
+                } else {
+                    this.state.pageOption.types = '';
+                    this.transPage();
+                }
 
+                console.log(`selected ${value}`);
+            };
             this.paginationChange = async (current, size) => {
                 this.state.pageOption.page = current;
                 this.state.pageOption.page_size = size;
@@ -2423,7 +2403,43 @@ class AccountDetail extends React.Component {
                         <Radio.Button value="CREATOR">CREATOR</Radio.Button>
                     </Radio.Group>
                 </div>
-                {/* {this.state.type == 'trade' ? <div>111</div> : ''} */}
+                {this.state.type == 'trade' ? (
+                    <div
+                        className={AccountDetail_ls.Blockrewardbox_Spacecenter}
+                        id="AccountDetailSpace"
+                    >
+                        <Space wrap>
+                            <Select
+                                defaultValue="all"
+                                suffixIcon=<CaretDownOutlined
+                                    style={{ pointerEvents: 'none' }}
+                                />
+                                getPopupContainer={() =>
+                                    document.getElementById(
+                                        'AccountDetailSpace',
+                                    )
+                                }
+                                style={{
+                                    width: 115,
+                                    backgroundColor: '#453B45',
+                                }}
+                                onChange={this.handleChange}
+                                options={[
+                                    {
+                                        value: 'all',
+                                        label: 'All Txn',
+                                    },
+                                    {
+                                        value: 'stake',
+                                        label: 'Stake Txn',
+                                    },
+                                ]}
+                            />
+                        </Space>
+                    </div>
+                ) : (
+                    ''
+                )}
                 {this.state.type == 'CREATOR' ? (
                     <div className={AccountDetail_ls.Blockrewardbox_center}>
                         <div

@@ -613,7 +613,6 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    // border: 1px solid yellow;
     .tableblocklistselectbox_Validator_box_p {
         font-size: 16px;
         color: white;
@@ -640,9 +639,10 @@
     height: 50px;
     display: flex;
     position: relative;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
     margin-top: 30px;
+    // border: 1px solid red;
     img {
         width: 24px;
         height: 24px;
@@ -671,13 +671,16 @@
 .tableblocklistselectbox_Exchange_box {
     width: 230px;
     height: 60px;
-
+    margin-right: 60px;
     display: flex;
     justify-content: flex-start;
     img{
         width: 31px;
         height: 31px;
     }
+}
+.tableblocklistselectbox_Exchange_box:nth-child(4){
+    margin-right: 0;
 }
 .tableblocklistselectbox_Exchangesnft {
     width: 1200px;
@@ -686,6 +689,7 @@
     margin-left: 70px;
     display: flex;
     justify-content: flex-start;
+    // border: 1px solid red;
 }
 .tableblocklistselectbox_Exchangesnft_box {
     width: 170px;

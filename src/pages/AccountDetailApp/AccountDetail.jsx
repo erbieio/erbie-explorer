@@ -10,6 +10,7 @@ import {
     Button,
     message,
     Pagination,
+    Space,
 } from 'antd';
 const { Option } = Select;
 const { Column, ColumnGroup } = Table;
@@ -1286,7 +1287,7 @@ class AccountDetail extends React.Component {
                                         ) : (
                                             '-'
                                         )}
-                                        ,
+
                                         <Link
                                             to={{
                                                 pathname: `/TradeDetailApp`,
@@ -1503,7 +1504,7 @@ class AccountDetail extends React.Component {
                                                 ) : (
                                                     '-'
                                                 )}
-                                                ,
+
                                                 <Link
                                                     to={{
                                                         pathname: `/TradeDetail`,
@@ -1669,7 +1670,7 @@ class AccountDetail extends React.Component {
                                 ) : (
                                     '-'
                                 )}
-                                ,
+
                                 <Link
                                     to={{
                                         pathname: `/TradeDetail`,
@@ -1727,6 +1728,17 @@ class AccountDetail extends React.Component {
             this.ceratoronChange = (data) => {
                 this.state.pageOption.page = data;
                 this.epochpage();
+            };
+            this.handleChange = (value) => {
+                if (value == 'stake') {
+                    this.state.pageOption.types = '9,10';
+                    this.transPage();
+                } else {
+                    this.state.pageOption.types = '';
+                    this.transPage();
+                }
+
+                console.log(`selected ${value}`);
             };
             this.paginationChange = async (current, size) => {
                 this.state.pageOption.page = current;
@@ -2115,6 +2127,43 @@ class AccountDetail extends React.Component {
                         <Radio.Button value="CREATOR">CREATOR</Radio.Button>
                     </Radio.Group>
                 </div>
+                {this.state.type == 'trade' ? (
+                    <div
+                        className={AccountDetail_ls.Blockrewardbox_Spacecenter}
+                        id="AccountDetailSpaceApp"
+                    >
+                        <Space wrap>
+                            <Select
+                                defaultValue="all"
+                                suffixIcon=<CaretDownOutlined
+                                    style={{ pointerEvents: 'none' }}
+                                />
+                                getPopupContainer={() =>
+                                    document.getElementById(
+                                        'AccountDetailSpaceApp',
+                                    )
+                                }
+                                style={{
+                                    width: 84,
+                                    backgroundColor: '#453B45',
+                                }}
+                                onChange={this.handleChange}
+                                options={[
+                                    {
+                                        value: 'all',
+                                        label: 'All Txn',
+                                    },
+                                    {
+                                        value: 'stake',
+                                        label: 'Stake Txn',
+                                    },
+                                ]}
+                            />
+                        </Space>
+                    </div>
+                ) : (
+                    ''
+                )}
                 {this.state.type == 'CREATOR' ? (
                     <div
                         className={AccountDetail_ls.HomePageAppbox_tablebox}

@@ -26,7 +26,9 @@ export default function BlackholeBlockDeta(props) {
     const [soloblocktransactiondata, setSoloblocktransactiondata] = useState(
         {},
     );
-    const onChange = (data) => {};
+    const onChange = (data) => {
+        setPagenumber(data);
+    };
     //单个区块交易列表分页
     let pagedata = {
         page: pagenumber,
@@ -243,7 +245,7 @@ export default function BlackholeBlockDeta(props) {
                         >
                             <div>
                                 <p>Penalty Weight</p>
-                                <span>10</span>
+                                <span>20</span>
                             </div>
                             <div>
                                 <p>Current Weight</p>

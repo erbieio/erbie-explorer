@@ -647,7 +647,7 @@ export default function HomePageApp() {
                                     <span>
                                         {BlockProducer()
                                             ? utils.formatEther(
-                                                  BlockProducer().amount,
+                                                  BlockProducer().amount || 0,
                                               )
                                             : 0}{' '}
                                         ERB

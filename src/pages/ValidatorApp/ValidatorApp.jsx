@@ -241,7 +241,7 @@ export default function ValidatorApp() {
         {
             title: () => (
                 <div className={ValidatorApp_ls.tablexbox}>
-                    Last Attestation Block Height
+                    Latest Active
                     {feeratecolor == 0 ? (
                         <div className={ValidatorApp_ls.tablex}>
                             <CaretUpOutlined onClick={FeeRate.bind(this, 1)} />
@@ -283,7 +283,7 @@ export default function ValidatorApp() {
                     {text}
                 </Link>
             ),
-            width: '230px',
+            width: '150px',
         },
         {
             title: () => (
@@ -490,7 +490,7 @@ export default function ValidatorApp() {
         },
         {
             title: (
-                <p>
+                <p className={ValidatorApp_ls.tablexbox}>
                     Reputation Score&nbsp;&nbsp;
                     <Tooltip
                         placement="left"
@@ -547,13 +547,43 @@ export default function ValidatorApp() {
                             <QuestionCircleOutlined />
                         </span>
                     </Tooltip>
+                    {totalAnnualizedcolor == 0 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={AnnualizedValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={AnnualizedValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : totalAnnualizedcolor == 1 ? (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={AnnualizedValue.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={AnnualizedValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={ValidatorApp_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={AnnualizedValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={AnnualizedValue.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
                 </p>
             ),
             dataIndex: 'score',
             key: 'score',
             render: (text) => <span>{text}</span>,
             ellipsis: true,
-            width: '140px',
+            width: '180px',
         },
     ];
 
@@ -747,6 +777,31 @@ export default function ValidatorApp() {
             } else {
                 setTransactionvaluecolor(2);
                 setOrderdata('weight DESC');
+            }
+        }
+    }
+    //AnnualizedValue
+    function AnnualizedValue(text) {
+        setStakevaluecolor(0);
+        setTotalcollectionscolor(0);
+        setTotalnftscolor(0);
+        setFeeratecolor(0);
+        setTransactionvaluecolor(0);
+        if (text == 1) {
+            if (totalAnnualizedcolor == 1) {
+                setTotalAnnualizedcolor(0);
+                setOrderdata('');
+            } else {
+                setTotalAnnualizedcolor(1);
+                setOrderdata('score ASC');
+            }
+        } else {
+            if (totalAnnualizedcolor == 2) {
+                setTotalAnnualizedcolor(0);
+                setOrderdata('');
+            } else {
+                setTotalAnnualizedcolor(2);
+                setOrderdata('score DESC');
             }
         }
     }

@@ -348,6 +348,7 @@ export default function HomePage() {
     function BlockProducer() {
         for (let i = 0; i < rewardpersondata.length; i++) {
             if (rewardpersondata[i].identity == 1) {
+                // console.log(rewardpersondata[i]);
                 return rewardpersondata[i];
             }
         }
@@ -409,6 +410,7 @@ export default function HomePage() {
     }
     //Exchange组件
     function Exchangezj(data) {
+        // console.log(data);
         if (data) {
             return data.map((item) => {
                 return (
@@ -441,6 +443,7 @@ export default function HomePage() {
     }
     //Exchangesnft组件
     function Exchangesnftzj(data) {
+        // console.log(data);
         if (data) {
             return data.map((item) => {
                 return (
@@ -473,6 +476,7 @@ export default function HomePage() {
     }
     //BLOCK LIST 表格组件
     function tableblocklist(data) {
+        // console.log(data);
         if (data) {
             return data.map((item, index) => {
                 return (
@@ -635,7 +639,7 @@ export default function HomePage() {
                                     <span>
                                         {BlockProducer()
                                             ? utils.formatEther(
-                                                  BlockProducer().amount,
+                                                  BlockProducer().amount || 0,
                                               )
                                             : 0}{' '}
                                         ERB
