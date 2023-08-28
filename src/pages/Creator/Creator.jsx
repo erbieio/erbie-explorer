@@ -331,6 +331,7 @@ export default function Creator() {
                 </span>
             ),
             ellipsis: true,
+            width: '170px',
         },
     ];
     //Stake Value 排序

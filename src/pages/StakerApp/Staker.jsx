@@ -161,9 +161,7 @@ export default function Exchange() {
     const exchanger_q = async (item) => {
         const data = await exchanger(item);
         if (data) {
-            if (data[0]) {
-                setExchangerdata(data.data);
-            }
+            setExchangerdata(data.data);
         }
     };
     useEffect(() => {

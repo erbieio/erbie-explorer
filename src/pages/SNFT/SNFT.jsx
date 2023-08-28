@@ -77,36 +77,6 @@ export default function SNFT() {
             ellipsis: true,
             width: '120px',
         },
-        // {
-        //     title: 'Level',
-        //     dataIndex: 'address',
-        //     key: 'address',
-        //     render: (text) => (
-        //         <span>
-        //             {text.length == 42 ? (
-        //                 <span className={SNFT_ls.SNFTBox_tablelevelsnft}>
-        //                     Level 0
-        //                 </span>
-        //             ) : text.length == 41 ? (
-        //                 <span className={SNFT_ls.SNFTBox_tablelevelnft}>
-        //                     Level 1
-        //                 </span>
-        //             ) : text.length == 40 ? (
-        //                 <span className={SNFT_ls.SNFTBox_tablelevelCollection}>
-        //                     Level 2
-        //                 </span>
-        //             ) : text.length == 39 ? (
-        //                 <span className={SNFT_ls.SNFTBox_tablelevelPeriod}>
-        //                     Level 3
-        //                 </span>
-        //             ) : (
-        //                 ' '
-        //             )}
-        //         </span>
-        //     ),
-        //     ellipsis: true,
-        //     width: '160px',
-        // },
         {
             title: () => (
                 <div className={SNFT_ls.tablexbox2}>
@@ -270,7 +240,7 @@ export default function SNFT() {
                 </span>
             ),
             ellipsis: true,
-            width: '200px',
+            width: '180px',
         },
     ];
     const onChange = (data) => {

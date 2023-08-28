@@ -222,8 +222,50 @@ export default function Account() {
             dataIndex: 'snftCount',
             render: (text, data) => <>{text}</>,
             ellipsis: true,
-            width: '170px',
+            width: '160px',
         },
+        // {
+        //     title: () => (
+        //         <div className={Account_ls.tablexbox}>
+        //             Owned NFTs
+        //             {transactionvaluecolor == 0 ? (
+        //                 <div className={Account_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TransactionValue.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TransactionValue.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : transactionvaluecolor == 1 ? (
+        //                 <div className={Account_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TransactionValue.bind(this, 1)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TransactionValue.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : (
+        //                 <div className={Account_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TransactionValue.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TransactionValue.bind(this, 2)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                 </div>
+        //             )}
+        //         </div>
+        //     ),
+        //     key: 'nftCount',
+        //     dataIndex: 'nftCount',
+        //     render: (text, data) => <>{text || 0}</>,
+        //     ellipsis: true,
+        //     width: '140px',
+        // },
     ];
 
     const onChange = (data) => {
@@ -377,7 +419,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTransactionvaluecolor(1);
-                setOrderdata('weight ASC');
+                setOrderdata('nft_count ASC');
             }
         } else {
             if (transactionvaluecolor == 2) {
@@ -385,7 +427,7 @@ export default function Account() {
                 setOrderdata('');
             } else {
                 setTransactionvaluecolor(2);
-                setOrderdata('weight DESC');
+                setOrderdata('nft_count DESC');
             }
         }
     }

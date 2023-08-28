@@ -449,6 +449,37 @@ export default function Validator() {
             title: (
                 <p className={Validator_ls.tablexbox}>
                     Reputation Score&nbsp;&nbsp;
+                    {totalAnnualizedcolor == 0 ? (
+                        <div className={Validator_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={AnnualizedValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={AnnualizedValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : totalAnnualizedcolor == 1 ? (
+                        <div className={Validator_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={AnnualizedValue.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={AnnualizedValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={Validator_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={AnnualizedValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={AnnualizedValue.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
+                    &nbsp;&nbsp;
                     <Tooltip
                         placement="left"
                         color="#4D4D55"
@@ -504,36 +535,6 @@ export default function Validator() {
                             <QuestionCircleOutlined />
                         </span>
                     </Tooltip>
-                    {totalAnnualizedcolor == 0 ? (
-                        <div className={Validator_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={AnnualizedValue.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={AnnualizedValue.bind(this, 2)}
-                            />
-                        </div>
-                    ) : totalAnnualizedcolor == 1 ? (
-                        <div className={Validator_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={AnnualizedValue.bind(this, 1)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                            <CaretDownOutlined
-                                onClick={AnnualizedValue.bind(this, 2)}
-                            />
-                        </div>
-                    ) : (
-                        <div className={Validator_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={AnnualizedValue.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={AnnualizedValue.bind(this, 2)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                        </div>
-                    )}
                 </p>
             ),
             dataIndex: 'score',

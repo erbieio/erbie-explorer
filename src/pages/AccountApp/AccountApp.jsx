@@ -139,6 +139,7 @@ export default function AccountApp() {
                         : 0}
                 </>
             ),
+            width: '200px',
         },
         {
             title: () => (
@@ -185,6 +186,7 @@ export default function AccountApp() {
                         : 0}
                 </>
             ),
+            width: '180px',
         },
         {
             title: () => (
@@ -220,15 +222,52 @@ export default function AccountApp() {
             ),
             key: 'snftCount',
             dataIndex: 'snftCount',
-            render: (text, data) => (
-                <>
-                    {text
-                        ? Number(utils.formatEther(String(text))).toFixed(2)
-                        : 0}
-                </>
-            ),
+            render: (text, data) => <>{text || 0}</>,
             ellipsis: true,
+            width: '150px',
         },
+        // {
+        //     title: () => (
+        //         <div className={AccountApp_ls.tablexbox}>
+        //             Owned NFTs
+        //             {transactionvaluecolor == 0 ? (
+        //                 <div className={AccountApp_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TransactionValue.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TransactionValue.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : transactionvaluecolor == 1 ? (
+        //                 <div className={AccountApp_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TransactionValue.bind(this, 1)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TransactionValue.bind(this, 2)}
+        //                     />
+        //                 </div>
+        //             ) : (
+        //                 <div className={AccountApp_ls.tablex}>
+        //                     <CaretUpOutlined
+        //                         onClick={TransactionValue.bind(this, 1)}
+        //                     />
+        //                     <CaretDownOutlined
+        //                         onClick={TransactionValue.bind(this, 2)}
+        //                         style={{ color: '#7AA4FF' }}
+        //                     />
+        //                 </div>
+        //             )}
+        //         </div>
+        //     ),
+        //     key: 'nftCount',
+        //     dataIndex: 'nftCount',
+        //     render: (text, data) => <>{text || 0}</>,
+        //     ellipsis: true,
+        //     width: '120px',
+        // },
     ];
 
     const onChange = (data) => {
@@ -382,7 +421,7 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTransactionvaluecolor(1);
-                setOrderdata('weight ASC');
+                setOrderdata('nft_count ASC');
             }
         } else {
             if (transactionvaluecolor == 2) {
@@ -390,7 +429,7 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTransactionvaluecolor(2);
-                setOrderdata('weight DESC');
+                setOrderdata('nft_count DESC');
             }
         }
     }

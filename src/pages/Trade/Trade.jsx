@@ -510,7 +510,7 @@ class Trade extends React.Component {
                             {/*<Title  visible={true}/>*/}
                             <Axis visible={false} />
                             <AntdTooltip showTitle={false} />
-                            <Coordinate type="theta" innerRadius={0.65} />
+                            <Coordinate type="theta" innerRadius={0.6} />
                             <Interval
                                 position="population"
                                 content={'Dera'}
