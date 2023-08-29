@@ -130,7 +130,7 @@ class AccountDetail extends React.Component {
                             {tags ? ellipsis(tags) : '-'}
                         </Link>
                     ),
-                    width: '120px',
+                    width: '140px',
                 },
                 {
                     title: 'Block Height',
@@ -206,7 +206,7 @@ class AccountDetail extends React.Component {
                         </Link>
                     ),
                     ellipsis: true,
-                    width: '120px',
+                    width: '140px',
                 },
                 {
                     title: 'Receiver',
@@ -749,6 +749,7 @@ class AccountDetail extends React.Component {
                         ) : (
                             ''
                         ),
+                    width: '180px',
                 },
                 {
                     title: 'Creation Time',

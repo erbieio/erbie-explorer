@@ -374,7 +374,13 @@ export default function NFTDetails(props) {
                             ) : (
                                 ''
                             )} */}
-                            <img src={nftimage} />
+                            <img
+                                src={nftimage}
+                                onError={() => {
+                                    let myimg = require('../../assets/images/NFTDetails/Slice 923.png');
+                                    setNftimage(myimg);
+                                }}
+                            />
                         </div>
                         <div
                             className={

@@ -32,6 +32,7 @@ import {
 } from '../../utils/methods/Methods';
 import { utils } from 'ethers';
 import imgmr from '../../assets/images/HomePage/mr.png';
+
 const { Option } = Select;
 export default function SNFTDetails(props) {
     // //console.log(props.location.state.snftid);
@@ -277,7 +278,13 @@ export default function SNFTDetails(props) {
                                 SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox
                             }
                         >
-                            <img src={snftimage} />
+                            <img
+                                src={snftimage}
+                                onError={() => {
+                                    let myimg = require('../../assets/images/NFTDetails/Slice 923.png');
+                                    setSnftimage(myimg);
+                                }}
+                            />
                             {/* 图片 */}
                         </div>
                         <div

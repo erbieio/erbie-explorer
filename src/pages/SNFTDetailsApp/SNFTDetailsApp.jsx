@@ -260,6 +260,10 @@ export default function SNFTDetailsApp(props) {
                                 SNFTDetailsApp_ls.SNFTDetailsBox_titleData_imgBox_img
                             }
                             src={snftimage}
+                            onError={() => {
+                                let myimg = require('../../assets/images/NFTDetails/Slice 923.png');
+                                setSnftimage(myimg);
+                            }}
                         />
                         {/* 图片 */}
                     </div>
