@@ -34,7 +34,7 @@ import {
     parseUrlParams,
     getDevice,
 } from '../../utils/methods/Methods';
-import imgmr from '../../assets/images/HomePage/mr.png';
+import myimg from '../../assets/images/NFTDetails/Slice 923.png';
 const { Option } = Select;
 export default function NFTDetails(props) {
     const [transactionmetadata, setTransactionmeta] = useState(1);
@@ -216,7 +216,7 @@ export default function NFTDetails(props) {
             if (data.code == 200) {
                 setNftimage('ipfs/' + data.data);
             } else {
-                setNftimage(imgmr);
+                setNftimage(myimg);
             }
         }
     };
@@ -321,12 +321,12 @@ export default function NFTDetails(props) {
                     setNftimage(JSON.parse(val.slice(1, val.length)).meta_url);
                 }
             } catch (error) {
-                setNftimage(imgmr);
+                setNftimage(myimg);
             }
         } else if (str.slice(0, 6) == '/ipfs/') {
             setNftimage(str);
         } else {
-            setNftimage(imgmr);
+            setNftimage(myimg);
         }
     }
     return (
@@ -377,7 +377,6 @@ export default function NFTDetails(props) {
                             <img
                                 src={nftimage}
                                 onError={() => {
-                                    let myimg = require('../../assets/images/NFTDetails/Slice 923.png');
                                     setNftimage(myimg);
                                 }}
                             />

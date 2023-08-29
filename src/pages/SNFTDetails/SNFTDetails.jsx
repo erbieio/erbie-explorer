@@ -281,8 +281,7 @@ export default function SNFTDetails(props) {
                             <img
                                 src={snftimage}
                                 onError={() => {
-                                    let myimg = require('../../assets/images/NFTDetails/Slice 923.png');
-                                    setSnftimage(myimg);
+                                    setSnftimage(imgmr);
                                 }}
                             />
                             {/* 图片 */}
