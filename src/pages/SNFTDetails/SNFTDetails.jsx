@@ -1,13 +1,17 @@
 import SNFTDetails_ls from './SNFTDetails.less';
 import SearchBox from '@/components/SearchBox/SearchBox';
-import Icon, { DownOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import Icon, {
+    DownOutlined,
+    QuestionCircleOutlined,
+    LoadingOutlined,
+} from '@ant-design/icons';
 import React, { useState, useEffect } from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
-import { Space, Table, Tag, Pagination, Tooltip, Select } from 'antd';
+import { Space, Table, Tag, Pagination, Tooltip, Select, Spin } from 'antd';
 import { Link, history } from 'umi';
 import {
     erbprice,
@@ -47,6 +51,15 @@ export default function SNFTDetails(props) {
     const [metadata, setMetadata] = useState({});
     // nft图片
     const [snftimage, setSnftimage] = useState('');
+    const antIcon = (
+        <LoadingOutlined
+            style={{
+                fontSize: 60,
+                color: '#9f54ba',
+            }}
+            spin
+        />
+    );
     const columns = [
         {
             title: 'TXN Hash',
@@ -110,6 +123,8 @@ export default function SNFTDetails(props) {
                     {text ? utils.formatEther(String(text)) : 0}
                 </span>
             ),
+            ellipsis: true,
+            width: '220px',
         },
     ];
     const onChange = (data) => {
@@ -278,12 +293,17 @@ export default function SNFTDetails(props) {
                                 SNFTDetails_ls.SNFTDetailsBox_titleData_imgBox
                             }
                         >
-                            <img
-                                src={snftimage}
-                                onError={() => {
-                                    setSnftimage(imgmr);
-                                }}
-                            />
+                            {snftimage ? (
+                                <img
+                                    src={snftimage}
+                                    onError={() => {
+                                        setSnftimage(imgmr);
+                                    }}
+                                />
+                            ) : (
+                                <Spin indicator={antIcon} />
+                            )}
+
                             {/* 图片 */}
                         </div>
                         <div

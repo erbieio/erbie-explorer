@@ -1,13 +1,17 @@
 import SNFTDetailsApp_ls from './SNFTDetailsApp.less';
 import SearchBox from '@/components/SearchBox/SearchBox';
-import Icon, { DownOutlined, QuestionCircleOutlined } from '@ant-design/icons';
+import Icon, {
+    DownOutlined,
+    QuestionCircleOutlined,
+    LoadingOutlined,
+} from '@ant-design/icons';
 import React, { useState, useEffect } from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
-import { Space, Table, Tag, Pagination, Tooltip, Select } from 'antd';
+import { Space, Table, Tag, Pagination, Tooltip, Select, Spin } from 'antd';
 import { Link } from 'umi';
 import {
     erbprice,
@@ -40,6 +44,15 @@ export default function SNFTDetailsApp(props) {
     const [metadata, setMetadata] = useState({});
     // nft图片
     const [snftimage, setSnftimage] = useState('');
+    const antIcon = (
+        <LoadingOutlined
+            style={{
+                fontSize: 24,
+                color: '#9f54ba',
+            }}
+            spin
+        />
+    );
     const columns = [
         {
             title: 'TXN Hash',
@@ -255,15 +268,16 @@ export default function SNFTDetailsApp(props) {
                             SNFTDetailsApp_ls.SNFTDetailsBox_titleData_imgBox
                         }
                     >
-                        <img
-                            className={
-                                SNFTDetailsApp_ls.SNFTDetailsBox_titleData_imgBox_img
-                            }
-                            src={snftimage}
-                            onError={() => {
-                                setSnftimage(imgmr);
-                            }}
-                        />
+                        {snftimage ? (
+                            <img
+                                src={snftimage}
+                                onError={() => {
+                                    setSnftimage(imgmr);
+                                }}
+                            />
+                        ) : (
+                            <Spin indicator={antIcon} />
+                        )}
                         {/* 图片 */}
                     </div>
                     <div

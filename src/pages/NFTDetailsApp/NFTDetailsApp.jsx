@@ -1,13 +1,13 @@
 import NFTDetailsApp_ls from './NFTDetailsApp.less';
 import SearchBox from '@/components/SearchBox/SearchBox';
-import Icon, { DownOutlined } from '@ant-design/icons';
+import Icon, { DownOutlined, LoadingOutlined } from '@ant-design/icons';
 import React, { useState, useEffect } from 'react';
 import AceEditor from 'react-ace';
 import 'ace-builds/src-noconflict/mode-java';
 import 'ace-builds/src-noconflict/theme-github';
 import 'ace-builds/src-noconflict/ext-language_tools';
 
-import { Space, Table, Tag, Pagination, Tooltip, Select } from 'antd';
+import { Space, Table, Tag, Pagination, Tooltip, Select, Spin } from 'antd';
 import { Link } from 'umi';
 import moment from 'moment';
 import {
@@ -47,6 +47,15 @@ export default function NFTDetailsApp(props) {
     const [metadata, setMetadata] = useState({});
     // nft图片
     const [nftimage, setNftimage] = useState('');
+    const antIcon = (
+        <LoadingOutlined
+            style={{
+                fontSize: 24,
+                color: '#9f54ba',
+            }}
+            spin
+        />
+    );
     const columns = [
         {
             title: 'TXN Hash',
@@ -352,12 +361,16 @@ export default function NFTDetailsApp(props) {
                         ) : (
                             ''
                         )} */}
-                        <img
-                            src={nftimage}
-                            onError={() => {
-                                setNftimage(myimg);
-                            }}
-                        />
+                        {nftimage ? (
+                            <img
+                                src={nftimage}
+                                onError={() => {
+                                    setNftimage(myimg);
+                                }}
+                            />
+                        ) : (
+                            <Spin indicator={antIcon} />
+                        )}
                     </div>
                     <div
                         className={

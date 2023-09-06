@@ -1242,7 +1242,13 @@ export default function HomePageApp() {
                         }
                     >
                         {/* {homepageimg(epochdata.collections)} */}
-                        <img src={nftimage} style={{ width: '116px' }} />
+                        <img
+                            src={nftimage}
+                            onError={() => {
+                                setNftimage(imgmr);
+                            }}
+                            style={{ width: '116px' }}
+                        />
                     </div>
                 </div>
                 <div className={HomePageApp_ls.HomePageAppbox_tablebigbox}>

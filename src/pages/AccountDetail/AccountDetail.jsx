@@ -338,6 +338,7 @@ class AccountDetail extends React.Component {
                         </>
                     ),
                     ellipsis: true,
+                    width: '120px',
                 },
             ],
             validatorcolumns: [
@@ -432,6 +433,7 @@ class AccountDetail extends React.Component {
                         </>
                     ),
                     ellipsis: true,
+                    width: '120px',
                 },
             ],
             nftcolumns: [
@@ -517,6 +519,7 @@ class AccountDetail extends React.Component {
                     render: (text) => (
                         <span>{hexToString(text) == 1 ? 'AI' : 'Normal'}</span>
                     ),
+                    width: '100px',
                 },
             ],
             snftcolumns: [
@@ -760,7 +763,7 @@ class AccountDetail extends React.Component {
                         </span>
                     ),
                     ellipsis: true,
-                    width: '250px',
+                    width: '180px',
                 },
             ],
             creatorcolumns: [

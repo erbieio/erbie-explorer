@@ -1267,7 +1267,13 @@ export default function HomePage() {
                             }
                         >
                             {/* {homepageimg(epochdata.collections)} */}
-                            <img src={nftimage} style={{ width: '314px' }} />
+                            <img
+                                src={nftimage}
+                                onError={() => {
+                                    setNftimage(imgmr);
+                                }}
+                                style={{ width: '314px' }}
+                            />
                         </div>
                     </div>
                 </div>

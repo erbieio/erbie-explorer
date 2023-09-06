@@ -846,6 +846,7 @@ export default function ValidatorApp() {
                                 className={
                                     ValidatorApp_ls.ValidatorBox_headerTitle_d_left_data
                                 }
+                                style={{ marginBottom: '0px' }}
                             >
                                 {totaldata.totalPledge
                                     ? Number(
