@@ -250,7 +250,7 @@ class Trade extends React.Component {
                     title: 'Status',
                     key: 'status',
                     dataIndex: 'status',
-                    width: 150,
+                    width: 120,
                     render: (text, data) => (
                         <span>
                             {
@@ -588,27 +588,27 @@ class Trade extends React.Component {
                         </Chart>
                     </div>
                 </div>
-                <div className={Trade_ls.TradeBox1} id="TradeTableApp">
-                    <p className={Trade_ls.TradeTitle}>TRANSACT</p>
-                    <Table
-                        columns={this.state.columns}
-                        dataSource={this.state.tableData}
-                        pagination={false}
-                        scroll={{ x: 'max-content' }}
-                    />
-                    <div
-                        className={Trade_ls.SNFTBox_Pagination}
-                        id="SNFTBoxPagination"
-                    >
-                        <Pagination
-                            defaultCurrent={1}
-                            total={this.state.tableTotal}
-                            onChange={this.state.onChange}
-                            pageSize={this.state.pageOption.page_size}
-                            showSizeChanger={false}
-                            current={this.state.pageOption.page}
+                <div className={Trade_ls.tablebox}>
+                    <div className={Trade_ls.TradeBox1} id="TradeTableApp">
+                        <p className={Trade_ls.TradeTitle}>TRANSACT</p>
+                        <Table
+                            columns={this.state.columns}
+                            dataSource={this.state.tableData}
+                            pagination={false}
+                            // scroll={{ x: 'max-content' }}
                         />
-                        <div className={Trade_ls.flexBox}>
+                        <div
+                            className={Trade_ls.SNFTBox_Pagination}
+                            id="SNFTBoxPagination"
+                        >
+                            <Pagination
+                                defaultCurrent={1}
+                                total={this.state.tableTotal}
+                                onChange={this.state.onChange}
+                                pageSize={this.state.pageOption.page_size}
+                                showSizeChanger={false}
+                                current={this.state.pageOption.page}
+                            />
                             <div className={Trade_ls.SNFTBox_Pagination_d}>
                                 16/Page
                             </div>

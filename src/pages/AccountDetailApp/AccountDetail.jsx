@@ -1461,7 +1461,7 @@ class AccountDetail extends React.Component {
                                                         <Link
                                                             to={{
                                                                 pathname:
-                                                                    '/BlackholeBlockDeta',
+                                                                    '/BlackholeBlockDetaApp',
                                                                 state: {
                                                                     blockid:
                                                                         item.startNumber,
@@ -1483,7 +1483,7 @@ class AccountDetail extends React.Component {
                                                         <Link
                                                             to={{
                                                                 pathname:
-                                                                    '/BlockDetails',
+                                                                    '/BlockDetailsApp',
                                                                 state: {
                                                                     blockid:
                                                                         item.startNumber,
@@ -1508,7 +1508,7 @@ class AccountDetail extends React.Component {
 
                                                 <Link
                                                     to={{
-                                                        pathname: `/TradeDetail`,
+                                                        pathname: `/TradeDetailApp`,
                                                         state: item.tx_hash,
                                                     }}
                                                     style={{
@@ -1632,7 +1632,8 @@ class AccountDetail extends React.Component {
                                     '0x0000000000000000000000000000000000000000' ? (
                                         <Link
                                             to={{
-                                                pathname: '/BlackholeBlockDeta',
+                                                pathname:
+                                                    '/BlackholeBlockDetaApp',
                                                 state: {
                                                     blockid: item.block_number,
                                                 },
@@ -1651,7 +1652,7 @@ class AccountDetail extends React.Component {
                                     ) : (
                                         <Link
                                             to={{
-                                                pathname: '/BlockDetails',
+                                                pathname: '/BlockDetailsApp',
                                                 state: {
                                                     blockid: item.block_number,
                                                 },
@@ -1674,7 +1675,7 @@ class AccountDetail extends React.Component {
 
                                 <Link
                                     to={{
-                                        pathname: `/TradeDetail`,
+                                        pathname: `/TradeDetailApp`,
                                         state: item.tx_hash,
                                     }}
                                     style={{
