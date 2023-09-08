@@ -113,7 +113,7 @@ export default function SNFTApp() {
         {
             title: () => (
                 <div className={SNFTApp_ls.tablexbox2}>
-                    <span>SNFT Number</span>
+                    <span>SNFT Number</span>&nbsp;
                     <Tooltip
                         placement="bottom"
                         title={() => {

@@ -36,6 +36,8 @@ export default function ValidatorApp() {
     const [transactionvaluecolor, setTransactionvaluecolor] = useState(0);
     // totalAnnualizedcolor
     const [totalAnnualizedcolor, setTotalAnnualizedcolor] = useState(0);
+    // requtationscore
+    const [requtationscorecolor, setRequtationscorecolor] = useState(0);
     //分页排序order参数
     const [orderdata, setOrderdata] = useState('');
     const columns = [
@@ -147,48 +149,6 @@ export default function ValidatorApp() {
                 </>
             ),
             width: '175px',
-        },
-        {
-            title: () => (
-                <div className={ValidatorApp_ls.tablexbox}>
-                    Annualized Return
-                    {totalAnnualizedcolor == 0 ? (
-                        <div className={ValidatorApp_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalAnnualized.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalAnnualized.bind(this, 2)}
-                            />
-                        </div>
-                    ) : totalAnnualizedcolor == 1 ? (
-                        <div className={ValidatorApp_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalAnnualized.bind(this, 1)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalAnnualized.bind(this, 2)}
-                            />
-                        </div>
-                    ) : (
-                        <div className={ValidatorApp_ls.tablex}>
-                            <CaretUpOutlined
-                                onClick={TotalAnnualized.bind(this, 1)}
-                            />
-                            <CaretDownOutlined
-                                onClick={TotalAnnualized.bind(this, 2)}
-                                style={{ color: '#7AA4FF' }}
-                            />
-                        </div>
-                    )}
-                </div>
-            ),
-            dataIndex: 'apr',
-            key: 'apr',
-            render: (text, data) => (
-                <>{text ? (text * 100).toFixed(2) : '0'} %</>
-            ),
         },
         {
             title: () => (
@@ -492,7 +452,7 @@ export default function ValidatorApp() {
             title: (
                 <p className={ValidatorApp_ls.tablexbox}>
                     Reputation Score&nbsp;&nbsp;
-                    {totalAnnualizedcolor == 0 ? (
+                    {requtationscorecolor == 0 ? (
                         <div className={ValidatorApp_ls.tablex}>
                             <CaretUpOutlined
                                 onClick={AnnualizedValue.bind(this, 1)}
@@ -501,7 +461,7 @@ export default function ValidatorApp() {
                                 onClick={AnnualizedValue.bind(this, 2)}
                             />
                         </div>
-                    ) : totalAnnualizedcolor == 1 ? (
+                    ) : requtationscorecolor == 1 ? (
                         <div className={ValidatorApp_ls.tablex}>
                             <CaretUpOutlined
                                 onClick={AnnualizedValue.bind(this, 1)}
@@ -638,6 +598,7 @@ export default function ValidatorApp() {
         setFeeratecolor(0);
         setTransactionvaluecolor(0);
         setTotalAnnualizedcolor(0);
+        setRequtationscorecolor(0);
         if (text == 1) {
             if (stakevaluecolor == 1) {
                 setStakevaluecolor(0);
@@ -663,6 +624,7 @@ export default function ValidatorApp() {
         setFeeratecolor(0);
         setTransactionvaluecolor(0);
         setTotalAnnualizedcolor(0);
+        setRequtationscorecolor(0);
         if (text == 1) {
             if (totalcollectionscolor == 1) {
                 setTotalcollectionscolor(0);
@@ -688,6 +650,7 @@ export default function ValidatorApp() {
         setFeeratecolor(0);
         setTransactionvaluecolor(0);
         setTotalnftscolor(0);
+        setRequtationscorecolor(0);
         if (text == 1) {
             if (totalAnnualizedcolor == 1) {
                 setTotalAnnualizedcolor(0);
@@ -713,6 +676,7 @@ export default function ValidatorApp() {
         setFeeratecolor(0);
         setTotalAnnualizedcolor(0);
         setTransactionvaluecolor(0);
+        setRequtationscorecolor(0);
         if (text == 1) {
             if (totalnftscolor == 1) {
                 setTotalnftscolor(0);
@@ -738,6 +702,7 @@ export default function ValidatorApp() {
         setTotalnftscolor(0);
         setTransactionvaluecolor(0);
         setTotalAnnualizedcolor(0);
+        setRequtationscorecolor(0);
         if (text == 1) {
             if (feeratecolor == 1) {
                 setFeeratecolor(0);
@@ -763,6 +728,7 @@ export default function ValidatorApp() {
         setTotalnftscolor(0);
         setFeeratecolor(0);
         setTotalAnnualizedcolor(0);
+        setRequtationscorecolor(0);
         if (text == 1) {
             if (transactionvaluecolor == 1) {
                 setTransactionvaluecolor(0);
@@ -788,20 +754,21 @@ export default function ValidatorApp() {
         setTotalnftscolor(0);
         setFeeratecolor(0);
         setTransactionvaluecolor(0);
+        setTotalAnnualizedcolor(0);
         if (text == 1) {
-            if (totalAnnualizedcolor == 1) {
-                setTotalAnnualizedcolor(0);
+            if (requtationscorecolor == 1) {
+                setRequtationscorecolor(0);
                 setOrderdata('');
             } else {
-                setTotalAnnualizedcolor(1);
+                setRequtationscorecolor(1);
                 setOrderdata('score ASC');
             }
         } else {
-            if (totalAnnualizedcolor == 2) {
-                setTotalAnnualizedcolor(0);
+            if (requtationscorecolor == 2) {
+                setRequtationscorecolor(0);
                 setOrderdata('');
             } else {
-                setTotalAnnualizedcolor(2);
+                setRequtationscorecolor(2);
                 setOrderdata('score DESC');
             }
         }

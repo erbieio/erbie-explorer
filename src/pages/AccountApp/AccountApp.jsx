@@ -97,7 +97,7 @@ export default function AccountApp() {
         {
             title: () => (
                 <div className={AccountApp_ls.tablexbox}>
-                    Validator Pledge(ERB)
+                    Total Staking
                     {totalcollectionscolor == 0 ? (
                         <div className={AccountApp_ls.tablex}>
                             <CaretUpOutlined
@@ -130,8 +130,8 @@ export default function AccountApp() {
                     )}
                 </div>
             ),
-            dataIndex: 'validatorAmount',
-            key: 'validatorAmount',
+            dataIndex: 'stakerAmount',
+            key: 'stakerAmount',
             render: (text, data) => (
                 <>
                     {text
@@ -139,12 +139,11 @@ export default function AccountApp() {
                         : 0}
                 </>
             ),
-            width: '200px',
         },
         {
             title: () => (
                 <div className={AccountApp_ls.tablexbox}>
-                    Staker Pledge(ERB)
+                    Total Staked
                     {totalnftscolor == 0 ? (
                         <div className={AccountApp_ls.tablex}>
                             <CaretUpOutlined
@@ -177,8 +176,8 @@ export default function AccountApp() {
                     )}
                 </div>
             ),
-            dataIndex: 'exchangerAmount',
-            key: 'exchangerAmount',
+            dataIndex: 'validatorAmount',
+            key: 'validatorAmount',
             render: (text, data) => (
                 <>
                     {text
@@ -186,7 +185,6 @@ export default function AccountApp() {
                         : 0}
                 </>
             ),
-            width: '180px',
         },
         {
             title: () => (
@@ -222,9 +220,9 @@ export default function AccountApp() {
             ),
             key: 'snftCount',
             dataIndex: 'snftCount',
-            render: (text, data) => <>{text || 0}</>,
+            render: (text, data) => <>{text}</>,
             ellipsis: true,
-            width: '150px',
+            width: '160px',
         },
         // {
         //     title: () => (
@@ -266,7 +264,7 @@ export default function AccountApp() {
         //     dataIndex: 'nftCount',
         //     render: (text, data) => <>{text || 0}</>,
         //     ellipsis: true,
-        //     width: '120px',
+        //     width: '140px',
         // },
     ];
 
@@ -349,7 +347,7 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(1);
-                setOrderdata('validator_amount ASC');
+                setOrderdata('staker_amount ASC');
             }
         } else {
             if (totalcollectionscolor == 2) {
@@ -357,7 +355,7 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTotalcollectionscolor(2);
-                setOrderdata('validator_amount DESC');
+                setOrderdata('staker_amount DESC');
             }
         }
     }
@@ -373,7 +371,7 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTotalnftscolor(1);
-                setOrderdata('exchanger_amount ASC');
+                setOrderdata('validator_amount ASC');
             }
         } else {
             if (totalnftscolor == 2) {
@@ -381,7 +379,7 @@ export default function AccountApp() {
                 setOrderdata('');
             } else {
                 setTotalnftscolor(2);
-                setOrderdata('exchanger_amount DESC');
+                setOrderdata('validator_amount DESC');
             }
         }
     }

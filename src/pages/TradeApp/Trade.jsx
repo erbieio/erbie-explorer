@@ -147,8 +147,8 @@ class Trade extends React.Component {
                             {ellipsis(text)}
                         </Link>
                     ),
-                    // ellipsis: true,
-                    width: 150,
+                    ellipsis: true,
+                    width: 140,
                 },
                 {
                     title: 'TXN Time',
@@ -161,14 +161,14 @@ class Trade extends React.Component {
                             )}
                         </span>
                     ),
-                    width: 180,
-                    // ellipsis: true,
+                    width: 160,
+                    ellipsis: true,
                 },
                 {
                     title: 'Block Height',
                     dataIndex: 'blockNumber',
                     key: 'blockNumber',
-                    width: 150,
+                    width: 120,
                     render: (text, data) => (
                         <Link
                             to={{
@@ -231,10 +231,11 @@ class Trade extends React.Component {
                     title: 'Value (ERB)',
                     key: 'value',
                     dataIndex: 'value',
-                    width: 150,
+                    width: 100,
                     render: (text, data) => (
                         <>{text ? utils.formatEther(text) : 0}</>
                     ),
+                    ellipsis: true,
                 },
                 {
                     title: 'TXN Type',
@@ -250,7 +251,7 @@ class Trade extends React.Component {
                     title: 'Status',
                     key: 'status',
                     dataIndex: 'status',
-                    width: 120,
+                    width: 100,
                     render: (text, data) => (
                         <span>
                             {
@@ -277,7 +278,7 @@ class Trade extends React.Component {
                     title: 'TXN Fee',
                     key: 'aaaa',
                     dataIndex: 'aaaa',
-                    width: 150,
+                    width: 180,
                     render: (text, data) => (
                         <span>
                             {data
