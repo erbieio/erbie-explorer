@@ -22,6 +22,7 @@ export default function BlockChain() {
     const [bigheightblock, setBigheightblock] = useState(0);
     //倍数
     const [multiple, setMultiple] = useState(0.16);
+    const [titledata, setTitledata] = useState('ViewBlocks');
     const columns = [
         {
             title: 'Block Height',
@@ -183,6 +184,11 @@ export default function BlockChain() {
             }
         }
     }
+    function onChangeExchange(e) {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+        setTitledata(e.target.value);
+    }
     return (
         <>
             <div className={BlockChain_ls.BlockChainBox}>
@@ -266,14 +272,37 @@ export default function BlockChain() {
                         />
                     </div>
                 </div>
+                <div
+                    style={{ marginLeft: 40 }}
+                    className={BlockChain_ls.changeButton}
+                >
+                    <Radio.Group
+                        value={titledata}
+                        onChange={onChangeExchange}
+                        className={BlockChain_ls.AccountDetailButtonGroup}
+                        style={{
+                            marginBottom: 0,
+                        }}
+                    >
+                        <Radio.Button defaultChecked={true} value="ViewBlocks">
+                            View Blocks
+                        </Radio.Button>
+                        <Radio.Button value="ViewBlackholeBlocks">
+                            View Blackhole Blocks
+                        </Radio.Button>
+                        <Radio.Button value="ViewPenalty">
+                            View Penalty
+                        </Radio.Button>
+                    </Radio.Group>
+                </div>
                 {/* 表格 */}
                 <div
                     className={BlockChain_ls.BlockChainBox_table}
                     id="BlockChainTable"
                 >
-                    <p className={BlockChain_ls.BlockChainBox_table_title}>
+                    {/* <p className={BlockChain_ls.BlockChainBox_table_title}>
                         BLOCK INFORMATION
-                    </p>
+                    </p> */}
                     <Table
                         columns={columns}
                         dataSource={blockdata.blocks}
