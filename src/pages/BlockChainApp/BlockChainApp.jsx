@@ -1,5 +1,5 @@
 import BlockChainApp_ls from './BlockChainApp.less';
-import { Space, Table, Tag, Pagination } from 'antd';
+import { Space, Table, Tag, Pagination, Radio } from 'antd';
 import { Link } from 'umi';
 import {
     erbprice,
@@ -22,6 +22,7 @@ export default function BlockChainApp() {
     const [bigheightblock, setBigheightblock] = useState(0);
     //倍数
     const [multiple, setMultiple] = useState(0.16);
+    const [titledata, setTitledata] = useState('ViewBlocks');
     const columns = [
         {
             title: 'Block Height',
@@ -186,6 +187,11 @@ export default function BlockChainApp() {
             }
         }
     }
+    function onChangeExchange(e) {
+        e.stopPropagation();
+        e.nativeEvent.stopImmediatePropagation();
+        setTitledata(e.target.value);
+    }
     return (
         <>
             <div className={BlockChainApp_ls.BlockChainAppBox}>
@@ -231,6 +237,29 @@ export default function BlockChainApp() {
                             src={require('../../assets/images/BlockChainApp/3.png')}
                         />
                     </div>
+                </div>
+                <div
+                    style={{ marginLeft: 40 }}
+                    className={BlockChainApp_ls.changeButton}
+                >
+                    <Radio.Group
+                        value={titledata}
+                        onChange={onChangeExchange}
+                        className={BlockChainApp_ls.AccountDetailButtonGroup}
+                        style={{
+                            marginBottom: 0,
+                        }}
+                    >
+                        <Radio.Button defaultChecked={true} value="ViewBlocks">
+                            View Blocks
+                        </Radio.Button>
+                        <Radio.Button value="ViewBlackholeBlocks">
+                            View Blackhole Blocks
+                        </Radio.Button>
+                        <Radio.Button value="ViewPenalty">
+                            View Penalty
+                        </Radio.Button>
+                    </Radio.Group>
                 </div>
                 {/* 表格 */}
                 <div className={BlockChainApp_ls.tablebox}>
