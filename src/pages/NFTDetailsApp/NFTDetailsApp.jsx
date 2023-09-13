@@ -363,11 +363,11 @@ export default function NFTDetailsApp(props) {
                         )} */}
                         {nftimage ? (
                             <img
-                                // src={nftimage}
-                                src={myimg}
-                                // onError={() => {
-                                //     setNftimage(myimg);
-                                // }}
+                                src={nftimage}
+                                // src={myimg}
+                                onError={() => {
+                                    setNftimage(myimg);
+                                }}
                             />
                         ) : (
                             <Spin indicator={antIcon} />

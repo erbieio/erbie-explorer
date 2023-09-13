@@ -27,6 +27,7 @@ export const block = (data) => {
         params: {
             page: data.page,
             page_size: data.page_size,
+            filter: data.filter,
         },
     });
 };

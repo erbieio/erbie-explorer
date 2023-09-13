@@ -18,6 +18,8 @@ export default function BlockChainApp() {
     const [blockdata, setBlockdata] = useState({});
     //总数
     const [totaldata, setTotaldata] = useState({});
+    //筛选
+    const [filterdata, setFilterdata] = useState(0);
     //最高区块
     const [bigheightblock, setBigheightblock] = useState(0);
     //倍数
@@ -145,6 +147,7 @@ export default function BlockChainApp() {
     let pagedata = {
         page: pagenumber,
         page_size: pagenumbersize,
+        filter: filterdata,
     };
     useEffect(() => {
         block_q(pagedata);
@@ -153,6 +156,9 @@ export default function BlockChainApp() {
     useEffect(() => {
         block_q(pagedata);
     }, [pagenumber]);
+    useEffect(() => {
+        block_q(pagedata);
+    }, [filterdata]);
     useEffect(() => {
         let time = new Date();
         let year = time.getFullYear();
@@ -191,6 +197,13 @@ export default function BlockChainApp() {
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
         setTitledata(e.target.value);
+        if (e.target.value == 'ViewBlocks') {
+            setFilterdata(0);
+        } else if (e.target.value == 'ViewBlackholeBlocks') {
+            setFilterdata(1);
+        } else if (e.target.value == 'ViewPenalty') {
+            setFilterdata(2);
+        }
     }
     return (
         <>
