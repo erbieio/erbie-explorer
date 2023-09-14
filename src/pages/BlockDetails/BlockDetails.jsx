@@ -557,6 +557,88 @@ export default function BlockDetails(props) {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div
+                            className={
+                                BlockDetails_ls.BlockDetailsBox_databox_right
+                            }
+                        >
+                            <div
+                                className={
+                                    BlockDetails_ls.BlockDetailsBox_databox_left_transverse
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Block Size
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ cursor: 'auto' }}
+                                >
+                                    {soloblockdata.size} bytes
+                                </div>
+                            </div>
+                            <div
+                                className={
+                                    BlockDetails_ls.BlockDetailsBox_databox_left_transverse
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Gas Price
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ cursor: 'auto' }}
+                                >
+                                    {gasusedlvsolo(
+                                        soloblocktransactiondata.transactions,
+                                    ) / 1000000000}{' '}
+                                    Gwei
+                                </div>
+                            </div>
+                            <div
+                                className={
+                                    BlockDetails_ls.BlockDetailsBox_databox_left_transverse
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
+                                >
+                                    Gas Limit
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ cursor: 'auto' }}
+                                >
+                                    {soloblockdata.gasLimit}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={BlockDetails_ls.BlockDetailsBox_titlebox}>
+                    <div className={BlockDetails_ls.BlockDetailsBox_databox}>
+                        <div
+                            className={
+                                BlockDetails_ls.BlockDetailsBox_databox_left
+                            }
+                        >
                             <div
                                 className={
                                     BlockDetails_ls.BlockDetailsBox_databox_left_transverse
@@ -680,72 +762,6 @@ export default function BlockDetails(props) {
                                         BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
                                     }
                                 >
-                                    Block Size
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ cursor: 'auto' }}
-                                >
-                                    {soloblockdata.size} bytes
-                                </div>
-                            </div>
-                            <div
-                                className={
-                                    BlockDetails_ls.BlockDetailsBox_databox_left_transverse
-                                }
-                            >
-                                <div
-                                    className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
-                                    }
-                                >
-                                    Gas Price
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ cursor: 'auto' }}
-                                >
-                                    {gasusedlvsolo(
-                                        soloblocktransactiondata.transactions,
-                                    ) / 1000000000}{' '}
-                                    Gwei
-                                </div>
-                            </div>
-                            <div
-                                className={
-                                    BlockDetails_ls.BlockDetailsBox_databox_left_transverse
-                                }
-                            >
-                                <div
-                                    className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
-                                    }
-                                >
-                                    Gas Limit
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ cursor: 'auto' }}
-                                >
-                                    {soloblockdata.gasLimit}
-                                </div>
-                            </div>
-                            <div
-                                className={
-                                    BlockDetails_ls.BlockDetailsBox_databox_left_transverse
-                                }
-                            >
-                                <div
-                                    className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
-                                    }
-                                >
                                     Delegated Accounts
                                 </div>
                                 <div
@@ -778,7 +794,6 @@ export default function BlockDetails(props) {
                         </div>
                     </div>
                 </div>
-
                 <div
                     className={BlockDetails_ls.BlockDetailsBox_table}
                     id="BlockDetailsTable"
