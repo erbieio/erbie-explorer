@@ -28,12 +28,12 @@ export default function TermsOfServiceApp() {
                         individually as "Party".
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
-                        These Terms govern the access and use of the Erbie
-                        administration portal Digital Wallet 1.0, Erbie
-                        Blockchain Explorer, and Erbie Faucet (together, the
-                        “Services”) and the website: www.erbie.io and associated
-                        sub-domains (together, the “Websites”) (The Services and
-                        Websites together, the “Applications”).
+                        These Terms govern the access and use of the ErbieChain
+                        Explorer and Erbie Faucet (together, the “Services”) and
+                        the websites: www.erbie.io, global.erbie.io,
+                        www.erbiescan.io and associated sub-domains (together,
+                        the “Websites”) (The Services and Websites together, the
+                        “Applications”).
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
                         Upon accessing, downloading, installing, or otherwise
@@ -72,9 +72,9 @@ export default function TermsOfServiceApp() {
                         In your use of any testnet within the Applications you
                         may accumulate “testnet tokens” or tokens with similar
                         name and nature, which are not, and shall never convert
-                        to or accrue to become "mainnet tokens" of the Erbie
-                        Blockchain developed by ERBIE Pte. Ltd. or any other
-                        tokens, virtual currency or virtual asset. Testnet
+                        to or accrue to become "mainnet tokens" of the
+                        ErbieChain developed by Wormholes Lab Pte. Ltd. or any
+                        other tokens, virtual currency or virtual asset. Testnet
                         tokens are virtual items with no monetary value. Testnet
                         tokens do not constitute any currency or property of any
                         type and are not redeemable, refundable or eligible for
@@ -116,7 +116,7 @@ export default function TermsOfServiceApp() {
                         form part of these Terms. You must obtain all necessary
                         consents from the relevant individual to enable us to
                         collect, use, hold and process that information in
-                        accordance with these Terms and the Privacy Notice.
+                        accordance with these Terms and the Privacy Notice
                     </p>
                     <p className={TermsOfServiceApp_ls.name}>
                         3. INTELLECTUAL PROPERTY:
@@ -404,7 +404,9 @@ export default function TermsOfServiceApp() {
                         agreement. Instead, all relevant documents shall be
                         construed as broadly as possible.
                     </p>
-                    <p className={TermsOfServiceApp_ls.name}>8. TERMINATION:</p>
+                    <p className={TermsOfServiceApp_ls.name}>
+                        8. TERMINATION: 
+                    </p>
                     <p className={TermsOfServiceApp_ls.text}>
                         The Company shall have the right, in its sole
                         discretion, to immediately modify, suspend or terminate,
@@ -449,7 +451,7 @@ export default function TermsOfServiceApp() {
                         caused as a result of such withdrawal or downtime.
                     </p>
                     <p className={TermsOfServiceApp_ls.name}>
-                        10. THIRD PARTY WEBSITES OR RESOURCES:
+                        10. THIRD PARTY WEBSITES OR RESOURCES
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
                         The Applications may contain links to third-party
@@ -478,7 +480,7 @@ export default function TermsOfServiceApp() {
                         compensation.
                     </p>
                     <p className={TermsOfServiceApp_ls.name}>
-                        11. WARRANTIES, LIABILITY AND DISCLAIMERS:
+                        11. WARRANTIES, LIABILITY AND DISCLAIMERS
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
                         TO THE EXTENT PERMITTED UNDER APPLICABLE LAW, THE
@@ -540,7 +542,10 @@ export default function TermsOfServiceApp() {
                         PARTY SERVICE PROVIDER IN RESPECT OF ANY SYSTEMS USED IN
                         CONNECTION WITH THE PROVISION OF THE APPLICATIONS,
                         WHETHER THESE LEAD TO DELAYS OR DISRUPTIONS IN THE
-                        APPLICATIONS OR NOT; OR · ANY FORCE MAJEURE EVENT,
+                        APPLICATIONS OR NOT; OR
+                    </p>
+                    <p className={TermsOfServiceApp_ls.text}>
+                        · ANY FORCE MAJEURE EVENT,
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
                         WHETHER BASED ON WARRANTY, CONTRACT, TORT (INCLUDING
@@ -554,7 +559,7 @@ export default function TermsOfServiceApp() {
                         FULLEST EXTENT PERMITTED BY LAW.
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
-                        OU ASSUME ALL RISKS RELATING TO YOUR USE OF THE
+                        YOU ASSUME ALL RISKS RELATING TO YOUR USE OF THE
                         APPLICATIONS WHICH INCLUDES THE RISKS GENERALLY LINKED
                         TO THE USE OF THE INTERNET, MOBILE OR DESKTOP APPS,
                         BLOCKCHAIN TECHNOLOGY, CYBERSECURITY, LICENSES,
@@ -583,15 +588,15 @@ export default function TermsOfServiceApp() {
                     <p className={TermsOfServiceApp_ls.text}>
                         NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED
                         HEREIN, IN NO EVENT SHALL THE MAXIMUM AGGREGATE
-                        LIABILITY OF ERBIE ARISING OUT OF OR IN ANY WAY RELATED
-                        TO THESE TERMS OF SERVICE, EXCEED THE GREATER OF (A)
-                        US$100 OR (B) THE AMOUNT RECEIVED BY ERBIE FOR ITS
-                        SERVICES DIRECTLY RELATING TO THE ITEMS THAT ARE THE
+                        LIABILITY OF THE COMPANY ARISING OUT OF OR IN ANY WAY
+                        RELATED TO THESE TERMS OF SERVICE, EXCEED THE GREATER OF
+                        (A) US$100 OR (B) THE AMOUNT RECEIVED BY THE COMPANY FOR
+                        ITS SERVICES DIRECTLY RELATING TO THE ITEMS THAT ARE THE
                         SUBJECT OF THE CLAIM. THE FOREGOING LIMITATIONS WILL
                         APPLY EVEN IF THE ABOVE STATED REMEDY FAILS OF ITS
                         ESSENTIAL PURPOSE.
                     </p>
-                    <p className={TermsOfServiceApp_ls.name}>12. INDEMNITY:</p>
+                    <p className={TermsOfServiceApp_ls.name}>12. INDEMNITY</p>
                     <p className={TermsOfServiceApp_ls.text}>
                         TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW YOU
                         INDEMNIFY US AND OUR RESPECTIVE PAST, PRESENT AND FUTURE
@@ -615,7 +620,7 @@ export default function TermsOfServiceApp() {
                     <p className={TermsOfServiceApp_ls.text}>
                         · ANY USER CONTENT YOU MAY PROVIDE.
                     </p>
-                    <p className={TermsOfServiceApp_ls.name}>13. GENERAL:</p>
+                    <p className={TermsOfServiceApp_ls.name}>13. GENERAL</p>
                     <p className={TermsOfServiceApp_ls.text}>
                         These Terms constitute the entire and exclusive
                         understanding and agreement between us and you in
@@ -669,9 +674,6 @@ export default function TermsOfServiceApp() {
                         the other.
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
-                        · ANY USER CONTENT YOU MAY PROVIDE.
-                    </p>
-                    <p className={TermsOfServiceApp_ls.text}>
                         Neither us, nor any other party involved in creating,
                         producing, or delivering the Applications shall be
                         liable for any failure to perform its obligations under
@@ -701,14 +703,14 @@ export default function TermsOfServiceApp() {
                         or the Applications including with respect to
                         applicability, breach, termination, validity or
                         enforceability thereof (each a Dispute) the parties
-                        irrevocably submit to the exclusive jurisdiction of the
-                        courts of the Cayman Islands and waive any objections to
-                        such Dispute being heard in such courts on the grounds
-                        of venue or on the grounds that the Dispute has been
-                        brought in an inconvenient forum.
+                        irrevocably submit to the non-exclusive jurisdiction of
+                        the courts of the Cayman Islands and waive any
+                        objections to such Dispute being heard in such courts on
+                        the grounds of venue or on the grounds that the Dispute
+                        has been brought in an inconvenient forum.
                     </p>
                     <p className={TermsOfServiceApp_ls.text}>
-                        Last Updated: 12 July 2023
+                        Last Updated: 14 September 2023
                     </p>
                 </div>
             </div>

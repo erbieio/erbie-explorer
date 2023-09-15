@@ -16,10 +16,10 @@ export default function PrivacyNotice() {
                         how we collect and process your personal information,
                         how we define it, and how we will handle it. By using
                         any of our services, including but not limited to our
-                        Limino Digital Wallet, Erbie Blockchain Explorer, Erbie
-                        Faucet or by purchasing Erbie Blockchain's native ERB
-                        tokens (“Tokens”)(together “our Services”) or by
-                        accessing our Website www.erbie.io, you accept and
+                        ErbieChain Explorer and Erbie Faucet or by purchasing
+                        ErbieChain's native ERB tokens (“Tokens”)(together “our
+                        Services”) or by accessing our Website: www.erbie.io,
+                        global.erbie.io and www.erbiescan.io, you accept and
                         consent to the practices described in this notice. If
                         you do not wish for your personal information to be used
                         in the manner described within this Notice, you should
@@ -66,8 +66,7 @@ export default function PrivacyNotice() {
                     <p className={PrivacyNotice_ls.text}>
                         · The Notice does not address, and we are not
                         responsible for, the privacy practices of any other
-                        parties, or data publicly available on the Erbie
-                        Blockchain.
+                        parties, or data publicly available on the ErbieChain.
                     </p>
                     <p className={PrivacyNotice_ls.text}>
                         · We do not knowingly collect or ask for data, including
@@ -119,7 +118,7 @@ export default function PrivacyNotice() {
                         · your wallet address, any other cryptocurrency wallet
                         address or bank account details and any related
                         transaction details recorded by our Services and/or the
-                        Erbie Blockchain.
+                        ErbieChain.
                     </p>
                     <p className={PrivacyNotice_ls.text}>
                         We may also collect information that you voluntarily
@@ -152,13 +151,11 @@ export default function PrivacyNotice() {
                         browser when you visit a website), web beacons and
                         similar tracking technologies (collectively, Cookies) to
                         collect and store certain information when you use,
-                        access, or interact with our Website.
-                    </p>
-                    <p className={PrivacyNotice_ls.text}>
-                        We may, for example, use Cookies to collect information
-                        about the type of device you use to access the Website
-                        or our Services, your browser type, your IP address or
-                        other identifier, your general geographic location as
+                        access, or interact with our Website. We may, for
+                        example, use Cookies to collect information about the
+                        type of device you use to access the Website or our
+                        Services, your browser type, your IP address or other
+                        identifier, your general geographic location as
                         indicated by your IP address, features you access and
                         whether and how you interact with content.
                     </p>
@@ -564,7 +561,7 @@ export default function PrivacyNotice() {
                         information that you have provided, we will notify you
                         by posting notice of the changes in a clear and
                         conspicuous manner on our Website or, if we hold your
-                        email address, by email.
+                        email address, we may also notify you by email.
                     </p>
                     <p className={PrivacyNotice_ls.text}>
                         The use of certain of our Services may also be governed
@@ -578,16 +575,16 @@ export default function PrivacyNotice() {
                     </p>
                     <p className={PrivacyNotice_ls.text}>
                         This Notice shall be governed by, and construed, in
-                        accordance with the laws of Cayman Islands, without
+                        accordance with the laws of the Cayman Islands, without
                         regard to any conflict of law’s provisions. In the event
                         of any disputes, controversies, or differences arising
                         out of or in connection with this Notice (hereinafter,
                         "Dispute"), the Dispute shall be submitted to the
-                        non-exclusive jurisdiction of the courts of Cayman
+                        non-exclusive jurisdiction of the courts of the Cayman
                         Islands.
                     </p>
                     <p className={PrivacyNotice_ls.text}>
-                        Last Updated: 12 July 2023
+                        Last Updated: 14 September 2023
                     </p>
                 </div>
             </div>
