@@ -1,5 +1,15 @@
 import BlockDetailsApp_ls from './BlockDetailsApp.less';
-import { Space, Table, Tag, Pagination, Progress } from 'antd';
+import VirtualList from 'rc-virtual-list';
+import {
+    Space,
+    Table,
+    Tag,
+    Pagination,
+    Progress,
+    Avatar,
+    List,
+    message,
+} from 'antd';
 import { Link } from 'umi';
 import {
     erbprice,
@@ -10,7 +20,9 @@ import {
     soloblock,
     soloblocktransaction,
     blockrewardperson,
+    slashings,
 } from '../../api/request_data/block_request';
+import { DownOutlined } from '@ant-design/icons';
 import { utils } from 'ethers';
 import moment from 'moment';
 import { history } from 'umi';
@@ -20,19 +32,60 @@ import {
     ellipsis,
     ellipsisthree,
     hexCharCodeToStr,
+    ellipsisdata,
 } from '../../utils/methods/Methods';
 import React, { useState, useEffect } from 'react';
 export default function BlockDetailsApp(props) {
     const [pagenumber, setPagenumber] = useState(1);
     const [pagenumbersize, setPagenumbersize] = useState(10);
+    const [blackpagenumber, setBlackpagenumber] = useState(1);
+    const [blackpagenumbersize, setBlackpagenumbersize] = useState(10);
+    const [blackpagenumberpunish, setBlackpagenumberpunish] = useState(1);
+    const [blackpagenumbersizepunish, setBlackpagenumbersizepunish] =
+        useState(10);
+    const [blackpagenumberpunish2, setBlackpagenumberpunish2] = useState(1);
+    const [blackpagenumbersizepunish2, setBlackpagenumbersizepunish2] =
+        useState(10);
+    const [blockaddressdata, setBlockaddressdata] = useState('');
     //单个区块
     const [soloblockdata, setSoloblockdata] = useState({});
+    //黑洞区块
+    const [blackblockdata, setBlackblockdata] = useState([]);
+    //惩罚区块
+    const [punishdata, setPunishdata] = useState([]);
+    const [punishdata2, setPunishdata2] = useState([]);
     //单个区块交易
     const [soloblocktransactiondata, setSoloblocktransactiondata] = useState(
         {},
     );
     //区块奖励人
     const [blockrewardpersondata, setBlockrewardpersondata] = useState([]);
+    const ContainerHeight = 200;
+    const onScroll = (e) => {
+        if (
+            e.currentTarget.scrollHeight - e.currentTarget.scrollTop ===
+            ContainerHeight
+        ) {
+            let text = blackpagenumber + 1;
+            setBlackpagenumber(text);
+        }
+    };
+    const ContainerHeight2 = 200;
+    const onScroll2 = (e) => {
+        if (
+            e.currentTarget.scrollHeight - e.currentTarget.scrollTop ===
+            ContainerHeight2
+        ) {
+            let text = blackpagenumberpunish + 1;
+            setBlackpagenumberpunish(text);
+        }
+    };
+    const onScroll3 = (e) => {
+        if (e.currentTarget.scrollHeight - e.currentTarget.scrollTop === 140) {
+            let text = blackpagenumberpunish2 + 1;
+            setBlackpagenumberpunish2(text);
+        }
+    };
     //单个区块交易列表
     const columns = [
         {
@@ -160,6 +213,39 @@ export default function BlockDetailsApp(props) {
                 ? props.location.state.blockid
                 : JSON.parse(localStorage.getItem('blocktext')),
     };
+    //黑洞块
+    let bloackblockdata = {
+        page: blackpagenumber,
+        page_size: blackpagenumbersize,
+        address: '',
+        number:
+            props.location.state != undefined
+                ? props.location.state.blockid
+                : JSON.parse(localStorage.getItem('blocktext')),
+        reason: '1',
+    };
+    //惩罚块
+    let punish = {
+        page: blackpagenumberpunish,
+        page_size: blackpagenumbersizepunish,
+        address: '',
+        number:
+            props.location.state != undefined
+                ? props.location.state.blockid
+                : JSON.parse(localStorage.getItem('blocktext')),
+        reason: '2',
+    };
+    //惩罚块2
+    let punish2 = {
+        page: blackpagenumberpunish2,
+        page_size: blackpagenumbersizepunish2,
+        address: '',
+        number:
+            props.location.state != undefined
+                ? props.location.state.blockid
+                : JSON.parse(localStorage.getItem('blocktext')),
+        reason: blockaddressdata,
+    };
     useEffect(() => {
         if (props.location.state != undefined) {
             localStorage.setItem(
@@ -175,6 +261,18 @@ export default function BlockDetailsApp(props) {
         soloblocktransaction_q(pagedata);
     }, [pagenumber]);
     useEffect(() => {
+        slashings_q(bloackblockdata);
+    }, [blackpagenumber]);
+    useEffect(() => {
+        slashings_q2(punish);
+    }, [blackpagenumberpunish]);
+    useEffect(() => {
+        slashings_q3(punish2);
+    }, [blockaddressdata]);
+    useEffect(() => {
+        slashings_q3(punish2);
+    }, [blackpagenumberpunish2]);
+    useEffect(() => {
         let pagedatabs = {
             page: pagenumber,
             page_size: pagenumbersize,
@@ -189,6 +287,12 @@ export default function BlockDetailsApp(props) {
         const data = await soloblock(item);
         if (data) {
             setSoloblockdata(data);
+            if (data.miner == '0x0000000000000000000000000000000000000000') {
+                slashings_q(bloackblockdata);
+            }
+            if (data.proof != undefined) {
+                slashings_q2(punish);
+            }
         }
         let state = JSON.stringify(data);
         if (
@@ -210,6 +314,33 @@ export default function BlockDetailsApp(props) {
         const data = await blockrewardperson(item);
         if (data) {
             setBlockrewardpersondata(data);
+        }
+    };
+    const slashings_q = async (item) => {
+        const data = await slashings(item);
+        if (data) {
+            console.log(data);
+            if (data.data.length > 0) {
+                setBlackblockdata(blackblockdata.concat(data.data));
+            }
+        }
+    };
+    const slashings_q2 = async (item) => {
+        const data = await slashings(item);
+        if (data) {
+            console.log(data);
+            if (data.data.length > 0) {
+                setPunishdata(punishdata.concat(data.data));
+            }
+        }
+    };
+    const slashings_q3 = async (item) => {
+        const data = await slashings(item);
+        if (data) {
+            console.log(data);
+            if (data.data.length > 0) {
+                setPunishdata2(punishdata2.concat(data.data));
+            }
         }
     };
     //404
@@ -285,9 +416,11 @@ export default function BlockDetailsApp(props) {
                                 }
                                 style={{ color: '#fff' }}
                             >
-                                {ellipsis(item.proxy) ||
-                                    ellipsis(
+                                {ellipsisdata(item.proxy, 8, 12) ||
+                                    ellipsisdata(
                                         '0x0000000000000000000000000000000000000000',
+                                        8,
+                                        12,
                                     )}
                                 &nbsp;&nbsp;
                                 <img
@@ -307,7 +440,7 @@ export default function BlockDetailsApp(props) {
                                     BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verificationData
                                 }
                             >
-                                {ellipsis(item.proxy)}
+                                {ellipsisdata(item.proxy, 8, 12)}
                                 &nbsp;&nbsp;
                                 <img
                                     style={{ width: '16px', height: '16px' }}
@@ -337,9 +470,11 @@ export default function BlockDetailsApp(props) {
                                 }
                                 style={{ color: '#fff' }}
                             >
-                                {ellipsis(item.proxy) ||
-                                    ellipsis(
+                                {ellipsisdata(item.proxy, 8, 12) ||
+                                    ellipsisdata(
                                         '0x0000000000000000000000000000000000000000',
+                                        8,
+                                        12,
                                     )}
                                 &nbsp;&nbsp;
                                 <img
@@ -359,7 +494,7 @@ export default function BlockDetailsApp(props) {
                                     BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verificationData
                                 }
                             >
-                                {ellipsis(item.proxy)}
+                                {ellipsisdata(item.proxy, 8, 12)}
                                 &nbsp;&nbsp;
                                 <img
                                     style={{ width: '16px', height: '16px' }}
@@ -432,9 +567,104 @@ export default function BlockDetailsApp(props) {
             },
         });
     }
+    // 黑洞块nodeaddress
+    function blacknodeaddress(item) {
+        if (item && item.length > 0) {
+            return item.map((data) => {
+                return (
+                    <div className={BlockDetailsApp_ls.blacknodeaddressdata}>
+                        <Link
+                            to={{
+                                pathname: `/AccountDetail`,
+                                state: data,
+                            }}
+                            style={{ color: '#7AA4FF' }}
+                        >
+                            {ellipsisdata(data, 10, 5)}
+                        </Link>
+                    </div>
+                );
+            });
+        }
+    }
+    // 惩罚块详情
+    function punishaddress(item) {
+        if (item && item.length > 0) {
+            return item.map((data) => {
+                return (
+                    <div className={BlockDetailsApp_ls.punishaddressdata}>
+                        <span>{ellipsisdata(data, 10, 5)}</span>
+                    </div>
+                );
+            });
+        }
+    }
+    function punishdetails(item) {
+        if (item && item.length > 0) {
+            return item.map((data) => {
+                return (
+                    <p className={BlockDetailsApp_ls.punishdetailsbox}>
+                        <p className={BlockDetailsApp_ls.punishdetailsbox_name}>
+                            <Link
+                                to={{
+                                    pathname: `/AccountDetail`,
+                                    state: data.address,
+                                }}
+                                style={{ color: '#7AA4FF' }}
+                            >
+                                {ellipsisdata(data.address, 3, 4)}
+                            </Link>
+                        </p>
+                        <p className={BlockDetailsApp_ls.punishdetailsbox_text}>
+                            {data.amount}
+                        </p>
+                    </p>
+                );
+            });
+        }
+    }
+    function icononclick(data, add) {
+        if (
+            document.getElementById(`icon${data}`).style.transform ==
+            'rotate(180deg)'
+        ) {
+            for (let i = 0; i < punishdata.length; i++) {
+                if (document.getElementById(`icon${i}`) != undefined) {
+                    document.getElementById(`icon${i}`).style.transform =
+                        'rotate(0deg)';
+                }
+            }
+        } else {
+            for (let i = 0; i < punishdata.length; i++) {
+                if (document.getElementById(`icon${i}`) != undefined) {
+                    document.getElementById(`icon${i}`).style.transform =
+                        'rotate(0deg)';
+                }
+            }
+            document.getElementById(`icon${data}`).style.transform =
+                'rotate(180deg)';
+        }
+
+        if (document.getElementById(`box${data}`).style.height == '150px') {
+            for (let i = 0; i < punishdata.length; i++) {
+                if (document.getElementById(`box${i}`) != undefined) {
+                    document.getElementById(`box${i}`).style.height = '0px';
+                }
+            }
+        } else {
+            for (let i = 0; i < punishdata.length; i++) {
+                if (document.getElementById(`box${i}`) != undefined) {
+                    document.getElementById(`box${i}`).style.height = '0px';
+                }
+            }
+            document.getElementById(`box${data}`).style.height = '150px';
+        }
+        setBlockaddressdata(add);
+    }
     return (
         <>
             <div className={BlockDetailsApp_ls.BlockDetailsAppBox}>
+                {/* Block Details */}
                 <div className={BlockDetailsApp_ls.BlockDetailsAppBox_titlebox}>
                     <div className={BlockDetailsApp_ls.BlockDetailsBox_title}>
                         Block Details
@@ -546,222 +776,542 @@ export default function BlockDetailsApp(props) {
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                {/* Reward List */}
+                {blockrewardpersondata.length > 0 ? (
+                    <div
+                        className={
+                            BlockDetailsApp_ls.BlockDetailsAppBox_titlebox
+                        }
+                    >
+                        <div
+                            className={BlockDetailsApp_ls.BlockDetailsBox_title}
+                        >
+                            Reward List
+                        </div>
+                        <div
+                            className={
+                                BlockDetailsApp_ls.BlockDetailsBox_databox
+                            }
+                        >
                             <div
                                 className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left
                                 }
                             >
                                 <div
                                     className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
                                     }
-                                >
-                                    Proposer
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ color: '#7AA4FF' }}
                                 >
                                     <div
                                         className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
                                         }
                                     >
-                                        <div
-                                            className={
-                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification1
-                                            }
-                                            style={{ cursor: 'auto' }}
-                                        >
-                                            Proposer
-                                        </div>
-                                        <div
-                                            className={
-                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
-                                            }
-                                        >
-                                            {blockmaker(blockrewardpersondata)}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                                }
-                                style={{ marginTop: '-40px' }}
-                            >
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                    }
-                                >
-                                    Reward
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ color: '#7AA4FF', cursor: 'auto' }}
-                                >
-                                    <div
-                                        className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
-                                        }
-                                    >
-                                        <div
-                                            className={
-                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification2
-                                            }
-                                            style={{ cursor: 'auto' }}
-                                        >
-                                            Validator
-                                        </div>
-                                        <div
-                                            className={
-                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
-                                            }
-                                        >
-                                            {verifier(blockrewardpersondata)}
-                                        </div>
+                                        Proposer
                                     </div>
                                     <div
                                         className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
                                         }
+                                        style={{ color: '#7AA4FF' }}
                                     >
                                         <div
                                             className={
-                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification3
-                                            }
-                                            style={{ cursor: 'auto' }}
-                                        >
-                                            Staker
-                                        </div>
-                                        <div
-                                            className={
-                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
                                             }
                                         >
-                                            {exchange(blockrewardpersondata)}
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification1
+                                                }
+                                                style={{ cursor: 'auto' }}
+                                            >
+                                                Proposer
+                                            </div>
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                                }
+                                            >
+                                                {blockmaker(
+                                                    blockrewardpersondata,
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                                }
-                            >
                                 <div
                                     className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
                                     }
-                                >
-                                    Block Size
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ cursor: 'auto' }}
-                                >
-                                    {soloblockdata.size} bytes
-                                </div>
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                                }
-                            >
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                    }
-                                >
-                                    Gas Price
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ cursor: 'auto' }}
-                                >
-                                    {gasusedlvsolo(
-                                        soloblocktransactiondata.transactions,
-                                    ) / 1000000000}{' '}
-                                    Gwei
-                                </div>
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                                }
-                            >
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                    }
-                                >
-                                    Gas Limit
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ cursor: 'auto' }}
-                                >
-                                    {soloblockdata.gasLimit}
-                                </div>
-                            </div>
-                            <div
-                                className={
-                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
-                                }
-                            >
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
-                                    }
-                                >
-                                    Delegated Accounts
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ color: '#7AA4FF' }}
+                                    style={{ marginTop: '-40px' }}
                                 >
                                     <div
                                         className={
-                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
                                         }
+                                    >
+                                        Reward
+                                    </div>
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                        }
+                                        style={{
+                                            color: '#7AA4FF',
+                                            cursor: 'auto',
+                                        }}
                                     >
                                         <div
                                             className={
-                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
                                             }
-                                            style={{
-                                                width: '380px',
-                                                display: 'block',
-                                            }}
                                         >
-                                            {blockmakeraddress(
-                                                blockrewardpersondata,
-                                            )}
-                                            {verifieraddress(
-                                                blockrewardpersondata,
-                                            )}
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification2
+                                                }
+                                                style={{ cursor: 'auto' }}
+                                            >
+                                                Validator
+                                            </div>
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                                }
+                                            >
+                                                {verifier(
+                                                    blockrewardpersondata,
+                                                )}
+                                            </div>
+                                        </div>
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                            }
+                                        >
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_verification3
+                                                }
+                                                style={{ cursor: 'auto' }}
+                                            >
+                                                Staker
+                                            </div>
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                                }
+                                            >
+                                                {exchange(
+                                                    blockrewardpersondata,
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                    }
+                                >
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                        }
+                                    >
+                                        Block Size
+                                    </div>
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                        }
+                                        style={{ cursor: 'auto' }}
+                                    >
+                                        {soloblockdata.size} bytes
+                                    </div>
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                    }
+                                >
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                        }
+                                    >
+                                        Gas Price
+                                    </div>
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                        }
+                                        style={{ cursor: 'auto' }}
+                                    >
+                                        {gasusedlvsolo(
+                                            soloblocktransactiondata.transactions,
+                                        ) / 1000000000}{' '}
+                                        Gwei
+                                    </div>
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                    }
+                                >
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                        }
+                                    >
+                                        Gas Limit
+                                    </div>
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                        }
+                                        style={{ cursor: 'auto' }}
+                                    >
+                                        {soloblockdata.gasLimit}
+                                    </div>
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse
+                                    }
+                                >
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_name
+                                        }
+                                    >
+                                        Delegated Accounts
+                                    </div>
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data
+                                        }
+                                        style={{ color: '#7AA4FF' }}
+                                    >
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box
+                                            }
+                                        >
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.BlockDetailsBox_databox_left_transverse_data_box_data
+                                                }
+                                                style={{
+                                                    width: '380px',
+                                                    display: 'block',
+                                                }}
+                                            >
+                                                {blockmakeraddress(
+                                                    blockrewardpersondata,
+                                                )}
+                                                {verifieraddress(
+                                                    blockrewardpersondata,
+                                                )}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
+                ) : (
+                    ''
+                )}
+                {/* Blackhole Block Details */}
+                {soloblockdata.miner ==
+                '0x0000000000000000000000000000000000000000' ? (
+                    <div
+                        className={
+                            BlockDetailsApp_ls.BlockDetailsBox_titleboxbs
+                        }
+                    >
+                        <div
+                            className={BlockDetailsApp_ls.BlockDetailsBox_title}
+                        >
+                            Blackhole Block Details
+                        </div>
+                        <div
+                            className={
+                                BlockDetailsApp_ls.BlockDetailsBox_databox
+                            }
+                        >
+                            <div
+                                className={
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeleft
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeleft_title
+                                    }
+                                >
+                                    <div>Penalty Address</div>
+                                    <div>Penalty Points</div>
+                                    <div>Current Credibility</div>
+                                </div>
+                                <List>
+                                    <VirtualList
+                                        data={blackblockdata}
+                                        height={ContainerHeight}
+                                        itemHeight={35}
+                                        itemKey="email"
+                                        onScroll={onScroll}
+                                    >
+                                        {(item) => (
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeleft_data
+                                                }
+                                            >
+                                                <div>
+                                                    <Link
+                                                        to={{
+                                                            pathname: `/AccountDetailApp`,
+                                                            state: item.address,
+                                                        }}
+                                                        style={{
+                                                            color: '#7AA4FF',
+                                                        }}
+                                                    >
+                                                        {ellipsisdata(
+                                                            item.address,
+                                                            3,
+                                                            4,
+                                                        )}
+                                                    </Link>
+                                                </div>
+                                                <div>
+                                                    {item.weight == '70'
+                                                        ? '0'
+                                                        : '20'}
+                                                </div>
+                                                <div>{item.weight}</div>
+                                            </div>
+                                        )}
+                                    </VirtualList>
+                                </List>
+                            </div>
+                            <div
+                                className={
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeright
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeright_title
+                                    }
+                                >
+                                    Node Address
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeright_data
+                                    }
+                                >
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeright_databig
+                                        }
+                                    >
+                                        {blacknodeaddress(
+                                            soloblockdata.proposers,
+                                        )}
+                                        {soloblockdata.proposers % 3 == 2 ? (
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.blacknodeaddressdata
+                                                }
+                                            ></div>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    ''
+                )}
+                {soloblockdata.proof != undefined ? (
+                    <div
+                        className={
+                            BlockDetailsApp_ls.BlockDetailsBox_titleboxbs
+                        }
+                    >
+                        <div
+                            className={BlockDetailsApp_ls.BlockDetailsBox_title}
+                        >
+                            Punishment Details
+                        </div>
+                        <div
+                            className={
+                                BlockDetailsApp_ls.BlockDetailsBox_databox
+                            }
+                        >
+                            <div
+                                className={
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_PunishmentDetailsleft
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_PunishmentDetailsleft_title
+                                    }
+                                >
+                                    <div>Address</div>
+                                    <div>Amount</div>
+                                    <div>Type</div>
+                                    <div></div>
+                                </div>
+                                <List>
+                                    <VirtualList
+                                        data={punishdata}
+                                        height={ContainerHeight2}
+                                        // itemHeight={40}
+                                        itemKey="email"
+                                        onScroll={onScroll2}
+                                        id="VirtualList"
+                                    >
+                                        {(item, index) => (
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeleft_data
+                                                }
+                                            >
+                                                <div>
+                                                    <Link
+                                                        to={{
+                                                            pathname: `/AccountDetail`,
+                                                            state: item.address,
+                                                        }}
+                                                        style={{
+                                                            color: '#7AA4FF',
+                                                        }}
+                                                    >
+                                                        {ellipsisdata(
+                                                            item.address,
+                                                            3,
+                                                            4,
+                                                        )}
+                                                    </Link>
+                                                </div>
+                                                <div>{item.amount}</div>
+                                                <div>Multi-signatures</div>
+                                                <div
+                                                    id={`icon${index}`}
+                                                    onClick={icononclick.bind(
+                                                        this,
+                                                        index,
+                                                        item.address,
+                                                    )}
+                                                    style={{
+                                                        transform:
+                                                            'rotate(0deg)',
+                                                    }}
+                                                >
+                                                    <DownOutlined />
+                                                </div>
+                                                <div
+                                                    className={
+                                                        BlockDetailsApp_ls.BlockDetailsBox_Blackholeleft_textbox
+                                                    }
+                                                    id={`box${index}`}
+                                                    style={{ height: '0px' }}
+                                                >
+                                                    <div
+                                                        className={
+                                                            BlockDetailsApp_ls.BlockDetailsBox_Blackholeleft_textbox_title
+                                                        }
+                                                    >
+                                                        <div
+                                                            className={
+                                                                BlockDetailsApp_ls.BlockDetailsBox_Blackholeleft_textbox_title_d
+                                                            }
+                                                        >
+                                                            <span
+                                                                className={
+                                                                    BlockDetailsApp_ls.BlockDetailsBox_Blackholeleft_textbox_title_span
+                                                                }
+                                                            >
+                                                                Address
+                                                            </span>
+                                                            <span
+                                                                className={
+                                                                    BlockDetailsApp_ls.BlockDetailsBox_Blackholeleft_textbox_title_span
+                                                                }
+                                                            >
+                                                                Amount
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        className={
+                                                            BlockDetailsApp_ls.BlockDetailsBox_Blackholeleft_textbox_smbox
+                                                        }
+                                                        onScroll={onScroll3}
+                                                    >
+                                                        <div
+                                                            className={
+                                                                BlockDetailsApp_ls.BlockDetailsBox_Blackholeleft_textbox_bigbox
+                                                            }
+                                                        >
+                                                            {punishdetails(
+                                                                punishdata2,
+                                                            )}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </VirtualList>
+                                </List>
+                            </div>
+                            <div
+                                className={
+                                    BlockDetailsApp_ls.BlockDetailsBox_databox_PunishmentDetailsright
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeright_title
+                                    }
+                                >
+                                    Details
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeright_data
+                                    }
+                                >
+                                    {punishaddress(soloblockdata.proof)}
+                                    {soloblockdata.proof % 3 == 2 ? (
+                                        <div
+                                            className={
+                                                BlockDetailsApp_ls.punishaddressdata
+                                            }
+                                        ></div>
+                                    ) : (
+                                        ''
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ) : (
+                    ''
+                )}
                 <div className={BlockDetailsApp_ls.tableBox}>
                     <div
                         className={BlockDetailsApp_ls.BlockDetailsBox_table}

@@ -1125,6 +1125,15 @@ export default function BlockDetails(props) {
                                     }
                                 >
                                     {blacknodeaddress(soloblockdata.proposers)}
+                                    {soloblockdata.proposers % 3 == 2 ? (
+                                        <div
+                                            className={
+                                                BlockDetails_ls.blacknodeaddressdata
+                                            }
+                                        ></div>
+                                    ) : (
+                                        ''
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -1296,6 +1305,15 @@ export default function BlockDetails(props) {
                                     }
                                 >
                                     {punishaddress(soloblockdata.proof)}
+                                    {soloblockdata.proof % 3 == 2 ? (
+                                        <div
+                                            className={
+                                                BlockDetails_ls.punishaddressdata
+                                            }
+                                        ></div>
+                                    ) : (
+                                        ''
+                                    )}
                                 </div>
                             </div>
                         </div>
