@@ -575,7 +575,7 @@ export default function BlockDetailsApp(props) {
                     <div className={BlockDetailsApp_ls.blacknodeaddressdata}>
                         <Link
                             to={{
-                                pathname: `/AccountDetail`,
+                                pathname: `/AccountDetailApp`,
                                 state: data,
                             }}
                             style={{ color: '#7AA4FF' }}
@@ -607,7 +607,7 @@ export default function BlockDetailsApp(props) {
                         <p className={BlockDetailsApp_ls.punishdetailsbox_name}>
                             <Link
                                 to={{
-                                    pathname: `/AccountDetail`,
+                                    pathname: `/AccountDetailApp`,
                                     state: data.address,
                                 }}
                                 style={{ color: '#7AA4FF' }}
@@ -1193,7 +1193,7 @@ export default function BlockDetailsApp(props) {
                                                 <div>
                                                     <Link
                                                         to={{
-                                                            pathname: `/AccountDetail`,
+                                                            pathname: `/AccountDetailApp`,
                                                             state: item.address,
                                                         }}
                                                         style={{

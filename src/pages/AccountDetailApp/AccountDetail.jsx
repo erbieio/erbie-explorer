@@ -138,34 +138,18 @@ class AccountDetail extends React.Component {
                     key: 'blockNumber',
                     render: (text, data) =>
                         data.number != 0 ? (
-                            data.miner ==
-                            '0x0000000000000000000000000000000000000000' ? (
-                                <Link
-                                    to={{
-                                        pathname: '/BlackholeBlockDetaApp',
-                                        state: { blockid: text },
-                                    }}
-                                    style={{
-                                        color: '#7AA4FF',
-                                        fontFamily: 'CustomFontMedium',
-                                    }}
-                                >
-                                    {text}
-                                </Link>
-                            ) : (
-                                <Link
-                                    to={{
-                                        pathname: '/BlockDetailsApp',
-                                        state: { blockid: text },
-                                    }}
-                                    style={{
-                                        color: '#7AA4FF',
-                                        fontFamily: 'CustomFontMedium',
-                                    }}
-                                >
-                                    {text}
-                                </Link>
-                            )
+                            <Link
+                                to={{
+                                    pathname: '/BlockDetailsApp',
+                                    state: { blockid: text },
+                                }}
+                                style={{
+                                    color: '#7AA4FF',
+                                    fontFamily: 'CustomFontMedium',
+                                }}
+                            >
+                                {text}
+                            </Link>
                         ) : (
                             '-'
                         ),
@@ -1239,52 +1223,27 @@ class AccountDetail extends React.Component {
                                             ).format('YYYY-MM-DD HH:mm:ss')}
                                         </span>
                                         {item.startNumber != 0 ? (
-                                            item.miner ==
-                                            '0x0000000000000000000000000000000000000000' ? (
-                                                <Link
-                                                    to={{
-                                                        pathname:
-                                                            '/BlackholeBlockDetaApp',
-                                                        state: {
-                                                            blockid:
-                                                                item.startNumber,
-                                                        },
-                                                    }}
-                                                    style={{
-                                                        color: '#7AA4FF',
-                                                        fontFamily:
-                                                            'CustomFontMedium',
-                                                        width: '200px',
-                                                    }}
-                                                    className={
-                                                        AccountDetail_ls.zztable_redblock
-                                                    }
-                                                >
-                                                    {item.startNumber}
-                                                </Link>
-                                            ) : (
-                                                <Link
-                                                    to={{
-                                                        pathname:
-                                                            '/BlockDetailsApp',
-                                                        state: {
-                                                            blockid:
-                                                                item.startNumber,
-                                                        },
-                                                    }}
-                                                    style={{
-                                                        color: '#7AA4FF',
-                                                        fontFamily:
-                                                            'CustomFontMedium',
-                                                        width: '200px',
-                                                    }}
-                                                    className={
-                                                        AccountDetail_ls.zztable_redblock
-                                                    }
-                                                >
-                                                    {item.startNumber}
-                                                </Link>
-                                            )
+                                            <Link
+                                                to={{
+                                                    pathname:
+                                                        '/BlockDetailsApp',
+                                                    state: {
+                                                        blockid:
+                                                            item.startNumber,
+                                                    },
+                                                }}
+                                                style={{
+                                                    color: '#7AA4FF',
+                                                    fontFamily:
+                                                        'CustomFontMedium',
+                                                    width: '200px',
+                                                }}
+                                                className={
+                                                    AccountDetail_ls.zztable_redblock
+                                                }
+                                            >
+                                                {item.startNumber}
+                                            </Link>
                                         ) : (
                                             '-'
                                         )}
@@ -1456,52 +1415,27 @@ class AccountDetail extends React.Component {
                                                     )}
                                                 </span>
                                                 {item.startNumber != 0 ? (
-                                                    item.miner ==
-                                                    '0x0000000000000000000000000000000000000000' ? (
-                                                        <Link
-                                                            to={{
-                                                                pathname:
-                                                                    '/BlackholeBlockDetaApp',
-                                                                state: {
-                                                                    blockid:
-                                                                        item.startNumber,
-                                                                },
-                                                            }}
-                                                            style={{
-                                                                color: '#7AA4FF',
-                                                                fontFamily:
-                                                                    'CustomFontMedium',
-                                                                width: '200px',
-                                                            }}
-                                                            className={
-                                                                AccountDetail_ls.zztable_redblock
-                                                            }
-                                                        >
-                                                            {item.startNumber}
-                                                        </Link>
-                                                    ) : (
-                                                        <Link
-                                                            to={{
-                                                                pathname:
-                                                                    '/BlockDetailsApp',
-                                                                state: {
-                                                                    blockid:
-                                                                        item.startNumber,
-                                                                },
-                                                            }}
-                                                            style={{
-                                                                color: '#7AA4FF',
-                                                                fontFamily:
-                                                                    'CustomFontMedium',
-                                                                width: '200px',
-                                                            }}
-                                                            className={
-                                                                AccountDetail_ls.zztable_redblock
-                                                            }
-                                                        >
-                                                            {item.startNumber}
-                                                        </Link>
-                                                    )
+                                                    <Link
+                                                        to={{
+                                                            pathname:
+                                                                '/BlockDetailsApp',
+                                                            state: {
+                                                                blockid:
+                                                                    item.startNumber,
+                                                            },
+                                                        }}
+                                                        style={{
+                                                            color: '#7AA4FF',
+                                                            fontFamily:
+                                                                'CustomFontMedium',
+                                                            width: '200px',
+                                                        }}
+                                                        className={
+                                                            AccountDetail_ls.zztable_redblock
+                                                        }
+                                                    >
+                                                        {item.startNumber}
+                                                    </Link>
                                                 ) : (
                                                     '-'
                                                 )}
@@ -1628,47 +1562,24 @@ class AccountDetail extends React.Component {
                                     ).format('YYYY-MM-DD HH:mm:ss')}
                                 </span>
                                 {item.block_number != 0 ? (
-                                    item.miner ==
-                                    '0x0000000000000000000000000000000000000000' ? (
-                                        <Link
-                                            to={{
-                                                pathname:
-                                                    '/BlackholeBlockDetaApp',
-                                                state: {
-                                                    blockid: item.block_number,
-                                                },
-                                            }}
-                                            style={{
-                                                color: '#7AA4FF',
-                                                fontFamily: 'CustomFontMedium',
-                                                width: '200px',
-                                            }}
-                                            className={
-                                                AccountDetail_ls.zztable_redblock
-                                            }
-                                        >
-                                            {item.block_number}
-                                        </Link>
-                                    ) : (
-                                        <Link
-                                            to={{
-                                                pathname: '/BlockDetailsApp',
-                                                state: {
-                                                    blockid: item.block_number,
-                                                },
-                                            }}
-                                            style={{
-                                                color: '#7AA4FF',
-                                                fontFamily: 'CustomFontMedium',
-                                                width: '200px',
-                                            }}
-                                            className={
-                                                AccountDetail_ls.zztable_redblock
-                                            }
-                                        >
-                                            {item.block_number}
-                                        </Link>
-                                    )
+                                    <Link
+                                        to={{
+                                            pathname: '/BlockDetailsApp',
+                                            state: {
+                                                blockid: item.block_number,
+                                            },
+                                        }}
+                                        style={{
+                                            color: '#7AA4FF',
+                                            fontFamily: 'CustomFontMedium',
+                                            width: '200px',
+                                        }}
+                                        className={
+                                            AccountDetail_ls.zztable_redblock
+                                        }
+                                    >
+                                        {item.block_number}
+                                    </Link>
                                 ) : (
                                     '-'
                                 )}

@@ -14,21 +14,12 @@ export default function NullPage(props) {
             comingsoon404();
         }
         if (data) {
-            if (data.miner == '0x0000000000000000000000000000000000000000') {
-                history.push({
-                    pathname: '/BlackholeBlockDeta',
-                    state: {
-                        blockid: JSON.parse(localStorage.getItem('blocktext')),
-                    },
-                });
-            } else {
-                history.push({
-                    pathname: '/BlockDetails',
-                    state: {
-                        blockid: JSON.parse(localStorage.getItem('blocktext')),
-                    },
-                });
-            }
+            history.push({
+                pathname: '/BlockDetails',
+                state: {
+                    blockid: JSON.parse(localStorage.getItem('blocktext')),
+                },
+            });
         }
     };
     useEffect(() => {
