@@ -115,6 +115,15 @@ export function ellipsisthree(data) {
         );
     }
 }
+export function ellipsisdata(data, data1, data2) {
+    if (data) {
+        return (
+            data.slice(0, data1) +
+            '...' +
+            data.slice(data.length - data2, data.length)
+        );
+    }
+}
 //交易类型
 export function hexCharCodeToStr(hexCharCodeStr) {
     if (hexCharCodeStr) {

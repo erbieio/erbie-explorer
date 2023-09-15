@@ -36,6 +36,17 @@ export const soloblock = (data) => {
     return request.get(`${host}/block/${data}`);
 };
 //单个区块交易列表查询
+export const slashings = (data) => {
+    return request.get(`${host}/slashings`, {
+        params: {
+            page: data.page,
+            page_size: data.page_size,
+            address: data.address,
+            number: data.number,
+            reason: data.reason,
+        },
+    });
+};
 export const soloblocktransaction = (data) => {
     return request.get(`${host}/transaction/page`, {
         params: {

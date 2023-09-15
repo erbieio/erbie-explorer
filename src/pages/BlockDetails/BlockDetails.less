@@ -12,6 +12,202 @@
     padding: 21px 26px;
     margin-bottom: 40px;
 }
+.BlockDetailsBox_titleboxbs{
+    width: 1240px;
+    height: 500px;
+    border-radius: 8px;
+    background-image: url('../../assets/images/BlockChain/Slice\ 841.png');
+    background-size: 100% 100%;
+    margin-top: 32px;
+    padding: 21px 26px;
+}
+.BlockDetailsBox_databox{
+    width: 1240px;
+    display: flex;
+    justify-content: space-between;
+}
+.BlockDetailsBox_databox_Blackholeleft{
+    width: 50%;
+    height: 382px;
+    padding: 0 26px;
+}
+.BlockDetailsBox_databox_Blackholeleft_title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    div{
+        font-size: 13px;
+        color: white;
+    }
+    div:nth-child(1){
+        width: 100px;
+    }
+    div:nth-child(2){
+        width: 90px;
+    }
+    div:nth-child(3){
+        width: 114px;
+    }
+}
+.BlockDetailsBox_databox_Blackholeleft_data{
+    width: 100%;
+    min-height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    div{
+        font-size: 14px;
+        color: white;
+    }
+    div:nth-child(1){
+        color: #7AA4FF;
+        width: 100px;
+        cursor: pointer;
+    }
+    div:nth-child(2){
+        width: 90px;
+    }
+    div:nth-child(3){
+        width: 114px;
+    }
+    div:nth-child(4){
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        color: white;
+        cursor: pointer;
+        transition: all 0.5s;
+    }
+    div:nth-child(5){
+        width: 567px;
+        background: rgba(69,59,69,0.5);
+        border-radius: 8px 8px 8px 8px;
+        margin: 15px auto;
+        transition: all 0.5s;
+        padding: 0 35px;
+        overflow: hidden;
+        .BlockDetailsBox_Blackholeleft_textbox_title{
+            width: 497px;
+            height: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            
+        }
+        .BlockDetailsBox_Blackholeleft_textbox_title_d{
+            width: 180px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .BlockDetailsBox_Blackholeleft_textbox_title_span{
+            width: 50%;
+            font-size: 13px;
+            color: white;
+        }
+        .BlockDetailsBox_Blackholeleft_textbox_smbox{
+            width: 497px;
+            height: 140px;
+            overflow: auto;
+        }
+        .BlockDetailsBox_Blackholeleft_textbox_bigbox{
+            width: 490px;
+            height: 500px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .punishdetailsbox{
+            width: 180px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            
+        }
+        .punishdetailsbox_name{
+            width: 50% !important;
+            font-size: 14px !important;
+            color: #7AA4FF !important;
+        }
+        .punishdetailsbox_text{
+            width: 50% !important;
+            font-size: 14px !important;
+            color: white !important;
+        }
+    }
+}
+.BlockDetailsBox_databox_Blackholeright{
+    width: 50%;
+    height: 382px;
+    border-left: 1px solid white;
+    padding: 0 35px;
+}
+.BlockDetailsBox_databox_Blackholeright_title{
+    font-size: 13px;
+    color: white;
+    margin-bottom: 20px;
+}
+.BlockDetailsBox_databox_Blackholeright_data{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.BlockDetailsBox_databox_PunishmentDetailsleft{
+    width: 50%;
+    height: 382px;
+    padding: 0 26px;
+}
+.BlockDetailsBox_databox_PunishmentDetailsright{
+    width: 50%;
+    height: 382px;
+    border-left: 1px solid white;
+    padding: 0 35px;
+}
+.BlockDetailsBox_databox_PunishmentDetailsleft_title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    div{
+        font-size: 13px;
+        color: white;
+    }
+    div:nth-child(1){
+        width: 140px;
+    }
+    div:nth-child(2){
+        width: 50px;
+    }
+    div:nth-child(3){
+        width: 120px;
+    }
+    div:nth-child(4){
+        width: 20px;
+    }
+}
+.blacknodeaddressdata{
+    width: 130px;
+    height: 40px;
+    border-bottom: 1px solid #FFFFFF80;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+.punishaddressdata{
+    width: 130px;
+    height: 40px;
+    border-bottom: 1px solid #FFFFFF80;
+    text-align: center;
+    line-height: 40px;
+    margin-bottom: 10px;
+    color: white;
+}
 .BlockDetailsBox_title {
     font-size: 24px;
     color: white;
@@ -57,15 +253,17 @@
     font-size: 14px;
     margin-left: 15px;
     overflow-wrap:anywhere;
+    
     // cursor: pointer;
 }
 .BlockDetailsBox_databox_left_transverse_data_box {
     width: 440px;
     display: flex;
     // align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
+ 
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 }
 .BlockDetailsBox_databox_left_transverse_data_box_verification1 {
     font-size: 11px;
@@ -118,6 +316,10 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+.BlockDetailsBox_databox_left_transverse_data_box_verificationData:nth-child(4){
+    border-right: 0 !important;
+    
 }
 .BlockDetailsBox_databox_left_transverse_data_box_data {
     width: 460px;
