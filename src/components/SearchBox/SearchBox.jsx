@@ -44,7 +44,10 @@ export default function SearchBox() {
                 });
             }
         } else {
-            message.error('Cannot be empty！');
+            message.open({
+                type: 'error',
+                content: 'Cannot be empty！',
+            });
         }
     }
     return (

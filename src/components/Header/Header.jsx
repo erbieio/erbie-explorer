@@ -8,6 +8,7 @@ import { history, Link } from 'umi';
 const { Option } = Select;
 export default function Header() {
     const handleChange = (value) => {};
+    const [messageApi, contextHolder] = message.useMessage();
     // const params = window.location.search;
     useEffect(() => {
         if (window.location.pathname) {
@@ -50,11 +51,15 @@ export default function Header() {
                 });
             }
         } else {
-            message.error('Cannot be empty！');
+            message.open({
+                type: 'error',
+                content: 'Cannot be empty！',
+            });
         }
     }
     return (
         <>
+            {contextHolder}
             <div className={Header_ls.HeaderBox}>
                 {/* logo */}
                 <Link

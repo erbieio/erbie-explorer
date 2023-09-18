@@ -6,9 +6,20 @@ import HomePageApp from './HomePageApp/HomePageApp';
 import FooterApp from '../components/FooterApp/FooterApp';
 import React, { useState, useEffect, useContext } from 'react';
 import { Helmet } from 'umi';
+import { message } from 'antd';
 const params = window.location.search;
 export default function IndexPage(props) {
+    const [messageApi, contextHolder] = message.useMessage();
+    message.config({
+        duration: 3,
+        maxCount: 1,
+    });
     useEffect(() => {
+        message.destroy('sds');
+        if (document.getElementsByClassName('ant-message-notice')[0]) {
+            document.getElementsByClassName('ant-message-notice')[0].remove();
+        }
+
         document.body.scrollTop = document.documentElement.scrollTop = 0;
         if (props.location.pathname != '/') {
             var i = 0;
@@ -42,8 +53,16 @@ export default function IndexPage(props) {
         };
         return result;
     };
+    //导航收缩
+    function pubsubclick() {
+        PubSub.publish('pubsubNavigationdata', {
+            Navigationicon: 0,
+            Navigationheight: '0px',
+        });
+    }
     return (
         <>
+            {contextHolder}
             <Helmet encodeSpecialCharacters={false}>
                 <meta charSet="utf-8" />
                 <title>Erbie Blockchain Explorer</title>
@@ -109,7 +128,10 @@ export default function IndexPage(props) {
             ) : (
                 <div className={styles.IndexPageBoxApp}>
                     <HeaderApp props={props} />
-                    <div className={styles.IndexPageBox_d}>
+                    <div
+                        className={styles.IndexPageBox_d}
+                        onClick={pubsubclick}
+                    >
                         {props.location.pathname == '/BlockChainApp' ||
                         props.location.pathname == '/NFTApp' ||
                         props.location.pathname == '/SNFTApp' ||

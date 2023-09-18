@@ -815,19 +815,10 @@ export default function HomePageApp() {
             message.error('Cannot be empty！');
         }
     }
-    //导航收缩
-    function pubsubclick() {
-        PubSub.publish('pubsubNavigationdata', {
-            Navigationicon: 0,
-            Navigationheight: '0px',
-        });
-    }
+
     return (
         <>
-            <div
-                className={HomePageApp_ls.HomePageAppbox}
-                onClick={pubsubclick}
-            >
+            <div className={HomePageApp_ls.HomePageAppbox}>
                 <div className={HomePageApp_ls.HomePageAppbox_titlebox}>
                     <div
                         className={

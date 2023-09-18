@@ -179,7 +179,8 @@ export default function HeaderApp(props) {
             window.location.pathname == '/TradeApp' ||
             window.location.pathname == '/rankingApp' ||
             window.location.pathname == '/ValidatorApp' ||
-            window.location.pathname == '/AccountApp' ? (
+            window.location.pathname == '/AccountApp' ||
+            window.location.pathname == '/CreatorApp' ? (
                 <div className={HeaderApp_ls.HeaderBox_SearchBox}>
                     <img
                         src={require('../../assets/images/Header/Search.png')}
