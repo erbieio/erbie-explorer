@@ -55,11 +55,18 @@ export default function IndexPage(props) {
     };
     //导航收缩
     function pubsubclick() {
+        console.log(111);
         PubSub.publish('pubsubNavigationdata', {
             Navigationicon: 0,
             Navigationheight: '0px',
         });
     }
+    if (document.getElementById('onclickjt')) {
+        document.getElementById('onclickjt').addEventListener('click', () => {
+            console.log(11111);
+        });
+    }
+
     return (
         <>
             {contextHolder}
@@ -130,6 +137,7 @@ export default function IndexPage(props) {
                     <HeaderApp props={props} />
                     <div
                         className={styles.IndexPageBox_d}
+                        id="onclickjt"
                         onClick={pubsubclick}
                     >
                         {props.location.pathname == '/BlockChainApp' ||

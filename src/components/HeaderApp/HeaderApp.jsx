@@ -83,7 +83,7 @@ export default function HeaderApp(props) {
                             <span
                                 onClick={() => {
                                     setNavigationicon(1);
-                                    setNavigationheight('441px');
+                                    setNavigationheight('392px');
                                 }}
                             >
                                 <UnorderedListOutlined />

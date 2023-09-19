@@ -33,7 +33,8 @@ import {
     hexToString,
     parseUrlParams,
 } from '../../utils/methods/Methods';
-import myimg from '../../assets/images/NFTDetails/Slice 923.png';
+import myimg from '../../assets/images/HomePage/mr.png';
+import nullimg from '../../assets/images/HomePage/null.png';
 const { Option } = Select;
 export default function NFTDetailsApp(props) {
     const [transactionmetadata, setTransactionmeta] = useState(1);
@@ -204,7 +205,11 @@ export default function NFTDetailsApp(props) {
         if (data) {
             //console.log(data);
             if (data.code == 200) {
-                setNftimage('ipfs/' + data.data);
+                if (data.data) {
+                    setNftimage('ipfs/' + data.data);
+                } else {
+                    setNftimage(nullimg);
+                }
             } else {
                 setNftimage(myimg);
             }

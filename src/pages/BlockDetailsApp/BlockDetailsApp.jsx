@@ -533,11 +533,15 @@ export default function BlockDetailsApp(props) {
     //燃料单价
     function gasusedlvsolo(data) {
         if (data) {
-            let text = 0;
-            for (let i = 0; i < data.length; i++) {
-                text = text + data[i].gasPrice;
+            if (data.length > 0) {
+                let text = 0;
+                for (let i = 0; i < data.length; i++) {
+                    text = text + data[i].gasPrice;
+                }
+                return text / data.length;
+            } else {
+                return 0;
             }
-            return text / data.length;
         } else {
             return 0;
         }
@@ -1295,16 +1299,22 @@ export default function BlockDetailsApp(props) {
                                         BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeright_data
                                     }
                                 >
-                                    {punishaddress(soloblockdata.proof)}
-                                    {soloblockdata.proof % 3 == 2 ? (
-                                        <div
-                                            className={
-                                                BlockDetailsApp_ls.punishaddressdata
-                                            }
-                                        ></div>
-                                    ) : (
-                                        ''
-                                    )}
+                                    <div
+                                        className={
+                                            BlockDetailsApp_ls.BlockDetailsBox_databox_Blackholeright_databig
+                                        }
+                                    >
+                                        {punishaddress(soloblockdata.proof)}
+                                        {soloblockdata.proof % 3 == 2 ? (
+                                            <div
+                                                className={
+                                                    BlockDetailsApp_ls.punishaddressdata
+                                                }
+                                            ></div>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>

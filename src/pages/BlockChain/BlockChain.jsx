@@ -19,7 +19,7 @@ export default function BlockChain() {
     //总数
     const [totaldata, setTotaldata] = useState({});
     //筛选
-    const [filterdata, setFilterdata] = useState(0);
+    const [filterdata, setFilterdata] = useState('');
     //最高区块
     const [bigheightblock, setBigheightblock] = useState(0);
     //倍数
@@ -180,7 +180,7 @@ export default function BlockChain() {
         setTitledata(e.target.value);
         console.log(e);
         if (e.target.value == 'ViewBlocks') {
-            setFilterdata(0);
+            setFilterdata('');
         } else if (e.target.value == 'ViewBlackholeBlocks') {
             setFilterdata(1);
         } else if (e.target.value == 'ViewPenalty') {
@@ -289,7 +289,7 @@ export default function BlockChain() {
                             View Blackhole Blocks
                         </Radio.Button>
                         <Radio.Button value="ViewPenalty">
-                            View Penalty
+                            View Penalty Blocks
                         </Radio.Button>
                     </Radio.Group>
                 </div>

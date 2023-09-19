@@ -36,7 +36,7 @@ import {
 } from '../../utils/methods/Methods';
 import { utils } from 'ethers';
 import imgmr from '../../assets/images/HomePage/mr.png';
-
+import nullimg from '../../assets/images/HomePage/null.png';
 const { Option } = Select;
 export default function SNFTDetails(props) {
     // //console.log(props.location.state.snftid);
@@ -204,7 +204,11 @@ export default function SNFTDetails(props) {
         if (data) {
             //console.log(data);
             if (data.code == 200) {
-                setSnftimage('ipfs/' + data.data);
+                if (data.data) {
+                    setSnftimage('ipfs/' + data.data);
+                } else {
+                    setSnftimage(nullimg);
+                }
             } else {
                 setSnftimage(imgmr);
             }

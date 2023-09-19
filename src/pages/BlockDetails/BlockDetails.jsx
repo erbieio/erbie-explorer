@@ -306,6 +306,7 @@ export default function BlockDetails(props) {
     const soloblocktransaction_q = async (item) => {
         const data = await soloblocktransaction(item);
         if (data) {
+            console.log(data);
             setSoloblocktransactiondata(data);
         }
     };
@@ -536,11 +537,15 @@ export default function BlockDetails(props) {
     //燃料单价
     function gasusedlvsolo(data) {
         if (data) {
-            let text = 0;
-            for (let i = 0; i < data.length; i++) {
-                text = text + data[i].gasPrice;
+            if (data.length > 0) {
+                let text = 0;
+                for (let i = 0; i < data.length; i++) {
+                    text = text + data[i].gasPrice;
+                }
+                return text / data.length;
+            } else {
+                return 0;
             }
-            return text / data.length;
         } else {
             return 0;
         }
@@ -596,7 +601,7 @@ export default function BlockDetails(props) {
             return item.map((data) => {
                 return (
                     <div className={BlockDetails_ls.punishaddressdata}>
-                        <span>{ellipsisdata(data, 10, 5)}</span>
+                        <span>{data}</span>
                     </div>
                 );
             });
@@ -1121,19 +1126,27 @@ export default function BlockDetails(props) {
                                 </div>
                                 <div
                                     className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_Blackholeright_data
+                                        BlockDetails_ls.BlockDetailsBox_databox_Blackholeright_databox
                                     }
                                 >
-                                    {blacknodeaddress(soloblockdata.proposers)}
-                                    {soloblockdata.proposers % 3 == 2 ? (
-                                        <div
-                                            className={
-                                                BlockDetails_ls.blacknodeaddressdata
-                                            }
-                                        ></div>
-                                    ) : (
-                                        ''
-                                    )}
+                                    <div
+                                        className={
+                                            BlockDetails_ls.BlockDetailsBox_databox_Blackholeright_data
+                                        }
+                                    >
+                                        {blacknodeaddress(
+                                            soloblockdata.proposers,
+                                        )}
+                                        {soloblockdata.proposers % 3 == 2 ? (
+                                            <div
+                                                className={
+                                                    BlockDetails_ls.blacknodeaddressdata
+                                                }
+                                            ></div>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1301,19 +1314,25 @@ export default function BlockDetails(props) {
                                 </div>
                                 <div
                                     className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_Blackholeright_data
+                                        BlockDetails_ls.BlockDetailsBox_databox_Blackholeright_databox
                                     }
                                 >
-                                    {punishaddress(soloblockdata.proof)}
-                                    {soloblockdata.proof % 3 == 2 ? (
-                                        <div
-                                            className={
-                                                BlockDetails_ls.punishaddressdata
-                                            }
-                                        ></div>
-                                    ) : (
-                                        ''
-                                    )}
+                                    <div
+                                        className={
+                                            BlockDetails_ls.BlockDetailsBox_databox_Blackholeright_data
+                                        }
+                                    >
+                                        {punishaddress(soloblockdata.proof)}
+                                        {soloblockdata.proof % 3 == 2 ? (
+                                            <div
+                                                className={
+                                                    BlockDetails_ls.punishaddressdata
+                                                }
+                                            ></div>
+                                        ) : (
+                                            ''
+                                        )}
+                                    </div>
                                 </div>
                             </div>
                         </div>
