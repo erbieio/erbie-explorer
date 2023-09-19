@@ -1061,8 +1061,8 @@ export default function BlockDetailsApp(props) {
                                     }
                                 >
                                     <div>Penalty Address</div>
-                                    <div>Penalty Points</div>
-                                    <div>Current Credibility</div>
+                                    <div>Penalty Weight</div>
+                                    <div>Current Weight</div>
                                 </div>
                                 <List>
                                     <VirtualList

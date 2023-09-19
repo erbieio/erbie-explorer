@@ -549,7 +549,7 @@ export default function NFTDetailsApp(props) {
                         >
                             <Table
                                 columns={columns}
-                                dataSource={snfttxdata.nft_txs}
+                                dataSource={snfttxdata.data}
                                 pagination={false}
                             />
                             <div

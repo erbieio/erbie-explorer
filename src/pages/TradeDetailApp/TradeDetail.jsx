@@ -242,10 +242,9 @@ class TradeDetail extends React.Component {
                         transactionres instanceof Object &&
                         transactionres.transType.type === 6
                     ) {
-                        const recycle_tx1 = await recycle_tx({
-                            hash: this.state.detailData.hash,
-                            addr: '',
-                        });
+                        const recycle_tx1 = await recycle_tx(
+                            this.state.detailData.hash,
+                        );
                         if (recycle_tx1) {
                             this.setState({
                                 newDetailData: recycle_tx1,
@@ -350,7 +349,7 @@ class TradeDetail extends React.Component {
                                     <p>ERB Got</p>
                                     <span>
                                         {Number(
-                                            this.state.newDetailData.price /
+                                            this.state.newDetailData.value /
                                                 1000000000000000000 || 0,
                                         ).toLocaleString()}{' '}
                                         ERB
@@ -491,25 +490,24 @@ class TradeDetail extends React.Component {
                             <div>
                                 <p style={{ width: '200px' }}>Seller profits</p>
                                 <span>
-                                    {this.state.nfttxdata.royalty &&
-                                    this.state.nfttxdata.fee &&
-                                    this.state.nfttxdata.price
+                                    {this.state.nfttxdata.fee_rate &&
+                                    this.state.nfttxdata.royalty_rate &&
+                                    this.state.nfttxdata.value
                                         ? (
+                                              ((10000 -
+                                                  Number(
+                                                      this.state.nfttxdata
+                                                          .fee_rate,
+                                                  ) -
+                                                  Number(
+                                                      this.state.nfttxdata
+                                                          .royalty_rate,
+                                                  )) /
+                                                  10000) *
                                               Number(
                                                   utils.formatEther(
                                                       this.state.nfttxdata
-                                                          .price,
-                                                  ),
-                                              ) -
-                                              Number(
-                                                  utils.formatEther(
-                                                      this.state.nfttxdata.fee,
-                                                  ),
-                                              ) -
-                                              Number(
-                                                  utils.formatEther(
-                                                      this.state.nfttxdata
-                                                          .royalty,
+                                                          .value,
                                                   ),
                                               )
                                           ).toFixed(2)
@@ -522,11 +520,20 @@ class TradeDetail extends React.Component {
                                     Creator royalty profits
                                 </p>
                                 <span>
-                                    {this.state.nfttxdata.royalty
-                                        ? Number(
-                                              utils.formatEther(
-                                                  this.state.nfttxdata.royalty,
-                                              ),
+                                    {this.state.nfttxdata.royalty_rate &&
+                                    this.state.nfttxdata.value
+                                        ? (
+                                              (Number(
+                                                  this.state.nfttxdata
+                                                      .royalty_rate,
+                                              ) /
+                                                  10000) *
+                                              Number(
+                                                  utils.formatEther(
+                                                      this.state.nfttxdata
+                                                          .value,
+                                                  ),
+                                              )
                                           ).toFixed(2)
                                         : 0.0}{' '}
                                     ERB

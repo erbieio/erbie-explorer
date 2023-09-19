@@ -110,8 +110,8 @@ export default function SNFTDetailsApp(props) {
         },
         {
             title: 'Transaction Value (ERB)',
-            key: 'price',
-            dataIndex: 'price',
+            key: 'value',
+            dataIndex: 'value',
             render: (text) => (
                 <span style={{ color: '#7AA4FF' }}>
                     {text ? utils.formatEther(String(text)) : 0}
@@ -653,7 +653,7 @@ export default function SNFTDetailsApp(props) {
                         >
                             <Table
                                 columns={columns}
-                                dataSource={snfttxdata.nft_txs}
+                                dataSource={snfttxdata.data}
                                 pagination={false}
                             />
                             <div

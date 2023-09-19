@@ -224,48 +224,48 @@ export default function Account() {
             ellipsis: true,
             width: '160px',
         },
-        // {
-        //     title: () => (
-        //         <div className={Account_ls.tablexbox}>
-        //             Owned NFTs
-        //             {transactionvaluecolor == 0 ? (
-        //                 <div className={Account_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TransactionValue.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TransactionValue.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : transactionvaluecolor == 1 ? (
-        //                 <div className={Account_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TransactionValue.bind(this, 1)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TransactionValue.bind(this, 2)}
-        //                     />
-        //                 </div>
-        //             ) : (
-        //                 <div className={Account_ls.tablex}>
-        //                     <CaretUpOutlined
-        //                         onClick={TransactionValue.bind(this, 1)}
-        //                     />
-        //                     <CaretDownOutlined
-        //                         onClick={TransactionValue.bind(this, 2)}
-        //                         style={{ color: '#7AA4FF' }}
-        //                     />
-        //                 </div>
-        //             )}
-        //         </div>
-        //     ),
-        //     key: 'nftCount',
-        //     dataIndex: 'nftCount',
-        //     render: (text, data) => <>{text || 0}</>,
-        //     ellipsis: true,
-        //     width: '140px',
-        // },
+        {
+            title: () => (
+                <div className={Account_ls.tablexbox}>
+                    Owned NFTs
+                    {transactionvaluecolor == 0 ? (
+                        <div className={Account_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TransactionValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TransactionValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : transactionvaluecolor == 1 ? (
+                        <div className={Account_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TransactionValue.bind(this, 1)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                            <CaretDownOutlined
+                                onClick={TransactionValue.bind(this, 2)}
+                            />
+                        </div>
+                    ) : (
+                        <div className={Account_ls.tablex}>
+                            <CaretUpOutlined
+                                onClick={TransactionValue.bind(this, 1)}
+                            />
+                            <CaretDownOutlined
+                                onClick={TransactionValue.bind(this, 2)}
+                                style={{ color: '#7AA4FF' }}
+                            />
+                        </div>
+                    )}
+                </div>
+            ),
+            key: 'nftCount',
+            dataIndex: 'nftCount',
+            render: (text, data) => <>{text || 0}</>,
+            ellipsis: true,
+            width: '140px',
+        },
     ];
 
     const onChange = (data) => {

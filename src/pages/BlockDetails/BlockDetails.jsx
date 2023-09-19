@@ -710,6 +710,7 @@ export default function BlockDetails(props) {
                                     {timestamp(soloblockdata.timestamp)}
                                 </div>
                             </div>
+
                             <div
                                 className={
                                     BlockDetails_ls.BlockDetailsBox_databox_left_transverse
@@ -721,25 +722,18 @@ export default function BlockDetails(props) {
                                     }
                                     style={{ width: '150px' }}
                                 >
-                                    Parent Hash
+                                    Block Size
                                 </div>
                                 <div
                                     className={
                                         BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
                                     }
-                                    style={{ color: '#7AA4FF' }}
+                                    style={{ cursor: 'auto' }}
                                 >
-                                    <span
-                                        style={{
-                                            color: '#7AA4FF',
-                                            cursor: 'pointer',
-                                        }}
-                                        onClick={fatherblock}
-                                    >
-                                        {soloblockdata.parentHash}
-                                    </span>
+                                    {soloblockdata.size} bytes
                                 </div>
                             </div>
+
                             <div
                                 className={
                                     BlockDetails_ls.BlockDetailsBox_databox_left_transverse
@@ -759,15 +753,15 @@ export default function BlockDetails(props) {
                                     }
                                     style={{
                                         display: 'flex',
-                                        justifyContent: 'space-between',
-                                        width: '310px',
+                                        justifyContent: 'flex-start',
+                                        // width: '310px',
                                         cursor: 'auto',
                                     }}
                                 >
                                     {soloblockdata.gasUsed}(
                                     {soloblockdata.gasUsed /
                                         soloblockdata.gasLimit}
-                                    %)
+                                    %)&nbsp;&nbsp;
                                     <div
                                         style={{ width: '263px' }}
                                         id="progressbar"
@@ -805,17 +799,26 @@ export default function BlockDetails(props) {
                                         BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
                                     }
                                 >
-                                    Block Size
+                                    Parent Hash
                                 </div>
                                 <div
                                     className={
                                         BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
                                     }
-                                    style={{ cursor: 'auto' }}
+                                    style={{ color: '#7AA4FF' }}
                                 >
-                                    {soloblockdata.size} bytes
+                                    <span
+                                        style={{
+                                            color: '#7AA4FF',
+                                            cursor: 'pointer',
+                                        }}
+                                        onClick={fatherblock}
+                                    >
+                                        {soloblockdata.parentHash}
+                                    </span>
                                 </div>
                             </div>
+
                             <div
                                 className={
                                     BlockDetails_ls.BlockDetailsBox_databox_left_transverse
@@ -1067,8 +1070,8 @@ export default function BlockDetails(props) {
                                     }
                                 >
                                     <div>Penalty Address</div>
-                                    <div>Penalty Points</div>
-                                    <div>Current Credibility</div>
+                                    <div>Penalty Weight</div>
+                                    <div>Current Weight</div>
                                 </div>
                                 <List>
                                     <VirtualList

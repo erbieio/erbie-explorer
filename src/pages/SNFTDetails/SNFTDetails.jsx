@@ -694,7 +694,7 @@ export default function SNFTDetails(props) {
                     >
                         <Table
                             columns={columns}
-                            dataSource={snfttxdata.nft_txs}
+                            dataSource={snfttxdata.data}
                             pagination={false}
                         />
                         <div

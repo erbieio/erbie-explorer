@@ -104,7 +104,7 @@ export const snftdetails = (data) => {
 };
 //SNFT、NFT交易历史查询
 export const snft_nft_tx = (data) => {
-    return request.get(`${host}/nft/tx/page`, {
+    return request.get(`${host}/transaction/erbie/page`, {
         params: {
             address: data.address,
             exchanger: data.exchanger,

@@ -27,12 +27,8 @@ export const chartTx = () => {
     return request.get(`${host}/chart/tx`, {});
 };
 export const recycle_tx = (data) => {
-    return request.get(`${host}/snft/recycle_tx`, {
-        params: {
-            ...data,
-        },
-    });
+    return request.get(`${host}/transaction/erbie/${data}`);
 };
 export const nfttx = (data) => {
-    return request.get(`${host}/nft/tx/${data}`, {});
+    return request.get(`${host}/transaction/erbie/${data}`);
 };

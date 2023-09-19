@@ -132,8 +132,8 @@ export default function NFTDetails(props) {
         },
         {
             title: 'Value',
-            key: 'price',
-            dataIndex: 'price',
+            key: 'value',
+            dataIndex: 'value',
             render: (text) => (
                 <span>{text ? utils.formatEther(String(text)) : 0}</span>
             ),
@@ -565,7 +565,7 @@ export default function NFTDetails(props) {
                     >
                         <Table
                             columns={columns}
-                            dataSource={snfttxdata.nft_txs}
+                            dataSource={snfttxdata.data}
                             pagination={false}
                         />
                         <div
