@@ -1313,7 +1313,7 @@ export default function BlockDetails(props) {
                                         BlockDetails_ls.BlockDetailsBox_databox_Blackholeright_title
                                     }
                                 >
-                                    Details
+                                    Punished Hash List
                                 </div>
                                 <div
                                     className={

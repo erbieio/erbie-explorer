@@ -11,7 +11,7 @@ import {
 import { CaretUpOutlined, CaretDownOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import { utils } from 'ethers';
-import { timestamp, ellipsis } from '../../utils/methods/Methods';
+import { timestamp, ellipsis, ellipsisdata } from '../../utils/methods/Methods';
 import React, { useState, useEffect } from 'react';
 export default function Account() {
     const [pagenumber, setPagenumber] = useState(1);
@@ -42,7 +42,7 @@ export default function Account() {
                     to={{ pathname: `/AccountDetail`, state: text }}
                     style={{ color: '#7AA4FF', fontFamily: 'CustomFontMedium' }}
                 >
-                    {ellipsis(text)}
+                    {ellipsisdata(text, 6, 6)}
                 </Link>
             ),
             ellipsis: true,
@@ -222,7 +222,6 @@ export default function Account() {
             dataIndex: 'snftCount',
             render: (text, data) => <>{text}</>,
             ellipsis: true,
-            width: '160px',
         },
         {
             title: () => (
