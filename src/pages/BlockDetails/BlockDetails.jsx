@@ -264,13 +264,13 @@ export default function BlockDetails(props) {
         slashings_q(bloackblockdata);
     }, [blackpagenumber]);
     useEffect(() => {
-        slashings_q2(punish);
+        slashings_q2(blockaddressdata);
     }, [blackpagenumberpunish]);
     useEffect(() => {
-        slashings_q3(punish2);
+        slashings_q3(blockaddressdata);
     }, [blockaddressdata]);
     useEffect(() => {
-        slashings_q3(punish2);
+        slashings_q3(blockaddressdata);
     }, [blackpagenumberpunish2]);
     useEffect(() => {
         let pagedatabs = {
@@ -1326,15 +1326,6 @@ export default function BlockDetails(props) {
                                         }
                                     >
                                         {punishaddress(soloblockdata.proof)}
-                                        {soloblockdata.proof % 3 == 2 ? (
-                                            <div
-                                                className={
-                                                    BlockDetails_ls.punishaddressdata
-                                                }
-                                            ></div>
-                                        ) : (
-                                            ''
-                                        )}
                                     </div>
                                 </div>
                             </div>

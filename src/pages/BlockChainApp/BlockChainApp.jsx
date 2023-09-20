@@ -1,5 +1,5 @@
 import BlockChainApp_ls from './BlockChainApp.less';
-import { Space, Table, Tag, Pagination, Radio } from 'antd';
+import { Space, Table, Tag, Pagination, Radio, Spin } from 'antd';
 import { Link } from 'umi';
 import {
     erbprice,
@@ -25,6 +25,7 @@ export default function BlockChainApp() {
     //倍数
     const [multiple, setMultiple] = useState(0.16);
     const [titledata, setTitledata] = useState('ViewBlocks');
+    const [spindata, setSpindata] = useState(1);
     const columns = [
         {
             title: 'Block Height',
@@ -160,6 +161,7 @@ export default function BlockChainApp() {
         if (data) {
             setBlockdata(data);
             setBigheightblock(data.blocks[0].number);
+            setSpindata(0);
         }
     };
     //总数查询
@@ -181,6 +183,7 @@ export default function BlockChainApp() {
         e.stopPropagation();
         e.nativeEvent.stopImmediatePropagation();
         setTitledata(e.target.value);
+        setSpindata(1);
         if (e.target.value == 'ViewBlocks') {
             setFilterdata('');
         } else if (e.target.value == 'ViewBlackholeBlocks') {
@@ -259,66 +262,75 @@ export default function BlockChainApp() {
                     </Radio.Group>
                 </div>
                 {/* 表格 */}
-                <div className={BlockChainApp_ls.tablebox}>
-                    <div
-                        className={BlockChainApp_ls.BlockChainBox_table}
-                        id="BlockChainTableApp"
-                    >
-                        <p
-                            className={
-                                BlockChainApp_ls.BlockChainBox_table_title
-                            }
-                        >
-                            BLOCK INFORMATION
-                        </p>
-                        <Table
-                            columns={columns}
-                            dataSource={blockdata.blocks}
-                            pagination={false}
-                        />
-                        <div
-                            className={
-                                BlockChainApp_ls.BlockChainBox_Pagination
-                            }
-                            id="BlockChainBoxPagination"
-                        >
-                            <Pagination
-                                defaultCurrent={1}
-                                total={blockdata.total}
-                                onChange={onChange}
-                                showSizeChanger={false}
-                                current={pagenumber}
+                <div
+                    className={BlockChainApp_ls.tablebox}
+                    id="BlockChainTableApp"
+                >
+                    {spindata == 0 ? (
+                        <div className={BlockChainApp_ls.BlockChainBox_table}>
+                            <p
+                                className={
+                                    BlockChainApp_ls.BlockChainBox_table_title
+                                }
+                            >
+                                BLOCK INFORMATION
+                            </p>
+                            <Table
+                                columns={columns}
+                                dataSource={blockdata.blocks}
+                                pagination={false}
                             />
                             <div
                                 className={
-                                    BlockChainApp_ls.BlockChainBox_Pagination_d
+                                    BlockChainApp_ls.BlockChainBox_Pagination
                                 }
+                                id="BlockChainBoxPagination"
                             >
-                                10/Page
+                                <Pagination
+                                    defaultCurrent={1}
+                                    total={blockdata.total}
+                                    onChange={onChange}
+                                    showSizeChanger={false}
+                                    current={pagenumber}
+                                />
+                                <div
+                                    className={
+                                        BlockChainApp_ls.BlockChainBox_Pagination_d
+                                    }
+                                >
+                                    10/Page
+                                </div>
+                                <span
+                                    className={
+                                        BlockChainApp_ls.BlockChainBox_Pagination_span1
+                                    }
+                                >
+                                    To
+                                </span>
+                                <input
+                                    id="BlockChaininputnumber"
+                                    className={
+                                        BlockChainApp_ls.BlockChainBox_Pagination_input
+                                    }
+                                    onKeyDown={BlockChaininputnumberonclick}
+                                />
+                                <span
+                                    className={
+                                        BlockChainApp_ls.BlockChainBox_Pagination_span2
+                                    }
+                                >
+                                    Page
+                                </span>
                             </div>
-                            <span
-                                className={
-                                    BlockChainApp_ls.BlockChainBox_Pagination_span1
-                                }
-                            >
-                                To
-                            </span>
-                            <input
-                                id="BlockChaininputnumber"
-                                className={
-                                    BlockChainApp_ls.BlockChainBox_Pagination_input
-                                }
-                                onKeyDown={BlockChaininputnumberonclick}
-                            />
-                            <span
-                                className={
-                                    BlockChainApp_ls.BlockChainBox_Pagination_span2
-                                }
-                            >
-                                Page
-                            </span>
                         </div>
-                    </div>
+                    ) : (
+                        <Space size="middle">
+                            <Spin size="small" />
+                        </Space>
+                    )}
+                    <Space size="middle">
+                        <Spin size="small" />
+                    </Space>
                 </div>
             </div>
         </>

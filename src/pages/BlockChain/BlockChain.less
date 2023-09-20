@@ -37,6 +37,11 @@
     // margin-top: 32px;
     padding-top: 24px;
     padding-bottom: 30px;
+    display: flex;
+    min-height: 300px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .BlockChainBox_table_title {
     color: white;
@@ -159,6 +164,7 @@
     }
 }
 :global {
+    
     #BlockChainTable {
         .ant-table-wrapper {
             //   border: 1px solid red;
@@ -169,6 +175,9 @@
             font-size: 14px !important;
             font-family: CustomFontRegular!important;
             color: #ffffff !important;
+        }
+        .ant-spin-dot-item{
+            background-color: #f72d86 !important;
         }
     }
     #BlockChainBoxPagination {
