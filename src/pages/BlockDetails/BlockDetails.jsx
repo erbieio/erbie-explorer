@@ -264,13 +264,13 @@ export default function BlockDetails(props) {
         slashings_q(bloackblockdata);
     }, [blackpagenumber]);
     useEffect(() => {
-        slashings_q2(blockaddressdata);
+        slashings_q2(punish);
     }, [blackpagenumberpunish]);
     useEffect(() => {
-        slashings_q3(blockaddressdata);
+        slashings_q3(punish2);
     }, [blockaddressdata]);
     useEffect(() => {
-        slashings_q3(blockaddressdata);
+        slashings_q3(punish2);
     }, [blackpagenumberpunish2]);
     useEffect(() => {
         let pagedatabs = {
