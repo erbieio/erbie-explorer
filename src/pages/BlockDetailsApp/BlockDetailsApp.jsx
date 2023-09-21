@@ -334,12 +334,14 @@ export default function BlockDetailsApp(props) {
             }
         }
     };
-    const slashings_q3 = async (item) => {
+    const slashings_q3 = async (item, text) => {
         const data = await slashings(item);
         if (data) {
             console.log(data);
-            if (data.data.length > 0) {
+            if (data.data.length > 0 && text != 1) {
                 setPunishdata2(punishdata2.concat(data.data));
+            } else {
+                setPunishdata2(data.data);
             }
         }
     };
@@ -604,6 +606,7 @@ export default function BlockDetailsApp(props) {
         }
     }
     function punishdetails(item) {
+        // console.log(item);
         if (item && item.length > 0) {
             return item.map((data) => {
                 return (
@@ -632,6 +635,7 @@ export default function BlockDetailsApp(props) {
         }
     }
     function icononclick(data, add) {
+        setPunishdata2([]);
         if (
             document.getElementById(`icon${data}`).style.transform ==
             'rotate(180deg)'
@@ -668,6 +672,9 @@ export default function BlockDetailsApp(props) {
             document.getElementById(`box${data}`).style.height = '150px';
         }
         setBlockaddressdata(add);
+        if (add == blockaddressdata) {
+            slashings_q3(punish2, 1);
+        }
     }
     return (
         <>

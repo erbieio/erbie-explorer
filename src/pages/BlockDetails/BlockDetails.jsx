@@ -306,7 +306,6 @@ export default function BlockDetails(props) {
     const soloblocktransaction_q = async (item) => {
         const data = await soloblocktransaction(item);
         if (data) {
-            console.log(data);
             setSoloblocktransactiondata(data);
         }
     };
@@ -314,14 +313,12 @@ export default function BlockDetails(props) {
     const blockrewardperson_q = async (item) => {
         const data = await blockrewardperson(item);
         if (data) {
-            console.log(data);
             setBlockrewardpersondata(data);
         }
     };
     const slashings_q = async (item) => {
         const data = await slashings(item);
         if (data) {
-            console.log(data);
             if (data.data.length > 0) {
                 setBlackblockdata(blackblockdata.concat(data.data));
             }
@@ -330,18 +327,18 @@ export default function BlockDetails(props) {
     const slashings_q2 = async (item) => {
         const data = await slashings(item);
         if (data) {
-            console.log(data);
             if (data.data.length > 0) {
                 setPunishdata(punishdata.concat(data.data));
             }
         }
     };
-    const slashings_q3 = async (item) => {
+    const slashings_q3 = async (item, text) => {
         const data = await slashings(item);
         if (data) {
-            console.log(data);
-            if (data.data.length > 0) {
+            if (data.data.length > 0 && text != 1) {
                 setPunishdata2(punishdata2.concat(data.data));
+            } else {
+                setPunishdata2(data.data);
             }
         }
     };
@@ -636,6 +633,7 @@ export default function BlockDetails(props) {
         }
     }
     function icononclick(data, add) {
+        setPunishdata2([]);
         if (
             document.getElementById(`icon${data}`).style.transform ==
             'rotate(180deg)'
@@ -672,6 +670,9 @@ export default function BlockDetails(props) {
             document.getElementById(`box${data}`).style.height = '184px';
         }
         setBlockaddressdata(add);
+        if (add == blockaddressdata) {
+            slashings_q3(punish2, 1);
+        }
     }
 
     return (
@@ -782,6 +783,7 @@ export default function BlockDetails(props) {
                                     className={
                                         BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
                                     }
+                                    style={{ width: '100px' }}
                                 >
                                     Gas Used
                                 </div>
@@ -831,6 +833,7 @@ export default function BlockDetails(props) {
                                     className={
                                         BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
                                     }
+                                    style={{ width: '100px' }}
                                 >
                                     Gas Price
                                 </div>
@@ -855,6 +858,7 @@ export default function BlockDetails(props) {
                                     className={
                                         BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
                                     }
+                                    style={{ width: '100px' }}
                                 >
                                     Gas Limit
                                 </div>

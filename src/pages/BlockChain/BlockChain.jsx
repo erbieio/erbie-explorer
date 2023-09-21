@@ -136,6 +136,7 @@ export default function BlockChain() {
         total_q();
     }, []);
     useEffect(() => {
+        setSpindata(1);
         block_q(pagedata);
     }, [pagenumber]);
     useEffect(() => {
