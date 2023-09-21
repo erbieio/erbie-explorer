@@ -620,7 +620,11 @@ export default function BlockDetailsApp(props) {
                             </Link>
                         </p>
                         <p className={BlockDetailsApp_ls.punishdetailsbox_text}>
-                            {data.amount}
+                            {data.amount
+                                ? Number(
+                                      utils.formatEther(String(data.amount)),
+                                  ).toFixed(2)
+                                : 0}
                         </p>
                     </p>
                 );
@@ -1211,7 +1215,17 @@ export default function BlockDetailsApp(props) {
                                                         )}
                                                     </Link>
                                                 </div>
-                                                <div>{item.amount}</div>
+                                                <div>
+                                                    {item.amount
+                                                        ? Number(
+                                                              utils.formatEther(
+                                                                  String(
+                                                                      item.amount,
+                                                                  ),
+                                                              ),
+                                                          ).toFixed(2)
+                                                        : 0}
+                                                </div>
                                                 <div>Multi-signatures</div>
                                                 <div
                                                     id={`icon${index}`}

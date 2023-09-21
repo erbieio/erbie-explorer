@@ -264,13 +264,13 @@ export default function BlockDetails(props) {
         slashings_q(bloackblockdata);
     }, [blackpagenumber]);
     useEffect(() => {
-        slashings_q2(punish);
+        slashings_q2(blockaddressdata);
     }, [blackpagenumberpunish]);
     useEffect(() => {
-        slashings_q3(punish2);
+        slashings_q3(blockaddressdata);
     }, [blockaddressdata]);
     useEffect(() => {
-        slashings_q3(punish2);
+        slashings_q3(blockaddressdata);
     }, [blackpagenumberpunish2]);
     useEffect(() => {
         let pagedatabs = {
@@ -624,7 +624,11 @@ export default function BlockDetails(props) {
                             </Link>
                         </p>
                         <p className={BlockDetails_ls.punishdetailsbox_text}>
-                            {data.amount}
+                            {data.amount
+                                ? Number(
+                                      utils.formatEther(String(data.amount)),
+                                  ).toFixed(2)
+                                : 0}
                         </p>
                     </p>
                 );
@@ -733,7 +737,6 @@ export default function BlockDetails(props) {
                                     {soloblockdata.size} bytes
                                 </div>
                             </div>
-
                             <div
                                 className={
                                     BlockDetails_ls.BlockDetailsBox_databox_left_transverse
@@ -744,6 +747,41 @@ export default function BlockDetails(props) {
                                         BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
                                     }
                                     style={{ width: '150px' }}
+                                >
+                                    Parent Hash
+                                </div>
+                                <div
+                                    className={
+                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
+                                    }
+                                    style={{ color: '#7AA4FF' }}
+                                >
+                                    <span
+                                        style={{
+                                            color: '#7AA4FF',
+                                            cursor: 'pointer',
+                                        }}
+                                        onClick={fatherblock}
+                                    >
+                                        {soloblockdata.parentHash}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            className={
+                                BlockDetails_ls.BlockDetailsBox_databox_right
+                            }
+                        >
+                            <div
+                                className={
+                                    BlockDetails_ls.BlockDetailsBox_databox_left_transverse
+                                }
+                            >
+                                <div
+                                    className={
+                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
+                                    }
                                 >
                                     Gas Used
                                 </div>
@@ -781,41 +819,6 @@ export default function BlockDetails(props) {
                                             strokeWidth={5.8}
                                         />
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div
-                            className={
-                                BlockDetails_ls.BlockDetailsBox_databox_right
-                            }
-                        >
-                            <div
-                                className={
-                                    BlockDetails_ls.BlockDetailsBox_databox_left_transverse
-                                }
-                            >
-                                <div
-                                    className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_name
-                                    }
-                                >
-                                    Parent Hash
-                                </div>
-                                <div
-                                    className={
-                                        BlockDetails_ls.BlockDetailsBox_databox_left_transverse_data
-                                    }
-                                    style={{ color: '#7AA4FF' }}
-                                >
-                                    <span
-                                        style={{
-                                            color: '#7AA4FF',
-                                            cursor: 'pointer',
-                                        }}
-                                        onClick={fatherblock}
-                                    >
-                                        {soloblockdata.parentHash}
-                                    </span>
                                 </div>
                             </div>
 
@@ -1212,7 +1215,17 @@ export default function BlockDetails(props) {
                                                         )}
                                                     </Link>
                                                 </div>
-                                                <div>{item.amount}</div>
+                                                <div>
+                                                    {item.amount
+                                                        ? Number(
+                                                              utils.formatEther(
+                                                                  String(
+                                                                      item.amount,
+                                                                  ),
+                                                              ),
+                                                          ).toFixed(2)
+                                                        : 0}
+                                                </div>
                                                 <div>Multi-signatures</div>
                                                 <div
                                                     id={`icon${index}`}
