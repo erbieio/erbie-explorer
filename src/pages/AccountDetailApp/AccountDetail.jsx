@@ -555,7 +555,13 @@ class AccountDetail extends React.Component {
                     dataIndex: 'meta_url',
                     ellipsis: true,
                     render: (text) => (
-                        <span>{hexToString(text) == 1 ? 'AI' : 'Normal'}</span>
+                        <span>
+                            {text
+                                ? hexToString(text) == 1
+                                    ? 'AI'
+                                    : 'Normal'
+                                : ''}
+                        </span>
                     ),
                 },
             ],

@@ -21,6 +21,7 @@ import {
     DownOutlined,
     SmileOutlined,
 } from '@ant-design/icons';
+import PubSub from 'pubsub-js';
 import VirtualList from 'rc-virtual-list';
 import zhCN from 'antd/es/locale/zh_CN';
 import { AiOutlineCopy } from 'react-icons/ai';
@@ -517,7 +518,13 @@ class AccountDetail extends React.Component {
                     dataIndex: 'meta_url',
                     ellipsis: true,
                     render: (text) => (
-                        <span>{hexToString(text) == 1 ? 'AI' : 'Normal'}</span>
+                        <span>
+                            {text
+                                ? hexToString(text) == 1
+                                    ? 'AI'
+                                    : 'Normal'
+                                : ''}
+                        </span>
                     ),
                     width: '100px',
                 },
@@ -1675,9 +1682,13 @@ class AccountDetail extends React.Component {
     }
     componentDidUpdate() {}
     //组件销毁前的回调
-    componentWillUnmount() {}
+    componentWillUnmount() {
+        // 卸载异步操作设置状态
+    }
+
     render() {
         this.onChangeExchange = (e) => {
+            PubSub.publish('apionclick', 1);
             e.stopPropagation();
             e.nativeEvent.stopImmediatePropagation();
             this.setState({

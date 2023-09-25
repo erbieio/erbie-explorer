@@ -1,10 +1,10 @@
 import request from '../request';
 // let host = 'https://api.erbiescan.io';
-// let host =
-//     window.location.origin == 'https://www.erbiescan.io'
-//         ? 'https://api.erbiescan.io'
-//         : 'http://43.129.181.130:3001';
-let host = 'https://api.erbiescan.io';
+let host =
+    window.location.origin == 'https://www.erbiescan.io'
+        ? 'https://api.erbiescan.io'
+        : 'http://43.129.181.130:3001';
+// let host = 'https://api.erbiescan.io';
 let host2 =
     window.location.origin == 'https://www.erbiescan.io'
         ? 'https://snft.erbie.io/nftscan'
