@@ -175,7 +175,7 @@ export const accounts = (data) => {
 };
 // 在线验证者查询
 export const onlineAddr = () => {
-    return request.get(`https://www.erbiescan.io/upload/onlineAddr.json`);
+    return request.get(`/upload/onlineAddr.json`);
 };
 //creator查询
 export const creator = (data) => {
