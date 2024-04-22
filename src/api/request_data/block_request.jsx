@@ -1,14 +1,12 @@
 import request from '../request';
-// let host = 'https://api.erbiescan.io';
 let host =
     window.location.origin == 'https://www.erbiescan.io'
-        ? 'https://api.erbiescan.io'
-        : 'http://43.129.181.130:3001';
-// let host = 'https://api.erbiescan.io';
+        ? 'https://scanapi.erbie.io'
+        : 'https://scanapi.erbie.io';
 let host2 =
     window.location.origin == 'https://www.erbiescan.io'
         ? 'https://snft.erbie.io/nftscan'
-        : 'http://192.168.1.235:9006/nftscan';
+        : 'https://snft.erbie.io/nftscan';
 console.log(window.location);
 //erb价格查询
 export const erbprice = () => {

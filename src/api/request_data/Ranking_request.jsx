@@ -1,8 +1,8 @@
 import request from '../request';
 let host =
     window.location.origin == 'https://www.erbiescan.io'
-        ? 'https://api.erbiescan.io'
-        : 'http://43.129.181.130:3001';
+        ? 'https://scanapi.erbie.io'
+        : 'https://scanapi.erbie.io';
 // let host = 'http://43.132.176.185:3001'
 //exchanger ranking
 export const rankingExchanger = (data) => {
